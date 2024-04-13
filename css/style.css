@@ -167,8 +167,8 @@ button {
 .sub-heading {
   font-size: 1.5rem;
   display: flex;
-  justify-content: center; */
-  align-items: center;
+  justify-content: center;
+ 
   gap: 3rem;
   margin-bottom: 2rem;
 }
@@ -181,7 +181,6 @@ button {
 
 .sub-heading__ttl--black {
   color: var(--black);
-
 }
 
 .sub-heading__ttl--red {
@@ -196,6 +195,7 @@ button {
 
 .container {
   width: 1440px;
+  margin: auto;
 }
 
 /*header*/
@@ -209,12 +209,6 @@ button {
 .logo {
   width: 125px;
   height: 50px;
-}
-
-/* links */
-
-.link:visited {
-  color: var(--dark-orange);
 }
 
 /* hero banner */
@@ -246,9 +240,6 @@ button {
 .section {
   margin: 2rem 0rem;
   text-align: center;
-}
-
-.open-houres {
 }
 
 .open-houres__txt {
@@ -409,19 +400,47 @@ button {
   }
 }
 
-
 /* footer */
-
-.footer__title {
-font-size: 1rem;
-color: var(--blue-petrol);
-font-weight: bold;
+.footer {
+  border-top: 1px solid var(--black-50);
+  margin: 2rem 0rem;
 }
 
+.footer-nav__ttle,
+.Social-Media__ttle {
+  font-size: 1rem;
+  color: var(--blue-petrol);
+  font-weight: bold;
+  margin: 1rem;
+}
 
-
-.footer-menu__link {
+.footer-nav__menu {
   text-decoration: underline;
-  color: var(--turquoise)
- 
+  color: var(--turquoise);
+  display: grid;
+  justify-items: flex-start;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.footer-nav__link {
+  text-decoration: underline;
+  color: var(--turquoise);
+}
+.footer-nav__link:visited {
+  color: var(--dark-orange);
+}
+.Social-Media__menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.copywrite {
+  margin: 1rem;
+  font-size: 0.75rem;
+  color: var(--black-50);
+}
+@media screen and (min-width: 960px) {
+  .footer-nav__menu {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
