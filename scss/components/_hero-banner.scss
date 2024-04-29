@@ -1,0 +1,17 @@
+.hero-banner {
+  height: 100vh;
+  background-image: linear-gradient($black-50, $black-50),
+    url(../img/herobanner.webp);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  @include centering;
+  position: relative;
+  gap: 4rem;
+  color: $white;
+}
+
+.hero-banner__ttl,
+.hero-banner__subttl {
+  text-align: center;
+}

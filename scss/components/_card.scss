@@ -1,0 +1,45 @@
+
+.card-holder {
+  @include centering;
+}
+
+%card {
+  text-align: center;
+  gap: 2rem;
+  color: $black;
+  background-color: $light-orange;
+  @include centering;
+}
+
+.card {
+  @extend %card;
+}
+
+.card-events {
+  @extend %card;
+  width: 360px;
+  aspect-ratio: 360 / 648;
+  padding-bottom: 2rem;
+}
+.card__txt {
+  padding: 0rem 1rem;
+}
+
+.card--padding {
+  @extend %card;
+  padding: 2rem 2.5rem;
+}
+.card__ttl {
+  font-size: 1.5rem;
+}
+
+.card__ttl--h3 {
+  font-size: 1.125rem;
+}
+
+.card__img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background-image: $black-50;
+}

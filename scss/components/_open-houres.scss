@@ -1,0 +1,31 @@
+.open-heures__ttl {
+  display: flex;
+  gap: 3rem;
+  &::before {
+    content: url('data:image/svg+xml,<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9.82353L9.44444 3M61 9.82353L54.5556 3M22.3333 33.7059L28.7778 40.5294L41.6667 26.8824M57.7778 33.7059C57.7778 48.7801 46.2367 61 32 61C17.7633 61 6.22222 48.7801 6.22222 33.7059C6.22222 18.6318 17.7633 6.41176 32 6.41176C46.2367 6.41176 57.7778 18.6318 57.7778 33.7059Z" stroke="%23E76F51" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  }
+}
+
+%open-houres__txt {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0rem;
+  font-size: 1.125rem;
+  line-height: 2.125rem;
+  font-weight: 600;
+}
+
+.open-houres__txt {
+  @extend %open-houres__txt;
+}
+
+$colors: $black, $blue-petrol, $dark-red;
+
+@each $color, $name in $colors {
+  .open-houres__txt--#{$name} {
+    @extend %open-houres__txt;
+    color: $color;
+  }
+}

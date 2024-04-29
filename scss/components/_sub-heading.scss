@@ -1,0 +1,39 @@
+@import "../mixin";
+@import "../var";
+
+%sub-heading {
+  @include centering;
+  font-size: 1.5rem;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.sub-heading__txt {
+  @include centering;
+}
+
+.sub-heading__ttl--black {
+  @extend %sub-heading;
+  color: $black;
+}
+
+.sub-heading__ttl--red {
+  @extend %sub-heading;
+  color: $dark-red;
+}
+
+.sub-heading__txt {
+  text-align: center;
+}
+
+// $colors: (
+//   "black": $black,
+//   "dark-red": $dark-red,
+// );
+
+// @each $name, $color in $colors {
+//   .sub-heading__ttl--#{$name} {
+//     @extend %sub-heading;
+//     color: $color;
+//   }
+// }
