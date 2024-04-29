@@ -4,6 +4,10 @@
   color: $white;
 }
 
+.btn {
+  @extend %btn;
+}
+
 %btn--blue-petrol {
   background-color: $blue-petrol;
   margin-top: 2rem;
@@ -17,7 +21,6 @@
 }
 
 .hero-banner__btn {
-  @extend %btn;
   background-color: $dark-orange;
   &:hover {
     background-color: $white;

@@ -22,9 +22,9 @@
   .footer-nav__link {
     text-decoration: underline;
     color: $turquoise;
-  }
-  .footer-nav__link:visited {
-    color: $dark-orange;
+    &:visited {
+      color: $dark-orange;
+    }
   }
   .Social-Media__menu {
     display: flex;

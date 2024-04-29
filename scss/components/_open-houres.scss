@@ -6,7 +6,8 @@
   }
 }
 
-%open-houres__txt {
+
+.open-houres__txt {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -17,15 +18,14 @@
   font-weight: 600;
 }
 
-.open-houres__txt {
-  @extend %open-houres__txt;
-}
+$colors: (
+  "black": $black,
+  "blue-petrol": $blue-petrol,
+  "red": $dark-red,
+);
 
-$colors: $black, $blue-petrol, $dark-red;
-
-@each $color, $name in $colors {
+@each $name, $color in $colors {
   .open-houres__txt--#{$name} {
-    @extend %open-houres__txt;
     color: $color;
   }
 }

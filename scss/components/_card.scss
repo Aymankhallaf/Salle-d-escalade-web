@@ -3,20 +3,14 @@
   @include centering;
 }
 
-%card {
+.card {
   text-align: center;
   gap: 2rem;
   color: $black;
   background-color: $light-orange;
-  @include centering;
-}
-
-.card {
-  @extend %card;
-}
+  @include centering;}
 
 .card-events {
-  @extend %card;
   width: 360px;
   aspect-ratio: 360 / 648;
   padding-bottom: 2rem;
@@ -26,7 +20,6 @@
 }
 
 .card--padding {
-  @extend %card;
   padding: 2rem 2.5rem;
 }
 .card__ttl {
