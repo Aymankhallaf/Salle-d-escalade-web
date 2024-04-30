@@ -34,9 +34,9 @@
 
   &__img {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1.5;
     object-fit: cover;
-    background-image: $black-50;
+    background-color: $black-50;
   }
 
   @include desktop-only() {
