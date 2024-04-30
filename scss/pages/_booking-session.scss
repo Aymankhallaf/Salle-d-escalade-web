@@ -1,11 +1,8 @@
 /*booking session*/
 .duration {
+    size: 100%;
   &__ttle {
-    display: block;
-    font-size: 1.25rem;
-    text-indent: 0.5em;
-    background-color: $light-orange-50;
-    padding: 0.5rem;
+    @include select-ttle;
   }
 
   &__select {
@@ -17,10 +14,15 @@
     background-color: $white;
     filter: drop-shadow(0px 3px $black-50);
 
-    &:hover{
-        background-color: $turquoise;
+    &:focus {
+      background-color: $sand;
+    }
+
+    &:focus {
+      background-color: $sand;
     }
   }
-
-
+  &__option:hover {
+    background-color: $sand;
+  }
 }
