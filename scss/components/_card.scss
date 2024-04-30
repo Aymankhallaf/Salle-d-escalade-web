@@ -36,3 +36,10 @@
   object-fit: cover;
   background-image: $black-50;
 }
+
+@include desktop-only() {
+  .card-holder {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

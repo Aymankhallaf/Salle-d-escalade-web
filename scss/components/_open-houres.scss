@@ -6,7 +6,6 @@
   }
 }
 
-
 .open-houres__txt {
   text-align: center;
   display: flex;
@@ -27,5 +26,13 @@ $colors: (
 @each $name, $color in $colors {
   .open-houres__txt--#{$name} {
     color: $color;
+  }
+}
+
+@include desktop-only() {
+  .open-houres__txt {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
   }
 }

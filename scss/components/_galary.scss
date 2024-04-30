@@ -34,3 +34,10 @@
   text-align: center;
   color: $white;
 }
+
+
+@include desktop-only() {
+  .galary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
