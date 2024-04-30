@@ -1,37 +1,25 @@
-%sub-heading {
+/* sub-headi,g */
+.sub-heading {
   @include centering;
   font-size: 1.5rem;
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
-.sub-heading {
-  @extend %sub-heading;
-}
+    gap: 2rem;
+  margin-bottom: 2.375rem;
 
-.sub-heading__txt {
-  @include centering;
-}
 
-.sub-heading__ttl--black {
-  color: $black;
-}
-
-.sub-heading__ttl--red {
-  color: $dark-red;
-}
-
-.sub-heading__txt {
-  text-align: center;
+  &__txt {
+    @include centering;
+  }
+  
+  &__ttl--black {
+    color: $black;
+  }
+  
+  &__ttl--red {
+    color: $dark-red;
+  }
+  
+  &__txt {
+    text-align: center;
+  }
 }
 
-// $colors: (
-//   "black": $black,
-//   "dark-red": $dark-red,
-// );
-
-// @each $name, $color in $colors {
-//   .sub-heading__ttl--#{$name} {
-//     @extend %sub-heading;
-//     color: $color;
-//   }
-// }

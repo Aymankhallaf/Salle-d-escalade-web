@@ -1,9 +1,10 @@
 @import "var";
-@import "utils";
-@import "reset";
-@import "root";
 @import "mixin";
+@import "root";
+@import "reset";
+@import "utils";
 
+/* components */
 @import "./components/btn";
 @import "./components/card";
 @import "./components/sub-heading";
@@ -12,4 +13,4 @@
 @import "./components/open-houres";
 @import "./components/article";
 @import "./components/galary";
-@import "./components/footer"
+@import "./components/footer";
