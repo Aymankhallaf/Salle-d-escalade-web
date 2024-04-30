@@ -44,12 +44,19 @@
     </section>
 
     <form class="duration" aria-label="duration-label">
-        <label class="duration__ttle" id="duration-label" for="duration">Choisissez le duration:</label>
+        <label class="duration__ttle" id="duration-label" for="duration">Choisissez le duration: </label>
         <select class="duration__select" name="duration" id="duration">
             <option class="duration__option" value="" required>Veuillez choisir une option</option>
             <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8 £</span></option>
-            <option value="60">60 minutes <span class="" data-price="12">/ 12 £</span></option>
-            <option value="1 day">1 jour <span class="" data-price="15">/ 15 £</span></option>
+            <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12 £</span></option>
+            <option class="duration__option" value="1 day">1 jour <span class="" data-price="15">/ 15 £</span></option>
+        </select>
+
+        <label class="Participant__ttl" for="Participant">
+            Numéro de participants: </label>
+        <input class="Participant__select" pattern="[0-9]*" inputmode="numeric" type="number" id="text-input-number"
+            name="Participant">
+
     </form>
 
     </section>

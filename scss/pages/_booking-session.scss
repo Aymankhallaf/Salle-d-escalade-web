@@ -1,28 +1,53 @@
 /*booking session*/
 .duration {
-    size: 100%;
+  size: 100%;
   &__ttle {
     @include select-ttle;
   }
 
   &__select {
+    position: relative;
     display: inline-block;
-    size: 100%;
+    width: 100%;
     margin: 2rem 0;
     font-size: 1.125rem;
     padding: 0.5rem;
     background-color: $white;
     filter: drop-shadow(0px 3px $black-50);
-
-    &:focus {
-      background-color: $sand;
+    // &:hover{
+    //     background-color: $sand;
+    // }
+    &:focus::after {
+      background-color: $turquoise;
     }
 
-    &:focus {
-      background-color: $sand;
+    &::before {
+      background-image: url('data:image/svg+xml,<svg width="31" height="20" viewBox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L15.5 18L29 2" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 5px;
+      right: 5px;
     }
   }
   &__option:hover {
-    background-color: $sand;
+    background-color: aqua;
+    color: aqua;
   }
+}
+
+.Participant{
+    
+    size: 100%;
+    &__ttl {
+      @include select-ttle;
+    }
+    &__select {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin: 2rem 0;
+      font-size: 1.125rem;
+      padding: 0.5rem;
+      background-color: $white;
+    }
 }
