@@ -44,7 +44,7 @@
       width: 400px;
     }
     &-holder {
-      @include centering(raw);
+      @include centering("raw");
       justify-content: space-between;
     }
   }

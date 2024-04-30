@@ -1,12 +1,3 @@
-//flex centering default direction column
-@mixin centering($directin: column) {
-  display: flex;
-  flex-direction: $directin;
-  justify-content: center;
-  align-items: center;
-}
-
-
 @mixin mobile-only() {
   @media screen and (max-width: ($bp-desktop - 1px)) {
     @content;
@@ -18,3 +9,13 @@
     @content;
   }
 }
+
+
+//flex centering default direction column
+@mixin centering($directin: column) {
+  display: flex;
+  flex-direction: $directin;
+  justify-content: center;
+  align-items: center;
+}
+
