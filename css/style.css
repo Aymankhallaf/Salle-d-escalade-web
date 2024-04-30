@@ -382,7 +382,7 @@ select:hover {
 }
 
 /*footer*/
-.Social-Media__ttle, .footer-nav__ttle {
+.link, .Social-Media__ttle, .footer-nav__ttle {
   font-size: 1rem;
   color: #001219;
   font-weight: bold;

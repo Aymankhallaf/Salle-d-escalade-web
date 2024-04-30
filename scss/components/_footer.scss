@@ -1,5 +1,5 @@
 /*footer*/
-%link {
+.link {
   font-size: 1rem;
   color: $black;
   font-weight: bold;
@@ -11,7 +11,7 @@
   margin: 2rem 0rem;
 
   &-nav__ttle {
-    @extend %link;
+    @extend .link;
   }
 
   &-nav__menu {
@@ -45,7 +45,7 @@
   }
 
   &__ttle {
-    @extend %link;
+    @extend .link;
   }
 
   .copywrite {
