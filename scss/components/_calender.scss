@@ -1,29 +1,39 @@
-// %calender-grid{}
-.calender{
+// calender-grid
+// calender cell size
 
-   &-container{
+.calender {
+  &-container {
     margin: 2rem 0;
-    }
-    
-   &__header {
-      display: flex;
-      justify-content: space-between;
-    }
-   &__ttl {
-      font-size: 1.125rem;
-      font-weight: bold;
-      color: $black;
-    }
-    &__week,&__days {
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        margin: auto;
-        padding: 1rem;
-        justify-content: space-between;
-    }
-    
+  }
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+  &__ttl {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: $black;
+  }
+  &__week {
+    @include cells;
 
-
-}    
-
+    &--day {
+      @include centering;
+      height: 3rem;
+      width: 3em;
+    }
+  }
+  &__month {
+    @include cells;
+    &--day {
+      @include centering;
+      height: 3rem;
+      width: 3em;
+      &:hover {
+        background-color: $turquoise;
+      }
+    }
+  }
+}

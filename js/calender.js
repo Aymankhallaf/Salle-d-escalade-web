@@ -1,6 +1,6 @@
 let display = document.querySelector(".calender__ttl");
-console.log (display)
-let days = document.querySelector(".calender__days");
+console.log(display);
+let days = document.querySelector(".calender__month");
 let previous = document.querySelector("calender__left");
 let next = document.querySelector("calender__right");
 let selected = document.querySelector(".selected");
@@ -21,7 +21,7 @@ function displayCalendar() {
 
   let formattedDate = date.toLocaleString("en-US", {
     month: "long",
-    year: "numeric"
+    year: "numeric",
   });
   display.innerHTML = `${formattedDate}`;
 
@@ -32,11 +32,12 @@ function displayCalendar() {
     days.appendChild(li);
   }
 
-  for (let i = 1; i <= numberOfDays; i++) {
+  for (let i = 1; i <= numberOfDays; i++) { 
     let li = document.createElement("li");
     let currentDate = new Date(year, month, i);
 
     li.dataset.date = currentDate.toDateString();
+    li.classList = "calender__month--day";
 
     li.innerHTML += i;
     days.appendChild(li);

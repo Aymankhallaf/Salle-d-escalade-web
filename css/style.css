@@ -449,18 +449,43 @@ select:hover {
 .calender__header {
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0;
 }
 .calender__ttl {
   font-size: 1.125rem;
   font-weight: bold;
   color: #001219;
 }
-.calender__week, .calender__days {
+.calender__week {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin: auto;
-  padding: 1rem;
   justify-content: space-between;
+}
+.calender__week--day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3em;
+}
+.calender__month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: auto;
+  justify-content: space-between;
+}
+.calender__month--day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3em;
+}
+.calender__month--day:hover {
+  background-color: #0a9396;
 }
 
 /*booking session*/
