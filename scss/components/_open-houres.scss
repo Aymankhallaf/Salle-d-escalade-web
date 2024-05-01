@@ -16,6 +16,11 @@
   font-size: 1.125rem;
   line-height: auto;
   font-weight: 600;
+  @include desktop-only() {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
 }
 
 $colors: (
@@ -27,13 +32,5 @@ $colors: (
 @each $name, $color in $colors {
   .open-houres__txt--#{$name} {
     color: $color;
-  }
-}
-
-@include desktop-only() {
-  .open-houres__txt {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 2rem;
   }
 }

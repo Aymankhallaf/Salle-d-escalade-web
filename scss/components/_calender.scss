@@ -1,0 +1,29 @@
+// %calender-grid{}
+.calender{
+
+   &-container{
+    margin: 2rem 0;
+    }
+    
+   &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+   &__ttl {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: $black;
+    }
+    &__week,&__days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        margin: auto;
+        padding: 1rem;
+        justify-content: space-between;
+    }
+    
+
+
+
+}    
+

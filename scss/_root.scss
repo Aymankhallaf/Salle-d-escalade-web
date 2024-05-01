@@ -1,14 +1,11 @@
 /*root*/
 :root {
   font-size: $default-size;
+  @include desktop-only() {
+    font-size: $default-size * 1.5;
+  }
 }
 
 body {
   font-family: $font;
-}
-
-@include desktop-only() {
-  :root {
-    font-size: $default-size * 1.5;
-  }
 }

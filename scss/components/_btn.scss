@@ -34,7 +34,7 @@ $sections: ("reserve", "card", "about-us", "artcl", "conact-us");
 
 @each $section in $sections {
   .#{$section}__btn {
-    @extend .btn;
+    @extend .btn; 
     @extend .btn--blue-petrol;
   }
 }

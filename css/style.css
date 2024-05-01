@@ -1,17 +1,38 @@
+/*form title*/
+.salle__ttl, .Participant__ttl, .duration__ttl {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  background-color: hsla(39, 100%, 47%, 0.5);
+  padding: 0.5rem;
+}
+
+/*form input*/
+.salle__select, .Participant__select, .duration__select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 2rem 0;
+  font-size: 1.125rem;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
+}
+
 /*root*/
 :root {
   font-size: 16px;
+}
+@media screen and (min-width: 960px) {
+  :root {
+    font-size: 24px;
+  }
 }
 
 body {
   font-family: "Roboto", sans-serif;
 }
 
-@media screen and (min-width: 960px) {
-  :root {
-    font-size: 24px;
-  }
-}
 /*reset*/
 * {
   box-sizing: border-box;
@@ -133,32 +154,23 @@ select:hover {
   }
 }
 /*card*/
-.card-holder {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 .card {
   display: flex;
   text-align: center;
   gap: 2rem;
   color: #001219;
   background-color: #ee9b00;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.card-events {
-  width: 360px;
-  padding-bottom: 2.375rem;
+.card--padding {
+  padding: 2rem 2.5rem;
 }
 .card__txt {
   padding: 0rem 1rem;
-}
-.card--padding {
-  padding: 2rem 2.5rem;
 }
 .card__ttl {
   font-size: 1.5rem;
@@ -168,24 +180,30 @@ select:hover {
 }
 .card__img {
   width: 100%;
-  aspect-ratio: 1.5;
+  aspect-ratio: 3/2;
   -o-object-fit: cover;
      object-fit: cover;
   background-color: hsla(197, 100%, 5%, 0.5);
 }
+.card-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (min-width: 960px) {
-  .card-events {
-    width: 400px;
-  }
   .card-holder {
     display: flex;
-    flex-direction: "raw";
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     justify-content: space-between;
   }
 }
-
+.card-events {
+  width: 360px;
+  padding-bottom: 2.375rem;
+}
 /* sub-headi,g */
 .sub-heading {
   display: flex;
@@ -266,6 +284,13 @@ select:hover {
   line-height: auto;
   font-weight: 600;
 }
+@media screen and (min-width: 960px) {
+  .open-houres__txt {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+}
 
 .open-houres__txt--black {
   color: #001219;
@@ -279,13 +304,6 @@ select:hover {
   color: #9b2226;
 }
 
-@media screen and (min-width: 960px) {
-  .open-houres__txt {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 2rem;
-  }
-}
 /* articles */
 .artcl-holder {
   width: 100%;
@@ -376,7 +394,7 @@ select:hover {
   color: #ffffff;
 }
 @media screen and (min-width: 960px) {
-  .galary .galary {
+  .galary {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -425,58 +443,33 @@ select:hover {
   color: hsla(197, 100%, 5%, 0.5);
 }
 
+.calender-container {
+  margin: 2rem 0;
+}
+.calender__header {
+  display: flex;
+  justify-content: space-between;
+}
+.calender__ttl {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #001219;
+}
+.calender__week, .calender__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin: auto;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
 /*booking session*/
 .duration {
   size: 100%;
 }
-.duration__ttle {
-  display: block;
-  font-size: 1.25rem;
-  text-indent: 0.5em;
-  background-color: hsla(39, 100%, 47%, 0.5);
-  padding: 0.5rem;
-}
-.duration__select {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  margin: 2rem 0;
-  font-size: 1.125rem;
-  padding: 0.5rem;
-  background-color: #ffffff;
-  filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
-}
-.duration__select:focus::after {
-  background-color: #0a9396;
-}
-.duration__select::before {
-  background-image: url('data:image/svg+xml,<svg width="31" height="20" viewBox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L15.5 18L29 2" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.duration__option:hover {
-  background-color: aqua;
-  color: aqua;
-}
-
 .Participant {
   size: 100%;
 }
-.Participant__ttl {
-  display: block;
-  font-size: 1.25rem;
-  text-indent: 0.5em;
-  background-color: hsla(39, 100%, 47%, 0.5);
-  padding: 0.5rem;
-}
-.Participant__select {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  margin: 2rem 0;
-  font-size: 1.125rem;
-  padding: 0.5rem;
-  background-color: #ffffff;
+.salle {
+  size: 100%;
 }/*# sourceMappingURL=style.css.map */
