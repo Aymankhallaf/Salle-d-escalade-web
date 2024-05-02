@@ -27,8 +27,8 @@
             <h1 id="hero-banner" class="hero-banner__ttl">Bienvenue chez
                 Salle d’escalade</h1>
             <p class="hero-banner__subttl">Nous vous invitons à rejoindre notre club à des tarifs adaptés à tous</p>
-            <a class="btn hero-banner__btn" href="#abonnement">Abonnez-vous</a>
-            <a class="circle-btn" href="#about-us"></a>
+            <a target="_blank" class="btn hero-banner__btn" href="#abonnement">Abonnez-vous</a>
+            <a class="circle-btn" href="#about-us" aria-labelledby="about-us"></a>
         </section>
 
         <section class="open-houres section" aria-labelledby="open-heures">
@@ -36,21 +36,28 @@
                 <img class="sub-heading__img" src="img/clock.svg" alt="les horaires icon" class="subheading-icon">
                 <h2 id="open-heures" class="sub-heading__ttl sub-heading__ttl--black">les horaires</h2>
             </div>
-            <ul class="open-houres__txt" aria-label="Voici les horaires d'ouverture de la semaine.">
-                <li class="open-houres__txt--black">
-                    Du Mardi jusqu'à le Mercredi <br> De 10:00 h à 19:00 h
-
-                </li>
-
-                <li class="open-houres__txt--blue-petrol">
-                    le Samedi - le Dimanche <br> De 11:00 h - 20:00 h
-                </li>
-
-
-                <li class="open-houres__txt--red">
-                    Lundi <br> fermeture
-
-            </ul>
+            <section class="open-houres section" aria-labelledby="open-heures">
+                <div class="sub-heading">
+                    <img class="sub-heading__img" src="img/clock.svg" alt="les horaires icon" class="subheading-icon">
+                    <h1 id="open-heures" class="sub-heading__ttl sub-heading__ttl--black">les horaires</h1>
+                </div>
+                <ul class="open-houres__txt" aria-label="Voici les horaires d'ouverture de la semaine.">
+                    <li class="open-houres__txt--black">
+                        Du <time>Mardi</time> jusqu'à <time>Mercredi</time> <br> De <time>10:00</time> h
+                        à <time>19:00</time> h
+                    </li>
+        
+                    <li class="open-houres__txt--blue-petrol">
+                        <time>Samedi</time> - <time>Dimanche</time> <br>
+                        De <time>11:00</time> h - <time>20:00</time> h
+                    </li>
+        
+                    <li class="open-houres__txt--red">
+                        <time>Lundi</time> <br> fermeture
+                    </li>
+                </ul>
+        
+            </section>
         </section>
 
         <section class="open-houres section" aria-labelledby="price">
@@ -74,7 +81,7 @@
                 </li>
 
             </ul>
-            <a href="#reserve" class="btn reserve__btn">Réservez</a>
+            <a target="_blank" href="#reserve" class="btn reserve__btn">Réservez</a>
 
         </section>
 
@@ -85,7 +92,7 @@
                     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco
                     laboris nisi ut aliquip</p>
-                <a href="#about-us" class=" btn card__btn">En savoir plus</a>
+                <a target="_blank" href="#about-us" class=" btn card__btn">En savoir plus</a>
             </div>
 
         </section>
@@ -93,9 +100,11 @@
         <section class="section salle">
             <h2 class="sub-heading sub-heading__ttl--red">les Salles</h2>
             <ul class="galary" aria-label="">
-                <li class="galary__item galary__item-1"><a class="galary__lnk" href="#first-salle">La première salle</a>
+                <li class="galary__item galary__item-1"><a target="_blank" class="galary__lnk" href="#first-salle">La
+                        première salle</a>
                 </li>
-                <li class="galary__item galary__item-2"><a class="galary__lnk" href="#second-salle">la deuxième
+                <li class="galary__item galary__item-2"><a target="_blank" class="galary__lnk" href="#second-salle">la
+                        deuxième
                         salle</a></li>
             </ul>
         </section>
@@ -109,7 +118,7 @@
                     <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     </p>
-                    <a href="#" class="btn card__btn">En savoir plus</a>
+                    <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
                 </li>
 
                 <li class="card card-events">
@@ -118,7 +127,7 @@
                     <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     </p>
-                    <a href="#" class="btn card__btn">En savoir plus</a>
+                    <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
                 </li>
                 <li class="card card-events">
                     <img class="card__img" src="img/events-s.webp" alt="Un groupe participe à un événement.">
@@ -126,7 +135,7 @@
                     <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     </p>
-                    <a href="#" class="btn card__btn">En savoir plus</a>
+                    <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
                 </li>
             </ul>
         </section>
@@ -143,20 +152,20 @@
                     <img class="artcl-item__img" src="img/robe.webp" alt="un cordage">
                     <h3 class="artcl-item__ttle">Masterclass : apprendre l’escalade avec des superstars de la discipline
                         !</h3>
-                    <a href="#" class="link artcl-item__link">Lire Plus</a>
+                    <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
                 </li>
                 <li class="artcl-item">
                     <img class="artcl-item__img" src="img/seb-bouin.webp" alt="Seb Bouin grimpe">
                     <h3 class="artcl-item__ttle">Seb Bouin grimpe + que Jumbo Love sur la mythique Clark Mountain !</h3>
-                    <a href="#" class="link artcl-item__link">Lire Plus</a>
+                    <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
                 </li>
                 <li class="artcl-item">
                     <img class="artcl-item__img" src="img/pic-saint-loup.webp" alt="Seb Bouin grimpe Saint Loup">
                     <h3 class="artcl-item__ttle">Suivez Seb Bouin sur les parois du Pic Saint Loup !</h3>
-                    <a href="#" class=" link artcl-item__link">Lire Plus</a>
+                    <a target="_blank" href="#" class=" link artcl-item__link">Lire Plus</a>
                 </li>
             </ol>
-            <a href="#read-more" class="btn artcl__btn">Plus d’articls</a>
+            <a target="_blank" href="#read-more" class="btn artcl__btn">Plus d’articls</a>
 
         </section>
 
@@ -168,9 +177,9 @@
             <h4 id="#footer-nav" class="footer-nav__ttle">Plus de links</h4>
             <ol class="footer-nav__menu">
                 <li class="footer-nav__item"><a class="footer-nav__link" href="#">Les tarifs</a></li>
-                <li><a class="footer-nav__link" href="#">Mention légales</a></li>
-                <li><a class="footer-nav__link" href="#">Les Horaires</a></li>
-                <li><a class="footer-nav__link" href="#">Propre de nos</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Mention légales</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Les Horaires</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Propre de nos</a></li>
             </ol>
 
         </nav>

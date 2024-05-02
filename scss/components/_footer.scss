@@ -1,11 +1,4 @@
 /*footer*/
-.link {
-  font-size: 1rem;
-  color: $black;
-  font-weight: bold;
-  margin: 1rem;
-}
-
 .footer {
   border-top: 1px solid $black-50;
   margin: 2rem 0rem;
@@ -24,7 +17,7 @@
   }
   &-nav__link {
     text-decoration: underline;
-    color: $turquoise;
+    color: $blue-petrol;
     &:visited {
       color: $dark-orange;
     }
@@ -37,7 +30,7 @@
   }
 }
 
-.Social-Media {
+.social-media {
   &__menu {
     display: flex;
     justify-content: space-around;
@@ -48,10 +41,10 @@
     @extend .link;
   }
 
-  .copywrite {
-    margin: 1rem;
-    font-size: 0.75rem;
-    color: $black-50;
-  }
 }
-  
+
+.copywrite {
+  margin: 1rem;
+  font-size: 0.75rem;
+  color: $black-50;
+}

@@ -369,6 +369,12 @@ select:hover {
   }
 }
 
+.link, .social-media__ttle, .footer-nav__ttle {
+  font-size: 1rem;
+  color: #005f73;
+  margin: 1rem;
+}
+
 /*galary*/
 .galary {
   display: grid;
@@ -410,13 +416,6 @@ select:hover {
 }
 
 /*footer*/
-.link, .Social-Media__ttle, .footer-nav__ttle {
-  font-size: 1rem;
-  color: #001219;
-  font-weight: bold;
-  margin: 1rem;
-}
-
 .footer {
   border-top: 1px solid hsla(197, 100%, 5%, 0.5);
   margin: 2rem 0rem;
@@ -431,7 +430,7 @@ select:hover {
 }
 .footer-nav__link {
   text-decoration: underline;
-  color: #0a9396;
+  color: #005f73;
 }
 .footer-nav__link:visited {
   color: #ca6702;
@@ -442,12 +441,12 @@ select:hover {
   }
 }
 
-.Social-Media__menu {
+.social-media__menu {
   display: flex;
   justify-content: space-around;
   color: #005f73;
 }
-.Social-Media .copywrite {
+.copywrite {
   margin: 1rem;
   font-size: 0.75rem;
   color: hsla(197, 100%, 5%, 0.5);
@@ -468,9 +467,7 @@ select:hover {
 }
 .calender__week {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin: auto;
-  justify-content: space-between;
+  grid-template-columns: repeat(7, 3rem);
   font-weight: 600;
 }
 .calender__week--day {
@@ -483,9 +480,7 @@ select:hover {
 }
 .calender__month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin: auto;
-  justify-content: space-between;
+  grid-template-columns: repeat(7, 3rem);
 }
 .calender__month--day {
   display: flex;

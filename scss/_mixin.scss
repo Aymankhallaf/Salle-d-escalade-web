@@ -41,8 +41,5 @@
 
 @mixin cells   {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  margin: auto;
-  justify-content: space-between;
-
+  grid-template-columns: repeat(7, 3rem);
 }

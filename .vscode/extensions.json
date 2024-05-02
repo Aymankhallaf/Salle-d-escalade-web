@@ -2,6 +2,7 @@
     "recommendations": [
         "sibiraj-s.vscode-scss-formatter",
         "visualstudioexptteam.vscodeintellicode",
-        "glenn2223.live-sass"
+        "glenn2223.live-sass",
+        "webhint.vscode-webhint"
     ]
 }
