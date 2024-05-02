@@ -41,6 +41,7 @@ function displayCalendar() {
       month: "long",
       day: "numeric",
     });
+
     li.classList = "calender__month--day";
 
     li.innerHTML += i;
@@ -92,7 +93,6 @@ next.addEventListener("click", () => {
 });
 
 const dayElements = document.querySelectorAll(".calender__month--day");
-
 function displaySelected() {
   dayElements.forEach((day) => {
     day.addEventListener("click", (e) => {
@@ -109,8 +109,8 @@ displaySelected();
 function activeDay(dayElements, selectedDate) {
   selectedDate.classList.toggle("active");
   for (const day of dayElements) {
-    if (selectedDate!==day)
-    day.classList.remove("active");
+    if (selectedDate !== day)
+      day.classList.remove("active");
   }
 
 }
