@@ -1,5 +1,6 @@
-// calender-grid
-// calender cell size
+// calender
+//please don't change the css names until you will change it in js script
+
 .calender {
   &-container {
     margin: 2rem 0;
@@ -36,23 +37,10 @@
       }
     }
   }
-}
 
-.display-selected {
-  margin-bottom: 10px;
-  padding: 20px 20px;
-  text-align: center;
-}
-
-
-js-calender__month--day{
-  &--day {
-    @include centering;
-    height: 3rem;
-    width: 3rem;
-    border: 1px ridge $sand;
-    &:hover {
-      background-color: $turquoise;
-    }
+  &__selected-txt {
+    margin: 1rem;
+    text-align: center;
+    color: $turquoise;
   }
 }
