@@ -35,7 +35,7 @@ function displayCalendar() {
   for (let i = 1; i <= numberOfDays; i++) {
     let li = document.createElement("li");
     let currentDate = new Date(year, month, i);
-    li.dataset.date = currentDate.toDateString("fr-FR", {
+    li.dataset.date = currentDate.toLocaleString("fr-FR", {
       weekday: "long",
       year: "numeric",
       month: "long",
@@ -94,22 +94,22 @@ next.addEventListener("click", () => {
 const dayElements = document.querySelectorAll(".calender__month--day");
 
 function displaySelected() {
-  
   dayElements.forEach((day) => {
-  
     day.addEventListener("click", (e) => {
       const selectedDate = e.target;
-      activeDay(dayElements,selectedDate)
+      activeDay(dayElements, selectedDate);
       selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
     });
   });
 }
 displaySelected();
 
-function activeDay(dayElements,selectedDate) {
+
+
+function activeDay(dayElements, selectedDate) {
+  selectedDate.classList.toggle("active");
   for (const day of dayElements) {
-    selectedDate.classList.toggle("active");
-    if(selectedDate!==day)
+    if (selectedDate!==day)
     day.classList.remove("active");
   }
 
