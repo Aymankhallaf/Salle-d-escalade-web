@@ -1,8 +1,7 @@
 let display = document.querySelector(".calender__ttl");
-console.log(display);
 let days = document.querySelector(".calender__month");
-let previous = document.querySelector("calender__left");
-let next = document.querySelector("calender__right");
+let previous = document.querySelector(".calender__left");
+let next = document.querySelector(".calender__right");
 let selected = document.querySelector(".selected");
 
 let date = new Date();
@@ -19,10 +18,11 @@ function displayCalendar() {
 
   const numberOfDays = lastDay.getDate(); //31
 
-  let formattedDate = date.toLocaleString("en-US", {
-    month: "long",
+  let formattedDate = date.toLocaleString("fr-FR", {
     year: "numeric",
+    month: "long",
   });
+
   display.innerHTML = `${formattedDate}`;
 
   for (let x = 1; x <= firstDayIndex; x++) {
@@ -32,11 +32,15 @@ function displayCalendar() {
     days.appendChild(li);
   }
 
-  for (let i = 1; i <= numberOfDays; i++) { 
+  for (let i = 1; i <= numberOfDays; i++) {
     let li = document.createElement("li");
     let currentDate = new Date(year, month, i);
-
-    li.dataset.date = currentDate.toDateString();
+    li.dataset.date = currentDate.toDateString("fr-FR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     li.classList = "calender__month--day";
 
     li.innerHTML += i;
@@ -87,13 +91,26 @@ next.addEventListener("click", () => {
   displaySelected();
 });
 
+const dayElements = document.querySelectorAll(".calender__month--day");
+
 function displaySelected() {
-  const dayElements = document.querySelectorAll("calender__days li");
+  
   dayElements.forEach((day) => {
+  
     day.addEventListener("click", (e) => {
-      const selectedDate = e.target.dataset.date;
-      selected.innerHTML = `Selected Date : ${selectedDate}`;
+      const selectedDate = e.target;
+      activeDay(dayElements,selectedDate)
+      selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
     });
   });
 }
 displaySelected();
+
+function activeDay(dayElements,selectedDate) {
+  for (const day of dayElements) {
+    selectedDate.classList.toggle("active");
+    if(selectedDate!==day)
+    day.classList.remove("active");
+  }
+
+}

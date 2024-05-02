@@ -1,6 +1,5 @@
 // calender-grid
 // calender cell size
-
 .calender {
   &-container {
     margin: 2rem 0;
@@ -18,7 +17,7 @@
   }
   &__week {
     @include cells;
-
+    font-weight: 600;
     &--day {
       @include centering;
       height: 3rem;
@@ -36,4 +35,10 @@
       }
     }
   }
+}
+
+.display-selected {
+  margin-bottom: 10px;
+  padding: 20px 20px;
+  text-align: center;
 }
