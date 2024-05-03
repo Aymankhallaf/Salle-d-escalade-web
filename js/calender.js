@@ -11,11 +11,11 @@ let year = date.getFullYear();
 let month = date.getMonth();
 
 
-
 /**
- * function to display calender
+ * displays the calender header (month and year).
+ * @returns {Array} return array the first element day index
  */
-function displayCalendar() {
+function displayCalendarHeader(){
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
   // Sunday - Saturday : 0 - 6
@@ -27,7 +27,16 @@ function displayCalendar() {
   });
 
   display.innerHTML = `${formattedDate}`;
+  return [firstDayIndex,numberOfDays]
+}
 
+
+/**
+ * function to display calender
+ */
+function displayCalendar() {
+  let firstDayIndex = displayCalendarHeader()[0];
+  let numberOfDays = displayCalendarHeader()[1];
   for (let x = 1; x <= firstDayIndex; x++) {
     const li = document.createElement("li");
     li.innerHTML += "";
@@ -80,6 +89,7 @@ previous.addEventListener("click", () => {
 
   displayCalendar();
   displaySelected();
+  disactiveClosedDay("lu");
 });
 
 next.addEventListener("click", () => {
@@ -96,11 +106,14 @@ next.addEventListener("click", () => {
 
   displayCalendar();
   displaySelected();
+  disactiveClosedDay("lu");
+  
+
 });
 
 const dayElements = document.querySelectorAll(".calender__month--day");
 function handleClick(e) {
-    if (e.target.classList.contains("disactive")) {
+  if (e.target.classList.contains("disactive")) {
     document.removeEventListener("click", handleClick);
   }
   const selectedDate = e.target;
@@ -143,7 +156,6 @@ function disactiveClosedDay(dayName) {
     if (day.dataset.date.slice(0, 2) === dayName) {
       day.classList.toggle("disactive");
       document.removeEventListener("click", handleClick);
-      console.log(day);
     }
   }
 

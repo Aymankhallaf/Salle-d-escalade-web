@@ -7,6 +7,8 @@
   }
 
   &__header {
+    @include centering(row);
+    width: 21rem;
     display: flex;
     justify-content: space-between;
     margin: 1rem 0;
@@ -31,7 +33,7 @@
       @include centering;
       height: 3rem;
       width: 3rem;
-      border: 1px ridge $sand;
+      border: 1px solid $gray;
       &:hover {
         background-color: $turquoise;
       }
