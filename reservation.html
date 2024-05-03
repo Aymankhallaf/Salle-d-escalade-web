@@ -15,10 +15,10 @@
     <header class="header">
         <img class="logo" src="img/Escalade-logo-s.svg" alt="escalade">
 
-       <nav class="header-nav">
+        <nav class="header-nav">
             <img src="img/menu-icon.svg" alt="menu icon">
         </nav>
-<!-- 
+        <!-- 
         <input type="checkbox" class="nav__btn" name="menu-burger" id="menu-burger" aria-controls="nav-list"
             aria-haspopup="true" aria-expanded="false" aria-label="Open main navigation"> -->
         <!-- <ul class="nav__lst" id="nav-list">
@@ -113,8 +113,10 @@
                         <li class="calender__week--day">Sa</li>
                         <li class="calender__week--day">Di</li>
                     </ol>
-                    <ol class="calender__month js-calender__month">
-
+                    <ol id="month-day" class="calender__month js-calender__month">
+                        <template id="day-template">
+                            <li><time data-date="" id="0" class="calender__month--day js-calender__month--day" datetime="0"></time></li>
+                        </template>
                         <!--days will be filled here-->
 
                     </ol>

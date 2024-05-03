@@ -1,52 +1,80 @@
-
+//calender header
 let display = document.querySelector(".calender__ttl");
 let days = document.querySelector(".calender__month");
 let previous = document.querySelector(".calender__left");
 let next = document.querySelector(".calender__right");
 let selected = document.querySelector(".calender__selected-txt");
 
-let date = new Date();
+let today = new Date();
 
-let year = date.getFullYear();
-let month = date.getMonth();
+let year = today.getFullYear();
+let month = today.getMonth();
 
 
 /**
  * displays the calender header (month and year).
  * @returns {Array} return array the first element day index
  */
-function displayCalendarHeader(){
+function displayCalendarHeader() {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
   // Sunday - Saturday : 0 - 6
   const firstDayIndex = firstDay.getDay();
   const numberOfDays = lastDay.getDate();
-  let formattedDate = date.toLocaleString("fr-FR", {
+  let formattedDate = today.toLocaleString("fr-FR", {
     year: "numeric",
     month: "long",
   });
 
   display.innerHTML = `${formattedDate}`;
-  return [firstDayIndex,numberOfDays]
+  return [firstDayIndex, numberOfDays]
 }
 
 
-/**
- * function to display calender
- */
-function displayCalendar() {
-  let firstDayIndex = displayCalendarHeader()[0];
-  let numberOfDays = displayCalendarHeader()[1];
-  for (let x = 1; x <= firstDayIndex; x++) {
-    const li = document.createElement("li");
-    li.innerHTML += "";
+function createEmbtyDays(element) {
+  const days = document.getElementById("day-template");
+  const day = document.importNode(days.content, true);
+  const monthDays = document.getElementById("month-day")
+  day.querySelector(".js-calender__month--day").textContent = element;
+  monthDays.appendChild(day);
 
-    days.appendChild(li);
+}
+
+
+let firstDayIndex = displayCalendarHeader()[0];
+let numberOfDays = displayCalendarHeader()[1];
+
+function showEmptyDay() {
+  for (let x = 1; x <= firstDayIndex; x++) {
+    createEmbtyDays("");
   }
+}
+
+function createEmbtydays(element,dateset) {
+  const days = document.getElementById("day-template");
+  const day = document.importNode(days.content, true);
+  const monthDays = document.getElementById("month-day")
+  day.querySelector(".js-calender__month--day").textContent = element;
+  day.querySelector(".js-calender__month--day").dateset = dateset;
+  day.querySelector(".js-calender__month--day").datetime = dateset;
+  monthDays.appendChild(day);
+
+}
+
+
+//show empty days field
+showEmptyDay();
+
+
+//create days in the month
+
+
+function displayCalendar() {
 
   for (let i = 1; i <= numberOfDays; i++) {
     let li = document.createElement("li");
     let currentDate = new Date(year, month, i);
+
     li.dataset.date = currentDate.toLocaleString("fr-FR", {
       weekday: "long",
       year: "numeric",
@@ -55,6 +83,7 @@ function displayCalendar() {
 
     });
 
+
     li.classList = "calender__month--day";
 
     li.innerHTML += i;
@@ -62,8 +91,7 @@ function displayCalendar() {
     if (
       currentDate.getFullYear() === new Date().getFullYear() &&
       currentDate.getMonth() === new Date().getMonth() &&
-      currentDate.getDate() === new Date().getDate()
-    ) {
+      currentDate.getDate() === new Date().getDate()) {
       li.classList.add("current-date");
     }
   }
@@ -107,7 +135,7 @@ next.addEventListener("click", () => {
   displayCalendar();
   displaySelected();
   disactiveClosedDay("lu");
-  
+
 
 });
 
