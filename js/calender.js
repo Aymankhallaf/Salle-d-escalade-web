@@ -47,14 +47,20 @@ function createDayCell(day, dataSet) {
   const dayCell = dayElement.querySelector(".js-calender__month--day");
   dayCell.textContent = day;
   dayCell.dataset.date = dataSet;
-  if (ClosedDay.includes(dataSet.slice(0, 2))
-    || holydays.includes(dataSet)
-  ) {
+
+  if (isDayDisabled(dataSet)) {
     dayCell.classList.add("disactive");
   }
+
+ 
   daysContainer.appendChild(dayElement);
 }
 
+function isDayDisabled(dataSet){
+ return ClosedDay.includes(dataSet.slice(0, 2)
+    || holydays.includes(dataSet))
+  
+}
 
 function showEmptyDay(firstDayIndex) {
 
@@ -78,16 +84,12 @@ function displayCalendar(numberOfDays) {
     createDayCell(i, dataSet);
   }
   updateEventListeners();
-
-
 }
 
-displayCalendar();
 
 function upDateDate() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
-
   let numberOfDays = getFirstAndLastDay()[1];
   showEmptyDay(firstDayIndex)
   displayCalendar(numberOfDays)
@@ -141,10 +143,16 @@ function handleClick(e) {
   selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
 }
 
-// function displaySelected() {
-//   document.querySelectorAll(".js-calender__month--day").forEach((day) => {
-//     day.addEventListener("click", handleClick);
-//   });
-// }
+/**
+ * actives the selected day and desactives the others
+ * @param {object} dayElements object of html elements (days)
+ * @param {object} selectedDate object of  html elements (day)
+ */
+function activeDay(dayElements, selectedDate) {
+  selectedDate.classList.toggle("active");
+  for (const day of dayElements) {
+    if (selectedDate !== day)
+      day.classList.remove("active");
+  }
 
-// displaySelected();
+}

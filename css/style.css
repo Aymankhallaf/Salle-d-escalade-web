@@ -496,7 +496,7 @@ select:hover {
   width: 3rem;
   border: 1px solid #D5D4DF;
 }
-.calender__month--day:hover {
+.calender__month--day:not(.disactive):hover {
   background-color: #0a9396;
 }
 .calender__selected-txt {

@@ -34,7 +34,7 @@
       height: 3rem;
       width: 3rem;
       border: 1px solid $gray;
-      &:hover {
+      &:not(.disactive):hover {
         background-color: $turquoise;
       }
     }
