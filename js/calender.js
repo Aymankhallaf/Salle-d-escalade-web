@@ -41,12 +41,13 @@ function displayCalendarHeader() {
   });;
 }
 
-function createDayCell(day, dataSet) {
+function createDayCell(day, dataSet,datetime) {
   const template = document.getElementById("day-template");
   const dayElement = document.importNode(template.content, true);
   const dayCell = dayElement.querySelector(".js-calender__month--day");
   dayCell.textContent = day;
   dayCell.dataset.date = dataSet;
+  dayCell.setAttribute("datetime",datetime);
 
   if (isDayDisabled(dataSet)) {
     dayCell.classList.add("disactive");
@@ -79,9 +80,10 @@ function displayCalendar(numberOfDays) {
       year: "numeric",
       month: "long",
       day: "numeric",
-    });
+    }); 
+    let datetime = currentDate.toISOString().split('T')[0];
 
-    createDayCell(i, dataSet);
+    createDayCell(i, dataSet, datetime);
   }
   updateEventListeners();
 }
