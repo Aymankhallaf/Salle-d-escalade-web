@@ -124,31 +124,35 @@ next.addEventListener("click", () => {
 });
 
 
+
 function updateEventListeners() {
-  for (const dayElement of daysContainer.querySelectorAll(".js-calender__month--day")) {
+  const dayElements = daysContainer.querySelectorAll(".js-calender__month--day");
+  dayElements.forEach(dayElement => {
     if (dayElement.classList.contains("disactive")) {
       dayElement.removeEventListener("click", handleClick);
     } else {
       dayElement.addEventListener("click", handleClick);
     }
-  }
+  });
 }
 
 function handleClick(e) {
   const selectedDate = e.target;
   selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
+  activeDay(selectedDate);
 }
 
 /**
- * actives the selected day and desactives the others
- * @param {object} dayElements object of html elements (days)
- * @param {object} selectedDate object of  html elements (day)
+ * Activates the selected day and deactivates the others
+ * @param {object} selectedDate The selected date element
  */
-function activeDay(dayElements, selectedDate) {
-  selectedDate.classList.toggle("active");
-  for (const day of dayElements) {
-    if (selectedDate !== day)
+function activeDay(selectedDate) {
+  const dayElements = daysContainer.querySelectorAll(".js-calender__month--day");
+  dayElements.forEach(day => {
+    if (selectedDate !== day) {
       day.classList.remove("active");
-  }
 
+    }
+  });
+  selectedDate.classList.toggle("active");
 }
