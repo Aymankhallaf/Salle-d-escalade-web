@@ -29,7 +29,6 @@ function getFirstAndLastDay() {
 
 
 
-
 /**
  * displays the calender header (month and year).
  * @returns {Array} return array the first element day index 
@@ -41,26 +40,31 @@ function displayCalendarHeader() {
   });;
 }
 
-function createDayCell(day, dataSet,datetime) {
+function createDayCell(day, currentDate) {
+  let dataSet = currentDate.toLocaleString("fr-FR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   const template = document.getElementById("day-template");
   const dayElement = document.importNode(template.content, true);
   const dayCell = dayElement.querySelector(".js-calender__month--day");
   dayCell.textContent = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime",datetime);
-
-  if (isDayDisabled(dataSet)) {
+  dayCell.setAttribute("datetime", currentDate);
+  if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
 
- 
+
   daysContainer.appendChild(dayElement);
 }
 
-function isDayDisabled(dataSet){
- return ClosedDay.includes(dataSet.slice(0, 2)
-    || holydays.includes(dataSet))
-  
+function isDayDisactive(dataSet, currentDate) {
+  return (ClosedDay.includes(dataSet.slice(0, 2))
+    || holydays.includes(dataSet) || (currentDate < today))
+
 }
 
 function showEmptyDay(firstDayIndex) {
@@ -75,15 +79,8 @@ function showEmptyDay(firstDayIndex) {
 function displayCalendar(numberOfDays) {
   for (let i = 1; i <= numberOfDays; i++) {
     let currentDate = new Date(year, month, i);
-    let dataSet = currentDate.toLocaleString("fr-FR", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }); 
-    let datetime = currentDate.toISOString().split('T')[0];
 
-    createDayCell(i, dataSet, datetime);
+    createDayCell(i, currentDate);
   }
   updateEventListeners();
 }
@@ -102,19 +99,17 @@ upDateDate()
 
 
 previous.addEventListener("click", () => {
-
   daysContainer.innerHTML = ""
   if (month < 0) {
     month = 11;
     year--;
   }
-
   month--;
-
   currentDate.setFullYear(year, month);
-  upDateDate()
-
+  upDateDate();
 });
+
+
 
 next.addEventListener("click", () => {
   daysContainer.innerHTML = ""
@@ -123,9 +118,8 @@ next.addEventListener("click", () => {
     year++;
   }
   month++;
-  console.log(month)
   currentDate.setFullYear(year, month);
-  upDateDate()
+  upDateDate();
 
 });
 
