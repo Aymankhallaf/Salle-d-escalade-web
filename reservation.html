@@ -71,38 +71,36 @@
         <ul>
             <li>
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
-                <select class="duration__select" name="duration" id="duration">
+                <select class="duration__select js-select closed" name="duration" id="duration">
                     <option class="duration__option" value="" required>Veuillez choisir une option</option>
                     <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8 €</span>
                     </option>
                     <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12 €</span>
                     </option>
-                    <option class="duration__option" value="1 day">1 jour <span class="" data-price="15">/ 15 €</span>
+                    <option class="duration__option" value="120">1 jour <span class="" data-price="15">/ 15 €</span>
                     </option>
                 </select>
             </li>
             <li>
                 <label class="salle__ttl" id="salle" for="salle">Choisissez la salle: </label>
-                <select class="salle__select" name="salle" id="salle">
+                <select class="salle__select js-select" name="salle" id="salle">
                     <option class="salle__option" value="" required>Veuillez choisir une option</option>
                     <option class="salle__option" value="1">La première salle</option>
                     <option class="salle__option" value="2">La deuxième salle</option>
             </li>
             <li>
-                <label class="Participant__ttl" for="Participant">
-                    Numéro de participants: </label>
-                <input class="Participant__select" pattern="[0-9]*" inputmode="numeric" type="number"
-                    id="text-input-number" name="Participant">
-                <label class="Participant__ttl" for="Participant">
-                    Numéro de participants: </label>
+
+
+                        <input class="Participant__select" pattern="[0-9]*" inputmode="numeric" type="number"
+                            id="text-input-number" name="Participant">
             </li>
             <li>
                 <!-- calender -->
                 <div class="calender-container">
                     <header class="calender__header">
-                        <div class="calender__left js-calender__left">&#10094;</div>
-                        <h3 class="calender__ttl .js-calender__ttl"></h3>
-                        <div class="calender__right js-calender__right">&#10095;</div>
+                        <div id="calender__left" class="calender__left">&#10094;</div>
+                        <h3 id="calender__ttl" class="calender__ttl .js-calender__ttl"></h3>
+                        <div id="calender__right" class="calender__right js-calender__right">&#10095;</div>
                     </header>
                     <ol class="calender__week">
                         <li class="calender__week--day">Lu</li>
@@ -114,7 +112,6 @@
                         <li class="calender__week--day">Di</li>
                     </ol>
                     <ol id="month-days" class="calender__month js-calender__month">
-
                         <!--days will be filled here-->
                     </ol>
                     <template id="day-template">

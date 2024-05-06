@@ -1,6 +1,7 @@
 /*form title*/
 .salle__ttl, .Participant__ttl, .duration__ttl {
   display: block;
+  margin: 2rem 0;
   font-size: 1.25rem;
   font-weight: 600;
   background-color: hsla(39, 100%, 47%, 0.5);
@@ -12,11 +13,16 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  margin: 2rem 0;
-  font-size: 1.125rem;
+  height: 2.5rem;
   padding: 0.5rem;
+  font-size: 1.125rem;
   background-color: #ffffff;
+  border: 1px solid hsla(197, 100%, 5%, 0.5);
   filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
+  background-image: url('data:image/svg+xml,<svg width="31" height="20" viewBox="0 0 31 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 2L15.5 18L29 2" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: calc(100% - 1rem);
 }
 
 /*root*/
@@ -95,6 +101,10 @@ select:hover {
 
 .error {
   color: #9b2226 !important;
+}
+
+.closed {
+  background-image: url('data:image/svg+xml,<svg width="31" height="19" viewBox="0 0 31 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M29 17.25L15.5 1.25L2 17.25" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
 /* components */
@@ -248,7 +258,7 @@ select:hover {
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 0 2rem 0;
+  margin: 1rem 0.5rem 2rem 0.5rem;
 }
 
 .logo {

@@ -3,10 +3,10 @@ const ClosedDay = ["lu"]
 const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 
 //calender header
-let display = document.querySelector(".calender__ttl");
+let display = document.getElementById("calender__ttl");
 let daysContainer = document.querySelector(".calender__month");
-let previous = document.querySelector(".calender__left");
-let next = document.querySelector(".calender__right");
+let previous = document.getElementById("calender__left");
+let next = document.getElementById("calender__right");
 
 //selected date
 let selected = document.querySelector(".calender__selected-txt");
