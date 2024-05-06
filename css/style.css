@@ -93,6 +93,10 @@ select:hover {
   background-color: #F5F5F5;
 }
 
+.error {
+  color: #9b2226 !important;
+}
+
 /* components */
 /*btn*/
 .btn, .conact-us__btn, .artcl__btn, .about-us__btn, .card__btn, .reserve__btn {

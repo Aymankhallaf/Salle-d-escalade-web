@@ -138,8 +138,18 @@ function updateEventListeners() {
 
 function handleClick(e) {
   const selectedDate = e.target;
-  selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
   activeDay(selectedDate);
+  if (selectedDate.classList.contains("active")) {
+
+    selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
+    selected.classList.remove("error");
+
+  } else {
+    selected.innerHTML = `Vous n'avez pas choisi`;
+    selected.classList.toggle("error");
+      }
+
+
 }
 
 /**
@@ -151,8 +161,8 @@ function activeDay(selectedDate) {
   dayElements.forEach(day => {
     if (selectedDate !== day) {
       day.classList.remove("active");
-
     }
   });
   selectedDate.classList.toggle("active");
+  
 }

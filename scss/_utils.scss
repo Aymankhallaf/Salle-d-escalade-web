@@ -9,13 +9,16 @@
   text-align: center;
 }
 
-
-.active{
+.active {
   color: $white;
   background-color: $turquoise;
 }
 
-.disactive{
-  color: $dark-red  ;
+.disactive {
+  color: $dark-red;
   background-color: $light-gray;
+}
+
+.error {
+  color: $dark-red !important;
 }
