@@ -4,7 +4,7 @@ const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 
 
 //calender header
 let display = document.getElementById("calender__ttl");
-let daysContainer = document.querySelector(".calender__month");
+let daysContainer = document.getElementById("month-days");
 let previous = document.getElementById("calender__left");
 let next = document.getElementById("calender__right");
 
