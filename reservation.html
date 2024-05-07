@@ -46,41 +46,48 @@
 
     <form class="duration" aria-label="duration-label">
         <ul>
+            <!-- hall -->
             <li>
                 <label class="hall__ttl" id="hall_ttl" for="hall">Choisissez la salle: </label>
                 <select class="hall__select js-select" name="hall" id="hall">
                     <option class="hall__option" value="" required>Veuillez choisir une option</option>
-                    <option class="hall__option" value="1">La première salle</option>
-                    <option class="hall__option" value="2">La deuxième salle</option>
+                    <option class="hall__option" value="first">La première salle</option>
+                    <option class="hall__option" value="second">La deuxième salle</option>
                 </select>
             </li>
             <!-- calender -->
             <li class="calender-container">
                 <p class="calender__label" id="calender__label">Choisissez la date: </p>
-                <header class="calender__header">
-                    <button type="button" id="calender__left" class="calender__left"><img src="./img/arrow-left.svg" alt=""></button>
-                    <h3 id="calender__ttl" class="calender__ttl"></h3>
-                    <button type="button" id="calender__right" class="calender__right"><img src="./img/arrow-right.svg" alt=""></button>
-                </header>
-                <ol class="calender__week">
-                    <li class="calender__week--day">Lu</li>
-                    <li class="calender__week--day">Ma</li>
-                    <li class="calender__week--day">Me</li>
-                    <li class="calender__week--day">Je</li>
-                    <li class="calender__week--day">Ve</li>
-                    <li class="calender__week--day">Sa</li>
-                    <li class="calender__week--day">Di</li>
-                </ol>
-                <ol id="month-days" class="calender__month">
-                    <!--days will be filled here-->
-                </ol>
-                <template id="day-template">
-    
+                <div class="calender__display">
+                    <header class="calender__header">
+                        <button type="button" id="calender__left" class="calender__left"><img src="./img/arrow-left.svg"
+                                alt="icône de bouton précédent"></button>
+                        <time data-month="" id="calender__ttl" class="calender__ttl"></time>
+                        <button type="button" id="calender__right" class="calender__right"><img
+                                src="./img/arrow-right.svg" alt="icône de bouton suivant"></button>
+                    </header>
+                    <ol class="calender__week">
+                        <li class="calender__week--day">Lu</li>
+                        <li class="calender__week--day">Ma</li>
+                        <li class="calender__week--day">Me</li>
+                        <li class="calender__week--day">Je</li>
+                        <li class="calender__week--day">Ve</li>
+                        <li class="calender__week--day">Sa</li>
+                        <li class="calender__week--day">Di</li>
+                    </ol>
+                    <ol id="month-days" class="calender__month">
+                        <!--days will be filled here-->
+                    </ol>
+                    <template id="day-template">
+
             <li><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></li>
             </template>
             <p class="calender__selected-txt"></p>
-            <!-- end calender -->
+            </div>
             </li>
+            <!-- end calender -->
+
+            <!-- duration -->
             <li>
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
                 <select class="duration__select js-select" name="duration" id="duration">
@@ -110,8 +117,6 @@
     </form>
 
 </body>
-<script src="./js/form.js"></script>
-<script src="./js/calender.js"></script>
-<script src="./js/numberOfParticpant.js"></script>
+<script type="module" src="./js/script.js"></script>
 
 </html>

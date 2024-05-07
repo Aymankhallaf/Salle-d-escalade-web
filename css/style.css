@@ -471,6 +471,9 @@ select:hover {
 .calender-container {
   margin: 2rem 0;
 }
+.calender__display {
+  margin: auto 0.5rem;
+}
 .calender__header {
   display: flex;
   flex-direction: row;

@@ -1,5 +1,4 @@
 // calender
-//please don't change the css names until you will change it in js script
 
 .calender {
   &__label {
@@ -7,6 +6,9 @@
   }
   &-container {
     margin: 2rem 0;
+  }
+  &__display {
+    margin: auto 0.5rem;
   }
 
   &__header {

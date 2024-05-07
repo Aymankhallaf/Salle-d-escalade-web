@@ -10,7 +10,10 @@ function handleInputField() {
 let numberOfParticipants = handleInputField();
 
     function controlNumberOfParticpants(numberOfAvaliablePlace, numberOfParticipants) {
-        if (numberOfParticipants){ }
+        if (numberOfParticipants>numberOfAvaliablePlace){
+            
+            console.log(`th`)
+         }
 
 }
 

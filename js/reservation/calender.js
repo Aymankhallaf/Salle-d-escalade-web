@@ -37,7 +37,9 @@ function displayCalendarHeader() {
   display.innerHTML = currentDate.toLocaleString("fr-FR", {
     year: "numeric",
     month: "long",
-  });;
+  });
+  // to be used for database
+  display.dataset.month = display.innerHTML;
 }
 
 function createDayCell(day, currentDate) {
@@ -51,6 +53,7 @@ function createDayCell(day, currentDate) {
   const dayElement = document.importNode(template.content, true);
   const dayCell = dayElement.querySelector(".js-calender__month--day");
   dayCell.textContent = day;
+  dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
   dayCell.setAttribute("datetime", currentDate);
   if (isDayDisactive(dataSet, currentDate)) {
@@ -165,4 +168,4 @@ function activeDay(selectedDate) {
   });
   selectedDate.classList.toggle("active");
 
-}
+};
