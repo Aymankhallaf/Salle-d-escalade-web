@@ -5,7 +5,6 @@
   color: $white;
 }
 
-
 .btn--blue-petrol {
   background-color: $blue-petrol;
   margin-top: 2rem;
@@ -27,11 +26,11 @@
   }
 }
 
-$sections: ("reserve", "card", "about-us", "artcl", "conact-us");
+$sections: ("reserve", "card", "about-us", "artcl", "contact-us");
 
 @each $section in $sections {
   .#{$section}__btn {
-    @extend .btn; 
+    @extend .btn;
     @extend .btn--blue-petrol;
   }
 }
@@ -57,7 +56,7 @@ $sections: ("reserve", "card", "about-us", "artcl", "conact-us");
   }
 }
 
-.conact-us__btn {
+.contact-us__btn {
   size: 100vw;
   height: 7.4rem;
   max-height: 10.7rem;
@@ -76,10 +75,4 @@ $sections: ("reserve", "card", "about-us", "artcl", "conact-us");
     display: none;
     visibility: hidden;
   }
-}
-
-
-%participant_btn{
-  height: 2.5rem;
-  aspect-ratio: 1/1;
 }

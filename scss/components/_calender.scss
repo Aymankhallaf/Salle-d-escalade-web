@@ -2,6 +2,9 @@
 //please don't change the css names until you will change it in js script
 
 .calender {
+  &__label {
+    @extend %form-ttl;
+  }
   &-container {
     margin: 2rem 0;
   }
