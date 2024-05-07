@@ -2,21 +2,37 @@
 .duration {
   size: 100%;
   &__ttl {
-    @extend %form-ttle;
+    @extend %form-ttl;
   }
 
   &__select {
+    width: 100%;
     @extend %form-input;
+    @extend %closed-simple-arrow;
   }
 }
 
-.Participant {
+.participant {
   size: 100%;
   &__ttl {
     @extend %form-ttl;
   }
-  &__select {
+  &__container {
+    width: 22.5rem;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  &__input {
     @extend %form-input;
+  }
+  &__btn {
+    height: 2.5rem;
+    aspect-ratio: 1/1;
+  }
+  &__img {
+   margin: 0 auto;
+   text-align: center;
   }
 }
 
@@ -26,6 +42,8 @@
     @extend %form-ttl;
   }
   &__select {
+    width: 100%;
     @extend %form-input;
+    @extend %closed-simple-arrow;
   }
 }

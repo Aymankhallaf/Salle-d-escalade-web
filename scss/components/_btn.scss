@@ -5,9 +5,6 @@
   color: $white;
 }
 
-.btn {
-  @extend .btn;
-}
 
 .btn--blue-petrol {
   background-color: $blue-petrol;
@@ -79,4 +76,10 @@ $sections: ("reserve", "card", "about-us", "artcl", "conact-us");
     display: none;
     visibility: hidden;
   }
+}
+
+
+%participant_btn{
+  height: 2.5rem;
+  aspect-ratio: 1/1;
 }

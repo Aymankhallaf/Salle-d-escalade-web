@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <img class="logo" src="img/Escalade-logo-s.svg" alt="escalade">
 
         <nav class="header-nav">
@@ -42,7 +42,7 @@
             </li>
         </ul>
 
-    </section>
+    </section> -->
 
     <form class="duration" aria-label="duration-label">
         <ul>
@@ -66,11 +66,22 @@
                     <option class="hall__option" value="2">La deuxième salle</option>
                 </select>
             </li>
+            <li>
+                <label class="participant__ttl" for="participants">Numéro de participants:</label>
+                <div class="participant__container">
+                    <button class="participant__btn" type="button"><img class="paricipant__img" alt="icône de bouton plus"
+                            src="./img/minus.svg"></button>
+                    <input class="participant__input" type="text" id="participants" name="participants">
+                    <button class="participant__btn" type="button"><img class="paricipant__img" alt="icône de bouton moins"
+                            src="./img/plus.svg"></button>
+                </div>
+            </li>
+
             <li class="calender-container">
                 <!-- calender -->
                 <header class="calender__header">
                     <div id="calender__left" class="calender__left">&#10094;</div>
-                        <h3 id="calender__ttl" class="calender__ttl"></h3>
+                    <h3 id="calender__ttl" class="calender__ttl"></h3>
                     <div id="calender__right" class="calender__right">&#10095;</div>
                 </header>
                 <ol class="calender__week">
