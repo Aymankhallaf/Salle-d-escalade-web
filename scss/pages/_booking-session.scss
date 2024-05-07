@@ -8,7 +8,7 @@
   &__select {
     width: 100%;
     @extend %form-input;
-    @extend %closed-simple-arrow;
+    @extend %open-simple-arrow;
   }
 }
 
@@ -44,6 +44,6 @@
   &__select {
     width: 100%;
     @extend %form-input;
-    @extend %closed-simple-arrow;
+    @extend %open-simple-arrow;
   }
 }
