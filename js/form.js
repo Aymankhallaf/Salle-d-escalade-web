@@ -1,24 +1,18 @@
 
-
-function toggle(element) {
+function toggle(element, closedClassName) {
     element.addEventListener("click", function (event) {
-        element.classList.toggle("closed");
+        element.classList.toggle(closedClassName);
     });
 }
 
 
-function getAllSelect() {
-    document.querySelectorAll(".js-select").forEach(element => {
-        toggle(element);
+function toggleClassName(className, closedClassName) {
+    document.querySelectorAll(className).forEach(element => {
+        toggle(element, closedClassName);
     });
-    console.log(document.querySelectorAll(".js-select")
-    );
 
 }
 
-getAllSelect()
+toggleClassName(".js-select", "closed-simple-arrow")
 
-console.log("ok")
-console.log(document.querySelectorAll(".js-select")
-);
 

@@ -1,4 +1,4 @@
-//closed dayes
+//closed days
 const ClosedDay = ["lu"]
 const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 
@@ -147,7 +147,7 @@ function handleClick(e) {
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
     selected.classList.toggle("error");
-      }
+  }
 
 
 }
@@ -164,5 +164,5 @@ function activeDay(selectedDate) {
     }
   });
   selectedDate.classList.toggle("active");
-  
+
 }

@@ -13,16 +13,17 @@
 .Participant {
   size: 100%;
   &__ttl {
-    @extend %form-ttle;
+    @extend %form-ttl;
   }
   &__select {
     @extend %form-input;
   }
 }
-.salle {
+
+.hall {
   size: 100%;
   &__ttl {
-    @extend %form-ttle;
+    @extend %form-ttl;
   }
   &__select {
     @extend %form-input;
