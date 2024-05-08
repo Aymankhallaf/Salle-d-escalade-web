@@ -17,7 +17,10 @@ let year = currentDate.getFullYear();
 let month = currentDate.getMonth();
 
 
-
+/**
+ * 
+ * @returns{array} array, the first day index [sunday-satrday 0-6] and the number of days in the month
+ */
 function getFirstAndLastDay() {
   const firstDay = new Date(year, month, 1);
   let firstDayIndex = firstDay.getDay();
@@ -171,10 +174,3 @@ function activeDay(selectedDate) {
   selectedDate.classList.toggle("active");
 };
 
-export function getChosenDate() {
-  // Retrieve the chosen date from localStorage
-  return JSON.parse(localStorage.getItem("chosenDate"));
-}
-
-
-export { chosenDate }
