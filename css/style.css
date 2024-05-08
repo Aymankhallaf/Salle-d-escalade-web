@@ -554,4 +554,21 @@ select:hover {
   margin: 1rem;
   text-align: center;
   color: #0a9396;
+}
+
+.hours__container {
+  display: grid;
+  grid-template-columns: repeat(7, 3rem);
+}
+.hours__element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid #D5D4DF;
+}
+.hours__element:not(.disactive):hover {
+  background-color: #0a9396;
 }/*# sourceMappingURL=style.css.map */

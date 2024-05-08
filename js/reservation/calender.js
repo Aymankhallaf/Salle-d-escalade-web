@@ -145,7 +145,7 @@ function handleClick(e) {
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
-//save chosen date in local Storage.
+    //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDate));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
