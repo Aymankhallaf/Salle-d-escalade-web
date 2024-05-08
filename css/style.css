@@ -1,5 +1,5 @@
 /*form title*/
-.hall__ttl, .participant__ttl, .duration__ttl, .calender__label {
+.hours__ttl, .calender__label, .hall__ttl, .participant__ttl, .duration__ttl {
   display: block;
   margin: 2rem 0;
   font-size: 1.25rem;
@@ -468,6 +468,38 @@ select:hover {
   color: hsla(197, 100%, 5%, 0.5);
 }
 
+/*booking session*/
+.duration {
+  size: 100%;
+}
+.duration__select {
+  width: 100%;
+}
+
+.participant {
+  size: 100%;
+}
+.participant__container {
+  width: 22.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.participant__btn {
+  height: 2.5rem;
+  aspect-ratio: 1/1;
+}
+.participant__img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hall {
+  size: 100%;
+}
+.hall__select {
+  width: 100%;
+}
+
 .calender-container {
   margin: 2rem 0;
 }
@@ -522,36 +554,4 @@ select:hover {
   margin: 1rem;
   text-align: center;
   color: #0a9396;
-}
-
-/*booking session*/
-.duration {
-  size: 100%;
-}
-.duration__select {
-  width: 100%;
-}
-
-.participant {
-  size: 100%;
-}
-.participant__container {
-  width: 22.5rem;
-  display: flex;
-  justify-content: space-between;
-}
-.participant__btn {
-  height: 2.5rem;
-  aspect-ratio: 1/1;
-}
-.participant__img {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.hall {
-  size: 100%;
-}
-.hall__select {
-  width: 100%;
 }/*# sourceMappingURL=style.css.map */

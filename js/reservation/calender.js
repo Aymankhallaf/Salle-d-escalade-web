@@ -9,6 +9,7 @@ let previous = document.getElementById("calender__left");
 let next = document.getElementById("calender__right");
 
 //selected date
+let chosenDate = null;
 let selected = document.querySelector(".calender__selected-txt");
 const today = new Date();
 let currentDate = new Date();
@@ -143,15 +144,16 @@ function handleClick(e) {
   const selectedDate = e.target;
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
-
-    selected.innerHTML = `Vous avez choisi: ${selectedDate.dataset.date}`;
+    chosenDate = selectedDate.dataset.date;
+//save chosen date in local Storage.
+    localStorage.setItem("chosenDate", JSON.stringify(chosenDate));
+    selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
     selected.classList.toggle("error");
   }
-
 
 }
 
@@ -167,5 +169,12 @@ function activeDay(selectedDate) {
     }
   });
   selectedDate.classList.toggle("active");
-
 };
+
+export function getChosenDate() {
+  // Retrieve the chosen date from localStorage
+  return JSON.parse(localStorage.getItem("chosenDate"));
+}
+
+
+export { chosenDate }
