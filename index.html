@@ -15,8 +15,18 @@
     <header class="header">
         <img class="logo" src="img/Escalade-logo-s.svg" alt="escalade">
 
-        <nav class="header-nav">
-            <img src="img/menu-icon.svg" alt="menu icon">
+        <nav aria-label="Menu principal" id="header-nav" class="header-nav">
+            <button aria-labelledby="header-nav" type="button" id="header-nav__btn" class="header-nav__btn"></button>
+            <ul id="main-menu" class="header-nav__menu">
+                <li><a class="header-nav__menu-link current" href="#" aria-current="page">Page
+                        d’accueil</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#abonnements">Abonnements</a></li>
+                <li><a class="header-nav__menu-link" href="/reservation.html">Réservation</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
+                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Evènements</a></li>
+
+            </ul>
         </nav>
 
     </header>
@@ -30,34 +40,29 @@
             <a target="_blank" class="btn hero-banner__btn" href="#abonnement">Abonnez-vous</a>
             <a class="circle-btn" href="#about-us" aria-labelledby="about-us"></a>
         </section>
-<!-- 
+
         <section class="open-houres section" aria-labelledby="open-heures">
             <div class="sub-heading">
                 <img class="sub-heading__img subheading-icon" src="img/clock.svg" alt="les horaires icon">
                 <h2 id="open-heures" class="sub-heading__ttl sub-heading__ttl--black">les horaires</h2>
-            </div> -->
-            <section class="open-houres section" aria-labelledby="open-heures">
-                <div class="sub-heading">
-                    <img class="sub-heading__img subheading-icon" src="img/clock.svg" alt="les horaires icon">
-                    <h2 id="open-heures" class="sub-heading__ttl sub-heading__ttl--black">les horaires</h2>
-                </div>
-                <ul class="open-houres__txt" aria-label="Voici les horaires d'ouverture de la semaine.">
-                    <li class="open-houres__txt--black">
-                        Du <time>Mardi</time> jusqu'à <time>Mercredi</time> <br> De <time>10:00</time> h
-                        à <time>19:00</time> h
-                    </li>
+            </div>
+            <ul class="open-houres__txt" aria-label="Voici les horaires d'ouverture de la semaine.">
+                <li class="open-houres__txt--black">
+                    Du <time>Mardi</time> jusqu'à <time>Mercredi</time> <br> De <time>10:00</time> h
+                    à <time>19:00</time> h
+                </li>
 
-                    <li class="open-houres__txt--blue-petrol">
-                        <time>Samedi</time> - <time>Dimanche</time> <br>
-                        De <time>11:00</time> h - <time>20:00</time> h
-                    </li>
+                <li class="open-houres__txt--blue-petrol">
+                    <time>Samedi</time> - <time>Dimanche</time> <br>
+                    De <time>11:00</time> h - <time>20:00</time> h
+                </li>
 
-                    <li class="open-houres__txt--red">
-                        <time>Lundi</time> <br> fermeture
-                    </li>
-                </ul>
+                <li class="open-houres__txt--red">
+                    <time>Lundi</time> <br> fermeture
+                </li>
+            </ul>
 
-            </section>
+        </section>
         </section>
 
         <!-- check why there are "subheading-icon sub-heading__img "  -->
@@ -83,7 +88,7 @@
                 </li>
 
             </ul>
-            <a target="_blank" href="#reserve" class="btn reserve__btn">Réservez</a>
+            <a target="_blank" href="/reservation.html" class="btn reserve__btn">Réservez</a>
 
         </section>
 

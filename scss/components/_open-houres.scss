@@ -17,9 +17,6 @@
   line-height: auto;
   font-weight: 600;
   @include desktop-only() {
-    // flex-direction: row;
-    // justify-content: space-between;
-    // padding: 0 2rem;
     display: grid;
     grid-template-columns:repeat(3, 1fr)
   }

@@ -9,6 +9,16 @@
   text-align: center;
 }
 
+.current {
+  color: $dark-orange!important;
+}
+
+.link {
+  font-size: 1rem;
+  color: $blue-petrol;
+  margin: 1rem;
+}
+
 .active {
   color: $white;
   background-color: $turquoise;
@@ -22,5 +32,3 @@
 .error {
   color: $dark-red !important;
 }
-
-
