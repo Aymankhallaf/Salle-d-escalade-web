@@ -1,7 +1,7 @@
 /*footer*/
 .footer {
   border-top: 1px solid $black-50;
-  margin: 2rem 0rem;
+  margin: 2rem 0.5rem;
 
   &-nav__ttle {
     @extend .link;
@@ -11,7 +11,7 @@
     text-decoration: underline;
     color: $turquoise;
     display: grid;
-    justify-items: flex-start;
+    justify-items: space-between;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
   }
@@ -40,7 +40,6 @@
   &__ttle {
     @extend .link;
   }
-
 }
 
 .copywrite {

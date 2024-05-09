@@ -23,6 +23,8 @@
     object-fit: cover;
   }
   &-item__ttle {
+    font-size: 0.875rem;
+    font-weight: 100;
     grid-area: b;
     overflow: hidden;
     display: block;

@@ -1,25 +1,23 @@
 /* sub-headi,g */
 .sub-heading {
-  @include centering;
-  font-size: 1.5rem;
-    gap: 2rem;
+  @include centering(row);
+  font-size: 1.25rem;
+  gap: 2rem;
   margin-bottom: 2.375rem;
-
 
   &__txt {
     @include centering;
   }
-  
+
   &__ttl--black {
     color: $black;
   }
-  
+
   &__ttl--red {
     color: $dark-red;
   }
-  
+
   &__txt {
     text-align: center;
   }
 }
-

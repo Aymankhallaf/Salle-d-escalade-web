@@ -233,10 +233,10 @@ select:hover {
 /* sub-headi,g */
 .sub-heading {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   gap: 2rem;
   margin-bottom: 2.375rem;
 }
@@ -313,9 +313,8 @@ select:hover {
 }
 @media screen and (min-width: 960px) {
   .open-houres__txt {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -354,6 +353,8 @@ select:hover {
      object-fit: cover;
 }
 .artcl-item__ttle {
+  font-size: 0.875rem;
+  font-weight: 100;
   grid-area: b;
   overflow: hidden;
   display: block;
@@ -435,13 +436,13 @@ select:hover {
 /*footer*/
 .footer {
   border-top: 1px solid hsla(197, 100%, 5%, 0.5);
-  margin: 2rem 0rem;
+  margin: 2rem 0.5rem;
 }
 .footer-nav__menu {
   text-decoration: underline;
   color: #0a9396;
   display: grid;
-  justify-items: flex-start;
+  justify-items: space-between;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
