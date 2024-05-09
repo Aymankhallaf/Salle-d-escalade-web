@@ -260,17 +260,18 @@ select:hover {
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 1rem 0.5rem 2rem 0.5rem;
 }
 
 .logo {
-  width: 125px;
-  height: 50px;
+  height: 3.125rem;
+  aspect-ratio: 125/50;
 }
 
 /*hero banner*/
 .hero-banner {
-  height: 100vh;
+  height: calc(100vh - 6.125rem);
   background-image: linear-gradient(hsla(197, 100%, 5%, 0.5), hsla(197, 100%, 5%, 0.5)), url(../img/herobanner.webp);
   background-attachment: fixed;
   background-size: cover;

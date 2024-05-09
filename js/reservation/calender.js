@@ -1,5 +1,5 @@
 //closed days
-const ClosedDay = ["lu"]
+const closedDay = ["lu"]
 const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 
 //calender header
@@ -10,7 +10,7 @@ let next = document.getElementById("calender__right");
 
 //selected date
 let chosenDate = null;
-let selected = document.querySelector(".calender__selected-txt");
+ let selected = document.querySelector(".calender__selected-txt");
 const today = new Date();
 let currentDate = new Date();
 let year = currentDate.getFullYear();
@@ -69,7 +69,7 @@ function createDayCell(day, currentDate) {
 }
 
 function isDayDisactive(dataSet, currentDate) {
-  return (ClosedDay.includes(dataSet.slice(0, 2))
+  return (closedDay.includes(dataSet.slice(0, 2))
     || holydays.includes(dataSet) || (currentDate < today))
 
 }
@@ -93,7 +93,7 @@ function displayCalendar(numberOfDays) {
 }
 
 
-function upDateDate() {
+export function upDateDate() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
   let numberOfDays = getFirstAndLastDay()[1];
@@ -152,6 +152,7 @@ function handleClick(e) {
     localStorage.setItem("chosenDate", JSON.stringify(chosenDate));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
+    selected.dataset.selectedDay = chosenDate;
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
@@ -174,3 +175,6 @@ function activeDay(selectedDate) {
   selectedDate.classList.toggle("active");
 };
 
+
+
+export {closedDay,selected}

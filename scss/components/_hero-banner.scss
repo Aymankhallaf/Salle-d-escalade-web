@@ -1,6 +1,6 @@
 /*hero banner*/
 .hero-banner {
-  height: 100vh;
+  height: calc(100vh - 6.125rem);
   background-image: linear-gradient($black-50, $black-50),
     url(../img/herobanner.webp);
   background-attachment: fixed;
