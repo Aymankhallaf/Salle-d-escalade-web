@@ -176,5 +176,7 @@ function activeDay(selectedDate) {
 };
 
 
-
+export function getChosenDate() {
+  return chosenDate;
+}
 export { closedDay, selected }
