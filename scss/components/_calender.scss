@@ -8,14 +8,14 @@
     margin: 2rem 0;
   }
   &__display {
-    margin: auto 0.5rem;
+    @include centering;
   }
 
   &__header {
-    @include centering(row);
-    width: 21rem;
     display: flex;
+    width: 21rem;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem 0;
   }
   &__ttl {
@@ -29,7 +29,7 @@
     &--day {
       @include centering;
       height: 3rem;
-      width: 3em;
+      width: 3rem;
     }
   }
   &__month {

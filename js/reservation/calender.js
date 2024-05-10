@@ -10,7 +10,7 @@ let next = document.getElementById("calender__right");
 
 //selected date
 let chosenDate = null;
- let selected = document.querySelector(".calender__selected-txt");
+let selected = document.querySelector(".calender__selected-txt");
 const today = new Date();
 let currentDate = new Date();
 let year = currentDate.getFullYear();
@@ -143,7 +143,7 @@ function updateEventListeners() {
   });
 }
 
-function handleClick(e) {
+export function handleClick(e) {
   const selectedDate = e.target;
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
@@ -177,4 +177,4 @@ function activeDay(selectedDate) {
 
 
 
-export {closedDay,selected}
+export { closedDay, selected }

@@ -1,3 +1,17 @@
+/*page title*/
+.reservation {
+  &-ttl {
+    @extend %page-ttl;
+    text-align: center;
+  }
+  &-form__btn {
+    font-size: 1.125rem;
+    color: $white;
+    width: 360px;
+    aspect-ratio: 6;
+  }
+}
+
 /*booking session*/
 .duration {
   size: 100%;
@@ -21,7 +35,6 @@
     width: 22.5rem;
     display: flex;
     justify-content: space-between;
-
   }
   &__input {
     @extend %form-input;
@@ -31,8 +44,8 @@
     aspect-ratio: 1/1;
   }
   &__img {
-   margin: 0 auto;
-   text-align: center;
+    margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -45,5 +58,55 @@
     width: 100%;
     @extend %form-input;
     @extend %open-simple-arrow;
+    // &:hover{
+    //   background-color: red;
+
+    // }
+    // &:checked{
+    //   background-color: rgb(102, 255, 0);
+
+    // }
+    // &:focus{
+    //   background-color: rgb(178, 36, 181);
+
+    // }
+    // &:focus-visible{
+    //   background-color: rgb(13, 238, 208);
+
+    // }
+    // &::placeholder{
+    //   background-color: brown;
+    // }
+    // &:after{
+    //   content: ".";
+    //   width: 100%;
+    //   background-color: #f3a3a3;
+    // }
   }
+  // &__option {
+  //   &:hover{
+  //     background-color: red;
+
+  //   }
+  //   &:checked{
+  //     background-color: rgb(102, 255, 0);
+
+  //   }
+  //   &:focus{
+  //     background-color: rgb(178, 36, 181);
+
+  //   }
+  //   &:focus-visible{
+  //     background-color: rgb(13, 238, 208);
+
+  //   }
+  //   &::placeholder{
+  //     background-color: brown;
+  //   }
+  //   &:after{
+  //     content: ".";
+  //     width: 100%;
+  //     background-color: #f3a3a3;
+  //   }
+  // }
 }

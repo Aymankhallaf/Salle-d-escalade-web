@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>les horaires et les Tarifs</title>
+    <title>Réservation</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -12,39 +12,28 @@
 </head>
 
 <body>
-    <!-- <header class="header">
+
+    <header class="header">
         <img class="logo" src="img/Escalade-logo-s.svg" alt="escalade">
 
-        <nav class="header-nav">
-            <img src="img/menu-icon.svg" alt="menu icon">
+        <nav aria-label="Menu principal" id="header-nav" class="header-nav">
+            <button aria-labelledby="header-nav" type="button" id="header-nav__btn" class="header-nav__btn"></button>
+            <ul id="main-menu" class="header-nav__menu">
+                <li><a class="header-nav__menu-link" href="#" aria-current="page">Page
+                        d’accueil</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#abonnements">Abonnements</a></li>
+                <li><a class="header-nav__menu-link current" href="/reservation.html">Réservation</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
+                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>
+                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Evènements</a></li>
+
+            </ul>
         </nav>
 
     </header>
+    <h1 class="reservation-ttl" id="reservation">Réservation</h1>
 
-    <section class="open-houres section" aria-labelledby="open-heures">
-        <div class="sub-heading">
-            <img class="sub-heading__img" src="img/clock.svg" alt="les horaires icon" class="subheading-icon">
-            <h1 id="open-heures" class="sub-heading__ttl sub-heading__ttl--black">les horaires</h1>
-        </div>
-        <ul class="open-houres__txt" aria-label="Voici les horaires d'ouverture de la semaine.">
-            <li class="open-houres__txt--black">
-                Du <time>Mardi</time> jusqu'à <time>Mercredi</time> <br> De <time>10:00</time> h
-                à <time>19:00</time> h
-            </li>
-
-            <li class="open-houres__txt--blue-petrol">
-                <time>Samedi</time> - <time>Dimanche</time> <br>
-                De <time>11:00</time> h - <time>20:00</time> h
-            </li>
-
-            <li class="open-houres__txt--red">
-                <time>Lundi</time> <br> fermeture
-            </li>
-        </ul>
-
-    </section> -->
-
-    <form class="duration" aria-label="duration-label">
+    <form class="reservation-form" aria-label="duration-label">
         <ul>
             <!-- hall -->
             <li>
@@ -89,11 +78,16 @@
             <!-- start hour -->
             <li>
                 <p class="hours__ttl" id="hours">Choisissez l'heures:</p>
-                <ol id="hours__container" class="hours__container">
-                </ol>
-                <template id="hours-template">
-            <li><time datetime="" data-hour="" data-minutes="" class="hours__element js-hours__element"></time></li>
+                <div class="hours__display">
+                    <ol id="hours__container" class="hours__container">
+                    </ol>
+                    <p class="hours__selected-txt"></p>
+
+                    <template id="hours-template">
+            <li class="hours__container--element js-hours__element"><time datetime="" data-hour=""
+                    data-minutes=""></time></li>
             </template>
+            </div>
 
             </li>
             <!-- duration -->
@@ -121,8 +115,10 @@
                 <p id="participant__display" class="participant__display"></p>
 
             </li>
-
         </ul>
+        <button type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
+
+
     </form>
 
 </body>

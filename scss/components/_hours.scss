@@ -1,18 +1,21 @@
 .hours {
-    &__ttl {
-        @extend %form-ttl;
-    }
-    &__container {
-        @include cells;
-    }
-    &__element{
-        @include centering;
-        height: 3rem;
-        width: 3rem;
-        border: 1px solid $gray;
-        &:not(.disactive):hover {
-          background-color: $turquoise;
-        }
-      }
-      }
+  &__display {
+    @include centering;
+  }
+  &__ttl {
+    @extend %form-ttl;
+  }
+  &__container {
+    @include cells;
 
+    &--element {
+      @include centering;
+      height: 3rem;
+      width: 3rem;
+      border: 1px solid $gray;
+      &:not(.disactive):hover {
+        background-color: $turquoise;
+      }
+    }
+  }
+}
