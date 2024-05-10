@@ -93,7 +93,7 @@ function displayCalendar(numberOfDays) {
 }
 
 
-export function upDateDate() {
+function upDateDate() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
   let numberOfDays = getFirstAndLastDay()[1];
@@ -143,7 +143,7 @@ function updateEventListeners() {
   });
 }
 
-export function handleClick(e) {
+function handleClick(e) {
   const selectedDate = e.target;
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
@@ -153,6 +153,7 @@ export function handleClick(e) {
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
+    return chosenDate
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
@@ -176,7 +177,5 @@ function activeDay(selectedDate) {
 };
 
 
-export function getChosenDate() {
-  return chosenDate;
-}
-export { closedDay, selected }
+
+

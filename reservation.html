@@ -33,7 +33,7 @@
     </header>
     <h1 class="reservation-ttl" id="reservation">Réservation</h1>
 
-    <form class="reservation-form" aria-label="duration-label">
+    <form id="reservation-form" class="reservation-form" aria-label="duration-label" method="get">
         <ul>
             <!-- hall -->
             <li>
@@ -81,7 +81,7 @@
                 <div class="hours__display">
                     <ol id="hours__container" class="hours__container">
                     </ol>
-                    <p class="hours__selected-txt"></p>
+                    <p id="selectedDate" selectedDay="" class="hours__selected-txt"></p>
 
                     <template id="hours-template">
             <li class="hours__container--element js-hours__element"><time datetime="" data-hour=""
@@ -116,7 +116,7 @@
 
             </li>
         </ul>
-        <button type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
+        <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
 
 
     </form>
