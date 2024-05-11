@@ -3,9 +3,11 @@
     @include centering;
   }
   &__ttl {
+    width: 22.5rem;
     @extend %form-ttl;
   }
   &__container {
+    width: 22.5rem;
     @include cells;
 
     &--element {

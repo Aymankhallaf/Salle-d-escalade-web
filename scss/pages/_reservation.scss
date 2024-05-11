@@ -4,31 +4,53 @@
     @extend %page-ttl;
     text-align: center;
   }
-  &-form__btn {
-    font-size: 1.125rem;
-    color: $white;
-    width: 360px;
-    aspect-ratio: 6;
+  &-form {
+    width: 22.5rem;
+    margin: 0 auto;
+    &__btn {
+      color: $white;
+      width: 22.5rem;
+      aspect-ratio: 6;
+      font-size: 1.125rem;
+    }
+  }
+}
+@include desktop-only() {
+  .reservation {
+    &-form {
+      width: 59.375rem;
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+      border: 1px solid $black;
+      &__btn {
+        align-self: center;
+        &-container {
+          width: 100%;
+          display: block;
+          @include centering;
+        }
+      }
+    }
   }
 }
 
 /*booking session*/
 .duration {
-  size: 100%;
   &__ttl {
+    width: 22.5rem;
     @extend %form-ttl;
   }
 
   &__select {
-    width: 100%;
+    width: 22.5rem;
     @extend %form-input;
     @extend %open-simple-arrow;
   }
 }
 
 .participant {
-  size: 100%;
   &__ttl {
+    width: 22.5rem;
     @extend %form-ttl;
   }
   &__container {
@@ -50,63 +72,13 @@
 }
 
 .hall {
-  size: 100%;
   &__ttl {
+    width: 22.5rem;
     @extend %form-ttl;
   }
   &__select {
-    width: 100%;
+    width: 22.5rem;
     @extend %form-input;
     @extend %open-simple-arrow;
-    // &:hover{
-    //   background-color: red;
-
-    // }
-    // &:checked{
-    //   background-color: rgb(102, 255, 0);
-
-    // }
-    // &:focus{
-    //   background-color: rgb(178, 36, 181);
-
-    // }
-    // &:focus-visible{
-    //   background-color: rgb(13, 238, 208);
-
-    // }
-    // &::placeholder{
-    //   background-color: brown;
-    // }
-    // &:after{
-    //   content: ".";
-    //   width: 100%;
-    //   background-color: #f3a3a3;
-    // }
   }
-  // &__option {
-  //   &:hover{
-  //     background-color: red;
-
-  //   }
-  //   &:checked{
-  //     background-color: rgb(102, 255, 0);
-
-  //   }
-  //   &:focus{
-  //     background-color: rgb(178, 36, 181);
-
-  //   }
-  //   &:focus-visible{
-  //     background-color: rgb(13, 238, 208);
-
-  //   }
-  //   &::placeholder{
-  //     background-color: brown;
-  //   }
-  //   &:after{
-  //     content: ".";
-  //     width: 100%;
-  //     background-color: #f3a3a3;
-  //   }
-  // }
 }

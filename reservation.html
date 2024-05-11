@@ -36,7 +36,7 @@
     <form id="reservation-form" class="reservation-form" aria-label="duration-label" method="get">
         <ul>
             <!-- hall -->
-            <li>
+            <li class="warp-input hall">
                 <label class="hall__ttl" id="hall_ttl" for="hall">Choisissez la salle: </label>
                 <select class="hall__select js-select" name="hall" id="hall">
                     <option class="hall__option" value="" required>Veuillez choisir une option</option>
@@ -45,7 +45,7 @@
                 </select>
             </li>
             <!-- calender -->
-            <li class="calender-container">
+            <li class="warp-input calender-container">
                 <p class="calender__label" id="calender__label">Choisissez la date: </p>
                 <div class="calender__display">
                     <header class="calender__header">
@@ -76,7 +76,7 @@
             </li>
             <!-- end calender -->
             <!-- start hour -->
-            <li>
+            <li class="warp-input hours">
                 <p class="hours__ttl" id="hours">Choisissez l'heures:</p>
                 <div class="hours__display">
                     <ol id="hours__container" class="hours__container">
@@ -91,7 +91,7 @@
 
             </li>
             <!-- duration -->
-            <li>
+            <li class="warp-input duration">
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
                 <select class="duration__select js-select" name="duration" id="duration">
                     <option class="duration__option" value="" required>Veuillez choisir une option</option>
@@ -103,7 +103,7 @@
                     </option>
                 </select>
             </li>
-            <li>
+            <li class="warp-input participant">
                 <label class="participant__ttl" for="participants">Numéro de participants:</label>
                 <div class="participant__container">
                     <button class="participant__btn" type="button"><img class="paricipant__img"
@@ -111,15 +111,39 @@
                     <input class="participant__input" type="text" id="participants" name="participants" value="0">
                     <button class="participant__btn" type="button"><img class="paricipant__img"
                             alt="icône de bouton moins" src="./img/plus.svg"></button>
+                    <p id="participant__display" class="participant__display"></p>
                 </div>
-                <p id="participant__display" class="participant__display"></p>
 
             </li>
         </ul>
-        <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
+        <div class="reservation-form__btn-container">
+            <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
+        </div>
 
 
     </form>
+
+    <footer class="section footer">
+        <nav aria-labelledby="#footer-nav">
+            <h4 id="#footer-nav" class="footer-nav__ttle">Plus de links</h4>
+            <ol class="footer-nav__menu">
+                <li class="footer-nav__item"><a class="footer-nav__link" href="#">Les tarifs</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Mention légales</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Les Horaires</a></li>
+                <li><a target="_blank" class="footer-nav__link" href="#">Propre de nos</a></li>
+            </ol>
+
+        </nav>
+        <nav aria-labelledby="social-media">
+            <h4 id="social-media" class="social-media__ttle">Nos Suivre</h4>
+            <ul class="social-media__menu">
+                <li><a href="" target="_blank"><img src="/img/instagram-svgrepo-com.svg" alt="instagram icon"></a></li>
+                <li><a href="" target="_blank"><img src="/img/fb_iconCarrier.svg" alt="facebook icon"></a></li>
+                <li><a href="" target="_blank"><img src="/img/xVector.svg" alt="x.com icon"></a></li>
+            </ul>
+        </nav>
+        <h5 class="copywrite">©Ayman KHALLAF 2024. All rights reversed.</h5>
+    </footer>
 
 </body>
 <script type="module" src="./js/script.js"></script>

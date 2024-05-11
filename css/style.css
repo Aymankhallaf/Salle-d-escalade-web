@@ -97,7 +97,7 @@ select:hover {
 }
 
 .section {
-  margin: 2.375rem 0rem;
+  margin: 2.375rem 0 !important;
   text-align: center;
 }
 
@@ -125,6 +125,14 @@ select:hover {
   color: #9b2226 !important;
 }
 
+@media screen and (min-width: 960px) {
+  .warp-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: start;
+  }
+}
 /* components */
 /*btn*/
 .btn, .contact-us__btn, .artcl__btn, .about-us__btn, .card__btn, .reserve__btn {
@@ -530,23 +538,46 @@ select:hover {
 .reservation-ttl {
   text-align: center;
 }
+.reservation-form {
+  width: 22.5rem;
+  margin: 0 auto;
+}
 .reservation-form__btn {
-  font-size: 1.125rem;
   color: #ffffff;
-  width: 360px;
+  width: 22.5rem;
   aspect-ratio: 6;
+  font-size: 1.125rem;
 }
 
+@media screen and (min-width: 960px) {
+  .reservation-form {
+    width: 59.375rem;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+    border: 1px solid #001219;
+  }
+  .reservation-form__btn {
+    align-self: center;
+  }
+  .reservation-form__btn-container {
+    width: 100%;
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 /*booking session*/
-.duration {
-  size: 100%;
+.duration__ttl {
+  width: 22.5rem;
 }
 .duration__select {
-  width: 100%;
+  width: 22.5rem;
 }
 
-.participant {
-  size: 100%;
+.participant__ttl {
+  width: 22.5rem;
 }
 .participant__container {
   width: 22.5rem;
@@ -562,13 +593,16 @@ select:hover {
   text-align: center;
 }
 
-.hall {
-  size: 100%;
+.hall__ttl {
+  width: 22.5rem;
 }
 .hall__select {
-  width: 100%;
+  width: 22.5rem;
 }
 
+.calender__label {
+  width: 22.5rem;
+}
 .calender-container {
   margin: 2rem 0;
 }
@@ -631,7 +665,11 @@ select:hover {
   justify-content: center;
   align-items: center;
 }
+.hours__ttl {
+  width: 22.5rem;
+}
 .hours__container {
+  width: 22.5rem;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }

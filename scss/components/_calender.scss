@@ -2,6 +2,7 @@
 
 .calender {
   &__label {
+    width: 22.5rem;
     @extend %form-ttl;
   }
   &-container {

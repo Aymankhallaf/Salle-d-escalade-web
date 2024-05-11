@@ -5,7 +5,7 @@
 }
 
 .section {
-  margin: 2.375rem 0rem;
+  margin: 2.375rem 0!important;
   text-align: center;
 }
 
@@ -18,6 +18,8 @@
   color: $blue-petrol;
   margin: 1rem;
 }
+
+//reservation
 
 .active {
   color: $white;
@@ -32,3 +34,13 @@
 .error {
   color: $dark-red !important;
 }
+
+
+
+@include desktop-only() {
+  .warp-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: start;
+  }  }
