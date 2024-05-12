@@ -45,8 +45,8 @@
             </li>
             <!-- calender -->
             <li class="warp-input calender-container">
-                <p class="calender__label" id="calender__label">Choisissez la date: </p>
-                <div class="calender__display">
+                <label for="calender" class="calender__label" id="calender__label">Choisissez la date: </label>
+                <div id="calender" class="calender__display">
                     <header class="calender__header">
                         <button type="button" id="calender__left" class="calender__left"><img src="./img/arrow-left.svg"
                                 alt="icône de bouton précédent"></button>
@@ -76,8 +76,8 @@
             <!-- end calender -->
             <!-- start hour -->
             <li class="warp-input hours">
-                <p class="hours__ttl" id="hours">Choisissez l'heures:</p>
-                <div class="hours__display">
+                <label for="hours__display" class="hours__ttl" id="hours">Choisissez l'heures:</label>
+                <div id="hours__display" class="hours__display">
                     <ol id="hours__container" class="hours__container">
                     </ol>
                     <p id="selectedDate" selectedDay="" class="hours__selected-txt"></p>
@@ -102,9 +102,10 @@
                     </option>
                 </select>
             </li>
+            <!-- participant -->
             <li class="warp-input participant">
                 <label class="participant__ttl" for="participants">Numéro de participants:</label>
-                <div class="participant__container">
+                <div id="participants" class="participant__container">
                     <button class="participant__btn" type="button"><img class="paricipant__img"
                             alt="icône de bouton plus" src="./img/minus.svg"></button>
                     <input class="participant__input" type="text" id="participants" name="participants" value="0">
@@ -112,15 +113,12 @@
                             alt="icône de bouton moins" src="./img/plus.svg"></button>
                     <p id="participant__display" class="participant__display"></p>
                 </div>
-
             </li>
         </ul>
         <div class="reservation-form__btn-container">
             <button id="reservationFormBtn" type="submit"
                 class="btn--blue-petrol reservation-form__btn">Confirmer</button>
         </div>
-
-
     </form>
 
     <footer class="section footer">

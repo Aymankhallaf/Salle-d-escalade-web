@@ -41,24 +41,26 @@
 
 /*form input*/
 %form-input {
+  font-size: 1.125rem;
   position: relative;
   display: inline-block;
   height: 2.5rem;
   padding: 0.5rem;
-  font-size: 1rem;
   background-color: $white;
   border: 1px solid $black-50;
   filter: drop-shadow(0px 3px $black-50);
   @include desktop-only() {
     height: 2.5rem;
+    font-size: 1rem;
   }
 }
 
 %form-select {
+  width: calc(100% - 1rem);
+  margin: 0 0.5rem;
   @include desktop-only() {
-    width: 50% !important;
+    width: calc(50% - 1rem) !important;
     aspect-ratio: 6.67;
-    font-size: 1rem;
   }
 }
 
@@ -74,8 +76,14 @@
   background-image: url('data:image/svg+xml,<svg width="24" height="13" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.25L12 1.25L2 11.25" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
 }
 
-@mixin cells {
-  width: 100%;
-    display: grid;
+@mixin cells_conatiner {
+  width: calc(100% - 1rem);
+  display: grid;
   grid-template-columns: repeat(7, 1fr);
+}
+
+@mixin cell {
+  @include centering;
+  width: 100%;
+  aspect-ratio: 1/1;
 }

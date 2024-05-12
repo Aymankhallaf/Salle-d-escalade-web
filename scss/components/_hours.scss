@@ -1,19 +1,20 @@
 .hours {
   &__display {
+    width: 100%;
     @include centering;
+    @include desktop-only() {
+      width: 50%;
+    }
   }
   &__ttl {
-    width: 22.5rem;
     @extend %form-ttl;
   }
   &__container {
-    width: 22.5rem;
-    @include cells;
+    @include cells_conatiner;
 
     &--element {
-      @include centering;
-      height: 3rem;
-      width: 3rem;
+      font-size: 0.75rem;
+      @include cell;
       border: 1px solid $gray;
       &:not(.disactive):hover {
         background-color: $turquoise;

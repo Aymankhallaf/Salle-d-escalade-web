@@ -4,7 +4,6 @@
     @extend %form-ttl;
   }
   &__select {
-    width: 100%;
     @extend %form-input;
     @extend %open-simple-arrow;
     @extend %form-select;
@@ -62,10 +61,14 @@
     @extend %form-ttl;
   }
   &__container {
-    width: 22.5rem;
+    width: calc(100% - 1rem);
     display: flex;
     justify-content: space-between;
-  }
+    margin: 0 0.5rem;
+    @include desktop-only() {
+      width: 50%
+    }
+    }
   &__input {
     @extend %form-input;
   }

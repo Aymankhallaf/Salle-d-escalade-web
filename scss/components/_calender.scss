@@ -16,7 +16,7 @@
 
   &__header {
     display: flex;
-    width: calc(100% - 1.5rem);
+    width: calc(100% - 1rem);
     justify-content: space-between;
     align-items: center;
     margin: 1rem 0;
@@ -27,21 +27,19 @@
     color: $black;
   }
   &__week {
-    @include cells;
+    @include cells_conatiner;
     font-weight: 600;
     &--day {
       @include centering;
-      // justify-content: start;
       width: 100%;
       aspect-ratio: 1/1;
     }
   }
   &__month {
-    @include cells;
+    @include cells_conatiner;
     &--day {
       @include centering;
-      width: 100%;
-      aspect-ratio: 1/1;
+      @include cell;
       border: 1px solid $gray;
       &:not(.disactive):hover {
         background-color: $turquoise;
