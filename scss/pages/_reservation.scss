@@ -1,4 +1,16 @@
 /*page title*/
+.hall {
+  &__ttl {
+    @extend %form-ttl;
+  }
+  &__select {
+    width: 100%;
+    @extend %form-input;
+    @extend %open-simple-arrow;
+    @extend %form-select;
+  }
+}
+
 .reservation {
   &-ttl {
     @extend %page-ttl;
@@ -18,15 +30,13 @@
 @include desktop-only() {
   .reservation {
     &-form {
-      width: 59.375rem;
+      min-width: 39.583rem;
       padding: 3rem 2rem;
       margin-top: 2rem;
       border: 1px solid $black;
       &__btn {
-        align-self: center;
         &-container {
           width: 100%;
-          display: block;
           @include centering;
         }
       }
@@ -37,20 +47,18 @@
 /*booking session*/
 .duration {
   &__ttl {
-    width: 22.5rem;
     @extend %form-ttl;
   }
 
   &__select {
-    width: 22.5rem;
     @extend %form-input;
     @extend %open-simple-arrow;
+    @extend %form-select;
   }
 }
 
 .participant {
   &__ttl {
-    width: 22.5rem;
     @extend %form-ttl;
   }
   &__container {
@@ -68,17 +76,5 @@
   &__img {
     margin: 0 auto;
     text-align: center;
-  }
-}
-
-.hall {
-  &__ttl {
-    width: 22.5rem;
-    @extend %form-ttl;
-  }
-  &__select {
-    width: 22.5rem;
-    @extend %form-input;
-    @extend %open-simple-arrow;
   }
 }

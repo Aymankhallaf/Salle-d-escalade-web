@@ -5,7 +5,7 @@
 }
 
 /*form title*/
-.hours__ttl, .calender__label, .hall__ttl, .participant__ttl, .duration__ttl {
+.hours__ttl, .calender__label, .participant__ttl, .duration__ttl, .hall__ttl {
   display: block;
   margin: 2.375rem 0 1rem 0;
   font-size: 1.125rem;
@@ -13,9 +13,16 @@
   background-color: hsla(39, 100%, 47%, 0.5);
   padding: 0.5rem;
 }
+@media screen and (min-width: 960px) {
+  .hours__ttl, .calender__label, .participant__ttl, .duration__ttl, .hall__ttl {
+    width: 40%;
+    aspect-ratio: 6.67;
+    font-size: 1rem;
+  }
+}
 
 /*form input*/
-.hall__select, .participant__input, .duration__select {
+.participant__input, .duration__select, .hall__select {
   position: relative;
   display: inline-block;
   height: 2.5rem;
@@ -25,8 +32,21 @@
   border: 1px solid hsla(197, 100%, 5%, 0.5);
   filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
 }
+@media screen and (min-width: 960px) {
+  .participant__input, .duration__select, .hall__select {
+    height: 2.5rem;
+  }
+}
 
-.hall__select, .duration__select {
+@media screen and (min-width: 960px) {
+  .duration__select, .hall__select {
+    width: 50% !important;
+    aspect-ratio: 6.67;
+    font-size: 1rem;
+  }
+}
+
+.duration__select, .hall__select {
   background-image: url('data:image/svg+xml,<svg width="24" height="13" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.5L12 11.5L22 1.5" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
@@ -102,7 +122,7 @@ select:hover {
 }
 
 .current {
-  color: #ca6702 !important;
+  color: #9b2226 !important;
 }
 
 .link, .social-media__ttle, .footer-nav__ttle {
@@ -205,7 +225,6 @@ select:hover {
 }
 /*card*/
 .card {
-  display: flex;
   text-align: center;
   gap: 2rem;
   color: #001219;
@@ -319,7 +338,7 @@ select:hover {
   background-color: #ffffff;
 }
 .header-nav__menu-link {
-  font-size: 0.88rem;
+  font-size: 0.667rem;
   color: #001219;
   text-decoration: underline !important;
 }
@@ -355,7 +374,7 @@ select:hover {
   color: #ffffff;
 }
 .hero-banner__ttl {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   text-align: center;
 }
 .hero-banner__subttl {
@@ -530,11 +549,14 @@ select:hover {
 }
 .copywrite {
   margin: 1rem;
-  font-size: 0.75rem;
   color: hsla(197, 100%, 5%, 0.5);
 }
 
 /*page title*/
+.hall__select {
+  width: 100%;
+}
+
 .reservation-ttl {
   text-align: center;
 }
@@ -551,17 +573,13 @@ select:hover {
 
 @media screen and (min-width: 960px) {
   .reservation-form {
-    width: 59.375rem;
+    min-width: 39.583rem;
     padding: 3rem 2rem;
     margin-top: 2rem;
     border: 1px solid #001219;
   }
-  .reservation-form__btn {
-    align-self: center;
-  }
   .reservation-form__btn-container {
     width: 100%;
-    display: block;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -569,16 +587,6 @@ select:hover {
   }
 }
 /*booking session*/
-.duration__ttl {
-  width: 22.5rem;
-}
-.duration__select {
-  width: 22.5rem;
-}
-
-.participant__ttl {
-  width: 22.5rem;
-}
 .participant__container {
   width: 22.5rem;
   display: flex;
@@ -593,28 +601,23 @@ select:hover {
   text-align: center;
 }
 
-.hall__ttl {
-  width: 22.5rem;
-}
-.hall__select {
-  width: 22.5rem;
-}
-
-.calender__label {
-  width: 22.5rem;
-}
-.calender-container {
-  margin: 2rem 0;
-}
 .calender__display {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+@media screen and (min-width: 960px) {
+  .calender__display {
+    width: 50%;
+  }
+}
+.calender-container {
+  margin: 2rem 0;
+}
 .calender__header {
   display: flex;
-  width: 21rem;
+  width: calc(100% - 1.5rem);
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
@@ -625,6 +628,7 @@ select:hover {
   color: #001219;
 }
 .calender__week {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   font-weight: 600;
@@ -634,10 +638,11 @@ select:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 3rem;
-  width: 3rem;
+  width: 100%;
+  aspect-ratio: 1/1;
 }
 .calender__month {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
@@ -646,8 +651,8 @@ select:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 3rem;
-  width: 3rem;
+  width: 100%;
+  aspect-ratio: 1/1;
   border: 1px solid #D5D4DF;
 }
 .calender__month--day:not(.disactive):hover {
@@ -670,6 +675,7 @@ select:hover {
 }
 .hours__container {
   width: 22.5rem;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
 }

@@ -20,8 +20,8 @@
 
 /* page title h1*/
 %page-ttl {
-font-size: 1.5rem;
-color: $black;
+  font-size: 1.5rem;
+  color: $black;
 }
 
 /*form title*/
@@ -32,6 +32,11 @@ color: $black;
   font-weight: 600;
   background-color: $light-orange-50;
   padding: 0.5rem;
+  @include desktop-only() {
+    width: 40%;
+    aspect-ratio: 6.67;
+    font-size: 1rem;
+  }
 }
 
 /*form input*/
@@ -44,13 +49,24 @@ color: $black;
   background-color: $white;
   border: 1px solid $black-50;
   filter: drop-shadow(0px 3px $black-50);
+  @include desktop-only() {
+    height: 2.5rem;
+  }
 }
 
-%open-simple-arrow{
+%form-select {
+  @include desktop-only() {
+    width: 50% !important;
+    aspect-ratio: 6.67;
+    font-size: 1rem;
+  }
+}
+
+%open-simple-arrow {
   background-image: url('data:image/svg+xml,<svg width="24" height="13" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.5L12 11.5L22 1.5" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
-  background-position-x: calc(100% - .5rem);
+  background-position-x: calc(100% - 0.5rem);
 }
 
 //reservation
@@ -59,8 +75,7 @@ color: $black;
 }
 
 @mixin cells {
-  display: grid;
+  width: 100%;
+    display: grid;
   grid-template-columns: repeat(7, 1fr);
 }
-
-

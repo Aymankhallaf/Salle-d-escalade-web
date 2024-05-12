@@ -1,20 +1,22 @@
 // calender
 
 .calender {
+  &__display {
+    @include centering;
+    @include desktop-only() {
+      width: 50%;
+    }
+  }
   &__label {
-    width: 22.5rem;
     @extend %form-ttl;
   }
   &-container {
     margin: 2rem 0;
   }
-  &__display {
-    @include centering;
-  }
 
   &__header {
     display: flex;
-    width: 21rem;
+    width: calc(100% - 1.5rem);
     justify-content: space-between;
     align-items: center;
     margin: 1rem 0;
@@ -29,16 +31,17 @@
     font-weight: 600;
     &--day {
       @include centering;
-      height: 3rem;
-      width: 3rem;
+      // justify-content: start;
+      width: 100%;
+      aspect-ratio: 1/1;
     }
   }
   &__month {
     @include cells;
     &--day {
       @include centering;
-      height: 3rem;
-      width: 3rem;
+      width: 100%;
+      aspect-ratio: 1/1;
       border: 1px solid $gray;
       &:not(.disactive):hover {
         background-color: $turquoise;
@@ -52,4 +55,3 @@
     color: $turquoise;
   }
 }
-
