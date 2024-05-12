@@ -20,7 +20,7 @@ let currentDate = new Date();
 let year = currentDate.getFullYear();
 let month = currentDate.getMonth();
 
-//selected date
+//selected date to be reviewed
 let chosenDate = null;
 
 
@@ -127,7 +127,7 @@ function updateCalendar() {
   displayCalendar(numberOfDays)
 }
 
-updateCalendar()
+updateCalendar();
 
 
 //listens to pervious button to display calender
@@ -186,7 +186,7 @@ function handleCalendarCellClick(e) {
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
-    //review
+    //to be reviewed
     return chosenDate
 
   } else {
