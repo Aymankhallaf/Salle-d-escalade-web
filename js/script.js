@@ -1,5 +1,9 @@
 import * as Menu from "./menu.js"
-import * as reservtion from "./reservation/reservation.js"
-//menu toggle
+//menu drop dow
+Menu.dropDownMainMenu();
 
-Menu.toggleMenu();
+if (window.location.href.includes("reservation.html")) {
+    (async () => {
+        const reservation = await import("./reservation/reservation.js");
+    })();
+}

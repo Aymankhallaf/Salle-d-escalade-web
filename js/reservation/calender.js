@@ -2,6 +2,7 @@
 const closedDay = ["lu"]
 const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 
+let headerTtl = document.getElementById("calender__ttl")
 let previous = document.getElementById("calender__left");
 let next = document.getElementById("calender__right");
 
@@ -25,6 +26,13 @@ let chosenDate = null;
 
 
 
+
+// if (!headerTtl || !previous || !next || !daysContainer || !selected) {
+//   return ;
+// }
+
+
+
 /**
  * get the index of the first day the current month and the number of days in this month.
  * @returns{array} array, the first day index [ex. sunday-satrday 0-6] and the number of days in the month
@@ -43,7 +51,7 @@ function getFirstAndLastDay() {
  * Displays the calender header (month and year) ex. mai 2024.
  */
 function displayCalendarHeader() {
-  document.getElementById("calender__ttl").innerHTML = currentDate.toLocaleString("fr-FR", {
+  headerTtl.innerHTML = currentDate.toLocaleString("fr-FR", {
     year: "numeric",
     month: "long",
   });
