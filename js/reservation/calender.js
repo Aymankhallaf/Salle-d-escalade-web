@@ -27,10 +27,6 @@ let chosenDate = null;
 
 
 
-// if (!headerTtl || !previous || !next || !daysContainer || !selected) {
-//   return ;
-// }
-
 
 
 /**
@@ -107,7 +103,7 @@ function isDayDisactive(dataSet, currentDate) {
 function showEmptyDay(firstDayIndex) {
   if (firstDayIndex === 0) { firstDayIndex = 7 };
   for (let x = 0; x < firstDayIndex - 1; x++) {
-    createDayCell("", "")
+    createDayCell("", "");
   }
 }
 
@@ -131,8 +127,8 @@ function updateCalendar() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
   let numberOfDays = getFirstAndLastDay()[1];
-  showEmptyDay(firstDayIndex)
-  displayCalendar(numberOfDays)
+  showEmptyDay(firstDayIndex);
+  displayCalendar(numberOfDays);
 }
 
 updateCalendar();
@@ -174,7 +170,7 @@ function updateEventListeners() {
     if (dayElement.classList.contains("disactive")) {
       dayElement.removeEventListener("click", handleCalendarCellClick);
     } else {
-      dayElement.addEventListener("click", handleCalendarCellClick);
+		.addEventListener("click", handleCalendarCellClick);
     }
   });
 }
@@ -195,7 +191,7 @@ function handleCalendarCellClick(e) {
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
     //to be reviewed
-    return chosenDate
+    return chosenDate;
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;

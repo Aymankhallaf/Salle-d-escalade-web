@@ -9,7 +9,7 @@ function handleSubmit(e) {
     let formData = new FormData(e.target);
     console.log(formData)
     for (const [key, value] of formData) {
-        console.log(`${key}: ${typeof(value)}\n`);
+        console.log(`${key}: ${(value)}\n`);
     }
     
 
