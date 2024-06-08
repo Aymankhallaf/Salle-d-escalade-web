@@ -5,6 +5,7 @@
 @import "utils";
 
 /* components */
+@import "./components/-form-mixin";
 @import "./components/btn";
 @import "./components/card";
 @import "./components/sub-heading";
@@ -16,6 +17,5 @@
 @import "./components/footer";
 @import "./components/calender";
 @import "./components/hours";
-@import "./components/-form-mixin";
 @import "./pages/reservation";
 @import "./pages/connection";

@@ -10,9 +10,10 @@
             @extend %form-ttl;
         }
         &__email {
-            
+            @extend %form-container;
+
             &-label {
-                @extend &-label;
+                @extend %label;
             }
             &-input {
                 @include input;

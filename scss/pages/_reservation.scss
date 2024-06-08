@@ -5,7 +5,7 @@
   }
   &__select {
     @extend %form-input;
-    @extend %open-simple-arrow;
+    @include simple-arrow;
     @extend %form-select;
   }
 }
@@ -51,7 +51,7 @@
 
   &__select {
     @extend %form-input;
-    @extend %open-simple-arrow;
+    @include simple-arrow;
     @extend %form-select;
   }
 }

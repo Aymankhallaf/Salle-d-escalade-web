@@ -13,6 +13,6 @@ function toggleClassName(className, closedClassName) {
 
 }
 
-toggleClassName(".js-select", "closed-simple-arrow")
+toggleClassName(".js-select", "open-simple-arrow");
 
 
