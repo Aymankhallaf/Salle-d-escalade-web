@@ -1,9 +1,12 @@
-/* sub-headi,g */
+/* sub-heading */
 .sub-heading {
-  @include centering(row);
+  &-container {
+    @include centering(row);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  text-align: center;
   font-size: 1.25rem;
-  gap: 2rem;
-  margin-bottom: 2.375rem;
 
   &__txt {
     @include centering;

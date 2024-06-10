@@ -1,17 +1,11 @@
 /* page title h1*/
-.connection-ttl,
-.reservation-ttl {
+.connection-ttl, .reservation-ttl {
   font-size: 1.5rem;
   color: #001219;
 }
 
 /*form title*/
-.connection-form__ttl,
-.participant__ttl,
-.duration__ttl,
-.hall__ttl,
-.hours__ttl,
-.calender__label {
+.connection-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
   display: block;
   margin: 2.375rem 0 1rem 0;
   font-size: 1.125rem;
@@ -20,12 +14,7 @@
   padding: 0.5rem;
 }
 @media screen and (min-width: 960px) {
-  .connection-form__ttl,
-  .participant__ttl,
-  .duration__ttl,
-  .hall__ttl,
-  .hours__ttl,
-  .calender__label {
+  .connection-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
     width: 40%;
     aspect-ratio: 6.67;
     font-size: 1rem;
@@ -33,9 +22,7 @@
 }
 
 /*form input*/
-.participant__input,
-.duration__select,
-.hall__select {
+.participant__input, .duration__select, .hall__select {
   font-size: 1.125rem;
   position: relative;
   display: inline-block;
@@ -46,22 +33,18 @@
   filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
 }
 @media screen and (min-width: 960px) {
-  .participant__input,
-  .duration__select,
-  .hall__select {
+  .participant__input, .duration__select, .hall__select {
     height: 2.5rem;
     font-size: 1rem;
   }
 }
 
-.duration__select,
-.hall__select {
+.duration__select, .hall__select {
   width: calc(100% - 1rem);
   margin: 0 0.5rem;
 }
 @media screen and (min-width: 960px) {
-  .duration__select,
-  .hall__select {
+  .duration__select, .hall__select {
     width: calc(50% - 1rem) !important;
     aspect-ratio: 6.67;
   }
@@ -116,8 +99,8 @@ select {
 
 select:hover {
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 /*utils*/
@@ -135,9 +118,7 @@ select:hover {
   color: #9b2226 !important;
 }
 
-.link,
-.social-media__ttle,
-.footer-nav__ttle {
+.link, .social-media__ttle, .footer-nav__ttle {
   font-size: 1rem;
   color: #005f73;
   margin: 1rem;
@@ -188,33 +169,18 @@ select:hover {
 }
 
 /*btn*/
-.btn,
-.contact-us__btn,
-.artcl__btn,
-.about-us__btn,
-.card__btn,
-.reserve__btn {
+.btn, .contact-us__btn, .artcl__btn, .about-us__btn, .card__btn, .reserve__btn {
   font-size: 1.125rem;
   padding: 0.5rem 1rem;
   color: #ffffff;
 }
 
-.btn--blue-petrol,
-.contact-us__btn,
-.artcl__btn,
-.about-us__btn,
-.card__btn,
-.reserve__btn {
+.btn--blue-petrol, .contact-us__btn, .artcl__btn, .about-us__btn, .card__btn, .reserve__btn {
   background-color: #005f73;
   margin-top: 2rem;
   stroke: #ffffff;
 }
-.btn--blue-petrol:hover,
-.contact-us__btn:hover,
-.artcl__btn:hover,
-.about-us__btn:hover,
-.card__btn:hover,
-.reserve__btn:hover {
+.btn--blue-petrol:hover, .contact-us__btn:hover, .artcl__btn:hover, .about-us__btn:hover, .card__btn:hover, .reserve__btn:hover {
   background-color: #ffffff;
   border: solid #005f73 1px;
   color: #005f73;
@@ -299,7 +265,7 @@ select:hover {
   width: 100%;
   aspect-ratio: 3/2;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
   background-color: hsla(197, 100%, 5%, 0.5);
 }
 .card-holder {
@@ -321,15 +287,18 @@ select:hover {
   width: 360px;
   padding-bottom: 2.375rem;
 }
-/* sub-headi,g */
+/* sub-heading */
 .sub-heading {
+  text-align: center;
+  font-size: 1.25rem;
+}
+.sub-heading-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-size: 1.25rem;
   gap: 2rem;
-  margin-bottom: 2.375rem;
+  margin-bottom: 2rem;
 }
 .sub-heading__txt {
   display: flex;
@@ -372,7 +341,6 @@ select:hover {
 }
 .header-nav__menu--side {
   display: flex;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -390,8 +358,7 @@ select:hover {
   color: #001219;
   text-decoration: underline !important;
 }
-.header-nav__menu-link:hover,
-.header-nav__menu-link:focus {
+.header-nav__menu-link:hover, .header-nav__menu-link:focus {
   color: #0a9396;
 }
 @media screen and (min-width: 960px) {
@@ -445,7 +412,6 @@ select:hover {
   flex-direction: column;
   gap: 1rem;
   margin: 2rem 0rem;
-  font-size: 1.125rem;
   line-height: auto;
   font-weight: 600;
 }
@@ -474,7 +440,7 @@ select:hover {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 2.375rem;
+  margin: 2.375rem;
 }
 .artcl-item {
   display: grid;
@@ -482,13 +448,13 @@ select:hover {
   grid-template-rows: auto;
   grid-template-areas: "a b" "a c";
   -moz-column-gap: 1rem;
-  column-gap: 1rem;
+       column-gap: 1rem;
 }
 .artcl-item__img {
   width: 100%;
   grid-area: a;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 .artcl-item__ttle {
   font-size: 0.875rem;
@@ -555,7 +521,7 @@ select:hover {
   background-image: url(../img/salle2-50.webp);
 }
 .galary__lnk {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #ffffff;
 }
@@ -799,4 +765,4 @@ select:hover {
   height: 4rem;
   border-color: #001219;
   background-color: rgba(233, 216, 166, 0.15);
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

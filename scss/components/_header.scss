@@ -21,7 +21,6 @@
     &__menu {
       display: none;
       &--side {
-        display: flex;
         @include centering;
         gap: 2rem;
         padding: 2rem;
