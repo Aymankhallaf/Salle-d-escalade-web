@@ -1,4 +1,4 @@
-.connection {
+.inscrivez {
     &-ttl {
         @extend %page-ttl;
         text-align: center;
@@ -8,13 +8,69 @@
         margin: 0 auto;
         &__ttl {
             @extend %form-ttl;
-            position: relative;
-            &:after {
-                content: url('data:image/svg+xml,<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34 18C34 9.16344 26.8366 2 18 2C9.16344 2 2 9.16344 2 18C2 26.8366 9.16344 34 18 34C26.8366 34 34 26.8366 34 18Z" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28.1222 23.0615L18 12.9385L7.87769 23.0615" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-        
+            display: flex;
+        }
+        &__lname {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__fname {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__adresse {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__city {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
             }
         }
         &__email {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__password {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__confirm-psw{
             @extend %form-container;
 
             &-label {

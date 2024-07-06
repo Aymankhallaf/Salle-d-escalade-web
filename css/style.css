@@ -1,53 +1,7 @@
 /* page title h1*/
-.connection-ttl, .reservation-ttl {
+.inscrivez-ttl, .reservation-ttl {
   font-size: 1.5rem;
   color: #001219;
-}
-
-/*form title*/
-.connection-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
-  display: block;
-  margin: 2.375rem 0 1rem 0;
-  font-size: 1.125rem;
-  font-weight: 600;
-  background-color: hsla(39, 100%, 47%, 0.5);
-  padding: 0.5rem;
-}
-@media screen and (min-width: 960px) {
-  .connection-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
-    width: 40%;
-    aspect-ratio: 6.67;
-    font-size: 1rem;
-  }
-}
-
-/*form input*/
-.participant__input, .duration__select, .hall__select {
-  font-size: 1.125rem;
-  position: relative;
-  display: inline-block;
-  height: 2.5rem;
-  padding: 0.5rem;
-  background-color: #ffffff;
-  border: 1px solid hsla(197, 100%, 5%, 0.5);
-  filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
-}
-@media screen and (min-width: 960px) {
-  .participant__input, .duration__select, .hall__select {
-    height: 2.5rem;
-    font-size: 1rem;
-  }
-}
-
-.duration__select, .hall__select {
-  width: calc(100% - 1rem);
-  margin: 0 0.5rem;
-}
-@media screen and (min-width: 960px) {
-  .duration__select, .hall__select {
-    width: calc(50% - 1rem) !important;
-    aspect-ratio: 6.67;
-  }
 }
 
 /*root*/
@@ -147,15 +101,61 @@ select:hover {
   }
 }
 /* components */
+/*form title*/
+.inscrivez-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
+  display: block;
+  margin: 2.375rem 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background-color: hsla(39, 100%, 47%, 0.5);
+  padding: 0.5rem;
+}
+@media screen and (min-width: 960px) {
+  .inscrivez-form__ttl, .participant__ttl, .duration__ttl, .hall__ttl, .hours__ttl, .calender__label {
+    width: 40%;
+    aspect-ratio: 6.67;
+    font-size: 1rem;
+  }
+}
+
+/*form input*/
+.participant__input, .duration__select, .hall__select {
+  font-size: 1.125rem;
+  position: relative;
+  display: inline-block;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border: 1px solid hsla(197, 100%, 5%, 0.5);
+  filter: drop-shadow(0px 3px hsla(197, 100%, 5%, 0.5));
+}
+@media screen and (min-width: 960px) {
+  .participant__input, .duration__select, .hall__select {
+    height: 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+.duration__select, .hall__select {
+  width: calc(100% - 1rem);
+  margin: 0 0.5rem;
+}
+@media screen and (min-width: 960px) {
+  .duration__select, .hall__select {
+    width: calc(50% - 1rem) !important;
+    aspect-ratio: 6.67;
+  }
+}
+
 /*this used in connection page*/
-.connection-form__email {
+.inscrivez-form__confirm-psw, .inscrivez-form__password, .inscrivez-form__email, .inscrivez-form__city, .inscrivez-form__adresse, .inscrivez-form__fname, .inscrivez-form__lname {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.connection-form__email-label {
+.inscrivez-form__confirm-psw-label, .inscrivez-form__password-label, .inscrivez-form__email-label, .inscrivez-form__city-label, .inscrivez-form__adresse-label, .inscrivez-form__fname-label, .inscrivez-form__lname-label {
   font-weight: 600;
 }
 
@@ -748,20 +748,47 @@ select:hover {
   text-align: center;
 }
 
-.connection-ttl {
+.inscrivez-ttl {
   text-align: center;
 }
-.connection-form {
+.inscrivez-form {
   width: 22.5rem;
   margin: 0 auto;
 }
-.connection-form__ttl {
-  position: relative;
+.inscrivez-form__ttl {
+  display: flex;
 }
-.connection-form__ttl:after {
-  content: url('data:image/svg+xml,<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M34 18C34 9.16344 26.8366 2 18 2C9.16344 2 2 9.16344 2 18C2 26.8366 9.16344 34 18 34C26.8366 34 34 26.8366 34 18Z" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28.1222 23.0615L18 12.9385L7.87769 23.0615" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+.inscrivez-form__lname-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
 }
-.connection-form__email-input {
+.inscrivez-form__fname-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__adresse-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__city-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__email-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__password-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__confirm-psw-input {
   height: 4rem;
   border-color: #001219;
   background-color: rgba(233, 216, 166, 0.15);
