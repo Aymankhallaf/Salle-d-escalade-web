@@ -8,21 +8,7 @@
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <?php
-    if ($_ENV['ENV_TYPE'] === 'dev') {
-        // Developement integration for vite with run dev
-    ?>
-        <script type="module" src="http://localhost:5173/@vite/client"></script>
-        <script type="module" src="http://localhost:5173/js/script.js"></script>
-    <?php
-    } else if ($_ENV['ENV_TYPE'] === 'prod') {
-        // Production integration for vite with run build
-        echo loadAssets(['js/script.js','js/reservation/reservation.js']);
-        // Try this way to load assets from manifest.json
-        // https://github.com/andrefelipe/vite-php-setup
-    }
 
-    ?>
 
 </head>
 

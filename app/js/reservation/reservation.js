@@ -3,6 +3,8 @@ import * as Calendar from "./_calender.js";
 import * as Hours from "./_hours.js";
 import * as NParticipants from "./_numberOfParticpant.js"
 
+document.getElementById("hall").addEventListener("change")
+
 document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 function handleSubmit(e) {
     e.preventDefault();

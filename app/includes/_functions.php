@@ -28,3 +28,9 @@ function loadAssets(array $entries): string
 
     return $html;
 }
+
+
+function getGymName(){
+
+    
+}
