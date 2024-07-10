@@ -30,6 +30,26 @@
                 @include input;
             }
         }
+        &__birthdate {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__tel {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
         &__adresse {
             @extend %form-container;
 

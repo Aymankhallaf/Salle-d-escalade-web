@@ -1,0 +1,46 @@
+/*utils*/
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.section {
+  margin: 2.375rem 0!important;
+  text-align: center;
+}
+
+.current {
+  color: $dark-red!important;
+}
+
+.link {
+  font-size: 1rem;
+  color: $blue-petrol;
+  margin: 1rem;
+}
+
+//reservation
+
+.active {
+  color: $white;
+  background-color: $turquoise;
+}
+
+.disactive {
+  color: $dark-red;
+  background-color: $light-gray;
+}
+
+.error {
+  color: $dark-red !important;
+}
+
+
+
+@include desktop-only() {
+  .warp-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: start;
+  }  }

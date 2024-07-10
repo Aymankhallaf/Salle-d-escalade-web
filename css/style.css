@@ -148,14 +148,14 @@ select:hover {
 }
 
 /*this used in connection page*/
-.inscrivez-form__confirm-psw, .inscrivez-form__password, .inscrivez-form__email, .inscrivez-form__city, .inscrivez-form__adresse, .inscrivez-form__fname, .inscrivez-form__lname {
+.inscrivez-form__confirm-psw, .inscrivez-form__password, .inscrivez-form__email, .inscrivez-form__city, .inscrivez-form__adresse, .inscrivez-form__tel, .inscrivez-form__birthdate, .inscrivez-form__fname, .inscrivez-form__lname {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.inscrivez-form__confirm-psw-label, .inscrivez-form__password-label, .inscrivez-form__email-label, .inscrivez-form__city-label, .inscrivez-form__adresse-label, .inscrivez-form__fname-label, .inscrivez-form__lname-label {
+.inscrivez-form__confirm-psw-label, .inscrivez-form__password-label, .inscrivez-form__email-label, .inscrivez-form__city-label, .inscrivez-form__adresse-label, .inscrivez-form__tel-label, .inscrivez-form__birthdate-label, .inscrivez-form__fname-label, .inscrivez-form__lname-label {
   font-weight: 600;
 }
 
@@ -764,6 +764,16 @@ select:hover {
   background-color: rgba(233, 216, 166, 0.15);
 }
 .inscrivez-form__fname-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__birthdate-input {
+  height: 4rem;
+  border-color: #001219;
+  background-color: rgba(233, 216, 166, 0.15);
+}
+.inscrivez-form__tel-input {
   height: 4rem;
   border-color: #001219;
   background-color: rgba(233, 216, 166, 0.15);

@@ -1,0 +1,26 @@
+/* sub-heading */
+.sub-heading {
+  &-container {
+    @include centering(row);
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  text-align: center;
+  font-size: 1.25rem;
+
+  &__txt {
+    @include centering;
+  }
+
+  &__ttl--black {
+    color: $black;
+  }
+
+  &__ttl--red {
+    color: $dark-red;
+  }
+
+  &__txt {
+    text-align: center;
+  }
+}
