@@ -1,7 +1,7 @@
 // halls = { "first": { "mai 2024": { "1": { "10:00": 10 } } } }
-import * as Calendar from "./calender.js";
-import * as Hours from "./hours.js";
-import * as NParticipants from "./numberOfParticpant.js "
+import * as Calendar from "./_calender.js";
+import * as Hours from "./_hours.js";
+import * as NParticipants from "./_numberOfParticpant.js"
 
 document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 function handleSubmit(e) {
