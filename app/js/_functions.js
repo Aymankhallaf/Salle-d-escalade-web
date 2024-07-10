@@ -20,16 +20,23 @@ async function callApi(method, param) {
 
     }
     catch (error) {
-        console.error("Unable to load datas from server : " + error);
+        console.error("Unable to load data from server : " + error);
 
     }
 
 }
 
-function getDates(idGym){
+export function getDates(idGym) {
 
     callApi("POST", {
-        action:"fetch",
-        idGym:idGym
+        action: "fetch",
+        idGym: idGym
     })
+        .then(data => {
+            if (!data.isOk) {
+                console.log("error"); 
+                return;
+            }
+            console.log(data);
+        })
 }
