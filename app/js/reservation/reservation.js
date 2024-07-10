@@ -3,7 +3,14 @@ import * as Calendar from "./_calender.js";
 import * as Hours from "./_hours.js";
 import * as NParticipants from "./_numberOfParticpant.js"
 
-document.getElementById("hall").addEventListener("change")
+document.getElementById("hall").addEventListener("change", function () {
+
+    console.log(this.value)
+    callApi()
+}
+);
+
+
 
 document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 function handleSubmit(e) {
@@ -13,6 +20,6 @@ function handleSubmit(e) {
     for (const [key, value] of formData) {
         console.log(`${key}: ${(value)}\n`);
     }
-    
+
 
 }
