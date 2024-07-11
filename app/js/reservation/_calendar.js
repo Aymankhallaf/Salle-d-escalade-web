@@ -4,7 +4,7 @@ import * as F from "../_functions.js";
 const closedDay = ["lu"];
 // let holidays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 let holidays = []
-export async function updateHolidays(newHolidays) {
+function updateHolidays(newHolidays) {
   holidays = newHolidays;
 }
 
@@ -136,7 +136,7 @@ function displayCalendar(numberOfDays) {
 /**
  * updates calender display with all functions. See more showEmptyDay() and displaydisplayCalendar()
  */
-export async function updateCalendar() {
+function updateCalendar() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
   let numberOfDays = getFirstAndLastDay()[1];
@@ -245,15 +245,13 @@ function displayMessage(message) {
 * @param {string} idGym gym id
 * @returns 
 */
-export async function getVacationDates(idGym) {
-  try {
-    const data = await F.callApi("POST", {
-      action: "fetch",
-      idGym: idGym,
-      token: F.getToken()
+export function getVacationDates(idGym) {
+  F.callApi("POST", {
+    action: "fetch",
+    idGym: idGym,
+    token: F.getToken()
 
-    });
-
+  }).then(data => {
     if (!data.isOk) {
       F.displayError(data['errorMessage']);
       return;
@@ -264,10 +262,8 @@ export async function getVacationDates(idGym) {
     });
     F.displayMessage("tu as bien choisi le salle");
     document.getElementById("month-days").innerText = "";
-    await updateHolidays(holidaysFR);
-    await updateCalendar();
+    updateHolidays(holidaysFR);
+    updateCalendar();
 
-  } catch (error) {
-    F.displayError("Error fetching dates: " + error);
-  }
+  })
 }
