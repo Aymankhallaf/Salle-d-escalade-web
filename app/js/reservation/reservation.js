@@ -12,6 +12,7 @@ document.getElementById("hall").addEventListener("change", (e) => {
         console.log("error chosing gym");
         return;
     }
+    //get vacation dates
     F.getDates(e.target.value);
 }
 );

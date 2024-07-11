@@ -29,24 +29,25 @@ async function callApi(method, param) {
 }
 
 
-export function getDates(idGym) {
+export async function getDates(idGym) {
+    try {
+        const data = await callApi("POST", {
+            action: "fetch",
+            idGym: idGym
+        });
 
-    callApi("POST", {
-        action: "fetch",
-        idGym: idGym
-    })
-        .then(data => {
-            if (!data.isOk) {
-                console.log("error");
-                return;
-            }
-            data[0].forEach(date => {
-                const vacationDate = new Date(date);
-                console.log( Calendar.formateDay(vacationDate));
-          
-                //                 let dateElement= new Date(element);
-                // console.log(dateElement);
-                // console.log(Calendar.formateDay(element))
-            })
-        })
+        if (!data.isOk) {
+            console.log("error");
+            return;
+        }
+        let holidaysFR = []
+        data[0].forEach(day => {
+            holidaysFR.push(Calendar.formateDay(new Date(day)));
+        });
+        console.log(holidaysFR);
+        await Calendar.updateHolidays(holidaysFR);
+        await Calendar.updateCalendar();
+    } catch (error) {
+        console.error("Error fetching dates: " + error);
+    }
 }

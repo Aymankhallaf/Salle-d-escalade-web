@@ -1,6 +1,12 @@
+import * as F from "../_functions.js";
+
 //closed days
-const closedDay = ["lu"]
-const holydays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
+const closedDay = ["lu"];
+// let holidays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
+let holidays =[]
+export async function updateHolidays(newHolidays) {
+  holidays = newHolidays;
+}
 
 let headerTtl = document.getElementById("calender__ttl")
 let previous = document.getElementById("calender__left");
@@ -8,7 +14,6 @@ let next = document.getElementById("calender__right");
 
 // all the days apears here
 let daysContainer = document.getElementById("month-days");
-
 
 
 
@@ -53,9 +58,13 @@ function displayCalendarHeader() {
   });
 }
 
-
-export function formateDay(currentDate){
-return currentDate.toLocaleString("fr-FR", {
+/**
+ * convert string date to date in french formate.
+ * @param {string} date in string
+ * @returns a date in french format "jeudi 9 mai 2024"
+ */
+export function formateDay(date){
+return date.toLocaleString("fr-FR", {
   weekday: "long",
   year: "numeric",
   month: "long",
@@ -76,8 +85,8 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", dataSet);
-  if (isDayDisactive(dataSet, dataSet)) {
+  dayCell.setAttribute("datetime", currentDate);
+  if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
 
@@ -93,7 +102,7 @@ function createDayCell(day, currentDate) {
 function isDayDisactive(dataSet, currentDate) {
   return (
     closedDay.includes(dataSet.slice(0, 2))
-    || holydays.includes(dataSet)
+    || holidays.includes(dataSet)
     || (currentDate < today))
 
 }
@@ -125,9 +134,9 @@ function displayCalendar(numberOfDays) {
 
 
 /**
- * updates calender diplay with all functions. See more showEmptyDay() and displaydisplayCalendar()
+ * updates calender display with all functions. See more showEmptyDay() and displaydisplayCalendar()
  */
-function updateCalendar() {
+export async function updateCalendar() {
   displayCalendarHeader();
   let firstDayIndex = getFirstAndLastDay()[0];
   let numberOfDays = getFirstAndLastDay()[1];
@@ -135,7 +144,6 @@ function updateCalendar() {
   displayCalendar(numberOfDays);
 }
 
-updateCalendar();
 
 
 //listens to pervious button to display calender
