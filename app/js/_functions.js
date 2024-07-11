@@ -1,5 +1,15 @@
 import * as Calendar from "./reservation/_calendar.js";
 
+
+/**
+ * Get current global token value.
+ * @returns 
+ */
+function getToken() {
+    return document.getElementById('token').dataset.token;
+}
+
+
 /**
  * Generate asynchronous call to api.php with parameters
  * @param {*} method GET, POST, PUT or DELETE
@@ -28,12 +38,15 @@ async function callApi(method, param) {
 
 }
 
+console.log(getToken());
 
-export async function getDates(idGym) {
+export async function getVacationDates(idGym) {
     try {
         const data = await callApi("POST", {
             action: "fetch",
-            idGym: idGym
+            idGym: idGym,
+            token: getToken()
+            
         });
 
         if (!data.isOk) {

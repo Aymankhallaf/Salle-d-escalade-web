@@ -3,12 +3,8 @@ session_start();
 include 'includes/_connection.php';
 include_once 'includes/_functions.php';
 
-// Create session token
-if (!isset($_SESSION['myToken'])) {
-  $_SESSION['myToken'] = md5(uniqid(mt_rand(), true));
-}
 
-var_dump($dbCo);
+generateToken();
 
 ?>
 <!DOCTYPE html>
@@ -54,5 +50,5 @@ var_dump($dbCo);
 
             </ul>
         </nav>
-
+        <span data-token="<?= $_SESSION['token']; ?>" class="hidden" id="token"></span>
     </header>

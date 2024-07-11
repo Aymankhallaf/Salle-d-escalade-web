@@ -13,7 +13,7 @@ document.getElementById("hall").addEventListener("change", (e) => {
         return;
     }
     //get vacation dates
-    F.getDates(e.target.value);
+    F.getVacationDates(e.target.value);
 }
 );
 
