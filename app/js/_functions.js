@@ -26,6 +26,7 @@ async function callApi(method, param) {
 
 }
 
+
 export function getDates(idGym) {
 
     callApi("POST", {
@@ -34,9 +35,16 @@ export function getDates(idGym) {
     })
         .then(data => {
             if (!data.isOk) {
-                console.log("error"); 
+                console.log("error");
                 return;
             }
-            console.log(data);
+            data[0].forEach(element => {
+                console.log(element['date_start_vacation'].toLocaleString("fr-FR", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  }))
+            })
         })
 }

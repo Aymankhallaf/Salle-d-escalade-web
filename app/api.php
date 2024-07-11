@@ -3,7 +3,7 @@ session_start();
 
 include 'includes/_connection.php';
 
-header('Content-type:application/json');
+// header('Content-type:application/json');
 
 $inputData = json_decode(file_get_contents('php://input'), true);
 

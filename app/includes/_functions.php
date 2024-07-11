@@ -35,6 +35,7 @@ function loadAssets(array $entries): string
     $query = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym =:idGym");
     $isQueryOk = $query->execute(['idGym' => $idGym]); 
     $dates = $query->fetchAll();
+    var_dump($dates);
 
     if(!$isQueryOk){
         var_dump("go");
@@ -43,6 +44,6 @@ function loadAssets(array $entries): string
     echo json_encode([
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
-        'dates' => $dates
+         $dates
     ]);   
 }

@@ -54,26 +54,30 @@ function displayCalendarHeader() {
 }
 
 
+function formateDay(currentDate){
+return currentDate.toLocaleString("fr-FR", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+}
+
 /**
  * creates a day cell with its attributes and disactive it according to isDayDisactive function.
  * @param {number} day a number of day.
  * @param {*} currentDate a variable of day change   
  */
 function createDayCell(day, currentDate) {
-  let dataSet = currentDate.toLocaleString("fr-FR", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  let dataSet = formateDay(currentDate);
   const template = document.getElementById("day-template");
   const dayElement = document.importNode(template.content, true);
   const dayCell = dayElement.querySelector(".js-calender__month--day");
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", currentDate);
-  if (isDayDisactive(dataSet, currentDate)) {
+  dayCell.setAttribute("datetime", dataSet);
+  if (isDayDisactive(dataSet, dataSet)) {
     dayCell.classList.add("disactive");
   }
 

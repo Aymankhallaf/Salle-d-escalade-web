@@ -4,3 +4,5 @@ import './../scss/style.scss';
 //menu drop dow
 Menu.dropDownMainMenu();
 
+
+console.log(currentDate);

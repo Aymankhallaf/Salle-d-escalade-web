@@ -16,6 +16,13 @@ document.getElementById("hall").addEventListener("change", (e) => {
 }
 );
 
+console.log(currentDate);
+console.log("".currentDate.toLocaleString("fr-FR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }))
 
 
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
