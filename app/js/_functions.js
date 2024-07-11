@@ -5,7 +5,7 @@ import * as Calendar from "./reservation/_calendar.js";
  * Get current global token value.
  * @returns 
  */
-function getToken() {
+export function getToken() {
     return document.getElementById('token').dataset.token;
 }
 
@@ -16,7 +16,7 @@ function getToken() {
  * @param {*} params An object with data to send.
  * @returns 
  */
-async function callApi(method, param) {
+export async function callApi(method, param) {
     try {
         const response = await fetch("api.php",
             {
@@ -44,7 +44,7 @@ async function callApi(method, param) {
  * Display error message with template
  * @param {string} errorMessage 
  */
-function displayError(errorMessage) {
+export function displayError(errorMessage) {
     const li = document.importNode(document.getElementById('templateError').content, true);
     const m = li.querySelector('[data-error-message]');
     m.innerText = errorMessage;
@@ -52,12 +52,11 @@ function displayError(errorMessage) {
     setTimeout(() => m.remove(), 2000);
 }
 
-
 /**
  * Display message with template
  * @param {string} message 
  */
-function displayMessage(message) {
+export function displayMessage(message) {
     const li = document.importNode(document.getElementById('templateMessage').content, true);
     const m = li.querySelector('[data-message]')
     m.innerText = message;
@@ -65,30 +64,3 @@ function displayMessage(message) {
     setTimeout(() => m.remove(), 2000);
 }
 
-
-export async function getVacationDates(idGym) {
-    try {
-        const data = await callApi("POST", {
-            action: "fetch",
-            idGym: idGym,
-            token: getToken()
-            
-        });
-
-        if (!data.isOk) {
-            displayError(data['errorMessage']);
-            return;
-        }
-        let holidaysFR = []
-        data[0].forEach(day => {
-            holidaysFR.push(Calendar.formateDay(new Date(day)));
-        });
-        displayMessage("tu as bien choisi le salle");
-        document.getElementById("month-days").innerText="";
-        await Calendar.updateHolidays(holidaysFR);
-        await Calendar.updateCalendar();
-
-    } catch (error) {
-        displayError("Error fetching dates: " + error);
-    }
-}

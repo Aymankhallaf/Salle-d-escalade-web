@@ -10,11 +10,12 @@ import * as F from "../_functions.js";
 document.getElementById("hall").addEventListener("change", (e) => {
 
     if (e.target.value !== "1" && e.target.value !== "2") {
-        displayError("error chosing gym");
+        displayError("erreur lors du choix de la salle d'escalade");
         return;
     }
     //get vacation dates
-    F.getVacationDates(e.target.value);
+    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+    Calendar.getVacationDates(e.target.value);
 }
 );
 

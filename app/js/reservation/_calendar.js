@@ -3,7 +3,7 @@ import * as F from "../_functions.js";
 //closed days
 const closedDay = ["lu"];
 // let holidays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
-let holidays =[]
+let holidays = []
 export async function updateHolidays(newHolidays) {
   holidays = newHolidays;
 }
@@ -63,13 +63,13 @@ function displayCalendarHeader() {
  * @param {string} date in string
  * @returns a date in french format "jeudi 9 mai 2024"
  */
-export function formateDay(date){
-return date.toLocaleString("fr-FR", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+export function formateDay(date) {
+  return date.toLocaleString("fr-FR", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 /**
@@ -228,3 +228,46 @@ function activeDay(selectedDate) {
 
 
 
+/**
+ * Display message with template
+ * @param {string} message 
+ */
+function displayMessage(message) {
+  const li = document.importNode(document.getElementById('templateMessage').content, true);
+  const m = li.querySelector('[data-message]')
+  m.innerText = message;
+  document.getElementById('messagesList').appendChild(li);
+  setTimeout(() => m.remove(), 2000);
+}
+
+/**
+* get the vacation date and update calender.
+* @param {string} idGym gym id
+* @returns 
+*/
+export async function getVacationDates(idGym) {
+  try {
+    const data = await F.callApi("POST", {
+      action: "fetch",
+      idGym: idGym,
+      token: F.getToken()
+
+    });
+
+    if (!data.isOk) {
+      F.displayError(data['errorMessage']);
+      return;
+    }
+    let holidaysFR = []
+    data[0].forEach(day => {
+      holidaysFR.push(formateDay(new Date(day)));
+    });
+    F.displayMessage("tu as bien choisi le salle");
+    document.getElementById("month-days").innerText = "";
+    await updateHolidays(holidaysFR);
+    await updateCalendar();
+
+  } catch (error) {
+    F.displayError("Error fetching dates: " + error);
+  }
+}
