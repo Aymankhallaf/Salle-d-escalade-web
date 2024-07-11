@@ -1,5 +1,5 @@
 <?php
-
+include 'includes/_config.php';
 /**
  * Get HTML script to load front-end assets defined in the manifest.json file for entry points given.
  *
@@ -50,16 +50,14 @@ function generateToken()
 /**
  * Check for CSRF token
  *
- * @param array|null $data Input data
- * @return boolean Is there a valid toekn in user session ?
+ * @param string $token token
+ * @return boolean Is there a valid token in user session ?
  */
-function isTokenOk(?array $data = null): bool
+function isTokenOk(string $token ): bool
 {
-    if (!is_array($data)) $data = $_REQUEST;
-
     return isset($_SESSION['token'])
-        && isset($data['token'])
-        && $_SESSION['token'] === $data['token'];
+        && isset($token)
+        && $_SESSION['token'] === $token;
 }
 
 // /**
@@ -73,6 +71,24 @@ function isTokenOk(?array $data = null): bool
 //     return isset($_SERVER['HTTP_REFERER'])
 //         && str_contains($_SERVER['HTTP_REFERER'], $globalUrl);
 // }
+
+/**
+ * Print an error in json format and stop script.
+ *
+ * @param string $error Error code from errors array available in _congig.php
+ * @return void
+ */
+function triggerError(string $error): void
+{
+    global $errors;
+
+    echo json_encode([
+        'isOk' => false,
+        'errorMessage' => $errors[$error]
+    ]);
+
+    exit;
+}
 
 function getGymName(PDO $dbCo, int $idGym)
 {
@@ -94,3 +110,4 @@ function getGymName(PDO $dbCo, int $idGym)
         $vacationDates
     ]);
 }
+

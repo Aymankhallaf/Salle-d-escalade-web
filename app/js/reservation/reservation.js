@@ -5,11 +5,12 @@ import * as NParticipants from "./_numberOfParticpant.js";
 import * as F from "../_functions.js";
 
 
+
+
 document.getElementById("hall").addEventListener("change", (e) => {
 
-    console.log(e.target.value);
     if (e.target.value !== "1" && e.target.value !== "2") {
-        console.log("error chosing gym");
+        displayError("error chosing gym");
         return;
     }
     //get vacation dates

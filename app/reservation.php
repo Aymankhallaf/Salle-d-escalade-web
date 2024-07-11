@@ -1,12 +1,12 @@
 <?php
 include 'includes/_header.php';
-
-
+var_dump($_SESSION);
 ?>
 
 <main>
     <h1 class="reservation-ttl" id="reservation">Réservation</h1>
-
+    <ul id="errorsList" class="errors"></ul>
+    <ul id="messagesList" class="messages"></ul>
     <form id="reservation-form" class="reservation-form" aria-label="duration-label" method="get">
         <ul>
             <!-- hall -->
@@ -93,28 +93,18 @@ include 'includes/_header.php';
     </form>
 </main>
 
-<footer class="section footer">
-    <nav aria-labelledby="#footer-nav">
-        <h4 id="#footer-nav" class="footer-nav__ttle">Plus de links</h4>
-        <ol class="footer-nav__menu">
-            <li class="footer-nav__item"><a class="footer-nav__link" href="#">Les tarifs</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Mention légales</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Les Horaires</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Propre de nos</a></li>
-        </ol>
+<?php
+include 'includes/_footer.php';
+?>
 
-    </nav>
-    <nav aria-labelledby="social-media">
-        <h4 id="social-media" class="social-media__ttle">Nos Suivre</h4>
-        <ul class="social-media__menu">
-            <li><a href="" target="_blank"><img src="/img/instagram-svgrepo-com.svg" alt="instagram icon"></a></li>
-            <li><a href="" target="_blank"><img src="/img/fb_iconCarrier.svg" alt="facebook icon"></a></li>
-            <li><a href="" target="_blank"><img src="/img/xVector.svg" alt="x.com icon"></a></li>
-        </ul>
-    </nav>
-    <h5 class="copywrite">©Ayman KHALLAF 2024. All rights reversed.</h5>
-</footer>
 
+<template id="templateError">
+        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+    </template>
+
+    <template id="templateMessage">
+        <li data-message="" class="messages__itm">Ici vient le message</li>
+    </template>
 </body>
 <script type="module" src="./js/script.js"></script>
 <script type="module" src="./js/reservation/reservation.js"></script>

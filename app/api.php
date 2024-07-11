@@ -6,8 +6,12 @@ include 'includes/_connection.php';
 header('Content-type:application/json');
 
 $inputData = json_decode(file_get_contents('php://input'), true);
-
-var_dump(isTokenOk($inputData ));
+if (!is_array($inputData)) {
+    $inputData = $_REQUEST;
+}
+if (!isTokenOk($inputData['token'])) {
+    triggerError('token');
+}
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetch' && isset($inputData['idGym'])) {

@@ -38,7 +38,33 @@ async function callApi(method, param) {
 
 }
 
-console.log(getToken());
+
+
+/**
+ * Display error message with template
+ * @param {string} errorMessage 
+ */
+function displayError(errorMessage) {
+    const li = document.importNode(document.getElementById('templateError').content, true);
+    const m = li.querySelector('[data-error-message]');
+    m.innerText = errorMessage;
+    document.getElementById('errorsList').appendChild(li);
+    setTimeout(() => m.remove(), 2000);
+}
+
+
+/**
+ * Display message with template
+ * @param {string} message 
+ */
+function displayMessage(message) {
+    const li = document.importNode(document.getElementById('templateMessage').content, true);
+    const m = li.querySelector('[data-message]')
+    m.innerText = message;
+    document.getElementById('messagesList').appendChild(li);
+    setTimeout(() => m.remove(), 2000);
+}
+
 
 export async function getVacationDates(idGym) {
     try {
@@ -50,19 +76,19 @@ export async function getVacationDates(idGym) {
         });
 
         if (!data.isOk) {
-            console.log("error");
+            displayError("error get dates");
             return;
         }
         let holidaysFR = []
         data[0].forEach(day => {
             holidaysFR.push(Calendar.formateDay(new Date(day)));
         });
-        console.log(holidaysFR);
+        displayMessage("tu as bien choisi le salle");
         document.getElementById("month-days").innerText="";
         await Calendar.updateHolidays(holidaysFR);
         await Calendar.updateCalendar();
 
     } catch (error) {
-        console.error("Error fetching dates: " + error);
+        displayError("Error fetching dates: " + error);
     }
 }
