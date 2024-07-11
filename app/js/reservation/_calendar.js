@@ -145,7 +145,6 @@ export async function updateCalendar() {
 }
 
 
-
 //listens to pervious button to display calender
 previous.addEventListener("click", () => {
   daysContainer.innerHTML = ""

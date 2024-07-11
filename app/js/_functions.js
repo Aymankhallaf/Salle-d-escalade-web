@@ -45,8 +45,10 @@ export async function getDates(idGym) {
             holidaysFR.push(Calendar.formateDay(new Date(day)));
         });
         console.log(holidaysFR);
+        document.getElementById("month-days").innerText="";
         await Calendar.updateHolidays(holidaysFR);
         await Calendar.updateCalendar();
+
     } catch (error) {
         console.error("Error fetching dates: " + error);
     }
