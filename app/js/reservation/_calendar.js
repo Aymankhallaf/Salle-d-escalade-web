@@ -54,7 +54,7 @@ function displayCalendarHeader() {
 }
 
 
-function formateDay(currentDate){
+export function formateDay(currentDate){
 return currentDate.toLocaleString("fr-FR", {
   weekday: "long",
   year: "numeric",

@@ -1,3 +1,5 @@
+import * as Calendar from "./reservation/_calendar.js";
+
 /**
  * Generate asynchronous call to api.php with parameters
  * @param {*} method GET, POST, PUT or DELETE
@@ -38,13 +40,13 @@ export function getDates(idGym) {
                 console.log("error");
                 return;
             }
-            data[0].forEach(element => {
-                console.log(element['date_start_vacation'].toLocaleString("fr-FR", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  }))
+            data[0].forEach(date => {
+                const vacationDate = new Date(date);
+                console.log( Calendar.formateDay(vacationDate));
+          
+                //                 let dateElement= new Date(element);
+                // console.log(dateElement);
+                // console.log(Calendar.formateDay(element))
             })
         })
 }

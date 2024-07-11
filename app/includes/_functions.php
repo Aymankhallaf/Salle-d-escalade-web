@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Get HTML script to load front-end assets defined in the manifest.json file for entry points given.
  *
@@ -30,20 +31,23 @@ function loadAssets(array $entries): string
 }
 
 
- function getGymName(PDO $dbCo, int $idGym){
+function getGymName(PDO $dbCo, int $idGym)
+{
 
     $query = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym =:idGym");
-    $isQueryOk = $query->execute(['idGym' => $idGym]); 
+    $isQueryOk = $query->execute(['idGym' => $idGym]);
     $dates = $query->fetchAll();
-    var_dump($dates);
-
-    if(!$isQueryOk){
+    $vacationDates = [];
+    foreach ($dates as $date) {
+        array_push($vacationDates, $date["date_start_vacation"]);
+    }
+    if (!$isQueryOk) {
         var_dump("go");
         exit;
     }
     echo json_encode([
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
-         $dates
-    ]);   
+        $vacationDates
+    ]);
 }

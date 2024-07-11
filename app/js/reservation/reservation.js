@@ -1,8 +1,8 @@
 // halls = { "first": { "mai 2024": { "1": { "10:00": 10 } } } }
-import * as Calendar from "./_calender.js";
+import * as Calendar from "./_calendar.js";
 import * as Hours from "./_hours.js";
 import * as NParticipants from "./_numberOfParticpant.js";
-import * as f from "../_functions.js";
+import * as F from "../_functions.js";
 
 
 document.getElementById("hall").addEventListener("change", (e) => {
@@ -12,17 +12,10 @@ document.getElementById("hall").addEventListener("change", (e) => {
         console.log("error chosing gym");
         return;
     }
-    f.getDates(e.target.value);
+    F.getDates(e.target.value);
 }
 );
 
-console.log(currentDate);
-console.log("".currentDate.toLocaleString("fr-FR", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }))
 
 
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
