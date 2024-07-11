@@ -90,7 +90,7 @@ function triggerError(string $error): void
     exit;
 }
 
-function getGymName(PDO $dbCo, int $idGym)
+function getHolidays(PDO $dbCo, int $idGym)
 {
 
     $query = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym =:idGym");
@@ -101,8 +101,7 @@ function getGymName(PDO $dbCo, int $idGym)
         array_push($vacationDates, $date["date_start_vacation"]);
     }
     if (!$isQueryOk) {
-        var_dump("go");
-        exit;
+        triggerError("erreur de connexion à la base de données");
     }
     echo json_encode([
         'isOk' => $isQueryOk,

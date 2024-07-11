@@ -19,5 +19,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetch' &&
         var_dump('error');
         exit;
     }
-    getGymName($dbCo, intval($inputData['idGym']));
+    getHolidays($dbCo, intval($inputData['idGym']));
 }

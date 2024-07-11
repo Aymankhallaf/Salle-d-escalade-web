@@ -76,7 +76,7 @@ export async function getVacationDates(idGym) {
         });
 
         if (!data.isOk) {
-            displayError("error get dates");
+            displayError(data['errorMessage']);
             return;
         }
         let holidaysFR = []

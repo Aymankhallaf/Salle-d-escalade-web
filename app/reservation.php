@@ -1,6 +1,5 @@
 <?php
 include 'includes/_header.php';
-var_dump($_SESSION);
 ?>
 
 <main>
