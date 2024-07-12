@@ -298,9 +298,13 @@ function getOpenHoures(idGym, chosenDate) {
     }
     F.verifyReturnData(data["idGym"], idGym);
     F.verifyReturnData(data["chosenDate"], chosenDate);
-    let a = new Date('19-07-2024 05:35:32'); 
-    console.log(a.getHours());
-    H.displayHour(10, 20);
+    let hours = data["openClosehoures"][0];
+    let openHour = hours["open_hour"].slice(0, 2);
+    let closeHour = hours["close_hour"].slice(0, 2);
+    console.log(openHour,closeHour);
+    
+    H.displayHour(openHour, closeHour);
+
     // let holidaysFR = []
     // data[0].forEach(day => {
     //   holidaysFR.push(formateDay(new Date(day)));

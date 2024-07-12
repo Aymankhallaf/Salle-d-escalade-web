@@ -179,6 +179,6 @@ $openClosehoures = $query->fetchAll();
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
         'chosenDate'=> $chosenDate,
-        $openClosehoures    ]);
+        'openClosehoures'=> $openClosehoures    ]);
 }
     
