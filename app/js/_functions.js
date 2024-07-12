@@ -64,3 +64,29 @@ export function displayMessage(message) {
     setTimeout(() => m.remove(), 2000);
 }
 
+/**
+ * verify the id gym.
+ * return false if the id gym not "1" or "2"
+ * @returns {boolen} true/false
+ */
+export function verifyIdGym(idGym){
+    if (idGym !== "1" && idGym !== "2") {
+        displayError("erreur lors du choix de la salle d'escalade");
+        return;
+      }
+}
+
+
+/**
+ *
+ *verify if the response data the same as the requested
+ * @param {string} request string for request data. 
+ * @param {string} response string for response data. 
+ * @return {void} if not the same and display message error.
+ */
+export function verifyReturnData(request, response){
+    if(request !== response){
+        displayError("erreur lors de l'envoi et de la réception des données");
+        return
+      }
+}

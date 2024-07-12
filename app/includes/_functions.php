@@ -60,17 +60,18 @@ function isTokenOk(string $token): bool
         && $_SESSION['token'] === $token;
 }
 
-// /**
-//  * Check fo referer
-//  *
-//  * @return boolean Is the current referer valid ?
-//  */
-// function isServerOk(): bool
-// {
-//     global $globalUrl;
-//     return isset($_SERVER['HTTP_REFERER'])
-//         && str_contains($_SERVER['HTTP_REFERER'], $globalUrl);
-// }
+
+/**
+ * Check fo referer
+ *
+ * @return boolean Is the current referer valid ?
+ */
+function isServerOk(): bool
+{
+    global $globalUrl;
+    return isset($_SERVER['HTTP_REFERER'])
+        && str_contains($_SERVER['HTTP_REFERER'], $globalUrl);
+}
 
 /**
  * Print an error in json format and stop script.
@@ -78,16 +79,27 @@ function isTokenOk(string $token): bool
  * @param string $error Error code from errors array available in _congig.php
  * @return void
  */
-function triggerError(string $error): void
+function triggerError(string $error, string $flag=''): void
 {
     global $errors;
 
     echo json_encode([
         'isOk' => false,
-        'errorMessage' => $errors[$error]
+        'errorMessage' => $errors[$error],
+        'flag' => $flag
     ]);
 
     exit;
+}
+
+/**
+ * Removes tags from given array values;.
+ *
+ * @param array $data - input values
+ */
+function stripTagsArray(array &$data):void
+{
+    $data = array_map('strip_tags', $data);
 }
 
 function getHolidays(PDO $dbCo, int $idGym)
@@ -101,7 +113,7 @@ function getHolidays(PDO $dbCo, int $idGym)
         array_push($vacationDates, $date["date_start_vacation"]);
     }
     if (!$isQueryOk) {
-        triggerError("erreur de connexion à la base de données");
+        triggerError("connection");
     }
     echo json_encode([
         'isOk' => $isQueryOk,
@@ -110,19 +122,63 @@ function getHolidays(PDO $dbCo, int $idGym)
     ]);
 }
 
-function getOpenDays(PDO $dbCo, int $idGym)
+// function getOpenDays(PDO $dbCo, int $idGym)
+// {
+//     $query = $dbCo->prepare("SELECT id_days FROM open_days WHERE id_gym =:idGym");
+//     $isQueryOk = $query->execute(['idGym' => $idGym]);
+//     $openDays = $query->fetchAll();
+//     var_dump($openDays);
+//     if (!$isQueryOk) {
+//         triggerError("connection");
+//     }
+//     echo json_encode([
+//         'isOk' => $isQueryOk,
+//         'idGym' => $idGym,
+//         $openDays
+//     ]);
+// }
+
+
+/**
+ * 
+ * is a valide date ?
+ * @param string $date a date in string formate
+ * @return bool true if the date in this formate 27/03/2024
+ */
+function isValidDate(string $date)
 {
-    $query = $dbCo->prepare("SELECT id_days FROM open_days WHERE id_gym =:idGym");
-    $isQueryOk = $query->execute(['idGym' => $idGym]);
-    $openDays = $query->fetchAll();
-    var_dump($openDays);
+    list($day, $month, $year) =  explode('-', $date);
+    return checkdate(intval($month), intval($day), intval($year));
+}
+
+
+/**
+ * is this day today or in the future?
+ * @param string $date a date of this formate "27-05-2024"
+ * @return bool true if it today and day in future, false if yesterday.
+ */
+function isFutureDate($date)
+{
+    return date_create($date) > new DateTime("yesterday");
+}
+
+
+function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate){
+    $query= $dbCo->prepare("SELECT open_hour, close_hour FROM open_days 
+    WHERE id_days = :idDay AND id_gym = :idGym;");
+    $isQueryOk = $query->execute(['idGym' => $idGym,
+    'idDay' => date('w', strtotime($chosenDate)),
+]); 
+
+$openClosehoures = $query->fetchAll();
+    // var_dump($openClosehoures);
     if (!$isQueryOk) {
-        triggerError("erreur de connexion à la base de données");
+        triggerError("connection");
     }
     echo json_encode([
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
-        $openDays
-    ]);
+        'chosenDate'=> $chosenDate,
+        $openClosehoures    ]);
 }
-
+    

@@ -1,6 +1,11 @@
 <?php
 include 'includes/_header.php';
-var_dump(date('w', strtotime("7/27/2024, 12:00:00 AM")))
+var_dump(date('w', strtotime("27/03/2024")));
+// $date1 = new DateTime("now");
+// var_dump($date1);
+
+// var_dump(isFutureDate("13-08-2024"));
+
 ?>
 
 <main>

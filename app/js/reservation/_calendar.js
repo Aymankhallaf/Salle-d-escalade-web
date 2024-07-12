@@ -1,4 +1,5 @@
 import * as F from "../_functions.js";
+import * as H from "./_hours.js";
 
 //closed days
 const closedDay = ["lu"];
@@ -30,6 +31,14 @@ function updateHolidays(newHolidays) {
   holidays = newHolidays;
 }
 
+/**
+ * check if the date valide or not(true = valide).
+ * @param {string} dateStr string date
+ * @returns {boolen} (true = valide) - (false =unvalide).
+ */
+function isDateValid(dateStr) {
+  return !isNaN(new Date(dateStr));
+}
 
 /**
  * get the index of the first day the current month and the number of days in this month.
@@ -82,7 +91,8 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", currentDate.toLocaleString("fr-FR",{year: "numeric",month: "numeric",day: "numeric"}));
+  dayCell.setAttribute("datetime", 
+    currentDate.toLocaleDateString('fr-FR').replace(/\//g, '-'));
   if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
@@ -193,15 +203,14 @@ function handleCalendarCellClick(e) {
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
-    let chosenDateEn = selectedDate.dateTime;
-    console.log(chosenDateEn);
+    let chosenDateShort = selectedDate.dateTime;
+    console.log(chosenDateShort);
     //save chosen date in local Storage.
-    localStorage.setItem("chosenDate", JSON.stringify(chosenDate));
+    localStorage.setItem("chosenDate", JSON.stringify(chosenDateShort));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
-
-    getOpenHoures(localStorage.getItem("chosenGym"), chosenDate);
+    getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort);
     //to be reviewed
     return chosenDate;
 
@@ -261,6 +270,7 @@ function getVacationDates(idGym) {
     data[0].forEach(day => {
       holidaysFR.push(formateDay(new Date(day)));
     });
+    F.verifyReturnData(data["idGym"] !== idGym);
     F.displayMessage("tu as bien choisi le salle");
     document.getElementById("month-days").innerText = "";
     updateHolidays(holidaysFR);
@@ -269,7 +279,13 @@ function getVacationDates(idGym) {
   })
 }
 
+
 function getOpenHoures(idGym, chosenDate) {
+ if (!isDateValid){
+  F.displayMessage("la date n'est pas valide");
+  return
+ }
+  
   F.callApi("POST", {
     action: "fetchHours",
     idGym: idGym,
@@ -280,6 +296,11 @@ function getOpenHoures(idGym, chosenDate) {
       F.displayError(data['errorMessage']);
       return;
     }
+    F.verifyReturnData(data["idGym"], idGym);
+    F.verifyReturnData(data["chosenDate"], chosenDate);
+    let a = new Date('19-07-2024 05:35:32'); 
+    console.log(a.getHours());
+    H.displayHour(10, 20);
     // let holidaysFR = []
     // data[0].forEach(day => {
     //   holidaysFR.push(formateDay(new Date(day)));
@@ -292,13 +313,9 @@ function getOpenHoures(idGym, chosenDate) {
   })
 }
 
-
 document.getElementById("hall").addEventListener("change", (e) => {
 
-  if (e.target.value !== "1" && e.target.value !== "2") {
-    displayError("erreur lors du choix de la salle d'escalade");
-    return;
-  }
+  F.verifyIdGym(e.target.value);
   //get vacation dates
   localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
   getVacationDates(e.target.value);
