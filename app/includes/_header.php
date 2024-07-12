@@ -3,7 +3,6 @@ session_start();
 include 'includes/_connection.php';
 include_once 'includes/_functions.php';
 
-
 generateToken();
 
 ?>
@@ -22,10 +21,11 @@ generateToken();
     ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173/js/script.js"></script>
+        <script type="module" src="./js/reservation/reservation.js"></script>
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
         // Production integration for vite with run build
-        echo loadAssets(['js/script.js']);
+        echo loadAssets(['js/script.js','js/reservation/reservation.js']);
         // Try this way to load assets from manifest.json
         // https://github.com/andrefelipe/vite-php-setup
     }

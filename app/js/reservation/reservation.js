@@ -7,20 +7,6 @@ import * as F from "../_functions.js";
 
 
 
-document.getElementById("hall").addEventListener("change", (e) => {
-
-    if (e.target.value !== "1" && e.target.value !== "2") {
-        displayError("erreur lors du choix de la salle d'escalade");
-        return;
-    }
-    //get vacation dates
-    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
-    Calendar.getVacationDates(e.target.value);
-}
-);
-
-
-
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 // function handleSubmit(e) {
 //     e.preventDefault();

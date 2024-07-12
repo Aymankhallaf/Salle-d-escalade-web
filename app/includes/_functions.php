@@ -53,7 +53,7 @@ function generateToken()
  * @param string $token token
  * @return boolean Is there a valid token in user session ?
  */
-function isTokenOk(string $token ): bool
+function isTokenOk(string $token): bool
 {
     return isset($_SESSION['token'])
         && isset($token)
@@ -107,6 +107,22 @@ function getHolidays(PDO $dbCo, int $idGym)
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
         $vacationDates
+    ]);
+}
+
+function getOpenDays(PDO $dbCo, int $idGym)
+{
+    $query = $dbCo->prepare("SELECT id_days FROM open_days WHERE id_gym =:idGym");
+    $isQueryOk = $query->execute(['idGym' => $idGym]);
+    $openDays = $query->fetchAll();
+    var_dump($openDays);
+    if (!$isQueryOk) {
+        triggerError("erreur de connexion à la base de données");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
+        'idGym' => $idGym,
+        $openDays
     ]);
 }
 

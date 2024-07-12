@@ -1,5 +1,6 @@
 <?php
 include 'includes/_header.php';
+var_dump(date('w', strtotime("7/27/2024, 12:00:00 AM")))
 ?>
 
 <main>
@@ -98,14 +99,14 @@ include 'includes/_footer.php';
 
 
 <template id="templateError">
-        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
-    </template>
+    <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+</template>
 
-    <template id="templateMessage">
-        <li data-message="" class="messages__itm">Ici vient le message</li>
-    </template>
+<template id="templateMessage">
+    <li data-message="" class="messages__itm">Ici vient le message</li>
+</template>
+<!-- <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/reservation/reservation.js"></script> -->
 </body>
-<script type="module" src="./js/script.js"></script>
-<script type="module" src="./js/reservation/reservation.js"></script>
 
 </html>

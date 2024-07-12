@@ -4,18 +4,11 @@ import * as F from "../_functions.js";
 const closedDay = ["lu"];
 // let holidays = ["jeudi 9 mai 2024", "Lundi 20 mai 2024", "dimanche 14 juillet 2024", "jeudi 15 août 2024"]
 let holidays = []
-function updateHolidays(newHolidays) {
-  holidays = newHolidays;
-}
-
 let headerTtl = document.getElementById("calender__ttl")
 let previous = document.getElementById("calender__left");
 let next = document.getElementById("calender__right");
-
 // all the days apears here
 let daysContainer = document.getElementById("month-days");
-
-
 
 // selected date apears here
 let selected = document.querySelector(".calender__selected-txt");
@@ -29,9 +22,13 @@ let month = currentDate.getMonth();
 //selected date to be reviewed
 let chosenDate = null;
 
-
-
-
+/**
+ * update the holidays 
+ * @param {array} array of hoildays ex ["jeudi 9 mai 2024", "Lundi 20 mai 2024"]
+ */
+function updateHolidays(newHolidays) {
+  holidays = newHolidays;
+}
 
 
 /**
@@ -63,7 +60,7 @@ function displayCalendarHeader() {
  * @param {string} date in string
  * @returns a date in french format "jeudi 9 mai 2024"
  */
-export function formateDay(date) {
+function formateDay(date) {
   return date.toLocaleString("fr-FR", {
     weekday: "long",
     year: "numeric",
@@ -85,7 +82,7 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", currentDate);
+  dayCell.setAttribute("datetime", currentDate.toLocaleString("fr-FR",{year: "numeric",month: "numeric",day: "numeric"}));
   if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
@@ -196,11 +193,15 @@ function handleCalendarCellClick(e) {
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
+    let chosenDateEn = selectedDate.dateTime;
+    console.log(chosenDateEn);
     //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDate));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
+
+    getOpenHoures(localStorage.getItem("chosenGym"), chosenDate);
     //to be reviewed
     return chosenDate;
 
@@ -241,13 +242,13 @@ function displayMessage(message) {
 }
 
 /**
-* get the vacation date and update calender.
+* get the vacation dates and update the calender.
 * @param {string} idGym gym id
 * @returns 
 */
-export function getVacationDates(idGym) {
+function getVacationDates(idGym) {
   F.callApi("POST", {
-    action: "fetch",
+    action: "fetchHoliday",
     idGym: idGym,
     token: F.getToken()
 
@@ -267,3 +268,42 @@ export function getVacationDates(idGym) {
 
   })
 }
+
+function getOpenHoures(idGym, chosenDate) {
+  F.callApi("POST", {
+    action: "fetchHours",
+    idGym: idGym,
+    token: F.getToken(),
+    chosenDate
+  }).then(data => {
+    if (!data.isOk) {
+      F.displayError(data['errorMessage']);
+      return;
+    }
+    // let holidaysFR = []
+    // data[0].forEach(day => {
+    //   holidaysFR.push(formateDay(new Date(day)));
+    // });
+    // F.displayMessage("tu as bien choisi le salle");
+    // document.getElementById("month-days").innerText = "";
+    // updateHolidays(holidaysFR);
+    // updateCalendar();
+
+  })
+}
+
+
+document.getElementById("hall").addEventListener("change", (e) => {
+
+  if (e.target.value !== "1" && e.target.value !== "2") {
+    displayError("erreur lors du choix de la salle d'escalade");
+    return;
+  }
+  //get vacation dates
+  localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+  getVacationDates(e.target.value);
+}
+);
+
+
+

@@ -14,10 +14,18 @@ if (!isTokenOk($inputData['token'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetch' && isset($inputData['idGym'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
         var_dump('error');
         exit;
     }
     getHolidays($dbCo, intval($inputData['idGym']));
+}
+
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
+    if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
+        var_dump('error');
+        exit;
+    }
+    // getOpenHours($dbCo, intval($inputData['idGym']));
 }
