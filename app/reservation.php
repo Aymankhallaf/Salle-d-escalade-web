@@ -23,6 +23,31 @@ var_dump(date('w', strtotime("27/03/2024")));
                     <option class="hall__option" value="2">La deuxième salle</option>
                 </select>
             </li>
+            <!-- duration -->
+            <li class="warp-input duration">
+                <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
+                <select class="duration__select js-select" name="duration" id="duration">
+                    <option class="duration__option" value="" required>Veuillez choisir une option</option>
+                    <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8
+                            €</span>
+                    </option>
+                    <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12
+                            €</span>
+                    </option>
+                    <option class="duration__option" value="120">1 jour <span class="" data-price="15">/ 15 €</span>
+                    </option>
+                </select>
+            </li>
+            <!-- participant -->
+            <li class="warp-input participant">
+                <label class="participant__ttl" for="participants">Numéro de participants:</label>
+                <div class="participant__container">
+                    <button id="decrease-participant" aria-label="bouton moins" class="participant__btn participant__btn--minus" type="button"></button>
+                    <input class="participant__input" type="text" id="participants" name="participants" value="0">
+                    <button id="increase-participant" aria-label="bouton plus" class="participant__btn participant__btn--plus" type="button"></button>
+                    <p id="participant__display" class="participant__display"></p>
+                </div>
+            </li>
             <!-- calender -->
             <li class="warp-input calender-container">
                 <p for="calender" class="calender__label" id="calender__label">Choisissez la date: </p>
@@ -66,31 +91,7 @@ var_dump(date('w', strtotime("27/03/2024")));
             </div>
 
             </li>
-            <!-- duration -->
-            <li class="warp-input duration">
-                <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
-                <select class="duration__select js-select" name="duration" id="duration">
-                    <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="120">1 jour <span class="" data-price="15">/ 15 €</span>
-                    </option>
-                </select>
-            </li>
-            <!-- participant -->
-            <li class="warp-input participant">
-                <label class="participant__ttl" for="participants">Numéro de participants:</label>
-                <div class="participant__container">
-                    <button id="decrease-participant" aria-label="bouton moins" class="participant__btn participant__btn--minus" type="button"></button>
-                    <input class="participant__input" type="text" id="participants" name="participants" value="0">
-                    <button id="increase-participant" aria-label="bouton plus" class="participant__btn participant__btn--plus" type="button"></button>
-                    <p id="participant__display" class="participant__display"></p>
-                </div>
-            </li>
+
         </ul>
         <div class="reservation-form__btn-container">
             <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
