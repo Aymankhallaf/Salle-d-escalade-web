@@ -251,11 +251,12 @@ function displayMessage(message) {
 }
 
 /**
-* get the vacation dates and update the calender.
+* get and set gym details the vacation dates and update the calender.
+* the default maximum capcity of the gym
 * @param {string} idGym gym id
 * @returns 
 */
-function getVacationDates(idGym) {
+export function GetSetGymDetails(idGym) {
   F.callApi("POST", {
     action: "fetchHoliday",
     idGym: idGym,
@@ -271,10 +272,11 @@ function getVacationDates(idGym) {
       holidaysFR.push(formateDay(new Date(day)));
     });
     F.verifyReturnData(data["idGym"] !== idGym);
-    F.displayMessage("tu as bien choisi le salle");
     document.getElementById("month-days").innerText = "";
     updateHolidays(holidaysFR);
     updateCalendar();
+
+
 
   })
 }
@@ -308,15 +310,5 @@ function getOpenHoures(idGym, chosenDate) {
 
   })
 }
-
-document.getElementById("hall").addEventListener("change", (e) => {
-
-  F.verifyIdGym(e.target.value);
-  //get vacation dates
-  localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
-  getVacationDates(e.target.value);
-}
-);
-
 
 

@@ -41,3 +41,4 @@ document.getElementById("decrease-participant").addEventListener("click", () => 
     let newNumberOfParticipants = handleInputField() - 1;
     participantsInput.value = newNumberOfParticipants;
 })
+

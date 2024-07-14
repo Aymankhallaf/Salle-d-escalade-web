@@ -7,6 +7,19 @@ import * as F from "../_functions.js";
 
 
  F.getGym();
+ document.getElementById("hall").addEventListener("change", (e) => {
+
+    F.verifyIdGym(e.target.value);
+    //get vacation dates
+    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+    Calendar.getVacationDates(e.target.value);
+    F.setMaxGymCapacity(capicty);
+
+  }
+  );
+  
+  
+  
 
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 // function handleSubmit(e) {

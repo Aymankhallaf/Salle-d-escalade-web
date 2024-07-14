@@ -20,7 +20,7 @@ include 'includes/_header.php';
                 <label class="participant__ttl" for="participants">Numéro de participants:</label>
                 <div class="participant__container">
                     <button id="decrease-participant" aria-label="bouton moins" class="participant__btn participant__btn--minus" type="button"></button>
-                    <input class="participant__input" type="text" id="participants" name="participants" value="0">
+                    <input class="participant__input" type="text" id="participants" name="participants" min="1" max="2" value="0">
                     <button id="increase-participant" aria-label="bouton plus" class="participant__btn participant__btn--plus" type="button"></button>
                     <p id="participant__display" class="participant__display"></p>
                 </div>

@@ -77,13 +77,7 @@ export function displayGym(gym) {
 
 }
 
-// function getGymId(e) {
-//     verifyIdGym(e.target.value);
-//     //get vacation dates
-//     localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
-//     console.log(e.target.value);
-//     Calendar.getVacationDates(e.target.value);
-// }
+
 
 /**
  * verify the id gym.
@@ -112,6 +106,10 @@ export function verifyReturnData(request, response) {
     }
 }
 
+
+/**
+ * get list of gym then call displayGym().
+ */
 export function getGym() {
     callApi("POST", {
         action: "fetchGym",
@@ -119,13 +117,32 @@ export function getGym() {
 
     }).then(data => {
         if (!data.isOk) {
-            F.displayError(data['errorMessage']);
+            displayError(data['errorMessage']);
             return;
         }
         data[0].forEach(gym => {
             displayGym(gym);
+
         });
+
 
     })
 
 }
+
+
+/**
+ * compared a value to max and return true or false.
+ * @param {int} max int max value.
+ * @param {int} value int max value.
+ * @returns {boolean} true if value smaller or equal to max.
+ */
+function verifyCapacity(value,max){
+return value <= max;
+}
+
+/*** */
+function maxCapacityControl(capicty){
+    document.getElementsByName("participants").addEventListener('change', capacityControl );
+}
+
