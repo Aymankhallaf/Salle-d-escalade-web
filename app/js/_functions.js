@@ -129,20 +129,3 @@ export function getGym() {
     })
 
 }
-
-
-/**
- * compared a value to max and return true or false.
- * @param {int} max int max value.
- * @param {int} value int max value.
- * @returns {boolean} true if value smaller or equal to max.
- */
-function verifyCapacity(value,max){
-return value <= max;
-}
-
-/*** */
-function maxCapacityControl(capicty){
-    document.getElementsByName("participants").addEventListener('change', capacityControl );
-}
-

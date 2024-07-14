@@ -91,7 +91,7 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", 
+  dayCell.setAttribute("datetime",
     currentDate.toLocaleDateString('fr-FR').replace(/\//g, '-'));
   if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
@@ -275,19 +275,20 @@ export function GetSetGymDetails(idGym) {
     document.getElementById("month-days").innerText = "";
     updateHolidays(holidaysFR);
     updateCalendar();
+    localStorage.setItem("capacity", JSON.stringify(data["capacity"]));
 
-
+ 
 
   })
 }
 
 
 function getOpenHoures(idGym, chosenDate) {
- if (!isDateValid){
-  F.displayMessage("la date n'est pas valide");
-  return
- }
-  
+  if (!isDateValid) {
+    F.displayMessage("la date n'est pas valide");
+    return
+  }
+
   F.callApi("POST", {
     action: "fetchHours",
     idGym: idGym,
@@ -303,8 +304,8 @@ function getOpenHoures(idGym, chosenDate) {
     let hours = data["openClosehoures"][0];
     let openHour = hours["open_hour"].slice(0, 2);
     let closeHour = hours["close_hour"].slice(0, 2);
-    console.log(openHour,closeHour);
-    
+    console.log(openHour, closeHour);
+
     H.displayHour(openHour, closeHour);
 
 
