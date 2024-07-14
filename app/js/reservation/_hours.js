@@ -1,5 +1,5 @@
-const closedHours = []
-const hoursContainer = document.getElementById("hours__container")
+const closedHours = [];
+const hoursContainer = document.getElementById("hours__container");
 const today = new Date();
 let timeNow = today.getHours();
 
@@ -17,6 +17,7 @@ let timeNow = today.getHours();
     hourCell.dataset.hour = hour;
     hourCell.dataset.minute = minute;
     hourCell.setAttribute("datetime", hourCell.textContent);
+    hourCell.addEventListener 
     if (isHoursDisactive(hour)) {
         hourCell.classList.add("disactive");
     }
@@ -39,7 +40,7 @@ export function displayHour(start, end) {
 }
 
 
-/**
+/** to do rewrite this function.
  * check if an hour is earier than the time now and return false. 
  * @param {number} hour a certain hour in format number.
  * @returns {boolean} return "true" if time now i or true 

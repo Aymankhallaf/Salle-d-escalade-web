@@ -314,8 +314,7 @@ function getOpenHoures(idGym, chosenDate) {
     let hours = data["openClosehoures"][0];
     let openHour = hours["open_hour"].slice(0, 2);
     let closeHour = hours["close_hour"].slice(0, 2);
-    console.log(openHour, closeHour);
-
+    document.getElementById("hours__container").innerHTML = "";
     H.displayHour(openHour, closeHour);
 
 
