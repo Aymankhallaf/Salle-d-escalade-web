@@ -267,7 +267,7 @@ function getVacationDates(idGym) {
       return;
     }
     let holidaysFR = []
-    data[0].forEach(day => {
+    data["vacationDates"].forEach(day => {
       holidaysFR.push(formateDay(new Date(day)));
     });
     F.verifyReturnData(data["idGym"] !== idGym);

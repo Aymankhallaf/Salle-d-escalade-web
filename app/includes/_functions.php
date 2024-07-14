@@ -104,7 +104,7 @@ function stripTagsArray(array &$data): void
 
 
 /**
- * get gyms id and name.
+ * gets gyms id and name.
  * @param PDO $dbCo
  * @return void
  */
@@ -124,6 +124,42 @@ function getGyms(PDO $dbCo)
 }
 
 
+/**
+ * gets the capacity and holidays of a gym.
+ *
+ * @param PDO $dbCo Database connection.
+ * @param int $idGym ID of the gym.
+ * @return void
+ */
+function getGymDetails(PDO $dbCo, int $idGym)
+{
+    $queryCapacity = $dbCo->prepare("SELECT capacity FROM gym WHERE id_gym = :idGym;");
+    $isQueryOk = $queryCapacity->execute(['idGym' => $idGym]);
+    if (!$isQueryOk) {
+        triggerError("connection", "capacity");
+    }
+    $capacity = $queryCapacity->fetchColumn();
+    $queryHolidays = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym = :idGym;");
+    $isQueryOk2 = $queryHolidays->execute(['idGym' => $idGym]);
+    if (!$isQueryOk2) {
+        triggerError("connection", "vacation date");
+    }
+
+    $dates = $queryHolidays->fetchAll();
+    $vacationDates = [];
+    foreach ($dates as $date) {
+        array_push($vacationDates, $date["date_start_vacation"]);
+    }
+    echo json_encode([
+        'isOk' =>  $isQueryOk2,
+        'idGym' => $idGym,
+        'capacity' => $capacity,
+        'vacationDates' => $vacationDates
+    ]);
+}
+
+
+
 function getMaxcapacity(PDO $dbCo, int $idGym)
 {
 
@@ -135,7 +171,8 @@ function getMaxcapacity(PDO $dbCo, int $idGym)
     }
     echo json_encode([
         'isOk' => $isQueryOk,
-        'capacity' => $query->fetchColumn()]);
+        'capacity' => $query->fetchColumn()
+    ]);
 }
 
 

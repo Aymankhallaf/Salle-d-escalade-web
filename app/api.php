@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
         triggerError('idGym', '1');
     }
-    getHolidays($dbCo, intval($inputData['idGym']));
+    getGymDetails($dbCo, intval($inputData['idGym']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
         triggerError('idGym', "2");
