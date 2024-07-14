@@ -108,11 +108,12 @@ function getGyms(PDO $dbCo)
     $query = $dbCo->prepare("SELECT id_gym,name_gym,capacity  FROM gym;");
     $isQueryOk = $query->execute();
     $gym = $query->fetchAll($dbCo::FETCH_ASSOC);
-    
+
     if (!$isQueryOk) {
         triggerError("connection");
     }
-   echo json_encode([
+    echo json_encode([
+        'isOk' => $isQueryOk,
         $gym
     ]);
 }

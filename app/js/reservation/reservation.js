@@ -6,6 +6,7 @@ import * as F from "../_functions.js";
 
 
 
+ F.getGym();
 
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
 // function handleSubmit(e) {

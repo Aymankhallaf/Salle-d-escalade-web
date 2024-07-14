@@ -65,15 +65,28 @@ export function displayMessage(message) {
 }
 
 /**
+ * Display gym(hall) with template
+ * @param {object} gym 
+ */
+export function displayGym(gym) {
+    const template = document.importNode(document.getElementById('hallTemplate').content, true);
+    const option = template.querySelector('.js-hall-option')
+    option.innerText = gym['name_gym'];
+    option.value = gym['id_gym'];
+    document.getElementById('hall').appendChild(option);
+}
+
+
+/**
  * verify the id gym.
  * return false if the id gym not "1" or "2"
  * @returns {boolen} true/false
  */
-export function verifyIdGym(idGym){
+export function verifyIdGym(idGym) {
     if (idGym !== "1" && idGym !== "2") {
         displayError("erreur lors du choix de la salle d'escalade");
         return;
-      }
+    }
 }
 
 
@@ -84,20 +97,28 @@ export function verifyIdGym(idGym){
  * @param {string} response string for response data. 
  * @return {void} if not the same and display message error.
  */
-export function verifyReturnData(request, response){
-    if(request !== response){
+export function verifyReturnData(request, response) {
+    if (request !== response) {
         displayError("erreur lors de l'envoi et de la réception des données");
         return
-      }
+    }
 }
 
-export function getGym(){
+let gym = { id_gym: 1, name_gym: "La salle escalade aventure", capacity: 20 }
+export function getGym() {
     callApi("POST", {
         action: "fetchGym",
         token: getToken()
-    
-}).then (data => {
-    console.log(data)
-})
+
+    }).then(data => {
+        if (!data.isOk) {
+            F.displayError(data['errorMessage']);
+            return;
+        }
+        data[0].forEach(gym => {
+            displayGym(gym);
+        });
+
+    })
 
 }

@@ -13,8 +13,6 @@ include 'includes/_header.php';
                 <label class="hall__ttl" id="hall_ttl" for="hall">Choisissez la salle: </label>
                 <select class="hall__select js-select" name="hall" id="hall">
                     <option class="hall__option" value="" required>Veuillez choisir une option</option>
-                    <option class="hall__option" value="1">La première salle</option>
-                    <option class="hall__option" value="2">La deuxième salle</option>
                 </select>
             </li>
             <!-- duration -->
@@ -97,6 +95,10 @@ include 'includes/_header.php';
 include 'includes/_footer.php';
 ?>
 
+<template id="hallTemplate">
+<option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
+</template>
+
 
 <template id="templateError">
     <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
@@ -105,6 +107,8 @@ include 'includes/_footer.php';
 <template id="templateMessage">
     <li data-message="" class="messages__itm">Ici vient le message</li>
 </template>
+
+
 </body>
 
 </html>

@@ -305,14 +305,6 @@ function getOpenHoures(idGym, chosenDate) {
     
     H.displayHour(openHour, closeHour);
 
-    // let holidaysFR = []
-    // data[0].forEach(day => {
-    //   holidaysFR.push(formateDay(new Date(day)));
-    // });
-    // F.displayMessage("tu as bien choisi le salle");
-    // document.getElementById("month-days").innerText = "";
-    // updateHolidays(holidaysFR);
-    // updateCalendar();
 
   })
 }
