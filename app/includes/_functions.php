@@ -226,7 +226,13 @@ function isFutureDate($date)
     return date_create($date) > new DateTime("yesterday");
 }
 
-
+/**
+ * get open and close hours.
+ * @param PDO $dbCo - Database connection.
+ * @param int $idGym - Gym id.
+ * @param string $chosenDate a chosen date.
+ * @return void
+ */
 function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate)
 {
     $query = $dbCo->prepare("SELECT open_hour, close_hour FROM open_days 
@@ -247,4 +253,10 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate)
         'chosenDate' => $chosenDate,
         'openClosehoures' => $openClosehoures
     ]);
+}
+
+
+function getReservationInfo(int $idUSER){
+    
+
 }

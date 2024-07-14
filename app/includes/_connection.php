@@ -16,3 +16,4 @@ try {
 } catch (Exception $e) {
     die('Unable to connect to the database. ' . $e->getMessage());
 }
+

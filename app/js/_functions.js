@@ -92,6 +92,7 @@ export function verifyIdGym(idGym) {
 }
 
 
+
 /**
  *
  *verify if the response data the same as the requested

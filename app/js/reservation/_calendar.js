@@ -91,8 +91,7 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime",
-    currentDate.toLocaleDateString('fr-FR').replace(/\//g, '-'));
+  dayCell.setAttribute("datetime", currentDate);
   if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
@@ -203,7 +202,7 @@ function handleCalendarCellClick(e) {
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
-    let chosenDateShort = selectedDate.dateTime;
+    let chosenDateShort = selectedDate.dateTime.currentDate.toLocaleDateString('fr-FR').replace(/\//g, '-');
     console.log(chosenDateShort);
     //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDateShort));
@@ -277,7 +276,7 @@ export function GetSetGymDetails(idGym) {
     updateCalendar();
     localStorage.setItem("capacity", JSON.stringify(data["capacity"]));
 
- 
+
 
   })
 }

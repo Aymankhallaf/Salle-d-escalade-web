@@ -30,13 +30,13 @@ include 'includes/_header.php';
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
                 <select class="duration__select js-select" name="duration" id="duration">
                     <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8
+                    <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
                             €</span>
                     </option>
-                    <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12
+                    <option class="duration__option" value="1">60 minutes <span class="" data-price="12">/ 12
                             €</span>
                     </option>
-                    <option class="duration__option" value="120">1 jour <span class="" data-price="15">/ 15 €</span>
+                    <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
                     </option>
                 </select>
             </li>

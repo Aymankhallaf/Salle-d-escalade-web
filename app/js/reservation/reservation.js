@@ -1,7 +1,7 @@
 // halls = { "first": { "mai 2024": { "1": { "10:00": 10 } } } }
 import * as Calendar from "./_calendar.js";
 import * as Hours from "./_hours.js";
-import * as NParticipants from "./_numberOfParticpant.js";
+import * as NParticipants from "./_nbParticpant.js";
 import * as F from "../_functions.js";
 
 
@@ -18,6 +18,15 @@ document.getElementById("hall").addEventListener("change", (e) => {
 );
 
 
+document.getElementById("duration").addEventListener("change", (e) => {
+
+    //to do write function to verify id !!!
+    //get vacation dates
+    localStorage.setItem("duration", JSON.stringify(e.target.value));
+    //to do verify avaliable time
+
+}
+);
 
 
 // document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
