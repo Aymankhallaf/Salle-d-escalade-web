@@ -67,7 +67,7 @@ function displayCalendarHeader() {
 /**
  * convert string date to date in french formate.
  * @param {string} date in string
- * @returns a date in french format "jeudi 9 mai 2024"
+ * @returns {string} a string in french format "jeudi 9 mai 2024"
  */
 function formateDay(date) {
   return date.toLocaleString("fr-FR", {
@@ -77,6 +77,17 @@ function formateDay(date) {
     day: "numeric",
   });
 }
+
+/**
+ * convert string date to this string format dd-mm-yyyy.
+ * @param {string} date in string
+ * @returns {string} a date in french format "jeudi 9 mai 2024"
+ */
+function formateDate(date) {
+  return date.toLocaleDateString('fr-FR').replace(/\//g, '-');
+}
+
+
 
 /**
  * creates a day cell with its attributes and disactive it according to isDayDisactive function.
@@ -91,7 +102,7 @@ function createDayCell(day, currentDate) {
   dayCell.textContent = day;
   dayCell.dataset.day = day;
   dayCell.dataset.date = dataSet;
-  dayCell.setAttribute("datetime", currentDate);
+  dayCell.setAttribute("datetime", formateDate(currentDate));
   if (isDayDisactive(dataSet, currentDate)) {
     dayCell.classList.add("disactive");
   }
@@ -202,7 +213,7 @@ function handleCalendarCellClick(e) {
   activeDay(selectedDate);
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
-    let chosenDateShort = selectedDate.dateTime.currentDate.toLocaleDateString('fr-FR').replace(/\//g, '-');
+    let chosenDateShort = selectedDate.dateTime;
     console.log(chosenDateShort);
     //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDateShort));

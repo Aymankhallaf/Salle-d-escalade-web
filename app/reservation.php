@@ -33,7 +33,7 @@ include 'includes/_header.php';
                     <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
                             €</span>
                     </option>
-                    <option class="duration__option" value="1">60 minutes <span class="" data-price="12">/ 12
+                    <option class="duration__option" value="2">60 minutes <span class="" data-price="12">/ 12
                             €</span>
                     </option>
                     <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
