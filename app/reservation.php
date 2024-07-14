@@ -1,11 +1,5 @@
 <?php
 include 'includes/_header.php';
-var_dump(date('w', strtotime("27/03/2024")));
-// $date1 = new DateTime("now");
-// var_dump($date1);
-
-// var_dump(isFutureDate("13-08-2024"));
-
 ?>
 
 <main>
@@ -111,8 +105,6 @@ include 'includes/_footer.php';
 <template id="templateMessage">
     <li data-message="" class="messages__itm">Ici vient le message</li>
 </template>
-<!-- <script type="module" src="./js/script.js"></script>
-    <script type="module" src="./js/reservation/reservation.js"></script> -->
 </body>
 
 </html>

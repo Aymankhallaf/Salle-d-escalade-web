@@ -79,7 +79,7 @@ function isServerOk(): bool
  * @param string $error Error code from errors array available in _congig.php
  * @return void
  */
-function triggerError(string $error, string $flag=''): void
+function triggerError(string $error, string $flag = ''): void
 {
     global $errors;
 
@@ -97,9 +97,24 @@ function triggerError(string $error, string $flag=''): void
  *
  * @param array $data - input values
  */
-function stripTagsArray(array &$data):void
+function stripTagsArray(array &$data): void
 {
     $data = array_map('strip_tags', $data);
+}
+
+
+function getGyms(PDO $dbCo)
+{
+    $query = $dbCo->prepare("SELECT id_gym,name_gym,capacity  FROM gym;");
+    $isQueryOk = $query->execute();
+    $gym = $query->fetchAll($dbCo::FETCH_ASSOC);
+    
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+   echo json_encode([
+        $gym
+    ]);
 }
 
 function getHolidays(PDO $dbCo, int $idGym)
@@ -163,14 +178,16 @@ function isFutureDate($date)
 }
 
 
-function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate){
-    $query= $dbCo->prepare("SELECT open_hour, close_hour FROM open_days 
+function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate)
+{
+    $query = $dbCo->prepare("SELECT open_hour, close_hour FROM open_days 
     WHERE id_days = :idDay AND id_gym = :idGym;");
-    $isQueryOk = $query->execute(['idGym' => $idGym,
-    'idDay' => date('w', strtotime($chosenDate)),
-]); 
+    $isQueryOk = $query->execute([
+        'idGym' => $idGym,
+        'idDay' => date('w', strtotime($chosenDate)),
+    ]);
 
-$openClosehoures = $query->fetchAll();
+    $openClosehoures = $query->fetchAll();
     // var_dump($openClosehoures);
     if (!$isQueryOk) {
         triggerError("connection");
@@ -178,7 +195,7 @@ $openClosehoures = $query->fetchAll();
     echo json_encode([
         'isOk' => $isQueryOk,
         'idGym' => $idGym,
-        'chosenDate'=> $chosenDate,
-        'openClosehoures'=> $openClosehoures    ]);
+        'chosenDate' => $chosenDate,
+        'openClosehoures' => $openClosehoures
+    ]);
 }
-    

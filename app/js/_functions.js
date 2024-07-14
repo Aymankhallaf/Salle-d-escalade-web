@@ -90,3 +90,14 @@ export function verifyReturnData(request, response){
         return
       }
 }
+
+export function getGym(){
+    callApi("POST", {
+        action: "fetchGym",
+        token: getToken()
+    
+}).then (data => {
+    console.log(data)
+})
+
+}

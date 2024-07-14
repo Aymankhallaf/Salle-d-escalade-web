@@ -2,6 +2,7 @@
 $globalUrl = 'http://localhost:8080';
 $errors = [
     'token' => 'Votre session est invalide.',
+    'inputData' => "aucune donnée n'a été demandée",
     'referer' => "erreur d'accès à la page",
     'idGym' => "erreur lors du choix de la salle d'escalade",
     'connection' => "erreur de connexion à la base de données",

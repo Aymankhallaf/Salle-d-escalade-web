@@ -7,7 +7,7 @@ include 'includes/_header.php';
         <h1 id="hero-banner" class="hero-banner__ttl">Bienvenue chez
             Salle d’escalade</h1>
         <p class="hero-banner__subttl">Nous vous invitons à rejoindre notre club à des tarifs adaptés à tous</p>
-        <a target="_blank" class="btn hero-banner__btn" href="#abonnement">Abonnez-vous</a>
+        <a target="_blank" class="btn hero-banner__btn" href="/abonnements.php">Abonnez-vous</a>
         <a class="circle-btn" href="#about-us" aria-labelledby="about-us"></a>
     </section>
 
@@ -33,11 +33,10 @@ include 'includes/_header.php';
         </ul>
 
     </section>
-    </section>
 
     <!-- check why there are "subheading-icon sub-heading__img "  -->
 
-    <section class="open-houres section" aria-labelledby="price">
+    <section class="open-houres section" aria-labelledby="prix">
         <div class="sub-heading-container">
             <img class="sub-heading__img" src="img/priceticket.svg" alt="le prix icon">
             <h2 id="price" class="sub-heading sub-heading__ttl--black">les Tarifs</h2>
@@ -58,7 +57,7 @@ include 'includes/_header.php';
             </li>
 
         </ul>
-        <a target="_blank" href="/reservation.html" class="btn reserve__btn">Réservez</a>
+        <a target="_blank" href="/reservation.php" class="btn reserve__btn">Réservez</a>
 
     </section>
 
