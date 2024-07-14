@@ -13,7 +13,6 @@ document.getElementById("hall").addEventListener("change", (e) => {
     //get vacation dates
     localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
     Calendar.GetSetGymDetails(e.target.value);
-    F.setMaxGymCapacity(capicty);
 
 }
 );
