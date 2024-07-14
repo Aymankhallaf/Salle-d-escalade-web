@@ -63,7 +63,7 @@ include 'includes/_header.php';
                     </ol>
                     <template id="day-template">
 
-            <li><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></li>
+            <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
             </template>
             <p class="calender__selected-txt"></p>
             </div>
@@ -78,7 +78,7 @@ include 'includes/_header.php';
                     <p id="selectedDate" selectedDay="" class="hours__selected-txt"></p>
 
                     <template id="hours-template">
-            <li class="hours__container--element js-hours__element"><time datetime="" data-hour="" data-minutes=""></time></li>
+            <li class="hours__container--element js-hours__element"><a><time datetime="" data-hour="" data-minutes=""></time></a></li>
             </template>
             </div>
 

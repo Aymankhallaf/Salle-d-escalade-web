@@ -84,7 +84,8 @@ function formateDay(date) {
  * @returns {string} a date in french format "jeudi 9 mai 2024"
  */
 function formateDate(date) {
-  return date.toLocaleDateString('fr-FR').replace(/\//g, '-');
+  const newDate = new Date();
+  return newDate.toLocaleDateString('fr-FR').replace(/\//g, '-');
 }
 
 
