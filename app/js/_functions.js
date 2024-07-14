@@ -74,13 +74,21 @@ export function displayGym(gym) {
     option.innerText = gym['name_gym'];
     option.value = gym['id_gym'];
     document.getElementById('hall').appendChild(option);
+
 }
 
+// function getGymId(e) {
+//     verifyIdGym(e.target.value);
+//     //get vacation dates
+//     localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+//     console.log(e.target.value);
+//     Calendar.getVacationDates(e.target.value);
+// }
 
 /**
  * verify the id gym.
- * return false if the id gym not "1" or "2"
- * @returns {boolen} true/false
+ * return void(stop script) if the id gym not "1" or "2"
+ * @returns {void}
  */
 export function verifyIdGym(idGym) {
     if (idGym !== "1" && idGym !== "2") {
@@ -104,7 +112,6 @@ export function verifyReturnData(request, response) {
     }
 }
 
-let gym = { id_gym: 1, name_gym: "La salle escalade aventure", capacity: 20 }
 export function getGym() {
     callApi("POST", {
         action: "fetchGym",

@@ -6,8 +6,8 @@ include 'includes/_header.php';
     <h1 class="reservation-ttl" id="reservation">Réservation</h1>
     <ul id="errorsList" class="errors"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="reservation-form" class="reservation-form" aria-label="duration-label" method="get">
-        <ul>
+    <form id="reservation-form" class="reservation-form" aria-label="veuillez remplir le formulaire de réservation" method="get">
+        <ul aria-labelledby="reservation-form">
             <!-- hall -->
             <li class="warp-input hall">
                 <label class="hall__ttl" id="hall_ttl" for="hall">Choisissez la salle: </label>
