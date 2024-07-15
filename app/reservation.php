@@ -62,10 +62,7 @@ getOpenHours( $dbCo,  "1","19-07-2024");
                     <ol id="month-days" class="calender__month">
                         <!--days will be filled here-->
                     </ol>
-                    <template id="day-template">
-
-            <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
-            </template>
+      
             <p class="calender__selected-txt"></p>
             </div>
             </li>
@@ -76,11 +73,8 @@ getOpenHours( $dbCo,  "1","19-07-2024");
                 <div id="hours__display" class="hours__display">
                     <ol id="hours__container" class="hours__container">
                     </ol>
-                    <p id="selectedDate" selectedDay="" class="hours__selected-txt"></p>
 
-                    <template id="hours-template">
-            <li class="hours__container--element js-hours__element"><a><time datetime="" data-hour="" data-minutes=""></time></a></li>
-            </template>
+                    
             </div>
 
             </li>
@@ -96,10 +90,20 @@ getOpenHours( $dbCo,  "1","19-07-2024");
 include 'includes/_footer.php';
 ?>
 
+<!-- gym template -->
 <template id="hallTemplate">
     <option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
 </template>
 
+<!-- days template -->
+<template id="day-template">
+<li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
+</template>
+
+<!-- hours template -->
+<template id="hours-template">
+            <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
+            </template>
 
 <template id="templateError">
     <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>

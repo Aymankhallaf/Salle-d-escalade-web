@@ -11,7 +11,7 @@ let next = document.getElementById("calender__right");
 // all the days apears here
 let daysContainer = document.getElementById("month-days");
 
-// selected date apears here
+// selected. date apears here
 let selected = document.querySelector(".calender__selected-txt");
 // constant of today
 const today = new Date();
