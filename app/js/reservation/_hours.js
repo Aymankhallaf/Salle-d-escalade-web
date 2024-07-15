@@ -17,7 +17,9 @@ let timeNow = today.getHours();
     hourCell.dataset.hour = hour;
     hourCell.dataset.minute = minute;
     hourCell.setAttribute("datetime", hourCell.textContent);
-    hourCell.addEventListener 
+    // hourCell.addEventListener("change", (e)=>{
+    //     console.log(e.target);
+    // })
     if (isHoursDisactive(hour)) {
         hourCell.classList.add("disactive");
     }
@@ -36,7 +38,8 @@ export function displayHour(start, end) {
             createHourCell(start, minute)
         }
     }
-    createHourCell(end, '00')
+    createHourCell(end, '00');
+    updateEventHourListeners();
 }
 
 
@@ -51,4 +54,57 @@ return false;
 
 }
 
+/**
+ * listen to the click of active hours celles and applicate handleHourCellClick() function.
+ */
+function updateEventHourListeners() {
+    const HourElements = hoursContainer.querySelectorAll("[data-hour]");
+    HourElements.forEach(hourElement => {
+      if (hourElement.classList.contains("disactive")) {
+        hourElement.removeEventListener("click", handleHourCellClick);
+      } else {
+        hourElement.addEventListener("click",  handleHourCellClick);
+      }
+    });
+  }
+
+/**
+* handles a hours Cell click and shown the selected hour and disactive the other clicked hour cell. 
+* @param {Event} a clicked event.
+*/
+function handleHourCellClick(e) {
+    const selectedHour = e.target;
+    console.log(selectedHour);
+    activeHour(selectedHour);
+    if (selectedHour.classList.contains("active")) {
+      chosenHour = selectedHour.datatime;
+      //save chosen date in local Storage.
+      localStorage.setItem("chosenHour", JSON.stringify(chosenHour));
+      selected.classList.remove("error");
+      getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort);
+      //to be reviewed
+      return chosenDate;
+  
+    } else {
+      selected.innerHTML = `Vous n'avez pas choisi`;
+      selected.classList.toggle("error");
+    }
+  
+  }
+
 // displayHour(10, 20)
+
+/**
+ * Activates the selected hour and deactivates the others
+ * @param {object} selectedHour The selected hour element
+ */
+function activeHour(selectedHour) {
+    const hourElements = hoursContainer.querySelectorAll("[data-hour]");
+    hourElements.forEach(hour => {
+      if (selectedHour !== hour) {
+        hour.classList.remove("active");
+      }
+    });
+    selectedHour.classList.toggle("active");
+  };
+  

@@ -206,7 +206,7 @@ function updateEventListeners() {
 
 
 /**
-* handles a Calendar Cell click and shown the selected day and disactive the other clicke day. 
+* handles a Calendar Cell click and shown the selected day and disactive the other clicked day cell. 
 * @param {Event} a clicked event.
 */
 function handleCalendarCellClick(e) {
@@ -215,7 +215,6 @@ function handleCalendarCellClick(e) {
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
     let chosenDateShort = selectedDate.dateTime;
-    console.log(typeof(chosenDateShort));
     //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDateShort));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
@@ -249,17 +248,6 @@ function activeDay(selectedDate) {
 
 
 
-/**
- * Display message with template
- * @param {string} message 
- */
-function displayMessage(message) {
-  const li = document.importNode(document.getElementById('templateMessage').content, true);
-  const m = li.querySelector('[data-message]')
-  m.innerText = message;
-  document.getElementById('messagesList').appendChild(li);
-  setTimeout(() => m.remove(), 2000);
-}
 
 /**
 * get and set gym details the vacation dates and update the calender.
@@ -310,7 +298,6 @@ function getOpenHoures(idGym, chosenDate) {
       F.displayError(data['errorMessage']);
       return;
     }
-    console.log(data);
     F.verifyReturnData(data["idGym"], idGym);
     F.verifyReturnData(data["chosenDate"], chosenDate);
     let hours = data["openClosehoures"][0];
