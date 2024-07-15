@@ -243,7 +243,6 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate)
     ]);
 
     $openClosehoures = $query->fetchAll();
-    // var_dump($openClosehoures);
     if (!$isQueryOk) {
         triggerError("connection");
     }

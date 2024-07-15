@@ -4,7 +4,6 @@ session_start();
 include 'includes/_connection.php';
 
 header('Content-type:application/json');
-
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');

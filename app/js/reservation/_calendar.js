@@ -84,7 +84,7 @@ function formateDay(date) {
  * @returns {string} a date in french format "jeudi 9 mai 2024"
  */
 function formateDate(date) {
-  const newDate = new Date();
+  const newDate = new Date(date);
   return newDate.toLocaleDateString('fr-FR').replace(/\//g, '-');
 }
 
@@ -215,7 +215,7 @@ function handleCalendarCellClick(e) {
   if (selectedDate.classList.contains("active")) {
     chosenDate = selectedDate.dataset.date;
     let chosenDateShort = selectedDate.dateTime;
-    console.log(chosenDateShort);
+    console.log(typeof(chosenDateShort));
     //save chosen date in local Storage.
     localStorage.setItem("chosenDate", JSON.stringify(chosenDateShort));
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
@@ -310,6 +310,7 @@ function getOpenHoures(idGym, chosenDate) {
       F.displayError(data['errorMessage']);
       return;
     }
+    console.log(data);
     F.verifyReturnData(data["idGym"], idGym);
     F.verifyReturnData(data["chosenDate"], chosenDate);
     let hours = data["openClosehoures"][0];
