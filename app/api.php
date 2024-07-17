@@ -34,3 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     }
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'put' && $inputData['action'] === "reserve"){
+
+}

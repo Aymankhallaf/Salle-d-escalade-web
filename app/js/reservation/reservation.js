@@ -61,7 +61,7 @@ function handleSubmit(e) {
         return
     }
 
-    F.callApi("POST", {
+    F.callApi("PUT", {
         action: "reserve",
         token: F.getToken(),
         reservationElem
