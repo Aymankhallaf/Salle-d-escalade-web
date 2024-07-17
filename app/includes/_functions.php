@@ -255,7 +255,10 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate)
 }
 
 
-function getReservationInfo(int $idUSER){
-    
-
+function reserve(PDO $dbCo){
+      $query = $dbCo->prepare("INSERT INTO reservation
+      ( is_accepted, nb_particpation, date_starting,
+       id_user, id_gym`, id_activity, date_reservation) 
+       VALUES ('1', '2', '2024-07-31 00:20:04', '1', '1', '1', CURRENT_TIMESTAMP);");
+       
 }

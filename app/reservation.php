@@ -1,6 +1,6 @@
 <?php
 include 'includes/_header.php';
-getOpenHours( $dbCo,  "1","19-07-2024");
+getOpenHours($dbCo,  "1", "19-07-2024");
 ?>
 
 <main>
@@ -26,21 +26,7 @@ getOpenHours( $dbCo,  "1","19-07-2024");
                     <p id="participant__display" class="participant__display"></p>
                 </div>
             </li>
-            <!-- duration -->
-            <li class="warp-input duration">
-                <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
-                <select class="duration__select js-select" name="duration" id="duration">
-                    <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="2">60 minutes <span class="" data-price="12">/ 12
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
-                    </option>
-                </select>
-            </li>
+
             <!-- calender -->
             <li class="warp-input calender-container">
                 <p for="calender" class="calender__label" id="calender__label">Choisissez la date: </p>
@@ -62,20 +48,33 @@ getOpenHours( $dbCo,  "1","19-07-2024");
                     <ol id="month-days" class="calender__month">
                         <!--days will be filled here-->
                     </ol>
-      
-            <p class="calender__selected-txt"></p>
-            </div>
+
+                    <p class="calender__selected-txt"></p>
+                </div>
             </li>
             <!-- end calender -->
+            <!-- duration -->
+            <li class="warp-input duration">
+                <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
+                <select class="duration__select js-select" name="duration" id="duration">
+                    <option class="duration__option" value="" required>Veuillez choisir une option</option>
+                    <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
+                            €</span>
+                    </option>
+                    <option class="duration__option" value="2">60 minutes <span class="" data-price="12">/ 12
+                            €</span>
+                    </option>
+                    <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
+                    </option>
+                </select>
+            </li>
             <!-- start hour -->
             <li class="warp-input hours">
                 <p for="hours__display" class="hours__ttl" id="hours">Choisissez l'heures:</p>
                 <div id="hours__display" class="hours__display">
                     <ol id="hours__container" class="hours__container">
                     </ol>
-
-                    
-            </div>
+                </div>
 
             </li>
 
@@ -97,13 +96,13 @@ include 'includes/_footer.php';
 
 <!-- days template -->
 <template id="day-template">
-<li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
+    <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
 </template>
 
 <!-- hours template -->
 <template id="hours-template">
-            <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
-            </template>
+    <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
+</template>
 
 <template id="templateError">
     <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>

@@ -206,6 +206,7 @@ function updateEventListeners() {
 
 
 /**
+ * TO DO to be reviwed
 * handles a Calendar Cell click and shown the selected day and disactive the other clicked day cell. 
 * @param {Event} a clicked event.
 */
@@ -221,8 +222,6 @@ function handleCalendarCellClick(e) {
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
     getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort);
-    //to be reviewed
-    return chosenDate;
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
