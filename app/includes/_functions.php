@@ -35,7 +35,7 @@ function loadAssets(array $entries): string
  *
  * @return void
  */
-function generateToken():void
+function generateToken(): void
 {
     if (
         !isset($_SESSION['token'])
@@ -131,7 +131,7 @@ function getGyms(PDO $dbCo)
  * @param int $idGym ID of the gym.
  * @return void
  */
-function getGymDetails(PDO $dbCo, int $idGym):void
+function getGymDetails(PDO $dbCo, int $idGym): void
 {
     $queryCapacity = $dbCo->prepare("SELECT capacity FROM gym WHERE id_gym = :idGym;");
     $isQueryOk = $queryCapacity->execute(['idGym' => $idGym]);
@@ -166,7 +166,7 @@ function getGymDetails(PDO $dbCo, int $idGym):void
  * @param int $idGym id gym.
  * @return void
  */
-function getMaxcapacity(PDO $dbCo, int $idGym):void
+function getMaxcapacity(PDO $dbCo, int $idGym): void
 {
 
     $query = $dbCo->prepare("SELECT capacity FROM gym WHERE id_gym =:idGym;");
@@ -189,7 +189,7 @@ function getMaxcapacity(PDO $dbCo, int $idGym):void
  * @param int $idGym id gym.
  * @return void
  */
-function getHolidays(PDO $dbCo, int $idGym):void
+function getHolidays(PDO $dbCo, int $idGym): void
 {
 
     $query = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym =:idGym;");
@@ -215,7 +215,7 @@ function getHolidays(PDO $dbCo, int $idGym):void
  * @param string $date a date in string formate
  * @return bool true if the date in this formate 27-03-2024
  */
-function isValidDate(string $date):bool
+function isValidDate(string $date): bool
 {
     list($day, $month, $year) =  explode('-', $date);
     return checkdate(intval($month), intval($day), intval($year));
@@ -227,7 +227,7 @@ function isValidDate(string $date):bool
  * @param string $date a date of this formate "27-05-2024"
  * @return bool true if it today and day in future, false if yesterday.
  */
-function isFutureDate($date):bool
+function isFutureDate($date): bool
 {
     return date_create($date) > new DateTime("yesterday");
 }
@@ -239,7 +239,7 @@ function isFutureDate($date):bool
  * @param string $chosenDate a chosen date.
  * @return void
  */
-function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate):void
+function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate): void
 {
     $query = $dbCo->prepare("SELECT open_hour, close_hour FROM open_days 
     WHERE id_days = :idDay AND id_gym = :idGym;");
@@ -261,11 +261,42 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate):void
 }
 
 
-function reserve(PDO $dbCo)
+
+function isReservationValid(array $inputData)
 {
-      $query = $dbCo->prepare("INSERT INTO reservation
-      ( is_accepted, nb_particpation, date_starting,
-       id_user, id_gym`, id_activity, date_reservation) 
-       VALUES ('1', '2', '2024-07-31 00:20:04', '1', '1', '1', CURRENT_TIMESTAMP);");
-       
+
+    if ($inputData['chosenGym'] !== '1' && $inputData['chosenGym'] !== '2') {
+        triggerError('chosenGym', "2");
+    }
+    if (!isValidDate($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
+        triggerError('chosenDate');
+    }
+    //To do verify other params
+
+}
+
+function reserve(PDO $dbCo, array $inputData, int $idUser)
+{
+    $query = $dbCo->prepare("INSERT INTO reservation
+      (nb_particpation , date_starting,
+       id_user, id_gym , id_activity, date_reservation) 
+       VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP);");
+    $isQueryOk = $query->execute([
+        'nb_particpation' => $inputData['participants'],
+        'date_starting' => date('Y-m-d h:i:s',strtotime($inputData['chosenDate'].$inputData['chosenHour'])),
+        'idGym' => $inputData['chosenGym'],
+        'idActivity' => $inputData['duration'],
+        'idUser' => $idUser
+    ]);
+
+    $data = $query->fetchAll();
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
+        $data,
+        'idUSer' => $idUser
+
+    ]);
 }

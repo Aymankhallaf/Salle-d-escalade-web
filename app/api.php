@@ -3,7 +3,7 @@ session_start();
 
 include 'includes/_connection.php';
 
-header('Content-type:application/json');
+// header('Content-type:application/json');
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
@@ -14,7 +14,7 @@ if (!is_array($inputData)) {
 }
 stripTagsArray($inputData);
 if (!isTokenOk($inputData['token'])) {
-    triggerError('token');
+    triggerError('token',$_SESSION['token']);
 }
 
 
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'put' && $inputData['action'] === "reserve"){
-
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "reserve") {
+    // isReservationValid($inputData);
+    reserve($dbCo,$inputData,1);
 }

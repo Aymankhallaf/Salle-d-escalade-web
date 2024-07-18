@@ -3,6 +3,11 @@ session_start();
 include 'includes/_connection.php';
 include_once 'includes/_functions.php';
 
+$date="20-7-2024";
+$hour="16:30";
+$time_input = strtotime($date.$hour); 
+$date_input = getDate($time_input); 
+print_r($date_input);  
 generateToken();
 
 ?>

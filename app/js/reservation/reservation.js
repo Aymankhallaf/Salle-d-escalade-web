@@ -15,9 +15,9 @@ document.getElementById("hall").addEventListener("change", (e) => {
 }
 );
 
-document.getElementById("participants").addEventListener("input", function(e) {
+document.getElementById("participants").addEventListener("input", function (e) {
     console.log(e);
-    localStorage.setItem("participants", e.target.value);
+    localStorage.setItem("participants", JSON.stringify(e.target.value));
 });
 
 
@@ -38,8 +38,7 @@ function handleSubmit(e) {
 
     e.preventDefault();
     let reservationElem = { ...localStorage };
-    console.log(reservationElem);
-    //id Gym
+    //to do a review
     if (!reservationElem.hasOwnProperty("chosenGym")) {
         F.displayError(data["Vous n'avez pas choisi la salle."]);
         return
@@ -64,7 +63,12 @@ function handleSubmit(e) {
     F.callApi("PUT", {
         action: "reserve",
         token: F.getToken(),
-        reservationElem
+        action: "reserve",
+        duration: JSON.parse(localStorage.getItem("duration")),
+        chosenDate: JSON.parse(localStorage.getItem("chosenDate")),
+        participants: JSON.parse(localStorage.getItem("participants")),
+        chosenHour: JSON.parse(localStorage.getItem("chosenHour")),
+        chosenGym: JSON.parse(localStorage.getItem("chosenGym"))
     }).then(data => {
         if (!data.isOk) {
             F.displayError(data['errorMessage']);
