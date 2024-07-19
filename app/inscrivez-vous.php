@@ -6,10 +6,9 @@ include 'includes/_header.php';
     <h1 class="inscrivez-header" id="inscrivez">Inscrivez vous</h1>
     <p>Veuillez suivre les étapes pour vous inscrire</p>
     <ol class="stepper">
-        <li class="stepper-name"><a aria-labelledby="info-personal" for="info-personal" href="" aria-current="step" class="stepper__stepper-name--current">profile</a>
-        </li>
-        <li class="stepper-coordinate"></li>
-        <li class="stepper-account"></li>
+        <li class="stepper-name"><a aria-labelledby="info-personal" for="info-personal" href="" aria-current="step" class="stepper__stepper-name--current">le personal info.</a></li>
+        <li class="stepper-coordinate">Les coordonnées</li>
+        <li class="stepper-account">Info. du compte</li>
 
     </ol>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
