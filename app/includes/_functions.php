@@ -262,6 +262,11 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate): void
 
 
 
+/** to do complete
+ * check reservation valid.
+ * @param array $inputData
+ * @return void
+ */
 function isReservationValid(array $inputData)
 {
 
@@ -275,6 +280,15 @@ function isReservationValid(array $inputData)
 
 }
 
+
+/**
+ * reserve function by (inserting reservation request)
+ * @param PDO $dbCo database connection.
+ * @param array $inputData  array of this data [nb_particpation , date_starting,
+ *     , "id_gym" , "id_activity", "date_reservation"]
+ * @param int $idUser
+ * @return void user id
+ */
 function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
     $query = $dbCo->prepare("INSERT INTO reservation
@@ -283,10 +297,73 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
        VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP);");
     $isQueryOk = $query->execute([
         'nb_particpation' => $inputData['participants'],
-        'date_starting' => date('Y-m-d h:i:s',strtotime($inputData['chosenDate'].$inputData['chosenHour'])),
+        'date_starting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
+    ]);
+
+    $data = $query->fetchAll();
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
+        $data,
+        'idUSer' => $idUser
+
+    ]);
+}
+
+
+
+/**
+ * get user reservation history
+ * @param PDO $dbCo
+ * @param int $idUser
+ * @return void
+ */
+function getUserReservationHistory(PDO $dbCo, int $idUser)
+{
+
+    $query = $dbCo->prepare("SELECT id_reservation, date_starting FROM reservation 
+    WHERE id_user=:idUser  ORDER BY `date_starting` ASC;");
+    $isQueryOk = $query->execute([
+
+        'idUser' => $idUser
+    ]);
+
+    $data = $query->fetchAll();
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
+        $data,
+        'idUSer' => $idUser
+
+    ]);
+}
+
+/**
+ * get a details of reservation.
+ * @param PDO $dbCo database connection.
+ * @param int $idUser user id.
+ * @param int $idReservation user id.
+ * @return void
+ */
+function getAReservationDetailsUser(PDO $dbCo, int $idUser, 
+int $idReservation)
+{
+    $query = $dbCo->prepare("SELECT nb_particpation,
+     date_starting, duration, name_gym, (nb_particpation*price) 
+     AS totalPrice FROM reservation JOIN gym USING(id_gym) 
+     JOIN activity USING (id_activity) WHERE id_user=:idUser
+      AND id_reservation = :idReservation;");
+    $isQueryOk = $query->execute([
+
+        'idUser' => $idUser,
+        'idReservation' => $idReservation,
     ]);
 
     $data = $query->fetchAll();

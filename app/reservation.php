@@ -1,6 +1,5 @@
 <?php
 include 'includes/_header.php';
-getOpenHours($dbCo,  "1", "19-07-2024");
 ?>
 
 <main>

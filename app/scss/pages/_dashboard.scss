@@ -1,0 +1,21 @@
+// to do
+.dashboard {
+    &-ttl {
+        @extend %form-ttl;
+    }
+
+    &-menu {
+        display: inline-flex;
+        &__li {
+            background-color: $blue-petrol;
+            margin-top: 2rem;
+            stroke: $white;
+            &:hover {
+                background-color: $white;
+                border: solid $blue-petrol 1px;
+                color: $blue-petrol;
+                stroke: $blue-petrol;
+            }
+        }
+    }
+}
