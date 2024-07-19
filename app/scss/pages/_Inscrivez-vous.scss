@@ -1,16 +1,25 @@
+.stepper{
+    
+}
+
 .inscrivez {
     &-header {
         @extend %page-ttl;
         text-align: center;
     }
-    &-ttl{
-        &__info{
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &-ttl {
+        &__info {
             @extend %form-ttl;
         }
-        &__coordinate{
+        &__coordinate {
             @extend %form-ttl;
         }
-        &__account{
+        &__account {
             @extend %form-ttl;
         }
     }
@@ -101,7 +110,7 @@
                 @include input;
             }
         }
-        &__confirm-psw{
+        &__confirm-psw {
             @extend %form-container;
 
             &-label {
@@ -113,5 +122,3 @@
         }
     }
 }
-
-
