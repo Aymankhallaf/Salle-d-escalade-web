@@ -37,39 +37,52 @@ include 'includes/_header.php';
 
                 </li>
             </ul>
-            <button type="button" class="btn next-btn">Suivant</button>
+            <button type="button" class="stepper-btn__next">Suivant</button>
         </div>
-        <!-- step 1 -->
-        <h2 class="inscrivez-ttl__coordinate" id="coordinate">Les coordonnées</h2>
-        <ul class="inscrivez-ul inscrivez-ul__second">
-            <li class="inscrivez-form__tel">
-                <label class="inscrivez-form__tel-label" for="tel">Numéro de téléphone</label>
-                <input class="inscrivez-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" required />
-            </li>
-            <li class="inscrivez-form__adresse">
-                <label class="inscrivez-form__adresse-label" for="adresse">L'adresse</label>
-                <input class="inscrivez-form__adresse-input" type="text" name="adresse" id="adresse" required />
-            </li>
-            <li class="inscrivez-form__city">
-                <label class="inscrivez-form__city-label" for="city" maxlength="50">Ville</label>
-                <input class="inscrivez-form__city-input" type="text" name="city" id="city" required />
-            </li>
-        </ul>
-        <h2 class="inscrivez-ttl__account" id="account">Informations du compte</h2>
-        <ul class="inscrivez-ul inscrivez-ul__third">
-            <li class="inscrivez-form__email">
-                <label class="inscrivez-form__email-label" for="email">Email</label>
-                <input class="inscrivez-form__email-input" type="email" name="email" id="email" required />
-            </li>
-            <li class="inscrivez-form__password">
-                <label class="inscrivez-form__password-label" for="password">Password</label>
-                <input class="inscrivez-form__password-input" type="password" name="password" id="password" required />
-            </li>
-            <li class="inscrivez-form__confirm-psw">
-                <label class="inscrivez-form__confirm-psw-label" for="confirm-psw">Confirmiez le Password</label>
-                <input class="inscrivez-form__confirm-psw-input" type="password" name="confirm-psw" id="confirm-psw" required />
-            </li>
-        </ul>
+        <!-- step 2 -->
+        <div class="step-2 hidden">
+            <h2 class="inscrivez-ttl__coordinate" id="coordinate">Les coordonnées</h2>
+            <ul class="inscrivez-ul inscrivez-ul__second">
+                <li class="inscrivez-form__tel">
+                    <label class="inscrivez-form__tel-label" for="tel">Numéro de téléphone</label>
+                    <input class="inscrivez-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" required />
+                </li>
+                <li class="inscrivez-form__adresse">
+                    <label class="inscrivez-form__adresse-label" for="adresse">L'adresse</label>
+                    <input class="inscrivez-form__adresse-input" type="text" name="adresse" id="adresse" required />
+                </li>
+                <li class="inscrivez-form__city">
+                    <label class="inscrivez-form__city-label" for="city" maxlength="50">Ville</label>
+                    <input class="inscrivez-form__city-input" type="text" name="city" id="city" required />
+                </li>
+            </ul>
+            <div class="stepper-btn__container">
+                <button type="button" class="stepper-btn__prev">Précédent</button>
+                <button type="button" class="stepper-btn__next">Suivant</button>
+            </div>
+        </div>
+        <div class="step-3 hidden">
+            <h2 class="inscrivez-ttl__account" id="account">Informations du compte</h2>
+            <ul class="inscrivez-ul inscrivez-ul__third">
+                <li class="inscrivez-form__email">
+                    <label class="inscrivez-form__email-label" for="email">Email</label>
+                    <input class="inscrivez-form__email-input" type="email" name="email" id="email" required />
+                </li>
+                <li class="inscrivez-form__password">
+                    <label class="inscrivez-form__password-label" for="password">Password</label>
+                    <input class="inscrivez-form__password-input" type="password" name="password" id="password" required />
+                </li>
+                <li class="inscrivez-form__confirm-psw">
+                    <label class="inscrivez-form__confirm-psw-label" for="confirm-psw">Confirmiez le Password</label>
+                    <input class="inscrivez-form__confirm-psw-input" type="password" name="confirm-psw" id="confirm-psw" required />
+                </li>
+            </ul>
+            <div class="stepper-btn__container">
+                <button type="button" class="stepper-btn__prev">Précédent</button>
+                <button type="submit" class="stepper-btn__next">Terminer</button>
+            </div>
+        </div>
+
     </form>
 
 

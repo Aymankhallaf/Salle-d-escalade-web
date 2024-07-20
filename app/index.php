@@ -7,7 +7,7 @@ include 'includes/_header.php';
         <h1 id="hero-banner" class="hero-banner__ttl">Bienvenue chez
             Salle d’escalade</h1>
         <p class="hero-banner__subttl">Nous vous invitons à rejoindre notre club à des tarifs adaptés à tous</p>
-        <a target="_blank" class="btn hero-banner__btn" href="/abonnements.php">Abonnez-vous</a>
+        <a target="_blank" class="hero-banner__btn" href="/abonnements.php">Abonnez-vous</a>
         <a class="circle-btn" href="#about-us" aria-labelledby="about-us"></a>
     </section>
 

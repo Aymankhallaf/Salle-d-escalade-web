@@ -3,14 +3,14 @@
   font-size: 1.125rem;
   padding: 0.5rem 1rem;
   color: $white;
-  background-color: $blue-petrol;
+  background-color: $color;
   margin-top: 2rem;
   stroke: $white;
   &:hover {
     background-color: $white;
-    border: solid $blue-petrol 1px;
-    color: $blue-petrol;
-    stroke: $blue-petrol;
+    border: solid $color 1px;
+    color: $color;
+    stroke: $color;
   }
 
 }
@@ -23,32 +23,19 @@
 }
 
 .btn--blue-petrol {
-  background-color: $blue-petrol;
-  margin-top: 2rem;
-  stroke: $white;
-  &:hover {
-    background-color: $white;
-    border: solid $blue-petrol 1px;
-    color: $blue-petrol;
-    stroke: $blue-petrol;
-  }
+  @include button;
+
 }
 
 .hero-banner__btn {
-  background-color: $dark-orange;
-  &:hover {
-    background-color: $white;
-    border: solid $dark-orange 1px;
-    color: $dark-orange;
-  }
+  @include button($dark-orange);
 }
 
 $sections: ("reserve", "card", "about-us", "artcl", "contact-us");
 
 @each $section in $sections {
   .#{$section}__btn {
-    @extend .btn;
-    @extend .btn--blue-petrol;
+    @include button
   }
 }
 

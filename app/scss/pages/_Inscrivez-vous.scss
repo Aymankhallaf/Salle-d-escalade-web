@@ -11,6 +11,19 @@
     &-account {
         @include sub-steper;
     }
+    &-btn {
+        &__container {
+            width: 22.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        &__next {
+            @include button;
+        }
+        &__prev{
+            @include button($dark-orange);
+        }
+    }
 }
 
 .inscrivez {
@@ -133,6 +146,3 @@
         }
     }
 }
-
-.next-btn {
-    @include button}
