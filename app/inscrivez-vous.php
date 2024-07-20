@@ -4,7 +4,7 @@ include 'includes/_header.php';
 
 <main>
     <h1 class="inscrivez-header" id="inscrivez">Inscrivez vous</h1>
-    <p>Veuillez suivre les étapes pour vous inscrire</p>
+    <p class="inscrivez-sub-header">Veuillez suivre les étapes pour vous inscrire</p>
     <ol class="stepper">
         <li class="stepper-profile">
             <img src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
@@ -20,6 +20,8 @@ include 'includes/_header.php';
         </li>
 
     </ol>
+    <ul id="errorsList" class="errors"></ul>
+    <ul id="messagesList" class="messages"></ul>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
         <!-- step 1 -->
         <div class="step-1">
@@ -27,17 +29,17 @@ include 'includes/_header.php';
             <ul class="inscrivez-ul inscrivez-ul__first">
                 <li class="inscrivez-form__lname">
                     <label class="inscrivez-form__lname-label" for="lname">Nom</label>
-                    <input placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
+                    <input pattern="\w{3,50}" placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
                 </li>
                 <li class="inscrivez-form__fname">
                     <label class="inscrivez-form__fname-label" for="fname">Prénom</label>
-                    <input placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
+                    <input pattern="\w{3,50}" placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
                     <label class="inscrivez-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
                     <input class="inscrivez-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
 
                 </li>
             </ul>
-            <button type="button" class="stepper-btn__next">Suivant</button>
+            <button id="step-btn-1" type="button" class="stepper-btn__next">Suivant</button>
         </div>
         <!-- step 2 -->
         <div class="step-2 hidden">
@@ -85,6 +87,14 @@ include 'includes/_header.php';
 
     </form>
 
+<!-- error messages -->
+    <template id="templateError">
+    <p data-error-message="" class="errors__itm">Ici vient le message d'erreur</p>
+</template>
+
+<template id="templateMessage">
+    <p data-message="" class="messages__itm">Ici vient le message</p>
+</template>
 
 
 </main>

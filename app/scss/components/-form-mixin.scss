@@ -66,6 +66,12 @@
   height: 4rem;
   border-color: $color;
   background-color: $sand-15;
+  &:invalid {
+    border: $dark-orange solid 2px;
+  }
+  &:valid {
+    border: $turquoise solid 2px;
+  }
 }
 
 /*this used in reservation page*/

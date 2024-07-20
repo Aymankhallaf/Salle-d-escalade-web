@@ -1,7 +1,6 @@
 .stepper {
     display: flex;
     justify-content: space-between;
-    padding: 0;
     &-profile {
         @include sub-steper;
     }
@@ -20,7 +19,7 @@
         &__next {
             @include button;
         }
-        &__prev{
+        &__prev {
             @include button($dark-orange);
         }
     }
@@ -30,6 +29,10 @@
     &-header {
         @extend %page-ttl;
         text-align: center;
+        margin-bottom: 2rem;
+    }
+    &-sub-header {
+        margin-bottom: 2rem;
     }
     &-ul {
         display: flex;

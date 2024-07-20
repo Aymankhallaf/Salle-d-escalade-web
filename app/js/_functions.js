@@ -1,6 +1,6 @@
 import * as Calendar from "./reservation/_calendar.js";
 
-
+//api functions
 /**
  * Get current global token value.
  * @returns 
@@ -38,6 +38,19 @@ export async function callApi(method, param) {
 
 }
 
+//error
+
+/**
+ * Display error message with template under li element.
+ * @param {string} errorMessage
+ *@param {string} idElement id of html tag to show the error
+ */
+export function displayErrorForm(errorMessage, idElement) {
+    const li = document.importNode(document.getElementById('templateError').content, true);
+    const m = li.querySelector('[data-error-message]');
+    m.innerText = errorMessage;
+    document.getElementById(idElement).appendChild(li);
+}
 
 
 /**
@@ -63,6 +76,9 @@ export function displayMessage(message) {
     document.getElementById('messagesList').appendChild(li);
     setTimeout(() => m.remove(), 2000);
 }
+
+
+// reservation function
 
 /**
  * Display gym(hall) with template
@@ -132,3 +148,8 @@ export function getGym() {
 
 
 }
+
+
+//form function
+
+

@@ -2,12 +2,7 @@
 session_start();
 include 'includes/_connection.php';
 include_once 'includes/_functions.php';
-
-$date="20-7-2024";
-$hour="16:30";
-$time_input = strtotime($date.$hour); 
-$date_input = getDate($time_input); 
-print_r($date_input);  
+ 
 generateToken();
 
 ?>
@@ -27,6 +22,8 @@ generateToken();
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173/js/script.js"></script>
         <script type="module" src="./js/reservation/reservation.js"></script>
+        <script type="module" src="./js/createAccount.js"></script>
+
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
         // Production integration for vite with run build

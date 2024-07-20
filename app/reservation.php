@@ -103,6 +103,7 @@ include 'includes/_footer.php';
     <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
 </template>
 
+
 <template id="templateError">
     <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
 </template>
