@@ -6,13 +6,19 @@ include 'includes/_header.php';
     <h1 class="inscrivez-header" id="inscrivez">Inscrivez vous</h1>
     <p>Veuillez suivre les étapes pour vous inscrire</p>
     <ol class="stepper">
-        <li class="stepper-name"><a aria-labelledby="info-personal" for="info-personal" href="" aria-current="step" class="stepper__stepper-name--current">le personal info.</a></li>
-        <li class="stepper-coordinate">Les coordonnées</li>
-        <li class="stepper-account">Info. du compte</li>
+        <li class="stepper-profile">
+            <img src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
+            <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" aria-current="step" class="stepper__stepper-name--current">les personal informations.</a></li>
+        <li class="stepper-coordinate">
+        <img src="./img/adresse.svg" alt="photo pour l'etape les coordonnées>
+        <a aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a></li>
+        <li class="stepper-account">
+        <img src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
+        <a aria-labelledby="account" for="account" href="#account" aria-current="false" class="stepper__stepper-name--current">Infomation du compte</a></li>
 
     </ol>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
-        <h2 class="inscrivez-ttl__info" id="info-personal">Les Informations personnelles</h2>
+        <h2 class="inscrivez-ttl__info" id="info-personal">Les informations personnelles</h2>
         <ul class="inscrivez-ul inscrivez-ul__first" >
             <li class="inscrivez-form__lname">
                 <label class="inscrivez-form__lname-label" for="lname">Nom</label>

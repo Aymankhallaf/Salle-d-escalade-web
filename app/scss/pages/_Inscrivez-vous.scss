@@ -1,9 +1,16 @@
-.stepper{
+.stepper {
     display: flex;
     justify-content: space-between;
-    list-style: none;
-    counter-reset: step;
-    padding: 0; 
+    padding: 0;
+    &-profile {
+        @include sub-steper;
+    }
+    &-coordinate {
+        @include sub-steper;
+    }
+    &-account {
+        @include sub-steper;
+    }
 }
 
 .inscrivez {
