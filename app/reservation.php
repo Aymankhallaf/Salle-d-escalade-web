@@ -4,7 +4,7 @@ include 'includes/_header.php';
 
 <main>
     <h1 class="reservation-ttl" id="reservation">Réservation</h1>
-    <ul id="errorsList" class="errors"></ul>
+    <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
     <form id="reservation-form" class="reservation-form" aria-label="veuillez remplir le formulaire de réservation" method="get">
         <ul aria-labelledby="reservation-form">

@@ -12,7 +12,7 @@ include 'includes/_header.php';
         </li>
         <li class="stepper-coordinate">
             <img src="./img/adresse.svg" alt="photo pour l'etape les coordonnées>
-        <a aria-labelledby=" coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
+        <a aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
         </li>
         <li class="stepper-account">
             <img src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
@@ -20,7 +20,7 @@ include 'includes/_header.php';
         </li>
 
     </ol>
-    <ul id="errorsList" class="errors"></ul>
+    <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
         <!-- step 1 -->

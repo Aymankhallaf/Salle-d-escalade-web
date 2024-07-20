@@ -14,12 +14,12 @@
 
 
 /**
- * Valides name input field.
- * @param {string} name 
- * @param {string} idToShowError 
- * @returns 
+ * Valides name input field and save it in local storge or show an error message .
+ * @param {string} name (the name that we want to check) input value.
+ * @param {string} savedName id of the input value
+ * @returns {string?void}
  */
-export function validateName(name) {
+export function validateName(name,savedName) {
     const namePattern = /^[a-zA-Z\s-]+$/;
 
     if (!name) {
@@ -32,16 +32,17 @@ export function validateName(name) {
         return;
         
     }
-
+    localStorage.setItem(savedName, JSON.stringify(name)); 
     return "Valid name.";
 }
 
 
-let lname = document.getElementById("lname");
-displayErrorForm(`Le name invalide.`, "lname");
+
 
 let nextBtnFirst = document.getElementById("step-btn-1");
 nextBtnFirst.addEventListener("click", function () {
-   validateName(lname.value, "lname");
+    validateName("lname", document.getElementById("lname").value);
+    validateName("fname", document.getElementById("fname").value); 
+ 
 })
 

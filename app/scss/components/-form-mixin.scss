@@ -67,7 +67,7 @@
   border-color: $color;
   background-color: $sand-15;
   &:invalid {
-    border: $dark-orange solid 2px;
+    border: $dark-red solid 2px;
   }
   &:valid {
     border: $turquoise solid 2px;
