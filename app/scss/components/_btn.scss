@@ -1,4 +1,21 @@
 /*btn*/
+@mixin button($color: $blue-petrol){
+  font-size: 1.125rem;
+  padding: 0.5rem 1rem;
+  color: $white;
+  background-color: $blue-petrol;
+  margin-top: 2rem;
+  stroke: $white;
+  &:hover {
+    background-color: $white;
+    border: solid $blue-petrol 1px;
+    color: $blue-petrol;
+    stroke: $blue-petrol;
+  }
+
+}
+
+
 .btn {
   font-size: 1.125rem;
   padding: 0.5rem 1rem;

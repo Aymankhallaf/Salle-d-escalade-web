@@ -8,30 +8,38 @@ include 'includes/_header.php';
     <ol class="stepper">
         <li class="stepper-profile">
             <img src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
-            <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" aria-current="step" class="stepper__stepper-name--current">les personal informations.</a></li>
+            <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" aria-current="step" class="stepper__stepper-name--current">les personal informations.</a>
+        </li>
         <li class="stepper-coordinate">
-        <img src="./img/adresse.svg" alt="photo pour l'etape les coordonnées>
-        <a aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a></li>
+            <img src="./img/adresse.svg" alt="photo pour l'etape les coordonnées>
+        <a aria-labelledby=" coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
+        </li>
         <li class="stepper-account">
-        <img src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
-        <a aria-labelledby="account" for="account" href="#account" aria-current="false" class="stepper__stepper-name--current">Infomation du compte</a></li>
+            <img src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
+            <a aria-labelledby="account" for="account" href="#account" aria-current="false" class="stepper__stepper-name--current">Infomation du compte</a>
+        </li>
 
     </ol>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
-        <h2 class="inscrivez-ttl__info" id="info-personal">Les informations personnelles</h2>
-        <ul class="inscrivez-ul inscrivez-ul__first" >
-            <li class="inscrivez-form__lname">
-                <label class="inscrivez-form__lname-label" for="lname">Nom</label>
-                <input placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
-            </li>
-            <li class="inscrivez-form__fname">
-                <label class="inscrivez-form__fname-label" for="fname">Prénom</label>
-                <input placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
-                <label class="inscrivez-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
-                <input class="inscrivez-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
+        <!-- step 1 -->
+        <div class="step-1">
+            <h2 class="inscrivez-ttl__info" id="info-personal">Les informations personnelles</h2>
+            <ul class="inscrivez-ul inscrivez-ul__first">
+                <li class="inscrivez-form__lname">
+                    <label class="inscrivez-form__lname-label" for="lname">Nom</label>
+                    <input placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
+                </li>
+                <li class="inscrivez-form__fname">
+                    <label class="inscrivez-form__fname-label" for="fname">Prénom</label>
+                    <input placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
+                    <label class="inscrivez-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
+                    <input class="inscrivez-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
 
-            </li>
-        </ul>
+                </li>
+            </ul>
+            <button type="button" class="btn next-btn">Suivant</button>
+        </div>
+        <!-- step 1 -->
         <h2 class="inscrivez-ttl__coordinate" id="coordinate">Les coordonnées</h2>
         <ul class="inscrivez-ul inscrivez-ul__second">
             <li class="inscrivez-form__tel">
