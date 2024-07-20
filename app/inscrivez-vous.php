@@ -22,11 +22,11 @@ include 'includes/_header.php';
         <ul class="inscrivez-ul inscrivez-ul__first" >
             <li class="inscrivez-form__lname">
                 <label class="inscrivez-form__lname-label" for="lname">Nom</label>
-                <input class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
+                <input placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
             </li>
             <li class="inscrivez-form__fname">
                 <label class="inscrivez-form__fname-label" for="fname">Prénom</label>
-                <input class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
+                <input placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
                 <label class="inscrivez-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
                 <input class="inscrivez-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
 
