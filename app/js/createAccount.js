@@ -1,14 +1,36 @@
+
+
+//listen to first next button
+document.getElementById("step-btn-1").addEventListener("click", function () {
+    validateName("lname", document.getElementById("lname").value);
+    validateName("fname", document.getElementById("fname").value);
+    valideDate(document.getElementById("birthdate").value);
+    valideDate(document.getElementById("birthdate").value);
+    showNextStep("2");
+    document.getElementById("birthdate").value
+});
+
+//listen to previous next button
+
+//listen to second next button
+
+
+
+
+
 /**
  * Display error message with template under li element.
  * @param {string} errorMessage
  *@param {string} idElement id of html tag to show the error
  */
-export function displayErrorForm(errorMessage) {
-    // document.getElementById('errorsList').innerText="";
+function displayErrorForm(errorMessage) {
+
     const li = document.importNode(document.getElementById('templateError').content, true);
     const m = li.querySelector('[data-error-message]');
     m.innerText = errorMessage;
     document.getElementById('errorsList').appendChild(li);
+
+
 }
 
 
@@ -17,7 +39,7 @@ export function displayErrorForm(errorMessage) {
  * Validates name input field and saves it in local storage or shows an error message.
  * @param {string} name The name of the field being validated.
  * @param {string} value The input value.
- * @returns {string|void}
+ * @returns {void}
  */
 function validateName(name, value) {
     const namePattern = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s-]+$/;
@@ -32,20 +54,55 @@ function validateName(name, value) {
         return;
     }
 
-    localStorage.setItem(name, value);
-    return "Valid name.";
+    localStorage.setItem(name, JSON.stringify(value));
 }
 
 
-let nextBtnFirst = document.getElementById("step-btn-1");
-nextBtnFirst.addEventListener("click", function () {
+/**
+ *
+ *Valides birthdate and save it in local storge.
+ * @param {string} dateInput date input(birthdate).
+ * @return {void} 
+ */
+function valideDate(dateInput) {
+
+    let birthDay = new Date(dateInput);
+    if (isNaN(birthDay)) {
+        displayErrorForm(`Le birthDate invalide.`);
+        return;
+    };
+    localStorage.setItem("birthDate", JSON.stringify(dateInput));
+}
 
 
-    const lnameValidationResult = validateName("lname", document.getElementById("lname").value);
-    const fnameValidationResult = validateName("fname", document.getElementById("fname").value);
 
-    // if (lnameValidationResult === "Valid name." && fnameValidationResult === "Valid name.") {
-    //     // Proceed to the next step
-    //     showStep(1); // Assuming showStep is a function that handles the step transition
-    // }
-});
+
+
+function Portable_Valide(nbTel)
+{
+  let regexTelephone = new RegExp(/^(06|07)[0-9]{8}/gi);
+    
+    if (!regexTelephone.test (nbTel))
+    {
+        return(true);
+    }
+
+    localStorage.setItem("tel", JSON.stringify(nbTel));
+    
+}
+
+
+
+/**
+ *
+ *hide the current step and show the next step by adding hidden css.
+ * @param {string} stepNumber number of step in string formate.
+ */
+function showNextStep(stepNumber) {
+    document.querySelectorAll("[data-step]").forEach((step) => {
+        if (step.dataset.step <= stepNumber) {
+
+            step.classList.toggle("hidden");
+        }
+    })
+}

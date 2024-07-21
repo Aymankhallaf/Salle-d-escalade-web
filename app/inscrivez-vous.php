@@ -7,11 +7,11 @@ include 'includes/_header.php';
     <p class="inscrivez-sub-header">Veuillez suivre les étapes pour vous inscrire</p>
     <ol class="stepper">
         <li class="stepper-profile">
-            <img src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
+            <img id="profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
             <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" aria-current="step" class="stepper__stepper-name--current">les personal informations.</a>
         </li>
         <li class="stepper-coordinate">
-            <img src="./img/adresse.svg" alt="photo pour l'etape les coordonnées>
+            <img id="coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
         <a aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
         </li>
         <li class="stepper-account">
@@ -24,16 +24,16 @@ include 'includes/_header.php';
     <ul id="messagesList" class="messages"></ul>
     <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" method="get">
         <!-- step 1 -->
-        <div class="step-1">
+        <div data-step="1" class="step-1">
             <h2 class="inscrivez-ttl__info" id="info-personal">Les informations personnelles</h2>
             <ul class="inscrivez-ul inscrivez-ul__first">
                 <li class="inscrivez-form__lname">
                     <label class="inscrivez-form__lname-label" for="lname">Nom</label>
-                    <input pattern="/^[a-zA-ZÀ-ÖØ-öø-ÿ\s-]+$/{3,50}" placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
+                    <input pattern="[A-Za-zÀ-ÖØ-öø-ÿ ,.'-]" placeholder="ex. François" class="inscrivez-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
                 </li>
                 <li class="inscrivez-form__fname">
                     <label class="inscrivez-form__fname-label" for="fname">Prénom</label>
-                    <input pattern="/^[a-zA-ZÀ-ÖØ-öø-ÿ\s-]+$/{3,50}" placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
+                    <input pattern="[A-Za-zÀ-ÖØ-öø-ÿ ,.'-]" placeholder="ex. jean" class="inscrivez-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
                     <label class="inscrivez-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
                     <input class="inscrivez-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
 
@@ -42,7 +42,7 @@ include 'includes/_header.php';
             <button id="step-btn-1" type="button" class="stepper-btn__next">Suivant</button>
         </div>
         <!-- step 2 -->
-        <div class="step-2 hidden">
+        <div data-step="2" class="step-2 hidden">
             <h2 class="inscrivez-ttl__coordinate" id="coordinate">Les coordonnées</h2>
             <ul class="inscrivez-ul inscrivez-ul__second">
                 <li class="inscrivez-form__tel">
@@ -50,11 +50,11 @@ include 'includes/_header.php';
                     <input class="inscrivez-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" required />
                 </li>
                 <li class="inscrivez-form__adresse">
-                    <label class="inscrivez-form__adresse-label" for="adresse">L'adresse</label>
+                    <label pattern="[A-Za-zÀ-ÖØ-öø-ÿ ,.'-]" class="inscrivez-form__adresse-label" for="adresse">L'adresse</label>
                     <input class="inscrivez-form__adresse-input" type="text" name="adresse" id="adresse" required />
                 </li>
                 <li class="inscrivez-form__city">
-                    <label class="inscrivez-form__city-label" for="city" maxlength="50">Ville</label>
+                    <label pattern="[A-Za-zÀ-ÖØ-öø-ÿ ,.'-]" class="inscrivez-form__city-label" for="city" maxlength="50">Ville</label>
                     <input class="inscrivez-form__city-input" type="text" name="city" id="city" required />
                 </li>
             </ul>
@@ -63,7 +63,7 @@ include 'includes/_header.php';
                 <button type="button" class="stepper-btn__next">Suivant</button>
             </div>
         </div>
-        <div class="step-3 hidden">
+        <div data-step="3" class="step-3 hidden">
             <h2 class="inscrivez-ttl__account" id="account">Informations du compte</h2>
             <ul class="inscrivez-ul inscrivez-ul__third">
                 <li class="inscrivez-form__email">
