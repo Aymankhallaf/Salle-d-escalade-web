@@ -12,8 +12,22 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
 
 //listen to previous next button
 
-//listen to second next button
 
+//listen to second next button
+document.getElementById("step-btn-2").addEventListener("click", function () {
+    ValideTel(document.getElementById("tel").value);
+    validateName("city", document.getElementById("city").value);
+    showNextStep("3");
+});
+
+
+
+
+//listen to finish button
+document.getElementById("finish").addEventListener("click", function () {
+    ValideMail("email", document.getElementById("email").value);
+    console.log("finsh")
+});
 
 
 
@@ -77,21 +91,39 @@ function valideDate(dateInput) {
 
 
 
+/**
+ * valide telephone 
+ * @param {string} tel input telephone number
+ * @returns 
+ */
+function ValideTel(tel) {
+    const regextel = new RegExp(/[0-9]{13}/gi);
 
-function Portable_Valide(nbTel)
-{
-  let regexTelephone = new RegExp(/^(06|07)[0-9]{8}/gi);
-    
-    if (!regexTelephone.test (nbTel))
-    {
-        return(true);
+    if (!regextel.test(tel)) {
+        displayErrorForm(`Le numéro de télephone est invalide.`);
+        return (true);
     }
 
-    localStorage.setItem("tel", JSON.stringify(nbTel));
-    
+    localStorage.setItem("tel", JSON.stringify(tel));
+
 }
 
 
+
+/**
+ *
+ *verfy email adress and save it in DOM.
+ * @param {string} email email adresse.
+ * @return {void} 
+ */
+function ValideMail(email) {
+    var regxemail = new RegExp('/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/');
+    if (!regxemail.test(EmailTest)) {
+        return;
+    }
+    localStorage.setItem("email", JSON.stringify(email));
+
+}
 
 /**
  *
@@ -100,9 +132,10 @@ function Portable_Valide(nbTel)
  */
 function showNextStep(stepNumber) {
     document.querySelectorAll("[data-step]").forEach((step) => {
-        if (step.dataset.step <= stepNumber) {
+        if (step.dataset.step == stepNumber || step.dataset.step == stepNumber - 1) {
 
             step.classList.toggle("hidden");
         }
     })
 }
+
