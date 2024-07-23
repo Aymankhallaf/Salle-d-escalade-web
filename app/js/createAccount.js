@@ -1,3 +1,4 @@
+import * as F from "./_functions.js";
 
 
 //listen to first next button
@@ -11,7 +12,10 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
 });
 
 //listen to previous next button
+document.getElementById("step-btn-prev-1").addEventListener("click", function(){
+    showNextStep("1");
 
+})
 
 //listen to second next button
 document.getElementById("step-btn-2").addEventListener("click", function () {
@@ -26,6 +30,10 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function () {
     ValideMail("email", document.getElementById("email").value);
+    verifyconfirmPassword(
+        document.getElementById("password").value,
+        document.getElementById("confirm-psw").value
+)
     console.log("finsh")
 });
 
@@ -97,11 +105,11 @@ function valideDate(dateInput) {
  * @returns 
  */
 function ValideTel(tel) {
-    const regextel = new RegExp(/[0-9]{13}/gi);
+    const regextel = new RegExp(/[0-9]/gi);
 
     if (!regextel.test(tel)) {
         displayErrorForm(`Le numéro de télephone est invalide.`);
-        return (true);
+        return;
     }
 
     localStorage.setItem("tel", JSON.stringify(tel));
@@ -109,21 +117,57 @@ function ValideTel(tel) {
 }
 
 
-
 /**
  *
  *verfy email adress and save it in DOM.
  * @param {string} email email adresse.
- * @return {void} 
+ * @return {void} return if it doesn't follow the criteria.
  */
 function ValideMail(email) {
-    var regxemail = new RegExp('/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/');
-    if (!regxemail.test(EmailTest)) {
+    const regxemail = new RegExp('/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/');
+    if (!regxemail.test(email)) {
+        displayErrorForm(`Le email est invalide.`);
         return;
     }
     localStorage.setItem("email", JSON.stringify(email));
 
 }
+
+
+
+
+/**
+ *
+ *Valides if password has one number, one small lettre and capital lettre at leaast. 
+ * @param {string} pw pasword.
+ * @return {void} return if the password doesn't follow the criteria. 
+ */
+function validePw(pw) {
+    
+    const regxemail = new RegExp('(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}');
+    if (!regxemail.test(pw)) {
+        displayErrorForm(`Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.`);
+        return;
+    }
+
+    localStorage.setItem("pw", JSON.stringify(pw));
+}
+
+
+/**
+ *
+ * Confirm if the password and confirm password are identical.
+ * @param {string} password a string of password.
+ *  @param {string} confirmPassword a string of password
+ * @return {void} return if they aren't equal.
+ */
+function verifyconfirmPassword(password,confirmPassword){
+    if (password !== confirmPassword) {
+        displayErrorForm("Les mots de passe ne correspondent pas.");
+        return;
+    }
+}
+
 
 /**
  *
@@ -139,3 +183,17 @@ function showNextStep(stepNumber) {
     })
 }
 
+
+
+
+
+// function sendCreationData() {
+//     callApi("POST", {
+//         action: "createAcount",
+//         token: F.getToken(),
+
+        
+//     })
+//         .then(data = {
+//         })
+// }

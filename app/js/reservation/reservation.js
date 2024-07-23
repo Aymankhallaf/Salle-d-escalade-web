@@ -63,7 +63,6 @@ function handleSubmit(e) {
     F.callApi("PUT", {
         action: "reserve",
         token: F.getToken(),
-        action: "reserve",
         duration: JSON.parse(localStorage.getItem("duration")),
         chosenDate: JSON.parse(localStorage.getItem("chosenDate")),
         participants: JSON.parse(localStorage.getItem("participants")),
