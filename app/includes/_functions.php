@@ -303,14 +303,16 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'idUser' => $idUser
     ]);
 
-    $data = $query->fetchAll();
     if (!$isQueryOk) {
         triggerError("connection");
     }
     echo json_encode([
         'isOk' => $isQueryOk,
-        $data,
-        'idUSer' => $idUser
+        'nb_particpation' => $inputData['participants'],
+        'date_starting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
+        'idGym' => $inputData['chosenGym'],
+        'idActivity' => $inputData['duration'],
+        'idUser' => $idUser
 
     ]);
 }
@@ -352,9 +354,11 @@ function getUserReservationHistory(PDO $dbCo, int $idUser)
  * @param int $idReservation user id.
  * @return void
  */
-function getAReservationDetailsUser(PDO $dbCo, int $idUser, 
-int $idReservation)
-{
+function getAReservationDetailsUser(
+    PDO $dbCo,
+    int $idUser,
+    int $idReservation
+) {
     $query = $dbCo->prepare("SELECT nb_particpation,
      date_starting, duration, name_gym, (nb_particpation*price) 
      AS totalPrice FROM reservation JOIN gym USING(id_gym) 

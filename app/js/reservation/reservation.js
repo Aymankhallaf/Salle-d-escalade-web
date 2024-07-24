@@ -69,13 +69,15 @@ function handleSubmit(e) {
             F.displayError(data['errorMessage']);
             return;
         }
-        F.verifyReturnData(data["idGym"], idGym);
-        F.verifyReturnData(data["chosenDate"], chosenDate);
-        let hours = data["openClosehoures"][0];
-        let openHour = hours["open_hour"].slice(0, 2);
-        let closeHour = hours["close_hour"].slice(0, 2);
-        document.getElementById("hours__container").innerHTML = "";
-        H.displayHour(openHour, closeHour);
+        // console.log(data["idGym"]);
+        // console.log(localStorage.getItem("chosenGym"));
+        // F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
+        // F.verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
+        // let hours = data["openClosehoures"][0];
+        // let openHour = hours["open_hour"].slice(0, 2);
+        // let closeHour = hours["close_hour"].slice(0, 2);
+        // document.getElementById("hours__container").innerHTML = "";
+        // H.displayHour(openHour, closeHour);
 
 
     })
