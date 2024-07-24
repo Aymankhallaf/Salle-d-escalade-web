@@ -18,6 +18,7 @@ function handleInputField(value, maxDefaultCapacity) {
         F.displayError(`La valeur doit être supérieure à 0`);
         return participantsInput.value; // Return the current value to prevent changes
     }
+    localStorage.setItem("participants", JSON.stringify(value));
     return value;
 }
 

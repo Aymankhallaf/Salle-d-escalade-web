@@ -7,6 +7,7 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     validateName("fname", document.getElementById("fname").value);
     valideDate(document.getElementById("birthdate").value);
     valideDate(document.getElementById("birthdate").value);
+    console.log("1")
     showNextStep("2");
     document.getElementById("birthdate").value
 });
@@ -64,7 +65,7 @@ function displayErrorForm(errorMessage) {
  * @returns {void}
  */
 function validateName(name, value) {
-    const namePattern = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s-]+$/;
+    const namePattern = new RegExp( /^[a-zA-ZÀ-Ÿ-. ]*$/);
 
     if (!value) {
         displayErrorForm(`Le ${name} est obligatoire.`);

@@ -271,7 +271,7 @@ function isReservationValid(array $inputData)
 {
 
     if ($inputData['chosenGym'] !== '1' && $inputData['chosenGym'] !== '2') {
-        triggerError('chosenGym', "2");
+        triggerError('chosenGym', "isReservationValid()");
     }
     if (!isValidDate($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');

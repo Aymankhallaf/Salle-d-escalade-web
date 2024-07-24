@@ -15,10 +15,6 @@ document.getElementById("hall").addEventListener("change", (e) => {
 }
 );
 
-document.getElementById("participants").addEventListener("input", function (e) {
-    console.log(e);
-    localStorage.setItem("participants", JSON.stringify(e.target.value));
-});
 
 
 document.getElementById("duration").addEventListener("change", (e) => {
@@ -73,13 +69,13 @@ function handleSubmit(e) {
             F.displayError(data['errorMessage']);
             return;
         }
-        // F.verifyReturnData(data["idGym"], idGym);
-        // F.verifyReturnData(data["chosenDate"], chosenDate);
-        // let hours = data["openClosehoures"][0];
-        // let openHour = hours["open_hour"].slice(0, 2);
-        // let closeHour = hours["close_hour"].slice(0, 2);
-        // document.getElementById("hours__container").innerHTML = "";
-        // H.displayHour(openHour, closeHour);
+        F.verifyReturnData(data["idGym"], idGym);
+        F.verifyReturnData(data["chosenDate"], chosenDate);
+        let hours = data["openClosehoures"][0];
+        let openHour = hours["open_hour"].slice(0, 2);
+        let closeHour = hours["close_hour"].slice(0, 2);
+        document.getElementById("hours__container").innerHTML = "";
+        H.displayHour(openHour, closeHour);
 
 
     })

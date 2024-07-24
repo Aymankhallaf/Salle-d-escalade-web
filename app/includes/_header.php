@@ -1,7 +1,7 @@
 <?php
 session_start();
-include 'includes/_connection.php';
-include_once 'includes/_functions.php';
+include_once 'includes/_connection.php';
+// include_once 'includes/_functions.php';
  
 generateToken();
 

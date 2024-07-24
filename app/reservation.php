@@ -1,5 +1,5 @@
 <?php
-include 'includes/_header.php';
+require_once 'includes/_header.php';
 ?>
 
 <main>
@@ -82,11 +82,7 @@ include 'includes/_header.php';
             <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
         </div>
     </form>
-</main>
 
-<?php
-include 'includes/_footer.php';
-?>
 
 <!-- gym template -->
 <template id="hallTemplate">
@@ -111,8 +107,12 @@ include 'includes/_footer.php';
 <template id="templateMessage">
     <li data-message="" class="messages__itm">Ici vient le message</li>
 </template>
+</main>
 
 
+<?php
+include 'includes/_footer.php';
+?>
 </body>
 
 </html>
