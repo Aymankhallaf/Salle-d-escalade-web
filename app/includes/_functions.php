@@ -409,7 +409,7 @@ function getAReservationDetailsUser(
  * @param string $value value of field
  * @return bool true if valide, if false return error message and exist.
  */
-function isNameValide($name,$value){
+function isNameValide($name,$value):bool{
         if (empty($name)) {
             triggerError("Le $name est obligatoire.");
         }
@@ -422,13 +422,25 @@ function isNameValide($name,$value){
 
 /**
  * Summary of isValideDate
- * @param mixed $dateInput
+ * @param string $dateInput
  * @return bool true if valide, if false return error message and exist.
  */
-function isValideDate($dateInput) {
+function isValideDate($dateInput):bool {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
         triggerError("Le birthDate est invalide.");
+    }
+    return true;
+}
+
+/**
+ * Summary of ValideTel
+ * @param string $tel
+ * @return bool
+ */
+function ValideTel($tel):bool {
+    if (!preg_match('/[0-9]/', $tel)) {
+        triggerError("Le numéro de téléphone est invalide.");
     }
     return true;
 }
