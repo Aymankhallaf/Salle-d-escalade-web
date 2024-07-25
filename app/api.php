@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
-    $reservetaionDetails=reservetaionDetails($dbCo, $inputData, 1);
-    redirectTo(`/dashboard.php#reservation-details?{$reservetaionDetails}`);
-
+    reserve($dbCo, $inputData, 1);
+    
 }

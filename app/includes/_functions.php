@@ -103,18 +103,7 @@ function stripTagsArray(array &$data): void
 }
 
 
-/**
- * Redirect to the given URL.
- *
- * @param string $url
- * @return void
- */
-function redirectTo(string $url): void
-{
-    // var_dump('REDIRECT ' . $url);
-    header('Location: ' . $url);
-    exit;
-}
+
 
 /**
  * gets gyms id and name.
@@ -300,9 +289,9 @@ function isReservationValid(array $inputData)
  * @param array $inputData  array of this data [nb_particpation , date_starting,
  *     , "id_gym" , "id_activity", "date_reservation"]
  * @param int $idUser
- * @return array user id
+ * @return void user id
  */
-function reservetaionDetails(PDO $dbCo, array $inputData, int $idUser):array
+function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting,
@@ -319,7 +308,7 @@ function reservetaionDetails(PDO $dbCo, array $inputData, int $idUser):array
     if (!$isQueryOk) {
         triggerError("connection");
     }
-    return [
+    echo json_encode([
         'isOk' => $isQueryOk,
         'idReservation' => $dbCo->lastInsertId(),
         'nbParticpation' => $inputData['participants'],
@@ -328,7 +317,7 @@ function reservetaionDetails(PDO $dbCo, array $inputData, int $idUser):array
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
 
-    ];
+    ]);
 }
 
 
