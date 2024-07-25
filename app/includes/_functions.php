@@ -436,11 +436,39 @@ function isValideDate($dateInput):bool {
 /**
  * Summary of ValideTel
  * @param string $tel
- * @return bool
+ * @return bool true if valide, if false return error message and exist.
  */
-function ValideTel($tel):bool {
+function isValideTel($tel):bool {
     if (!preg_match('/[0-9]/', $tel)) {
         triggerError("Le numéro de téléphone est invalide.");
+    }
+    return true;
+}
+
+
+/**
+ * Summary of validePw
+ * @param string $pw
+ * @return bool true if valide, if false return error message and exist.
+ */
+function isValidePw($pw):bool  {
+    if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw))
+    {
+        triggerError("Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.");
+    }
+    return true;
+}
+
+/**
+ * Summary of verifyconfirmPassword
+ * @param string $password
+ * @param string $confirmPassword
+ * @return bool true if valide, if false return error message and exist.
+ */
+function isVerifyconfirmPassword($password, $confirmPassword):bool 
+{
+    if ($password !== $confirmPassword) {
+        triggerError("Les mots de passe ne correspondent pas.");
     }
     return true;
 }
