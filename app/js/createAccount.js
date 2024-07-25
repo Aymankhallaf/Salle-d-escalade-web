@@ -2,12 +2,11 @@
 
 //listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
-    validateName("lname", document.getElementById("lname").value);
-    validateName("fname", document.getElementById("fname").value);
-    valideDate(document.getElementById("birthdate").value);
-    valideDate(document.getElementById("birthdate").value);
+    if (!isValidateName("lname", document.getElementById("lname").value)) return;
+    if (!isValidateName("fname", document.getElementById("fname").value)) return;
+    console.log
+    if (!isValideDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
-    document.getElementById("birthdate").value
 });
 
 //listen to previous next button
@@ -18,8 +17,8 @@ document.getElementById("step-btn-prev-1").addEventListener("click", function(){
 
 //listen to second next button
 document.getElementById("step-btn-2").addEventListener("click", function () {
-    ValideTel(document.getElementById("tel").value);
-    validateName("city", document.getElementById("city").value);
+    isValideTel(document.getElementById("tel").value);
+    isValidateName("city", document.getElementById("city").value);
     showNextStep("3");
 });
 
@@ -28,8 +27,8 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
 
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function () {
-    ValideMail("email", document.getElementById("email").value);
-    verifyconfirmPassword(
+    isValideMail("email", document.getElementById("email").value);
+    isVerifyconfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
 )
@@ -92,6 +91,7 @@ function isValideDate(dateInput) {
         displayErrorForm(`Le birthDate invalide.`);
         return false;
     };
+    return true;
 }
 
 
@@ -154,7 +154,7 @@ function isValidePw(pw) {
  * Is the password and confirm password are identical?.
  * @param {string} password a string of password.
  *  @param {string} confirmPassword a string of password.
- * @return {boolen} return fasle if they aren't equal, true if they are equal.
+ * @return {boolean} return fasle if they aren't equal, true if they are equal.
  */
 function isVerifyconfirmPassword(password,confirmPassword){
     if (password !== confirmPassword) {
