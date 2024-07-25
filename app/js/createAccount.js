@@ -76,7 +76,6 @@ function validateName(name, value) {
         return;
     }
 
-    localStorage.setItem(name, JSON.stringify(value));
 }
 
 
@@ -93,7 +92,6 @@ function valideDate(dateInput) {
         displayErrorForm(`Le birthDate invalide.`);
         return;
     };
-    localStorage.setItem("birthDate", JSON.stringify(dateInput));
 }
 
 
@@ -112,7 +110,6 @@ function ValideTel(tel) {
         return;
     }
 
-    localStorage.setItem("tel", JSON.stringify(tel));
 
 }
 
@@ -129,7 +126,6 @@ function ValideMail(email) {
         displayErrorForm(`Le email est invalide.`);
         return;
     }
-    localStorage.setItem("email", JSON.stringify(email));
 
 }
 
@@ -150,7 +146,6 @@ function validePw(pw) {
         return;
     }
 
-    localStorage.setItem("pw", JSON.stringify(pw));
 }
 
 

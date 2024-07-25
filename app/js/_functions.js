@@ -185,6 +185,11 @@ export function getGym() {
 
 ///
 
+/**
+ *Get parameters from url
+ *
+ * @return {object} object of params
+ */
 function getQueryParams() {
     const queryString = window.location.hash.split('?')[1];
     const params = {};
@@ -197,3 +202,19 @@ function getQueryParams() {
     }
     return params;
 }
+
+
+/**
+ * Display gym(hall) with template
+ * @param {object} gym 
+ */
+export function displayReservation(reservation) {
+    const template = document.importNode(document.getElementById('hallTemplate').content, true);
+    const option = template.querySelector('.js-hall-option')
+    option.innerText = gym['name_gym'];
+    option.value = gym['id_gym'];
+    document.getElementById('hall').appendChild(option);
+
+}
+
+

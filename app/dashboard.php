@@ -37,7 +37,35 @@ include 'includes/_header.php';
             </tr>
         </table>
     </section>
+    <!-- template reservation -->
+    <template id="templateReservation">
+    <tr class="reservation-details-raw">
+    <tr class="reservation-details-raw">
+                <th>Salle</th>
+                <td id="gym">Salle1</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Date de réservation</th>
+                <td id="dateReservation">14/07/2024 8:30</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Durée</th>
+                <td id="duration">1h</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Total Prix</th>
+                <td id="totalPrix">50€</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Statut</th>
+                <td id="status">Payé</td>
+            </tr>
+            </tr>
+    </template>
 
+
+    <li data-message="" class="messages__itm">Ici vient le message</li>
+</template>
 </main>
 <script type="module" src="./js/getLocationHash.js"></script>
 <?php
