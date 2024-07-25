@@ -129,6 +129,7 @@ export function displayGym(gym) {
 
 
 /**
+ * to be review
  * verify the id gym.
  * return void(stop script) if the id gym not "1" or "2"
  * @returns {void}
@@ -144,6 +145,7 @@ export function verifyIdGym(idGym) {
 
 /**
  *
+ * to be reviewed.
  *verify if the response data the same as the requested
  * @param {string} request string for request data. 
  * @param {string} response string for response data. 
@@ -152,7 +154,7 @@ export function verifyIdGym(idGym) {
 export function verifyReturnData(request, response) {
     if (request !== response) {
         displayError("erreur lors de l'envoi et de la réception des données");
-        return
+        return false
     }
 }
 

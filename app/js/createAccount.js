@@ -6,7 +6,6 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     validateName("fname", document.getElementById("fname").value);
     valideDate(document.getElementById("birthdate").value);
     valideDate(document.getElementById("birthdate").value);
-    console.log("1")
     showNextStep("2");
     document.getElementById("birthdate").value
 });
@@ -58,39 +57,40 @@ function displayErrorForm(errorMessage) {
 
 
 /**
- * Validates name input field and saves it in local storage or shows an error message.
+ * is a valide name input field? shows an error message.
  * @param {string} name The name of the field being validated.
  * @param {string} value The input value.
- * @returns {void}
+ * @returns {boolean} false if not and true if it is valide.
  */
-function validateName(name, value) {
+function isValidateName(name, value) {
     const namePattern = new RegExp( /^[a-zA-ZÀ-Ÿ-. ]*$/);
 
     if (!value) {
         displayErrorForm(`Le ${name} est obligatoire.`);
-        return;
+        return false;
     }
 
     if (!namePattern.test(value)) {
         displayErrorForm(`Le ${name} invalide.`);
-        return;
+        return false;
     }
+    return true;
 
 }
 
 
 /**
  *
- *Valides birthdate and save it in local storge.
+ * is a Valide birthdate? and show the error if not.
  * @param {string} dateInput date input(birthdate).
- * @return {void} 
+ * @return {boolean} false if not and true if it is valide.
  */
-function valideDate(dateInput) {
+function isValideDate(dateInput) {
 
     let birthDay = new Date(dateInput);
     if (isNaN(birthDay)) {
         displayErrorForm(`Le birthDate invalide.`);
-        return;
+        return false;
     };
 }
 
@@ -98,35 +98,35 @@ function valideDate(dateInput) {
 
 
 /**
- * valide telephone 
+ * is valide telephone ?  show the error if not.
  * @param {string} tel input telephone number
- * @returns 
+ * @returns {boolean} false if not and true if it is valide.
  */
-function ValideTel(tel) {
+function isValideTel(tel) {
     const regextel = new RegExp(/[0-9]/gi);
 
     if (!regextel.test(tel)) {
         displayErrorForm(`Le numéro de télephone est invalide.`);
-        return;
+        return false;
     }
-
+    return true;
 
 }
 
 
 /**
  *
- *verfy email adress and save it in DOM.
+ * is valide email adresse? show the error if not.
  * @param {string} email email adresse.
- * @return {void} return if it doesn't follow the criteria.
+ * @return {boolean} return if it doesn't follow the criteria.
  */
-function ValideMail(email) {
+function isValideMail(email) {
     const regxemail = new RegExp('/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/');
     if (!regxemail.test(email)) {
         displayErrorForm(`Le email est invalide.`);
-        return;
+        return false;
     }
-
+    return true;
 }
 
 
@@ -134,11 +134,11 @@ function ValideMail(email) {
 
 /**
  *
- *Valides if password has one number, one small lettre and capital lettre at leaast. 
+ * is Valide password has one number, one small lettre and capital lettre at leaast. 
  * @param {string} pw pasword.
- * @return {void} return if the password doesn't follow the criteria. 
+ * @return {boolean} return false if the password doesn't follow the criteria otherwise true. 
  */
-function validePw(pw) {
+function isValidePw(pw) {
     
     const regxemail = new RegExp('(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}');
     if (!regxemail.test(pw)) {
@@ -151,16 +151,17 @@ function validePw(pw) {
 
 /**
  *
- * Confirm if the password and confirm password are identical.
+ * Is the password and confirm password are identical?.
  * @param {string} password a string of password.
- *  @param {string} confirmPassword a string of password
- * @return {void} return if they aren't equal.
+ *  @param {string} confirmPassword a string of password.
+ * @return {boolen} return fasle if they aren't equal, true if they are equal.
  */
-function verifyconfirmPassword(password,confirmPassword){
+function isVerifyconfirmPassword(password,confirmPassword){
     if (password !== confirmPassword) {
         displayErrorForm("Les mots de passe ne correspondent pas.");
-        return;
+        return false;
     }
+    return true;
 }
 
 
