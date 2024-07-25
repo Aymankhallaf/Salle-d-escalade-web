@@ -11,7 +11,7 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
 
 //listen to previous next button
 document.getElementById("step-btn-prev-1").addEventListener("click", function(){
-    showNextStep("1");
+    showNextStep("2");
 
 })
 
