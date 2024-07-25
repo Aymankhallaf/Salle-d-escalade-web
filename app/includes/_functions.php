@@ -331,7 +331,6 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'idUser' => $idUser
 
     ]);
-    
 }
 
 
@@ -409,14 +408,13 @@ function getAReservationDetailsUser(
  * @param string $value value of field
  * 
  */
-function isNameValide($name,$value):bool{
-        if (empty($name)) {
-            triggerError("Le $name est obligatoire.");
-        }
-        if (!preg_match('/^[a-zA-ZÀ-Ÿ-. ]*$/', $value)) {
-            triggerError("Le $name est invalide.");
-        }
-        return true;
+function isNameValide($name, $value): bool
+{
+
+    if (!preg_match('/^[a-zA-ZÀ-Ÿ-. ]*$/', $value)) {
+        triggerError("$name");
+    }
+    return true;
 }
 
 
@@ -425,12 +423,12 @@ function isNameValide($name,$value):bool{
  * @param string $dateInput
  *
  */
-function isValideDate($dateInput) {
+function isValideDate($dateInput)
+{
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
-        triggerError("Le birthDate est invalide.");
+        triggerError("birthDate");
     }
-    
 }
 
 /**
@@ -438,9 +436,10 @@ function isValideDate($dateInput) {
  * @param string $tel
  * 
  */
-function isValideTel($tel) {
+function isValideTel($tel)
+{
     if (!preg_match('/[0-9]/', $tel)) {
-        triggerError("Le numéro de téléphone est invalide.");
+        triggerError("tele");
     }
 }
 
@@ -450,21 +449,22 @@ function isValideTel($tel) {
  * @param string $email
  * 
  */
-function ValideMail($email) {
+function isValideMail($email)
+{
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        triggerError("Le email est invalide.");
+        triggerError("email");
     }
 }
 
 /**
  * Summary of validePw
  * @param string $pw
- * @return bool true if valide, if false return error message and exist.
+ * 
  */
-function isValidePw($pw):bool  {
-    if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw))
-    {
-        triggerError("Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.");
+function isValidePw($pw): bool
+{
+    if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw)) {
+        triggerError("newpwd");
     }
     return true;
 }
@@ -475,21 +475,22 @@ function isValidePw($pw):bool  {
  * @param string $confirmPassword
  * 
  */
-function isVerifyconfirmPassword($password, $confirmPassword) 
+function isVerifyconfirmPassword($password, $confirmPassword)
 {
     if ($password !== $confirmPassword) {
-        triggerError("Les mots de passe ne correspondent pas.");
+        triggerError("confirmpwd");
     }
     return true;
 }
 
 
-function isCreateAccountDataValide($inputData){
-    isNameValide("nom",$inputData['lname']);
-    isNameValide("prénom",$inputData['lname']);
+function isCreateAccountDataValide($inputData)
+{
+    isNameValide("nom", $inputData['lname']);
+    isNameValide("prénom", $inputData['lname']);
     isValideDate($inputData['birthdate']);
     isValideDate($inputData['birthdate']);
-    isNameValide("ville",$inputData['city']);
+    isNameValide("ville", $inputData['city']);
     isValidePw($inputData['password']);
-    isVerifyconfirmPassword($inputData['password'],($inputData['confirm-psw']));
+    isVerifyconfirmPassword($inputData['password'], ($inputData['confirm-psw']));
 }
