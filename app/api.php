@@ -17,8 +17,7 @@ if (!isTokenOk($inputData['token'])) {
     triggerError('token', $_SESSION['token']);
 }
 
-
-
+//create account
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {
     var_dump($inputData);
 }

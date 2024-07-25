@@ -398,3 +398,23 @@ function getAReservationDetailsUser(
 
     ]);
 }
+
+
+//create account 
+
+
+/**
+ * isNameValide?
+ * @param string $name field name.
+ * @param string $value value of field
+ * @return bool true if valide, if false return error message and exist.
+ */
+function isNameValide($name,$value){
+        if (empty($name)) {
+            triggerError("Le $name est obligatoire.");
+        }
+        if (!preg_match('/^[a-zA-ZÀ-Ÿ-. ]*$/', $value)) {
+            triggerError("Le $name est invalide.");
+        }
+        return true;
+}
