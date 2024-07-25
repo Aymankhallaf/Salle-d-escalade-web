@@ -3,7 +3,7 @@ session_start();
 
 require_once 'includes/_connection.php';
 
-// header('Content-type:application/json');
+header('Content-type:application/json');
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
@@ -19,10 +19,8 @@ if (!isTokenOk($inputData['token'])) {
 
 
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    var_dump($_REQUEST);
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {
+    var_dump($inputData);
 }
 
 
@@ -42,11 +40,8 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
         triggerError('chosenDate');
     }
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
-}
-
-else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
     reserve($dbCo, $inputData, 1);
-
 }

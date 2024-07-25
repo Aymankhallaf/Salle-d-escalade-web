@@ -51,5 +51,5 @@ generateToken();
 
             </ul>
         </nav>
-        <span data-token="<?= generateToken(); ?>" class="hidden" id="token"></span>
+        <span data-token="<?= $_SESSION['token']; ?>" class="hidden" id="token"></span>
     </header>
