@@ -56,7 +56,7 @@ function handleSubmit(e) {
         return
     }
 
-    F.callApi("PUT", {
+    F.callApi("POST", {
         action: "reserve",
         token: F.getToken(),
         duration: JSON.parse(localStorage.getItem("duration")),
@@ -78,6 +78,7 @@ function handleSubmit(e) {
         // let closeHour = hours["close_hour"].slice(0, 2);
         // document.getElementById("hours__container").innerHTML = "";
         // H.displayHour(openHour, closeHour);
+        document.location.href = '/dashboard.php#reservation-details'
 
 
     })

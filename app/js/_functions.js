@@ -12,8 +12,8 @@ export function getToken() {
 
 /**
  * Generate asynchronous call to api.php with parameters
- * @param {*} method GET, POST, PUT or DELETE
- * @param {*} params An object with data to send.
+ * @param {string} method GET, POST, PUT or DELETE
+ * @param {object} params An object with data to send.
  * @returns 
  */
 export async function callApi(method, param) {
@@ -37,6 +37,40 @@ export async function callApi(method, param) {
     }
 
 }
+
+
+
+/**
+ * Generate asynchronous call to "url.php" with parameters
+ * @param {string} url the target url
+ * @param {string} method GET, POST, PUT or DELETE
+ * @param {object} params An object with data to send.
+ * @returns 
+ */
+export async function callUrlApi(url,method, param) {
+    try {
+        const response = await fetch("url",
+            {
+                method: method,
+                body: JSON.stringify(param),
+                headers: {
+                    'Content-type': 'application/json'
+                }
+            });
+        return await response.json();
+
+
+
+    }
+    catch (error) {
+        console.error("Unable to load data from server : " + error);
+
+    }
+
+}
+
+
+
 
 //error
 

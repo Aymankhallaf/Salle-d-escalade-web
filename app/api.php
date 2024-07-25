@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "reserve") {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
     reserve($dbCo, $inputData, 1);
