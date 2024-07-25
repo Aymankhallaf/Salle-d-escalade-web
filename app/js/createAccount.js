@@ -17,8 +17,8 @@ document.getElementById("step-btn-prev-1").addEventListener("click", function(){
 
 //listen to second next button
 document.getElementById("step-btn-2").addEventListener("click", function () {
-    isValideTel(document.getElementById("tel").value);
-    isValidateName("city", document.getElementById("city").value);
+    if (!isValideTel(document.getElementById("tel").value))return;
+    if (!isValidateName("city", document.getElementById("city").value))return;
     showNextStep("3");
 });
 
@@ -27,12 +27,12 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
 
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function () {
-    isValideMail("email", document.getElementById("email").value);
-    isVerifyconfirmPassword(
+    if (!isValideMail("email", document.getElementById("email").value))return;
+    if (!isValidePw(document.getElementById("password").value))return;
+    if (!isVerifyconfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
-)
-    console.log("finsh")
+                                 )) return;
 });
 
 
