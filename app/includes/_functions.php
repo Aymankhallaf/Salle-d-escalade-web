@@ -418,3 +418,17 @@ function isNameValide($name,$value){
         }
         return true;
 }
+
+
+/**
+ * Summary of isValideDate
+ * @param mixed $dateInput
+ * @return bool true if valide, if false return error message and exist.
+ */
+function isValideDate($dateInput) {
+    $timestamp = strtotime($dateInput);
+    if ($timestamp === false) {
+        triggerError("Le birthDate est invalide.");
+    }
+    return true;
+}
