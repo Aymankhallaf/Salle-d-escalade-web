@@ -103,6 +103,19 @@ function stripTagsArray(array &$data): void
 }
 
 
+/**
+ * redirect to url and 
+ *
+ * @param string $url the target url
+ * @param string $flag a flag to differentiate the error.
+ * @return void
+ */
+function redirectToHeader(string $url, string $flag = ''): void
+{
+    // var_dump('REDIRECT ' . $url, $flag);
+    header('Location: ' . $url);
+    exit;
+}
 
 
 /**
@@ -318,6 +331,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'idUser' => $idUser
 
     ]);
+    
 }
 
 

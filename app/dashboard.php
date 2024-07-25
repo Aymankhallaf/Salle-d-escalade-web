@@ -1,6 +1,5 @@
 <?php
 include 'includes/_header.php';
- var_dump($_GET['idReservation']); 
 
 ?>
 <main class="dashboard-reservation"  >
@@ -40,7 +39,7 @@ include 'includes/_header.php';
     </section>
 
 </main>
-
+<script type="module" src="./js/getLocationHash.js"></script>
 <?php
 include 'includes/_footer.php';
 ?>

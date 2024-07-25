@@ -79,8 +79,8 @@ function handleSubmit(e) {
         // document.getElementById("hours__container").innerHTML = "";
         // H.displayHour(openHour, closeHour);
         
-        //redirect to shown reservation page.
-        // document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}`
+        //redirect to shown reservation page.(to do do you needs another params to pass)
+        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}`
 
    
 
