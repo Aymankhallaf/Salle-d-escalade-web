@@ -78,7 +78,11 @@ function handleSubmit(e) {
         // let closeHour = hours["close_hour"].slice(0, 2);
         // document.getElementById("hours__container").innerHTML = "";
         // H.displayHour(openHour, closeHour);
-        document.location.href = '/dashboard.php#reservation-details'
+        
+        //redirect to shown reservation page.
+        document.location.href = `/dashboard.php#reservation-details?id=${data["idReservation"]}`
+
+   
 
 
     })

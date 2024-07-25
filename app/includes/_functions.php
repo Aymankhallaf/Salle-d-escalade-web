@@ -308,8 +308,9 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     }
     echo json_encode([
         'isOk' => $isQueryOk,
-        'nb_particpation' => $inputData['participants'],
-        'date_starting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
+        'idReservation' => $dbCo->lastInsertId(),
+        'nbParticpation' => $inputData['participants'],
+        'dateStarting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
