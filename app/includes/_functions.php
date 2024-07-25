@@ -406,24 +406,23 @@ function getAReservationDetailsUser(
  * isNameValide?
  * @param string $name field name.
  * @param string $value value of field
- * 
+ * @return void
  */
-function isNameValide($name, $value): bool
+function isNameValide($name, $value): void
 {
 
     if (!preg_match('/^[a-zA-ZÀ-Ÿ-. ]*$/', $value)) {
         triggerError("$name");
     }
-    return true;
 }
 
 
 /**
  * Summary of isValideDate
  * @param string $dateInput
- *
+ *@return void
  */
-function isValideDate($dateInput)
+function isValideDate($dateInput):void
 {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
@@ -434,9 +433,9 @@ function isValideDate($dateInput)
 /**
  * Summary of ValideTel
  * @param string $tel
- * 
+ * @return void
  */
-function isValideTel($tel)
+function isValideTel($tel):void
 {
     if (!preg_match('/[0-9]/', $tel)) {
         triggerError("tele");
@@ -447,9 +446,9 @@ function isValideTel($tel)
 /**
  * Summary of ValideMail
  * @param string $email
- * 
+ * @return void
  */
-function isValideMail($email)
+function isValideMail($email):void
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         triggerError("email");
@@ -459,32 +458,35 @@ function isValideMail($email)
 /**
  * Summary of validePw
  * @param string $pw
- * 
+ * @return void
  */
-function isValidePw($pw): bool
+function isValidePw($pw):void
 {
     if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw)) {
         triggerError("newpwd");
     }
-    return true;
 }
 
 /**
  * Summary of verifyconfirmPassword
  * @param string $password
  * @param string $confirmPassword
- * 
+ * @return void
  */
-function isVerifyconfirmPassword($password, $confirmPassword)
+function isVerifyconfirmPassword($password, $confirmPassword):void
 {
     if ($password !== $confirmPassword) {
         triggerError("confirmpwd");
     }
-    return true;
 }
 
 
-function isCreateAccountDataValide($inputData)
+/**
+ * Summary of isCreateAccountDataValide
+ * @param array $inputData
+ * @return void
+ */
+function isCreateAccountDataValide($inputData):void
 {
     isNameValide("nom", $inputData['lname']);
     isNameValide("prénom", $inputData['lname']);
