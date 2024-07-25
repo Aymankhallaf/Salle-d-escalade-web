@@ -41,7 +41,9 @@ include 'includes/_header.php';
 </main>
 <script type="module" src="./js/getLocationHash.js"></script>
 <?php
+
 include 'includes/_footer.php';
+
 ?>
 </body>
 

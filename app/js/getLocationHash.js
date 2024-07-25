@@ -1,16 +1,26 @@
-function getQueryParams() {
-    const queryString = window.location.hash.split('?')[1];
-    const params = {};
-    if (queryString) {
-        const pairs = queryString.split('&');
-        pairs.forEach(pair => {
-            const [key, value] = pair.split('=');
-            params[decodeURIComponent(key)] = decodeURIComponent(value);
-        });
-    }
-    return params;
-}
+import * as F from './_functions.js';
+
+
+console.log("ok");
+
+
 
 if (window.location.hash.startsWith('#reservation-details')) {
-    console.log(getQueryParams());
+    console.log(F.getQueryParams()['idReservation']);
+    F.callApi("POST", {
+        action: "reserve",
+        token: getToken(),
+        idReservation: F.getQueryParams()['idReservation']
+
+    }).then(data => {
+        if (!data.isOk) {
+            displayError(data['errorMessage']);
+            return;
+        }
+
+
+        console.log("ok")
+
+    })
+
 }

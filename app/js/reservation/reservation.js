@@ -69,6 +69,8 @@ function handleSubmit(e) {
             F.displayError(data['errorMessage']);
             return;
         }
+
+        //to do verify return data
         // console.log(data["idGym"]);
         // console.log(localStorage.getItem("chosenGym"));
         // F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));

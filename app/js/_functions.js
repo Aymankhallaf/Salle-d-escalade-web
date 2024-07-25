@@ -1,4 +1,3 @@
-import * as Calendar from "./reservation/_calendar.js";
 
 //api functions
 /**
@@ -184,3 +183,17 @@ export function getGym() {
 }
 
 
+///
+
+function getQueryParams() {
+    const queryString = window.location.hash.split('?')[1];
+    const params = {};
+    if (queryString) {
+        const pairs = queryString.split('&');
+        pairs.forEach(pair => {
+            const [key, value] = pair.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+    }
+    return params;
+}

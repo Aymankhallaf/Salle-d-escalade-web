@@ -1,4 +1,3 @@
-import * as F from "./_functions.js";
 
 
 //listen to first next button
