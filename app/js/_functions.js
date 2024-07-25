@@ -184,6 +184,14 @@ export function getGym() {
 }
 
 
+
+function getQueryParams(id) {
+    const params = new URLSearchParams(window.location.search);
+    return {
+        id: params.get(id)
+    };
+}
+
 //form function
 
 

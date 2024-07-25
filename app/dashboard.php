@@ -1,6 +1,6 @@
 <?php
 include 'includes/_header.php';
-
+ var_dump($_GET['idReservation']); 
 
 ?>
 <main class="dashboard-reservation"  >
