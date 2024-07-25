@@ -2,7 +2,6 @@
 session_start();
 
 require_once 'includes/_connection.php';
-var_dump($_REQUEST);
 
 // header('Content-type:application/json');
 //prenvent visteurs acess to this page
@@ -19,7 +18,16 @@ if (!isTokenOk($inputData['token'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    var_dump($_REQUEST);
+
+}
+
+
+//reservation
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
     getGyms($dbCo);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
@@ -36,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
     reserve($dbCo, $inputData, 1);
