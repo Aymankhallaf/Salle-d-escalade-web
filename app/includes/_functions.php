@@ -407,7 +407,7 @@ function getAReservationDetailsUser(
  * isNameValide?
  * @param string $name field name.
  * @param string $value value of field
- * @return bool true if valide, if false return error message and exist.
+ * 
  */
 function isNameValide($name,$value):bool{
         if (empty($name)) {
@@ -423,28 +423,38 @@ function isNameValide($name,$value):bool{
 /**
  * Summary of isValideDate
  * @param string $dateInput
- * @return bool true if valide, if false return error message and exist.
+ *
  */
-function isValideDate($dateInput):bool {
+function isValideDate($dateInput) {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
         triggerError("Le birthDate est invalide.");
     }
-    return true;
+    
 }
 
 /**
  * Summary of ValideTel
  * @param string $tel
- * @return bool true if valide, if false return error message and exist.
+ * 
  */
-function isValideTel($tel):bool {
+function isValideTel($tel) {
     if (!preg_match('/[0-9]/', $tel)) {
         triggerError("Le numéro de téléphone est invalide.");
     }
-    return true;
 }
 
+
+/**
+ * Summary of ValideMail
+ * @param string $email
+ * 
+ */
+function ValideMail($email) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        triggerError("Le email est invalide.");
+    }
+}
 
 /**
  * Summary of validePw
@@ -463,12 +473,23 @@ function isValidePw($pw):bool  {
  * Summary of verifyconfirmPassword
  * @param string $password
  * @param string $confirmPassword
- * @return bool true if valide, if false return error message and exist.
+ * 
  */
-function isVerifyconfirmPassword($password, $confirmPassword):bool 
+function isVerifyconfirmPassword($password, $confirmPassword) 
 {
     if ($password !== $confirmPassword) {
         triggerError("Les mots de passe ne correspondent pas.");
     }
     return true;
+}
+
+
+function isCreateAccountDataValide($inputData){
+    isNameValide("nom",$inputData['lname']);
+    isNameValide("prénom",$inputData['lname']);
+    isValideDate($inputData['birthdate']);
+    isValideDate($inputData['birthdate']);
+    isNameValide("ville",$inputData['city']);
+    isValidePw($inputData['password']);
+    isVerifyconfirmPassword($inputData['password'],($inputData['confirm-psw']));
 }
