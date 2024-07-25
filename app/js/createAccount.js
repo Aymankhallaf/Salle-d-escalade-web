@@ -22,7 +22,12 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     showNextStep("3");
 });
 
+//listen to second next button
 
+document.getElementById("step-btn-prev-2").addEventListener("click", function(){
+    showNextStep("3");
+
+})
 
 
 //listen to finish button
