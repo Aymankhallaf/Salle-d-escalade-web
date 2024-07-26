@@ -286,7 +286,7 @@ function isReservationValid(array $inputData)
 {
 
     if ($inputData['chosenGym'] !== '1' && $inputData['chosenGym'] !== '2') {
-        triggerError('chosenGym', "isReservationValid()");
+        triggerError('chosenGym');
     }
     if (!isValidDate($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
@@ -411,8 +411,8 @@ function getAReservationDetailsUser(
 function isNameValide($name, $value): void
 {
 
-    if (!preg_match('/^[a-zA-ZÀ-Ÿ-. ]*$/', $value)) {
-        triggerError("$name");
+    if (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
+        triggerError($name);
     }
 }
 
@@ -422,7 +422,7 @@ function isNameValide($name, $value): void
  * @param string $dateInput
  *@return void
  */
-function isValideDate($dateInput):void
+function isValideDate($dateInput): void
 {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
@@ -435,7 +435,7 @@ function isValideDate($dateInput):void
  * @param string $tel
  * @return void
  */
-function isValideTel($tel):void
+function isValideTel($tel): void
 {
     if (!preg_match('/[0-9]/', $tel)) {
         triggerError("tele");
@@ -448,7 +448,7 @@ function isValideTel($tel):void
  * @param string $email
  * @return void
  */
-function isValideMail($email):void
+function isValideMail($email): void
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         triggerError("email");
@@ -460,7 +460,7 @@ function isValideMail($email):void
  * @param string $pw
  * @return void
  */
-function isValidePw($pw):void
+function isValidePw($pw): void
 {
     if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw)) {
         triggerError("newpwd");
@@ -473,7 +473,7 @@ function isValidePw($pw):void
  * @param string $confirmPassword
  * @return void
  */
-function isVerifyconfirmPassword($password, $confirmPassword):void
+function isVerifyconfirmPassword($password, $confirmPassword): void
 {
     if ($password !== $confirmPassword) {
         triggerError("confirmpwd");
@@ -486,7 +486,7 @@ function isVerifyconfirmPassword($password, $confirmPassword):void
  * @param array $inputData
  * @return void
  */
-function isCreateAccountDataValide($inputData):void
+function isCreateAccountDataValide($inputData): void
 {
     isNameValide("nom", $inputData['lname']);
     isNameValide("prénom", $inputData['lname']);
@@ -495,4 +495,36 @@ function isCreateAccountDataValide($inputData):void
     isNameValide("ville", $inputData['city']);
     isValidePw($inputData['password']);
     isVerifyconfirmPassword($inputData['password'], ($inputData['confirm-psw']));
+}
+
+
+
+function createAccount(PDO $dbCo, array $inputData)
+{
+
+$query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
+ `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
+VALUES ('ali', 'mohamed', '2024-07-17 23:58:25', '06565820', 'qsdqd@gmail.com', '123456Az', '1');");
+$isQueryOk = $query->execute([
+    'fname' => $inputData['fname'],
+    'lname' => $inputData['lname'],
+    //   'birthdate' => date('Y-m-d h:i:s', 
+    //   strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
+    'tel' => $inputData['tel'],
+    'id_adresses' => "1",
+    //   'adresse' => $inputData['adresse'],
+    //   'city' => $inputData['city'],
+    'email' => $inputData['email'],
+    'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
+
+]);
+
+if (!$isQueryOk) {
+    triggerError("connection");
+}
+echo json_encode([
+    'isOk' => $isQueryOk,
+
+
+]);
 }

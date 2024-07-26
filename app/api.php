@@ -21,7 +21,6 @@ if (!isTokenOk($inputData['token'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {
 
     isCreateAccountDataValide($inputData);
-    var_dump($inputData);
 }
 
 
@@ -44,5 +43,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
+
     reserve($dbCo, $inputData, 1);
 }
