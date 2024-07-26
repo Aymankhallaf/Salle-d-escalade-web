@@ -491,7 +491,6 @@ function isCreateAccountDataValide($inputData): void
     isNameValide("nom", $inputData['lname']);
     isNameValide("prénom", $inputData['lname']);
     isValideDate($inputData['birthdate']);
-    isValideDate($inputData['birthdate']);
     isNameValide("ville", $inputData['city']);
     isValidePw($inputData['password']);
     isVerifyconfirmPassword($inputData['password'], ($inputData['confirm-psw']));
@@ -502,29 +501,30 @@ function isCreateAccountDataValide($inputData): void
 function createAccount(PDO $dbCo, array $inputData)
 {
 
-$query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
+    $query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
  `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
-VALUES ('ali', 'mohamed', '2024-07-17 23:58:25', '06565820', 'qsdqd@gmail.com', '123456Az', '1');");
-$isQueryOk = $query->execute([
-    'fname' => $inputData['fname'],
-    'lname' => $inputData['lname'],
-    //   'birthdate' => date('Y-m-d h:i:s', 
-    //   strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
-    'tel' => $inputData['tel'],
-    'id_adresses' => "1",
-    //   'adresse' => $inputData['adresse'],
-    //   'city' => $inputData['city'],
-    'email' => $inputData['email'],
-    'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
+VALUES (:fname, :lname, :birthdate, :tel, :email, :password , :id_adresses);");
+    $isQueryOk = $query->execute([
+        'fname' => $inputData['fname'],
+        'lname' => $inputData['lname'],
+        'birthdate' => date(
+            $inputData['birthdate']
+        ),
+        'tel' => $inputData['tel'],
+        'id_adresses' => "1",
+        // 'adresse' => $inputData['adresse'],
+        // 'city' => $inputData['city'],
+        'email' => $inputData['email'],
+        'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
 
-]);
+    ]);
 
-if (!$isQueryOk) {
-    triggerError("connection");
-}
-echo json_encode([
-    'isOk' => $isQueryOk,
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
 
 
-]);
+    ]);
 }
