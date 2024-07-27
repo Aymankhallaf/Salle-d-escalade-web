@@ -31,7 +31,10 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function (e) {
     
-    console.log(e.target);
+    e.target;
+    const form = document.getElementById("inscrivez-form");
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
     // if (!isValideMail("email", document.getElementById("email").value)) return;
     // if (!isValidePw(document.getElementById("password").value)) return;
     // if (!isVerifyconfirmPassword(
