@@ -31,17 +31,18 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function (e) {
     
-    e.target;
-    const form = document.getElementById("inscrivez-form");
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
     // if (!isValideMail("email", document.getElementById("email").value)) return;
-    // if (!isValidePw(document.getElementById("password").value)) return;
-    // if (!isVerifyconfirmPassword(
-    //     document.getElementById("password").value,
-    //     document.getElementById("confirm-psw").value
-    // )) return;
-    // sendCreationData(data);
+    if (!isValidePw(document.getElementById("password").value)) return;
+    if (!isVerifyconfirmPassword(
+        document.getElementById("password").value,
+        document.getElementById("confirm-psw").value
+    )) return;
+    // e.target;
+    e.preventDefault();
+    const formData = new FormData(document.getElementById("inscrivez-form"));
+    const data = Object.fromEntries(formData.entries());
+    // console.log(data);
+    sendCreationData(data);
 });
 
 
@@ -123,20 +124,20 @@ function isValideTel(tel) {
 }
 
 
-/**
- *
- * is valide email adresse? show the error if not.
- * @param {string} email email adresse.
- * @return {boolean} return if it doesn't follow the criteria.
- */
-function isValideMail(email) {
-    const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
-    if (!regxemail.test(email)) {
-        displayErrorForm(`Le ${email} est invalide.`);
-        return false;
-    }
-    return true;
-}
+// /**
+//  *
+//  * is valide email adresse? show the error if not.
+//  * @param {string} email email adresse.
+//  * @return {boolean} return if it doesn't follow the criteria.
+//  */
+// function isValideMail(email) {
+//     const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
+//     if (!regxemail.test(email)) {
+//         displayErrorForm(`Le ${email} est invalide.`);
+//         return false;
+//     }
+//     return true;
+// }
 
 
 

@@ -22,9 +22,6 @@ require_once 'includes/_header.php';
         <ul id="errorsList" class="error"></ul>
         <ul id="messagesList" class="messages"></ul>
         <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion">
-            <input class="hidden" name="token" value="<?= $_SESSION['token']; ?>" type="text">
-            <input class="hidden" name="action" value="createaccount" type="text">
-            <!-- step 1 -->
             <div data-step="1" class="step-1">
                 <h2 class="inscrivez-ttl__info" id="info-personal">Les informations personnelles</h2>
                 <ul class="inscrivez-ul inscrivez-ul__first">
@@ -82,7 +79,7 @@ require_once 'includes/_header.php';
                 </ul>
                 <div class="stepper-btn__container">
                     <button id="step-btn-prev-2" type="button" class="stepper-btn__prev">Précédent</button>
-                    <button id="finish" type="submit" class="stepper-btn__next">Terminer</button>
+                    <button id="finish" type="button" class="stepper-btn__next">Terminer</button>
                 </div>
             </div>
 
