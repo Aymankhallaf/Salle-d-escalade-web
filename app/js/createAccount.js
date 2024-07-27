@@ -32,12 +32,14 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function(){
 
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function () {
+    const formData = new FormData(document.getElementById("inscrivez-form"));
     if (!isValideMail("email", document.getElementById("email").value))return;
     if (!isValidePw(document.getElementById("password").value))return;
     if (!isVerifyconfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
                                  )) return;
+                                 console.log(formData);
 });
 
 
@@ -128,7 +130,7 @@ function isValideTel(tel) {
 function isValideMail(email) {
     const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
     if (!regxemail.test(email)) {
-        displayErrorForm(`Le ${emailField} est invalide.`);
+        displayErrorForm(`Le ${email} est invalide.`);
         return false;
     }
     return true;

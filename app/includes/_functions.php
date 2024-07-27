@@ -91,7 +91,6 @@ function triggerError(string $error, string $flag = ''): void
         'errorMessage' => $errors[$error],
         'flag' => $flag
     ]);
-
     exit;
 }
 

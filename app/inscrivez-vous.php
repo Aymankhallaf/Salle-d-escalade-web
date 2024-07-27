@@ -21,7 +21,7 @@ require_once 'includes/_header.php';
         </ol> -->
         <ul id="errorsList" class="error"></ul>
         <ul id="messagesList" class="messages"></ul>
-        <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion" action="api.php" method="POST">
+        <form id="inscrivez-form" class="inscrivez-form" aria-label="formulaire de connexion">
             <input class="hidden" name="token" value="<?= $_SESSION['token']; ?>" type="text">
             <input class="hidden" name="action" value="createaccount" type="text">
             <!-- step 1 -->
