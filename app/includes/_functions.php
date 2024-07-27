@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 include 'includes/_config.php';
 /**
  * Get HTML script to load front-end assets defined in the manifest.json file for entry points given.
@@ -493,38 +496,50 @@ function isCreateAccountDataValide($inputData): void
     isValideDate($inputData['birthdate']);
     isNameValide("ville", $inputData['city']);
     isValidePw($inputData['password']);
-    isVerifyconfirmPassword($inputData['password'], ($inputData['confirm-psw']));
+    isVerifyconfirmPassword(
+        $inputData['password'],
+        ($inputData['confirm-psw'])
+    );
 }
 
 
 
 function createAccount(PDO $dbCo, array $inputData)
 {
-
-    $query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
- `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
-VALUES (:fname, :lname, :birthdate, :tel, :email, :password , :id_adresses);");
-    $isQueryOk = $query->execute([
-        'fname' => $inputData['fname'],
-        'lname' => $inputData['lname'],
-        'birthdate' => date(
-            $inputData['birthdate']
-        ),
-        'tel' => $inputData['tel'],
-        'id_adresses' => "1",
-        // 'adresse' => $inputData['adresse'],
-        // 'city' => $inputData['city'],
-        'email' => $inputData['email'],
-        'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
-
-    ]);
-
-    if (!$isQueryOk) {
-        triggerError("connection");
+    // try {
+    $dbCo->beginTransaction();
+    $query = $dbCo->prepare("SELECT * FROM users 
+        WHERE email=:email || telephone= :tel");
+    $query->execute(['email' => $inputData['email'], 'tel' => $inputData['tel']]);
+    $result = $query->rowCount();
+    if ($result != 0) {
+        triggerError("userExist");
     }
-    echo json_encode([
-        'isOk' => $isQueryOk,
+
+$query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
+     `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
+    VALUES (:fname, :lname, :birthdate, :tel, :email, :password , :id_adresses);");
+$isQueryOk = $query->execute([
+    'fname' => $inputData['fname'],
+    'lname' => $inputData['lname'],
+    'birthdate' => date(
+        $inputData['birthdate']
+    ),
+    'tel' => $inputData['tel'],
+    'id_adresses' => "1",
+    // 'adresse' => $inputData['adresse'],
+    // 'city' => $inputData['city'],
+    'email' => $inputData['email'],
+    'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
+
+]);
+
+if (!$isQueryOk) {
+    triggerError("connection");
+}
+echo json_encode([
+    'isOk' => $isQueryOk,
 
 
-    ]);
+]);
 }

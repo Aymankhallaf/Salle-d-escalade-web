@@ -15,6 +15,7 @@ $errors = [
     "email"=>"Le email est invalide.",
     "newpwd"=>"Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule,
      une lettre majuscule et un chiffre.",
-     "confirmpwd"=>"Les mots de passe ne correspondent pas."
+     "confirmpwd"=>"Les mots de passe ne correspondent pas.",
+     "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter"
 
 ];

@@ -3,7 +3,7 @@ session_start();
 
 require_once 'includes/_connection.php';
 
-// header('Content-type:application/json');
+header('Content-type:application/json');
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
@@ -28,12 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createacc
 //reservation
 else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
     getGyms($dbCo);
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
+}
+ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
         triggerError('idGym', '1');
     }
     getGymDetails($dbCo, intval($inputData['idGym']));
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
+} 
+else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
     if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
         triggerError('idGym', "2");
     }
@@ -41,7 +43,8 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
         triggerError('chosenDate');
     }
     getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
+}
+ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
 

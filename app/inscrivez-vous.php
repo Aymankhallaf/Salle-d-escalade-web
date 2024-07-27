@@ -69,7 +69,7 @@ require_once 'includes/_header.php';
                 <ul class="inscrivez-ul inscrivez-ul__third">
                     <li class="inscrivez-form__email">
                         <label class="inscrivez-form__email-label" for="email">Email</label>
-                        <input pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" class="inscrivez-form__email-input" type="email" name="email" id="email" required />
+                        <input pattern="[^\s@]+@[^\s@]+\.[^\s@]+" class="inscrivez-form__email-input" type="email" name="email" id="email" required />
                     </li>
                     <li class="inscrivez-form__password">
                         <label class="inscrivez-form__password-label" for="password">Password</label>

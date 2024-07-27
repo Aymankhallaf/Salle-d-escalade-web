@@ -126,9 +126,9 @@ function isValideTel(tel) {
  * @return {boolean} return if it doesn't follow the criteria.
  */
 function isValideMail(email) {
-    const regxemail = new RegExp('/^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/');
+    const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
     if (!regxemail.test(email)) {
-        displayErrorForm(`Le email est invalide.`);
+        displayErrorForm(`Le ${emailField} est invalide.`);
         return false;
     }
     return true;
