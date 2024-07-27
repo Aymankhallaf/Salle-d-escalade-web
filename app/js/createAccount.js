@@ -4,27 +4,25 @@
 document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!isValidateName("lname", document.getElementById("lname").value)) return;
     if (!isValidateName("fname", document.getElementById("fname").value)) return;
-    console.log
     if (!isValideDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
 });
 
 //listen to previous next button
-document.getElementById("step-btn-prev-1").addEventListener("click", function(){
+document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
 
 })
 
 //listen to second next button
 document.getElementById("step-btn-2").addEventListener("click", function () {
-    if (!isValideTel(document.getElementById("tel").value))return;
-    if (!isValidateName("city", document.getElementById("city").value))return;
+    if (!isValideTel(document.getElementById("tel").value)) return;
+    if (!isValidateName("city", document.getElementById("city").value)) return;
     showNextStep("3");
 });
 
 //listen to second next button
-
-document.getElementById("step-btn-prev-2").addEventListener("click", function(){
+document.getElementById("step-btn-prev-2").addEventListener("click", function () {
     showNextStep("3");
 
 })
@@ -33,13 +31,13 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function(){
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function () {
     const formData = new FormData(document.getElementById("inscrivez-form"));
-    if (!isValideMail("email", document.getElementById("email").value))return;
-    if (!isValidePw(document.getElementById("password").value))return;
+    if (!isValideMail("email", document.getElementById("email").value)) return;
+    if (!isValidePw(document.getElementById("password").value)) return;
     if (!isVerifyconfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
-                                 )) return;
-                                 console.log(formData);
+    )) return;
+    sendCreationData(formData);
 });
 
 
@@ -69,7 +67,7 @@ function displayErrorForm(errorMessage) {
  * @returns {boolean} false if not and true if it is valide.
  */
 function isValidateName(name, value) {
-    const namePattern = new RegExp( /^[a-zA-ZÀ-Ÿ-. ]*$/);
+    const namePattern = new RegExp(/^[a-zA-ZÀ-Ÿ-. ]*$/);
 
     if (!value) {
         displayErrorForm(`Le ${name} est obligatoire.`);
@@ -146,7 +144,7 @@ function isValideMail(email) {
  * @return {boolean} return false if the password doesn't follow the criteria otherwise true. 
  */
 function isValidePw(pw) {
-    
+
     const regxemail = new RegExp('(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}');
     if (!regxemail.test(pw)) {
         displayErrorForm(`Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.`);
@@ -163,7 +161,7 @@ function isValidePw(pw) {
  *  @param {string} confirmPassword a string of password.
  * @return {boolean} return fasle if they aren't equal, true if they are equal.
  */
-function isVerifyconfirmPassword(password,confirmPassword){
+function isVerifyconfirmPassword(password, confirmPassword) {
     if (password !== confirmPassword) {
         displayErrorForm("Les mots de passe ne correspondent pas.");
         return false;
@@ -190,13 +188,16 @@ function showNextStep(stepNumber) {
 
 
 
-// function sendCreationData() {
-//     callApi("POST", {
-//         action: "createAcount",
-//         token: F.getToken(),
+function sendCreationData(formData) {
+    callApi("POST", {
+        action: "createAcount",
+        token: F.getToken(),
+        formData: formData
+    }).then(data => {
+        if (!data.isOk) {
+            F.displayError(data['errorMessage']);
+            return;
+        }
 
-        
-//     })
-//         .then(data = {
-//         })
-// }
+    })
+}
