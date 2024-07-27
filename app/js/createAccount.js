@@ -1,4 +1,4 @@
-
+import * as F from "./_functions.js";
 
 //listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
@@ -29,15 +29,16 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 
 
 //listen to finish button
-document.getElementById("finish").addEventListener("click", function () {
-    const formData = new FormData(document.getElementById("inscrivez-form"));
-    if (!isValideMail("email", document.getElementById("email").value)) return;
-    if (!isValidePw(document.getElementById("password").value)) return;
-    if (!isVerifyconfirmPassword(
-        document.getElementById("password").value,
-        document.getElementById("confirm-psw").value
-    )) return;
-    sendCreationData(formData);
+document.getElementById("finish").addEventListener("click", function (e) {
+    
+    console.log(e.target);
+    // if (!isValideMail("email", document.getElementById("email").value)) return;
+    // if (!isValidePw(document.getElementById("password").value)) return;
+    // if (!isVerifyconfirmPassword(
+    //     document.getElementById("password").value,
+    //     document.getElementById("confirm-psw").value
+    // )) return;
+    // sendCreationData(data);
 });
 
 
@@ -189,7 +190,7 @@ function showNextStep(stepNumber) {
 
 
 function sendCreationData(formData) {
-    callApi("POST", {
+    F.callApi("POST", {
         action: "createAcount",
         token: F.getToken(),
         formData: formData
@@ -198,6 +199,6 @@ function sendCreationData(formData) {
             F.displayError(data['errorMessage']);
             return;
         }
-
+        console.log(data);
     })
 }
