@@ -17,24 +17,30 @@ export function getToken() {
  */
 export async function callApi(method, param) {
     try {
-        const response = await fetch("api.php",
-            {
-                method: method,
-                body: JSON.stringify(param),
-                headers: {
-                    'Content-type': 'application/json'
-                }
-            });
-        return await response.json();
+        const response = await fetch("api.php", {
+            method: method,
+            body: JSON.stringify(param),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
 
+        // Check if the response is OK (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
+        // Read the response as text first to check what the server is sending
+        const responseText = await response.text();
+        console.log("Server response:", responseText);
 
+        // Try to parse the response as JSON
+        const jsonResponse = JSON.parse(responseText);
+        return jsonResponse;
+    } catch (error) {
+        console.error("Unable to load data from server: " + error);
+        return { isOk: false, errorMessage: "Unable to load data from server" };
     }
-    catch (error) {
-        console.error("Unable to load data from server : " + error);
-
-    }
-
 }
 
 
