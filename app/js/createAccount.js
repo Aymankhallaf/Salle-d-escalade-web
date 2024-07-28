@@ -30,19 +30,27 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function (e) {
-    
-    // if (!isValideMail("email", document.getElementById("email").value)) return;
+    if (!isValideMail("email", document.getElementById("email").value)) return;
     if (!isValidePw(document.getElementById("password").value)) return;
     if (!isVerifyconfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
     )) return;
-    // e.target;
-    e.preventDefault();
     const formData = new FormData(document.getElementById("inscrivez-form"));
     const data = Object.fromEntries(formData.entries());
-    // console.log(data);
-    sendCreationData(data);
+    console.log(data);
+    F.callApi("POST", {
+        action: "createAccount",
+        token: F.getToken(),
+        lname: data.lname,
+        fname: data.fname,
+        birthdate: data.birthdate,
+        tel: data.tel,
+        city: data.city,
+        email: data.email,
+        password: data.password,
+    })
+   
 });
 
 
@@ -197,7 +205,7 @@ function sendCreationData(formData) {
     F.callApi("POST", {
         action: "createAcount",
         token: F.getToken(),
-        formData: formData
+        ...formData
     }).then(data => {
         if (!data.isOk) {
             F.displayError(data['errorMessage']);

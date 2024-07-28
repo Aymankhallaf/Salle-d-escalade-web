@@ -73,8 +73,8 @@ require_once 'includes/_header.php';
                         <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="inscrivez-form__password-input" type="password" name="password" id="password" required />
                     </li>
                     <li class="inscrivez-form__confirm-psw">
-                        <label class="inscrivez-form__confirm-psw-label" for="confirm-psw">Confirmiez le Password</label>
-                        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="inscrivez-form__confirm-psw-input" type="password" name="confirm-psw" id="confirm-psw" required />
+                        <label class="inscrivez-form__confirm-psw-label" for="confirmPW">Confirmiez le Password</label>
+                        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="inscrivez-form__confirm-psw-input" type="password" name="confirmPW" id="confirm-psw" required />
                     </li>
                 </ul>
                 <div class="stepper-btn__container">
