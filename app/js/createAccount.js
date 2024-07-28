@@ -1,92 +1,79 @@
 import * as F from "./_functions.js";
 
-//listen to first next button
+// Listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
-    if (!isValidateName("lname", document.getElementById("lname").value)) return;
-    if (!isValidateName("fname", document.getElementById("fname").value)) return;
-    if (!isValideDate(document.getElementById("birthdate").value)) return;
+    if (!validateName("lname", document.getElementById("lname").value)) return;
+    if (!validateName("fname", document.getElementById("fname").value)) return;
+    if (!validateDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
 });
 
-//listen to previous next button
+// Listen to previous next button
 document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
+});
 
-})
-
-//listen to second next button
+// Listen to second next button
 document.getElementById("step-btn-2").addEventListener("click", function () {
-    if (!isValideTel(document.getElementById("tel").value)) return;
-    if (!isValidateName("city", document.getElementById("city").value)) return;
+    if (!validateTel(document.getElementById("tel").value)) return;
+    if (!validateName("city", document.getElementById("city").value)) return;
     showNextStep("3");
 });
 
-//listen to second next button
+// Listen to previous button of step 2
 document.getElementById("step-btn-prev-2").addEventListener("click", function () {
     showNextStep("3");
-
-})
-
-
-//listen to finish button
-document.getElementById("finish").addEventListener("click", function (e) {
-    // if (!isValideMail("email", document.getElementById("email").value)) return;
-    // if (!isValidePw(document.getElementById("password").value)) return;
-    // if (!isVerifyconfirmPassword(
-    //     document.getElementById("password").value,
-    //     document.getElementById("confirm-psw").value
-    // )) return;
-    const formData = new FormData(document.getElementById("inscrivez-form"));
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-    F.callApi("POST", {
-        action: "createAccount",
-        token: F.getToken(),
-        lname: data.lname,
-        fname: data.fname,
-        birthdate: data.birthdate,
-        tel: data.tel,
-        city: data.city,
-        email: data.email,
-        password: data.password,
-    }).then(data => {
-        if (!data.isOk) {
-            F.displayError(data['errorMessage']);
-            return;
-        }
-        console.log(data);
-    })
-
 });
 
+// Listen to finish button
+document.getElementById("finish").addEventListener("click", async function (e) {
+    if (!validateEmail(document.getElementById("email").value)) return;
+    if (!validatePw(document.getElementById("password").value)) return;
+    if (!verifyConfirmPassword(
+        document.getElementById("password").value,
+        document.getElementById("confirm-psw").value
+    )) return;
 
+    const formData = new FormData(document.getElementById("inscrivez-form"));
+    const data = Object.fromEntries(formData.entries());
+    
+    try {
+        const response = await F.callApi("POST", {
+            action: "createAccount",
+            token: F.getToken(),
+            ...data
+        });
 
+        if (!response.isOk) {
+            displayErrorForm(response.errorMessage);
+            return;
+        }
+        console.log(response);
+    } catch (error) {
+        console.error("Unable to load data from server: " + error);
+    }
+});
 
 /**
  * Display error message with template under li element.
  * @param {string} errorMessage
- *@param {string} idElement id of html tag to show the error
  */
 function displayErrorForm(errorMessage) {
-
     const li = document.importNode(document.getElementById('templateError').content, true);
-    const m = li.querySelector('[data-error-message]');
+    const m
+    = li.querySelector('[data-error-message]');
     m.innerText = errorMessage;
     document.getElementById('errorsList').appendChild(li);
-
-
 }
 
-
-
 /**
- * is a valide name input field? shows an error message.
+ * Validate name input field and show an error message if invalid.
  * @param {string} name The name of the field being validated.
  * @param {string} value The input value.
- * @returns {boolean} false if not and true if it is valide.
+ * @returns {boolean} True if valid, false otherwise.
  */
-function isValidateName(name, value) {
-    const namePattern = new RegExp(/^[a-zA-ZÀ-Ÿ-. ]*$/);
+function validateName(name, value) {
+    const namePattern = /^[a-zA-ZÀ-Ÿ-. ]*$/;
 
     if (!value) {
         displayErrorForm(`Le ${name} est obligatoire.`);
@@ -94,93 +81,76 @@ function isValidateName(name, value) {
     }
 
     if (!namePattern.test(value)) {
-        displayErrorForm(`Le ${name} invalide.`);
+        displayErrorForm(`Le ${name} est invalide.`);
         return false;
     }
     return true;
-
 }
 
-
 /**
- *
- * is a Valide birthdate? and show the error if not.
- * @param {string} dateInput date input(birthdate).
- * @return {boolean} false if not and true if it is valide.
+ * Validate birthdate and show the error if invalid.
+ * @param {string} dateInput Date input (birthdate).
+ * @return {boolean} True if valid, false otherwise.
  */
-function isValideDate(dateInput) {
-
+function validateDate(dateInput) {
     let birthDay = new Date(dateInput);
     if (isNaN(birthDay)) {
-        displayErrorForm(`Le birthDate invalide.`);
-        return false;
-    };
-    return true;
-}
-
-
-
-
-/**
- * is valide telephone ?  show the error if not.
- * @param {string} tel input telephone number
- * @returns {boolean} false if not and true if it is valide.
- */
-function isValideTel(tel) {
-    const regextel = new RegExp(/[0-9]/gi);
-
-    if (!regextel.test(tel)) {
-        displayErrorForm(`Le numéro de télephone est invalide.`);
-        return false;
-    }
-    return true;
-
-}
-
-
-/**
- *
- * is valide email adresse? show the error if not.
- * @param {string} email email adresse.
- * @return {boolean} return if it doesn't follow the criteria.
- */
-function isValideMail(email) {
-    const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
-    if (!regxemail.test(email)) {
-        displayErrorForm(`Le ${email} est invalide.`);
+        displayErrorForm(`La date de naissance est invalide.`);
         return false;
     }
     return true;
 }
 
+/**
+ * Validate telephone and show the error if invalid.
+ * @param {string} tel Telephone number input.
+ * @returns {boolean} True if valid, false otherwise.
+ */
+function validateTel(tel) {
+    const telPattern = /^[0-9]+$/;
 
-
+    if (!telPattern.test(tel)) {
+        displayErrorForm(`Le numéro de téléphone est invalide.`);
+        return false;
+    }
+    return true;
+}
 
 /**
- *
- * is Valide password has one number, one small lettre and capital lettre at leaast. 
- * @param {string} pw pasword.
- * @return {boolean} return false if the password doesn't follow the criteria otherwise true. 
+ * Validate email address and show the error if invalid.
+ * @param {string} email Email address.
+ * @return {boolean} True if valid, false otherwise.
  */
-function isValidePw(pw) {
+function validateEmail(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        displayErrorForm(`L'email est invalide.`);
+        return false;
+    }
+    return true;
+}
 
-    const regxemail = new RegExp('(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}');
-    if (!regxemail.test(pw)) {
+/**
+ *… Validate password. Must contain at least one number, one lowercase and one uppercase letter.
+ * @param {string} pw Password.
+ * @return {boolean} True if valid, false otherwise.
+ */
+function validatePw(pw) {
+    const pwPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!pwPattern.test(pw)) {
         displayErrorForm(`Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.`);
-        return;
+        return false;
     }
-
+    return true;
 }
 
-
 /**
- *
- * Is the password and confirm password are identical?.
- * @param {string} password a string of password.
- *  @param {string} confirmPassword a string of password.
- * @return {boolean} return fasle if they aren't equal, true if they are equal.
+ * Check if password and confirm password are identical.
+ * @param {string} password Password.
+ * @param {string} confirmPassword Confirm password.
+ * @return {boolean} True if they are identical, false otherwise.
  */
-function isVerifyconfirmPassword(password, confirmPassword) {
+function verifyConfirmPassword(password, confirmPassword) {
     if (password !== confirmPassword) {
         displayErrorForm("Les mots de passe ne correspondent pas.");
         return false;
@@ -188,22 +158,14 @@ function isVerifyconfirmPassword(password, confirmPassword) {
     return true;
 }
 
-
 /**
- *
- *hide the current step and show the next step by adding hidden css.
- * @param {string} stepNumber number of step in string formate.
+ * Hide the current step and show the next step by toggling the 'hidden' CSS class.
+ * @param {string} stepNumber Number of the step to show.
  */
 function showNextStep(stepNumber) {
     document.querySelectorAll("[data-step]").forEach((step) => {
         if (step.dataset.step == stepNumber || step.dataset.step == stepNumber - 1) {
-
             step.classList.toggle("hidden");
         }
-    })
+    });
 }
-
-
-
-
-
