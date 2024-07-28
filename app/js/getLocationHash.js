@@ -18,5 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             displayError(data['errorMessage']);
 
         }
+
+        
     });
 });

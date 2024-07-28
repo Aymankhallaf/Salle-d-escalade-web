@@ -141,6 +141,9 @@ function getGyms(PDO $dbCo)
 }
 
 
+
+
+//reservation functions
 /**
  * gets the capacity and holidays of a gym.
  *
@@ -376,8 +379,8 @@ function getUserReservationHistory(PDO $dbCo, int $idUser)
  */
 function getAReservationDetailsUser(
     PDO $dbCo,
-    int $idUser,
-    int $idReservation
+    int $idReservation,
+    int $idUser
 ) {
     $query = $dbCo->prepare("SELECT nb_particpation,
      date_starting, duration, name_gym, (nb_particpation*price) 
@@ -401,6 +404,13 @@ function getAReservationDetailsUser(
 
     ]);
 }
+
+
+
+
+
+
+
 
 
 //create account 
