@@ -192,7 +192,7 @@ export function getGym() {
  *
  * @return {object} object of params
  */
-function getQueryParams() {
+export function getQueryParams() {
     const queryString = window.location.hash.split('?')[1];
     const params = {};
     if (queryString) {
