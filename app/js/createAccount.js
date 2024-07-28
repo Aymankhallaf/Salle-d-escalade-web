@@ -30,12 +30,12 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 
 //listen to finish button
 document.getElementById("finish").addEventListener("click", function (e) {
-    if (!isValideMail("email", document.getElementById("email").value)) return;
-    if (!isValidePw(document.getElementById("password").value)) return;
-    if (!isVerifyconfirmPassword(
-        document.getElementById("password").value,
-        document.getElementById("confirm-psw").value
-    )) return;
+    // if (!isValideMail("email", document.getElementById("email").value)) return;
+    // if (!isValidePw(document.getElementById("password").value)) return;
+    // if (!isVerifyconfirmPassword(
+    //     document.getElementById("password").value,
+    //     document.getElementById("confirm-psw").value
+    // )) return;
     const formData = new FormData(document.getElementById("inscrivez-form"));
     const data = Object.fromEntries(formData.entries());
     console.log(data);
@@ -49,8 +49,14 @@ document.getElementById("finish").addEventListener("click", function (e) {
         city: data.city,
         email: data.email,
         password: data.password,
+    }).then(data => {
+        if (!data.isOk) {
+            F.displayError(data['errorMessage']);
+            return;
+        }
+        console.log(data);
     })
-   
+
 });
 
 
@@ -132,20 +138,20 @@ function isValideTel(tel) {
 }
 
 
-// /**
-//  *
-//  * is valide email adresse? show the error if not.
-//  * @param {string} email email adresse.
-//  * @return {boolean} return if it doesn't follow the criteria.
-//  */
-// function isValideMail(email) {
-//     const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
-//     if (!regxemail.test(email)) {
-//         displayErrorForm(`Le ${email} est invalide.`);
-//         return false;
-//     }
-//     return true;
-// }
+/**
+ *
+ * is valide email adresse? show the error if not.
+ * @param {string} email email adresse.
+ * @return {boolean} return if it doesn't follow the criteria.
+ */
+function isValideMail(email) {
+    const regxemail = new RegExp('/^[^\s@]+@[^\s@]+\.[^\s@]+$/');
+    if (!regxemail.test(email)) {
+        displayErrorForm(`Le ${email} est invalide.`);
+        return false;
+    }
+    return true;
+}
 
 
 
@@ -201,16 +207,3 @@ function showNextStep(stepNumber) {
 
 
 
-function sendCreationData(formData) {
-    F.callApi("POST", {
-        action: "createAcount",
-        token: F.getToken(),
-        ...formData
-    }).then(data => {
-        if (!data.isOk) {
-            F.displayError(data['errorMessage']);
-            return;
-        }
-        console.log(data);
-    })
-}
