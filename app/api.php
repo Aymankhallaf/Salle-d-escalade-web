@@ -3,7 +3,7 @@ session_start();
 
 require_once 'includes/_connection.php';
 
-// header('Content-type:application/json');
+header('Content-type:application/json');
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
