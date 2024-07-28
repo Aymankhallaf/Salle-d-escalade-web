@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        
+        F.displayReservation(data[0][0]);
     });
 });

@@ -211,11 +211,14 @@ export function getQueryParams() {
  * @param {object} gym 
  */
 export function displayReservation(reservation) {
-    const template = document.importNode(document.getElementById('hallTemplate').content, true);
-    const option = template.querySelector('.js-hall-option')
-    option.innerText = gym['name_gym'];
-    option.value = gym['id_gym'];
-    document.getElementById('hall').appendChild(option);
+    const clone = document.importNode(document.getElementById('template-reservation').content, true);
+    clone.getElementById('gym').innerText = reservation['name_gym'];
+    clone.getElementById('dateReservation').innerText = reservation['date_starting'];
+    clone.getElementById('duration').innerText = reservation['duration'];
+    clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
+    clone.getElementById('status').innerText = reservation['status'];
+
+    document.getElementById('reservation-details-table').appendChild(clone);
 
 }
 

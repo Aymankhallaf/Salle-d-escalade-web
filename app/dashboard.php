@@ -4,9 +4,6 @@ include 'includes/_header.php';
 if (!isServerOk()) {
     triggerError('referer');
 }
-if (!isTokenOk($inputData['token'])) {
-    triggerError('token', $_SESSION['token']);
-}
 ?>
 <main class="dashboard-reservation">
 
@@ -20,9 +17,9 @@ if (!isTokenOk($inputData['token'])) {
     </nav>
     <section class="reservation-details">
         <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
-        <table class="reservation-details-table">
-            <tr class="reservation-details-raw">
-                <th>Salle</th>
+        <table id="reservation-details-table" class="reservation-details-table">
+            <!-- <tr class="reservation-details-raw"> -->
+                <!-- <th>Salle</th>
                 <td id="salle-name">Salle1</td>
             </tr>
             <tr class="reservation-details-raw">
@@ -39,11 +36,11 @@ if (!isTokenOk($inputData['token'])) {
             <tr class="reservation-details-raw">
                 <th>Statut</th>
                 <td>Payé</td>
-            </tr>
+            </tr> -->
         </table>
     </section>
     <!-- template reservation -->
-    <template id="templateReservation">
+    <template id="template-reservation">
         <tr class="reservation-details-raw">
         <tr class="reservation-details-raw">
             <th>Salle</th>
@@ -68,7 +65,7 @@ if (!isTokenOk($inputData['token'])) {
         </tr>
     </template>
 
-
+    <template>
     <li data-message="" class="messages__itm">Ici vient le message</li>
     </template>
 </main>

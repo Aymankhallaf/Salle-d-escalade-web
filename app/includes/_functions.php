@@ -319,7 +319,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
        VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP);");
     $isQueryOk = $query->execute([
         'nb_particpation' => $inputData['participants'],
-        'date_starting' => $formattedDateStarting  ,
+        'date_starting' => $formattedDateStarting,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
@@ -332,7 +332,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'isOk' => $isQueryOk,
         'idReservation' => $dbCo->lastInsertId(),
         'nbParticpation' => $inputData['participants'],
-        'dateStarting' => $formattedDateStarting ,
+        'dateStarting' => $formattedDateStarting,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
@@ -383,7 +383,7 @@ function getAReservationDetailsUser(
     int $idUser
 ) {
     $query = $dbCo->prepare("SELECT nb_particpation,
-     date_starting, duration, name_gym, (nb_particpation*price) 
+     date_starting, duration, name_gym,status,(nb_particpation*price) 
      AS totalPrice FROM reservation JOIN gym USING(id_gym) 
      JOIN activity USING (id_activity) WHERE id_user=:idUser
       AND id_reservation = :idReservation;");
@@ -527,30 +527,30 @@ function createAccount(PDO $dbCo, array $inputData)
         triggerError("userExist");
     }
 
-$query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
+    $query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
      `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
     VALUES (:fname, :lname, :birthdate, :tel, :email, :password , :id_adresses);");
-$isQueryOk = $query->execute([
-    'fname' => $inputData['fname'],
-    'lname' => $inputData['lname'],
-    'birthdate' => date(
-        $inputData['birthdate']
-    ),
-    'tel' => $inputData['tel'],
-    'id_adresses' => "1",
-    // 'adresse' => $inputData['adresse'],
-    // 'city' => $inputData['city'],
-    'email' => $inputData['email'],
-    'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
+    $isQueryOk = $query->execute([
+        'fname' => $inputData['fname'],
+        'lname' => $inputData['lname'],
+        'birthdate' => date(
+            $inputData['birthdate']
+        ),
+        'tel' => $inputData['tel'],
+        'id_adresses' => "1",
+        // 'adresse' => $inputData['adresse'],
+        // 'city' => $inputData['city'],
+        'email' => $inputData['email'],
+        'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
 
-]);
+    ]);
 
-if (!$isQueryOk) {
-    triggerError("connection");
-}
-echo json_encode([
-    'isOk' => $isQueryOk,
+    if (!$isQueryOk) {
+        triggerError("connection");
+    }
+    echo json_encode([
+        'isOk' => $isQueryOk,
 
 
-]);
+    ]);
 }
