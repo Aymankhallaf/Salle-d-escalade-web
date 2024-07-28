@@ -70,30 +70,20 @@ function handleSubmit(e) {
             return;
         }
 
-        //to do verify return data
-        // console.log(data["idGym"]);
-        // console.log(localStorage.getItem("chosenGym"));
-        // F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
-        // F.verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
-        // let hours = data["openClosehoures"][0];
-        // let openHour = hours["open_hour"].slice(0, 2);
-        // let closeHour = hours["close_hour"].slice(0, 2);
-        // document.getElementById("hours__container").innerHTML = "";
-        // H.displayHour(openHour, closeHour);
-        
+        // to do verify return data
+      
+        F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
+        F.verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
+        F.verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
+        F.verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
+
         //redirect to shown reservation page.(to do do you needs another params to pass)
-        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}`
+        // document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}`
 
    
 
 
     })
-
-    // let formData = new FormData(e.target);
-    // console.log(formData)
-    // for (const [key, value] of formData) {
-    //     console.log(`${key}: ${(value)}\n`);
-    // // }
 
 
 }

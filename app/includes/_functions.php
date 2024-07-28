@@ -308,13 +308,15 @@ function isReservationValid(array $inputData)
  */
 function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
+    $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
+    $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting,
        id_user, id_gym , id_activity, date_reservation) 
        VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP);");
     $isQueryOk = $query->execute([
         'nb_particpation' => $inputData['participants'],
-        'date_starting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
+        'date_starting' => $formattedDateStarting  ,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
@@ -327,7 +329,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'isOk' => $isQueryOk,
         'idReservation' => $dbCo->lastInsertId(),
         'nbParticpation' => $inputData['participants'],
-        'dateStarting' => date('Y-m-d h:i:s', strtotime($inputData['chosenDate'] . $inputData['chosenHour'])),
+        'dateStarting' => $formattedDateStarting ,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser
