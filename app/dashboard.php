@@ -20,9 +20,9 @@ if (!isServerOk()) {
         <table id="reservation-details-table" class="reservation-details-table">
 
         </table>
-        <ul>
-            <li><button type="button">Modifier</button></li>
-            <li><button type="button">Annuler</button></li>
+        <ul calss="reservation-controllers">
+            <li><button class="reservation-controllers-edit" type="button">Modifier</button></li>
+            <li><button class="reservation-controllers-cancel" type="button">Annuler</button></li>
         </ul>
     </section>
     <!-- template reservation -->
