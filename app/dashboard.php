@@ -18,26 +18,12 @@ if (!isServerOk()) {
     <section class="reservation-details">
         <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
         <table id="reservation-details-table" class="reservation-details-table">
-            <!-- <tr class="reservation-details-raw"> -->
-                <!-- <th>Salle</th>
-                <td id="salle-name">Salle1</td>
-            </tr>
-            <tr class="reservation-details-raw">
-                <th>Date de réservation</th>
-                <td id="reservation-date">14/07/2024 8:30</td>
-            </tr>
-            <tr class="reservation-details-raw">
-                <th>Durée</th>
-                <td id="reservation-duration">1h</td>
-            </tr>
-            <tr class="reservation-details-raw">²
-                <td id="reservation-price">50€</td>
-            </tr>
-            <tr class="reservation-details-raw">
-                <th>Statut</th>
-                <td>Payé</td>
-            </tr> -->
+
         </table>
+        <ul>
+            <li><button type="button">Modifier</button></li>
+            <li><button type="button">Annuler</button></li>
+        </ul>
     </section>
     <!-- template reservation -->
     <template id="template-reservation">
@@ -66,7 +52,7 @@ if (!isServerOk()) {
     </template>
 
     <template>
-    <li data-message="" class="messages__itm">Ici vient le message</li>
+        <li data-message="" class="messages__itm">Ici vient le message</li>
     </template>
 </main>
 <script type="module" src="./js/getLocationHash.js"></script>
