@@ -206,6 +206,8 @@ export function getQueryParams() {
 }
 
 
+
+
 /**
  * Display gym(hall) with template
  * @param {object} gym 

@@ -38,15 +38,13 @@
     }
 }
 
-.reservation-controllers {
-    display: inline-flex;
-    flex-direction: row;
-    margin-bottom: 2rem;
-    text-align: left;
+.reservation{
     &-edit {
+        font-size: 1rem;
         color: $turquoise;
     }
     &-cancel {
+        font-size: 1rem;
         color: $dark-red;
     }
 }

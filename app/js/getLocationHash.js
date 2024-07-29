@@ -1,13 +1,13 @@
 import * as F from './_functions.js';
 
 
-console.log("ok");
-
-
 
 let param = F.getQueryParams()
+
 document.addEventListener("DOMContentLoaded", function () {
-    console.log(param);
+    if(F.getToken()!==param.token ){
+        return;
+    }
     F.callApi("POST", {
         action: "getAReservation",
         token: F.getToken(),
@@ -37,7 +37,6 @@ document.getElementById("reservation-cancel").addEventListener("click", function
 
         }
 
-        // F.displayReservation(data[0][0]);
     });
 })
 

@@ -4,6 +4,7 @@ include 'includes/_header.php';
 if (!isServerOk()) {
     triggerError('referer');
 }
+
 ?>
 <main class="dashboard-reservation">
 
@@ -20,14 +21,10 @@ if (!isServerOk()) {
         <table id="reservation-details-table" class="reservation-details-table">
 
         </table>
-        <ul calss="reservation-controllers">
-            <li><button id="reservation-edit" class="reservation-controllers-edit" type="button">Modifier</button></li>
-            <li><button id="reservation-cancel" class="reservation-controllers-cancel" type="button">Annuler</button></li>
-        </ul>
+
     </section>
     <!-- template reservation -->
     <template id="template-reservation">
-        <tr class="reservation-details-raw">
         <tr class="reservation-details-raw">
             <th>Salle</th>
             <td id="gym">Salle1</td>
@@ -46,8 +43,15 @@ if (!isServerOk()) {
         </tr>
         <tr class="reservation-details-raw">
             <th>Statut</th>
-            <td id="status">non Payé</td>
+            <td id="status">modifier</td>
         </tr>
+        <tr class="reservation-details-raw">
+            <th>Action modifier</th>
+            <td id="reservation-edit"><button class="reservation-edit">modifier</button></td>
+        </tr>
+        <tr class="reservation-details-raw">
+            <th>Action annuler</th>
+            <td id="reservation-cancel"><button class="reservation-cancel">annuler</button></td>
         </tr>
     </template>
 

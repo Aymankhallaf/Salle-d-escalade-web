@@ -555,3 +555,9 @@ function createAccount(PDO $dbCo, array $inputData)
 
     ]);
 }
+
+
+function cancelReservation() {
+
+    
+}
