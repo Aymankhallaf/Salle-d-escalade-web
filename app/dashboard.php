@@ -21,8 +21,8 @@ if (!isServerOk()) {
 
         </table>
         <ul calss="reservation-controllers">
-            <li><button class="reservation-controllers-edit" type="button">Modifier</button></li>
-            <li><button class="reservation-controllers-cancel" type="button">Annuler</button></li>
+            <li><button id="reservation-edit" class="reservation-controllers-edit" type="button">Modifier</button></li>
+            <li><button id="reservation-cancel" class="reservation-controllers-cancel" type="button">Annuler</button></li>
         </ul>
     </section>
     <!-- template reservation -->

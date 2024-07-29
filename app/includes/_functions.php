@@ -335,7 +335,8 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'dateStarting' => $formattedDateStarting,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
-        'idUser' => $idUser
+        'idUser' => $idUser,
+        'token' => $inputData['token']
 
     ]);
 }
