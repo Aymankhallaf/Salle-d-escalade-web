@@ -342,6 +342,25 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
 }
 
 
+function cancelReservation(PDO $dbCo, int $idReservation) {
+    try {
+        $query = $dbCo->prepare("DELETE FROM reservation WHERE id_reservation = :idReservation");
+        $isQueryOk = $query->execute(["idReservation" => $idReservation]);
+
+        if (!$isQueryOk) {
+            triggerError("Failed to cancel reservation.");
+        }
+
+        echo json_encode([
+            'isOk' => $isQueryOk,
+            'message' => $isQueryOk ? 'Reservation cancelled successfully.' : 'Failed to cancel reservation.'
+        ]);
+
+    } catch (Exception $e) {
+        triggerError("Database error: " . $e->getMessage());
+    }
+}
+
 
 /**
  * get user reservation history
@@ -556,8 +575,3 @@ function createAccount(PDO $dbCo, array $inputData)
     ]);
 }
 
-
-function cancelReservation() {
-
-    
-}

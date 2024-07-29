@@ -53,5 +53,5 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
 else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "cancelReservation") {
     //to do user authotcation
 
-    cancelReservation($dbCo, $inputData['idReservation'], 1);
+    cancelReservation($dbCo, $inputData['idReservation']);
 }
