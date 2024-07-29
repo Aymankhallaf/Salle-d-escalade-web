@@ -1,6 +1,5 @@
 <?php
 include 'includes/_header.php';
-//prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
 }
@@ -51,7 +50,7 @@ if (!isServerOk()) {
         </tr>
         <tr class="reservation-details-raw">
             <th>Action annuler</th>
-            <td id="reservation-cancel"><button class="reservation-cancel">annuler</button></td>
+            <td ><button id="reservation-cancel" class="reservation-cancel">annuler</button></td>
         </tr>
     </template>
 

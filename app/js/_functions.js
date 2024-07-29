@@ -216,6 +216,7 @@ export function displayReservation(reservation) {
     const clone = document.importNode(document.getElementById('template-reservation').content, true);
     clone.getElementById('gym').innerText = reservation['name_gym'];
     clone.getElementById('dateReservation').innerText = reservation['date_starting'];
+    clone.getElementById('dateReservation').dataset.idReservation = reservation['id_reservation'];
     clone.getElementById('duration').innerText = reservation['duration'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
