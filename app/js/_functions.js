@@ -220,21 +220,26 @@ export function displayReservation(reservation) {
     clone.getElementById('duration').innerText = reservation['duration'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
-    document.getElementById('reservation-details-tll').appendChild(clone);
-    document.getElementById("reservation-cancel").addEventListener("click",cancelAreserfaction);
+    document.getElementById('reservation-details-div').appendChild(clone);
+    document.getElementById('reservation-cancel').addEventListener("click",cancelAreserfaction);
     
 }
 
 function cancelAreserfaction(){
-F.callApi("DElETE", {
+callApi("DElETE", {
     action: "cancelReservation",
-    token: F.getToken(),
+    token: getToken(),
     idReservation:document.getElementById("dateReservation").dataset.idReservation
 
 }).then(data => {
+    if (!data) {
+        console.error('Error: data is undefined');
+        return; 
+      }
     if (!data.isOk) {
         displayError(data['errorMessage']);
 
     }
+   data;
 
 });}

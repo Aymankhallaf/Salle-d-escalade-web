@@ -3,7 +3,7 @@ session_start();
 
 require_once 'includes/_connection.php';
 
-header('Content-type:application/json');
+// header('Content-type:application/json');
 //prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
@@ -50,7 +50,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
 
     getAReservationDetailsUser($dbCo, $inputData['idReservation'], 1);
 }
-else if ($_SERVER['REQUEST_METHOD'] === 'DElETE' && $inputData['action'] === "cancelReservation") {
+else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
     //to do user authotcation
 
     cancelReservation($dbCo, $inputData['idReservation']);

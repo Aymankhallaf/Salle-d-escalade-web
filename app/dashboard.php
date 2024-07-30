@@ -17,13 +17,16 @@ if (!isServerOk()) {
     </nav>
     <section class="reservation-details">
         <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
+        <div id="reservation-details-div">
+
+        </div>
 
 
     </section>
     <!-- template reservation -->
-    <table id="reservation-details-table" class="reservation-details-table">
 
-        <template id="template-reservation">
+    <template id="template-reservation">
+        <table id="reservation-details-table" class="reservation-details-table">
             <tr class="reservation-details-raw">
                 <th>Salle</th>
                 <td id="gym">Salle1</td>
@@ -44,12 +47,12 @@ if (!isServerOk()) {
                 <th>Statut</th>
                 <td id="status">modifier</td>
             </tr>
-    </table>
-    <ul class="reservation-details-raw">
-        <li id="reservation-edit"><button class="reservation-edit">modifier</button></li>
+        </table>
+        <ul class="reservation-details-raw">
+            <li id="reservation-edit"><button class="reservation-edit">modifier</button></li>
 
-        <li><button id="reservation-cancel" class="reservation-cancel">annuler</button></li>
-    </ul>
+            <li><button id="reservation-cancel" class="reservation-cancel">annuler</button></li>
+        </ul>
 
     </template>
 

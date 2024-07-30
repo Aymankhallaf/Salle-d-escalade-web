@@ -348,12 +348,11 @@ function cancelReservation(PDO $dbCo, int $idReservation) {
         $isQueryOk = $query->execute(["idReservation" => $idReservation]);
 
         if (!$isQueryOk) {
-            triggerError("Failed to cancel reservation.");
+            triggerError("connection");
         }
 
         echo json_encode([
             'isOk' => $isQueryOk,
-            'message' => $isQueryOk ? 'Reservation cancelled successfully.' : 'Failed to cancel reservation.'
         ]);
 
     } catch (Exception $e) {
