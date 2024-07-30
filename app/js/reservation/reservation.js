@@ -64,7 +64,7 @@ function handReservationSubmit(e) {
     }
 
     if (Object.keys(urlParam).length === 3) {
-        manuplateReservation("PUT", "editReservation");
+        editReservation("PUT", "editReservation");
     } else {
         manuplateReservation("POST", "reserve");
     }
@@ -85,8 +85,31 @@ function manuplateReservation(method, action, idReservation = null) {
         chosenHour: JSON.parse(localStorage.getItem("chosenHour")),
         chosenGym: JSON.parse(localStorage.getItem("chosenGym"))
     }
-    if (idReservation)
-         { apiParam["idReservation"] = idReservation; }
+    if (idReservation) { apiParam["idReservation"] = idReservation; }
+    F.callApi(method, apiParam).then(data => {
+        if (!data.isOk) {
+            F.displayError(data['errorMessage']);
+            return;
+        }
+
+        F.validateReturnDataReservation(data);
+        //redirect to shown reservation page.(to do do you needs another params to pass?)
+        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
+
+    })
+}
+
+function editReservation(method, action) {
+    let apiParam = {
+        action: action,
+        token: F.getToken(),
+        duration: JSON.parse(localStorage.getItem("duration")),
+        chosenDate: JSON.parse(localStorage.getItem("chosenDate")),
+        participants: JSON.parse(localStorage.getItem("participants")),
+        chosenHour: JSON.parse(localStorage.getItem("chosenHour")),
+        chosenGym: JSON.parse(localStorage.getItem("chosenGym")),
+        idReservation: urlParam["idReservation"]
+    }
     F.callApi(method, apiParam).then(data => {
         if (!data.isOk) {
             F.displayError(data['errorMessage']);

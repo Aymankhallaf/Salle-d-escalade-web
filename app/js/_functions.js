@@ -11,7 +11,7 @@ export function getToken() {
 
 /**
  * Generate asynchronous call to api.php with parameters
- * @param {string} method GET, POST, PUT or DELETE
+ * @param {string} method  POST, PUT or DELETE
  * @param {object} params An object with data to send.
  * @returns 
  */
@@ -22,7 +22,7 @@ export async function callApi(method, param) {
                 method: method,
                 body: JSON.stringify(param),
                 headers: {
-                    'Content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 }
             });
         return await response.json();
@@ -36,6 +36,7 @@ export async function callApi(method, param) {
     }
 
 }
+
 
 
 
