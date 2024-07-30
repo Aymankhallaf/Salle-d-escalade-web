@@ -1,3 +1,12 @@
+# LAMP ENVIRONMENT
+
+## BUILD AND RUN
+
+To build images and run all containers and volumes
+
+```sh
+docker-compose up -d
+```
 About The Project
 
 Welcome to salle d'escalade v.1 test crud asyncrone

@@ -1,0 +1,58 @@
+/*page title*/
+.hall {
+  &__ttl {
+    @extend %form-ttl;
+  }
+  &__select {
+    @extend %form-input;
+    @include simple-arrow;
+    @extend %form-select;
+  }
+}
+
+.abonnement {
+  &-ttl {
+    @extend %page-ttl;
+    text-align: center;
+  }
+  &-form {
+    width: 22.5rem;
+    margin: 0 auto;
+    &__btn {
+      color: $white;
+      width: 22.5rem;
+      aspect-ratio: 6;
+      font-size: 1.125rem;
+    }
+  }
+}
+@include desktop-only() {
+  .abonnement {
+    &-form {
+      min-width: 39.583rem;
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+      border: 1px solid $black;
+      &__btn {
+        &-container {
+          width: 100%;
+          @include centering;
+        }
+      }
+    }
+  }
+}
+
+/*booking session*/
+.duration {
+  &__ttl {
+    @extend %form-ttl;
+  }
+
+  &__select {
+    @extend %form-input;
+    @include simple-arrow;
+    @extend %form-select;
+  }
+}
+

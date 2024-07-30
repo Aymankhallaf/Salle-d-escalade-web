@@ -1,0 +1,151 @@
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    &-profile {
+        @include sub-steper;
+    }
+    &-coordinate {
+        @include sub-steper;
+    }
+    &-account {
+        @include sub-steper;
+    }
+    &-btn {
+        &__container {
+            width: 22.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        &__next {
+            @include button;
+        }
+        &__prev {
+            @include button($dark-orange);
+        }
+    }
+}
+
+.inscrivez {
+    &-header {
+        @extend %page-ttl;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    &-sub-header {
+        margin-bottom: 2rem;
+    }
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &-ttl {
+        &__info {
+            @extend %form-ttl;
+        }
+        &__coordinate {
+            @extend %form-ttl;
+        }
+        &__account {
+            @extend %form-ttl;
+        }
+    }
+    &-form {
+        width: 22.5rem;
+        margin: 0 auto;
+        &__ttl {
+            @extend %form-ttl;
+            display: flex;
+        }
+        &__lname {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__fname {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__birthdate {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__tel {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__adresse {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__city {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__email {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__password {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+        &__confirm-psw {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
+    }
+}

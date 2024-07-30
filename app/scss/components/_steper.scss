@@ -1,0 +1,11 @@
+@mixin sub-steper{
+    position: relative;
+    height: 4rem;
+    width: 33.33%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+}

@@ -1,0 +1,50 @@
+// to do
+.dashboard {
+    &-ttl {
+        @extend %page-ttl;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &-menu {
+        @extend %page-ttl;
+        @include centering(raw);
+        margin-bottom: 2rem;
+
+        &__a {
+            @include button;
+            &--current {
+                @include button($dark-orange);
+            }
+        }
+    }
+}
+
+.reservation-details {
+    @include centering;
+    margin-bottom: 2rem;
+    &-tll {
+        text-align: left;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &-table {
+        width: 22.5rem;
+    }
+    &-raw {
+        height: 3rem;
+        text-align: left;
+    }
+}
+
+.reservation{
+    &-edit {
+        font-size: 1rem;
+        color: $turquoise;
+    }
+    &-cancel {
+        font-size: 1rem;
+        color: $dark-red;
+    }
+}
