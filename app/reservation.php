@@ -112,6 +112,7 @@ if (!isServerOk()) {
 </template>
 </main>
 
+<script type="module" src="./js/reservation/reservation.js"></script>
 
 <?php
 include 'includes/_footer.php';

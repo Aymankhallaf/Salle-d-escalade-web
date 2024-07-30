@@ -20,8 +20,6 @@ generateToken();
     ?>
         <script type="module" src="http://localhost:5173/@vite/client"></script>
         <script type="module" src="http://localhost:5173/js/script.js"></script>
-        <script type="module" src="./js/reservation/reservation.js"></script>
-        <script type="module" src="./js/createAccount.js"></script>
 
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
