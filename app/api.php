@@ -49,16 +49,11 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
     //to do user authotcation
 
     getAReservationDetailsUser($dbCo, $inputData['idReservation'], 1);
-}
-else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
+} else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
     //to do user authotcation
 
     cancelReservation($dbCo, $inputData['idReservation']);
-}
-
-
-else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservtaion") {
+} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservtaion") {
     //to do user authotcation
-
-    // cancelReservation($dbCo, $inputData['idReservation']);
+    // editReservationDetails($dbCo, $idReservation, $inputData);
 }

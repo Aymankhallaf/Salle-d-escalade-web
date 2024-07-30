@@ -7,7 +7,7 @@ import * as F from "../_functions.js";
 
 //get url parameters 
 let urlParam = F.getQueryParams();
-localStorage.setItem("param", JSON.stringify(param));
+localStorage.setItem("param", JSON.stringify(urlParam));
 
 
 F.getGym();
@@ -62,14 +62,12 @@ function handReservationSubmit(e) {
         F.displayError(data["Vous n'avez pas choisi l'heure."]);
         return
     }
-    let urlParam = localStorage.getItem(JSON.parse("param"));
-    console.log(urlParam);
-        if (param.length === 3) {
-
-        manuplateReservation("PUT", "editReservtaion");
-        return;
+    
+    if (Object.keys(urlParam).length === 3) {
+        manuplateReservation("PUT", "editReservation");
+    } else {
+        manuplateReservation("POST", "reserve");
     }
-    manuplateReservation("post", "reserve");
 
 
 }
