@@ -53,7 +53,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetc
     //to do user authotcation
 
     cancelReservation($dbCo, $inputData['idReservation']);
-} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservtaion") {
+} else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "idReservation") {
     //to do user authotcation
-    // editReservationDetails($dbCo, $idReservation, $inputData);
+    editReservationDetails($dbCo, $inputData);
 }

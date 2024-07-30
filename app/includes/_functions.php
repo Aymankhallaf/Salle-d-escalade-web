@@ -430,7 +430,6 @@ function getAReservationDetailsUser(
 
 function editReservationDetails(
     PDO $dbCo,
-    int $idReservation,
     array $inputData,
 )
  {
@@ -442,7 +441,7 @@ function editReservationDetails(
           `id_gym` = :idGym, `id_activity` = :idActivity
           WHERE `reservation`.`id_reservation` = :idReservation;");
         $isQueryOk = $query->execute([
-            'idReservation'=>$idReservation,
+            'idReservation'=>$inputData['idReservation'],
             'nb_particpation' => $inputData['participants'],
             'date_starting' => $formattedDateStarting,
             'idGym' => $inputData['chosenGym'],
