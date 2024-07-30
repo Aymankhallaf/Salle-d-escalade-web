@@ -158,7 +158,7 @@ export function verifyReturnData(request, response) {
     }
 }
 
-function validateReturnDataReservation(data) {
+export function validateReturnDataReservation(data) {
 verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
 verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
 verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));

@@ -75,8 +75,8 @@ function handReservationSubmit(e) {
 
 
 
-function manuplateReservation(method, action) {
-    F.callApi(method, {
+function manuplateReservation(method, action, idReservation = null) {
+    let apiParam = {
         action: action,
         token: F.getToken(),
         duration: JSON.parse(localStorage.getItem("duration")),
@@ -84,13 +84,16 @@ function manuplateReservation(method, action) {
         participants: JSON.parse(localStorage.getItem("participants")),
         chosenHour: JSON.parse(localStorage.getItem("chosenHour")),
         chosenGym: JSON.parse(localStorage.getItem("chosenGym"))
-    }).then(data => {
+    }
+    if (idReservation)
+         { apiParam["idReservation"] = idReservation; }
+    F.callApi(method, apiParam).then(data => {
         if (!data.isOk) {
             F.displayError(data['errorMessage']);
             return;
         }
 
-        F.validateReturnDataReservation()
+        F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
         document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
