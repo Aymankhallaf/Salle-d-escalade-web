@@ -15,6 +15,8 @@ if (!isServerOk()) {
             <li><a class="dashboard-menu__a" href="#">Abonnement</a></li>
         </ul>
     </nav>
+    <ul id="errorsList" class="error"></ul>
+    <ul id="messagesList" class="messages"></ul>
     <section class="reservation-details">
         <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
         <div id="reservation-details-div">
@@ -56,7 +58,11 @@ if (!isServerOk()) {
 
     </template>
 
-    <template>
+    <template id="templateError">
+        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+    </template>
+
+    <template id="templateMessage">
         <li data-message="" class="messages__itm">Ici vient le message</li>
     </template>
 </main>

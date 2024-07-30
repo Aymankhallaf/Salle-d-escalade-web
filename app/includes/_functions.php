@@ -352,7 +352,7 @@ function cancelReservation(PDO $dbCo, int $idReservation) {
         }
 
         echo json_encode([
-            'isOk' => $isQueryOk,
+            'isOk' => $isQueryOk
         ]);
 
     } catch (Exception $e) {

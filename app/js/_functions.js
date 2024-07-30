@@ -245,5 +245,6 @@ callApi("DElETE", {
 
     }
    data;
-
+   displayMessage(`le reservation a été annulè`);
+   document.getElementById("reservation-details-div").innerHTML="";
 });}
