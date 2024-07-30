@@ -5,9 +5,10 @@ import * as NParticipants from "./_nbParticpant.js";
 import * as F from "../_functions.js";
 
 
-
+//get url parameters 
 let param = F.getQueryParams();
 console.log(param);
+
 
 
 F.getGym();
@@ -24,7 +25,6 @@ document.getElementById("hall").addEventListener("change", (e) => {
 document.getElementById("duration").addEventListener("change", (e) => {
 
     //to do -write function to verify id !!!
-    //get vacation dates
     localStorage.setItem("duration", JSON.stringify(e.target.value));
     //to do verify avaliable time
 
@@ -33,12 +33,16 @@ document.getElementById("duration").addEventListener("change", (e) => {
 
 
 
-document.getElementById("reservation-form").addEventListener("submit", handleSubmit)
-function handleSubmit(e) {
+document.getElementById("reservation-form").addEventListener("submit",
+
+    handReservationSubmit)
+
+
+function handReservationSubmit(e) {
 
     e.preventDefault();
     let reservationElem = { ...localStorage };
-    //to do a review
+
     if (!reservationElem.hasOwnProperty("chosenGym")) {
         F.displayError(data["Vous n'avez pas choisi la salle."]);
         return
@@ -60,8 +64,22 @@ function handleSubmit(e) {
         return
     }
 
-    F.callApi("POST", {
-        action: "reserve",
+    if (param.length === 3) {
+
+        editReservation("PUT","editReservtaion");
+        return
+    }
+    manuplateReservation("post","reserve");
+
+
+}
+
+
+
+
+function manuplateReservation(method,action) {
+    F.callApi(method, {
+        action: action,
         token: F.getToken(),
         duration: JSON.parse(localStorage.getItem("duration")),
         chosenDate: JSON.parse(localStorage.getItem("chosenDate")),
@@ -74,8 +92,6 @@ function handleSubmit(e) {
             return;
         }
 
-        // to do verify return data
-      
         F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
         F.verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
         F.verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
@@ -84,10 +100,6 @@ function handleSubmit(e) {
         //redirect to shown reservation page.(to do do you needs another params to pass?)
         document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
-   
-
-
     })
-
-
 }
+

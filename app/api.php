@@ -55,3 +55,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "ca
 
     cancelReservation($dbCo, $inputData['idReservation']);
 }
+
+
+else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservtaion") {
+    //to do user authotcation
+
+    // cancelReservation($dbCo, $inputData['idReservation']);
+}

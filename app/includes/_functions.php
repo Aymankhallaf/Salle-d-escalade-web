@@ -342,7 +342,8 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
 }
 
 
-function cancelReservation(PDO $dbCo, int $idReservation) {
+function cancelReservation(PDO $dbCo, int $idReservation)
+{
     try {
         $query = $dbCo->prepare("DELETE FROM reservation WHERE id_reservation = :idReservation");
         $isQueryOk = $query->execute(["idReservation" => $idReservation]);
@@ -354,7 +355,6 @@ function cancelReservation(PDO $dbCo, int $idReservation) {
         echo json_encode([
             'isOk' => $isQueryOk
         ]);
-
     } catch (Exception $e) {
         triggerError("Database error: " . $e->getMessage());
     }
@@ -422,6 +422,39 @@ function getAReservationDetailsUser(
         'idUSer' => $idUser
 
     ]);
+}
+
+function editReservationDetails(
+    PDO $dbCo,
+    int $idReservation,
+    array $inputData,
+)
+ {
+    $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
+    $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
+    try {
+        $query = $dbCo->prepare("UPDATE `reservation` SET
+         `nb_particpation` = :nb_particpation, `date_starting` = :date_starting,
+          `id_gym` = :idGym, `id_activity` = :idActivity
+          WHERE `reservation`.`id_reservation` = :idReservation;");
+        $isQueryOk = $query->execute([
+            'idReservation'=>$idReservation,
+            'nb_particpation' => $inputData['participants'],
+            'date_starting' => $formattedDateStarting,
+            'idGym' => $inputData['chosenGym'],
+            'idActivity' => $inputData['duration'],
+        ]);
+
+        if (!$isQueryOk) {
+            triggerError("connection");
+        }
+
+        echo json_encode([
+            'isOk' => $isQueryOk
+        ]);
+    } catch (Exception $e) {
+        triggerError("Database error: " . $e->getMessage());
+    }
 }
 
 
@@ -573,4 +606,3 @@ function createAccount(PDO $dbCo, array $inputData)
 
     ]);
 }
-
