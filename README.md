@@ -23,7 +23,7 @@ cd app
 then 
 ```sh
 npm run dev.
-
+```
 ## Read
 from home page go to reservation page.
 it will fetch the data in asyn to get the reservation details
