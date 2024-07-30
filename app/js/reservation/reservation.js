@@ -65,6 +65,7 @@ function handReservationSubmit(e) {
 
     if (Object.keys(urlParam).length === 3) {
         editReservation("PUT", "editReservation");
+        // manuplateReservation("PUT", editReservation, urlParam["idReservation"]);
     } else {
         manuplateReservation("POST", "reserve");
     }
@@ -118,7 +119,7 @@ function editReservation(method, action) {
 
         F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
-        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
+        document.location.href = `/dashboard.php#reservation-details?idReservation=${urlParam["idReservation"]}&token=${F.getToken()}`
 
     })
 }
