@@ -424,6 +424,10 @@ function getAReservationDetailsUser(
     ]);
 }
 
+
+
+
+
 function editReservationDetails(
     PDO $dbCo,
     int $idReservation,
