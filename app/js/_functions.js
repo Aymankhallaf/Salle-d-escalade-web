@@ -197,8 +197,10 @@ export function getGym() {
  * @return {object} object of params
  */
 export function getQueryParams() {
-    const queryString = window.location.hash.split('?')[1];
     const params = {};
+
+    // Parse query string
+    const queryString = window.location.search.substring(1); // Exclude the leading '?'
     if (queryString) {
         const pairs = queryString.split('&');
         pairs.forEach(pair => {
@@ -206,8 +208,20 @@ export function getQueryParams() {
             params[decodeURIComponent(key)] = decodeURIComponent(value);
         });
     }
+
+    // Parse hash if it contains query parameters
+    const hashString = window.location.hash.split('?')[1];
+    if (hashString) {
+        const pairs = hashString.split('&');
+        pairs.forEach(pair => {
+            const [key, value] = pair.split('=');
+            params[decodeURIComponent(key)] = decodeURIComponent(value);
+        });
+    }
+
     return params;
 }
+
 
 
 

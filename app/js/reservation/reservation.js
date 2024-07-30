@@ -6,6 +6,10 @@ import * as F from "../_functions.js";
 
 
 
+let param = F.getQueryParams();
+console.log(param);
+
+
 F.getGym();
 document.getElementById("hall").addEventListener("change", (e) => {
     F.verifyIdGym(e.target.value);

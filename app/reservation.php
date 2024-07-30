@@ -1,5 +1,8 @@
 <?php
 require_once 'includes/_header.php';
+if (!isServerOk()) {
+    triggerError('referer');
+}
 ?>
 
 <main>
