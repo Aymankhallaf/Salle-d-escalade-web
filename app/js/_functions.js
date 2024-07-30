@@ -168,6 +168,10 @@ export function getGym() {
         token: getToken()
 
     }).then(data => {
+        if (!data) {
+            console.error('Error: data is undefined');
+            return; 
+          }
         if (!data.isOk) {
             displayError(data['errorMessage']);
             return;
