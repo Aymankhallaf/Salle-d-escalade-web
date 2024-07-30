@@ -1,0 +1,41 @@
+/*galary*/
+.galary {
+  display: grid;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__item {
+    height: 50vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    @include centering(column);
+  }
+
+  &__item-1 {
+    background-image: linear-gradient($black-50, $black-50),
+      url(../img/salle1.webp);
+    &:hover {
+      background-image: url(../img/salle1.webp);
+    }
+  }
+
+  &__item-2 {
+    background-image: linear-gradient($black-50, $black-50),
+      url(../img/salle2-50.webp);
+    &:hover {
+      background-image: url(../img/salle2-50.webp);
+    }
+  }
+
+  &__lnk {
+    font-size: 1.5rem;
+    text-align: center;
+    color: $white;
+  }
+
+  @include desktop-only() {
+    grid-template-columns: 1fr 1fr;
+  }
+}
