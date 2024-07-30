@@ -66,7 +66,7 @@ if (!isServerOk()) {
         <li data-message="" class="messages__itm">Ici vient le message</li>
     </template>
 </main>
-<script type="module" src="./js/getLocationHash.js"></script>
+<script type="module" src="./js/reservationDetails.js"></script>
 <?php
 
 include 'includes/_footer.php';

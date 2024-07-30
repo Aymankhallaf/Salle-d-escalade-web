@@ -23,9 +23,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// document.getElementById("reservation-cancel").addEventListener("click", function () {
-    
-   
-// })
-
-

@@ -170,8 +170,8 @@ export function getGym() {
     }).then(data => {
         if (!data) {
             console.error('Error: data is undefined');
-            return; 
-          }
+            return;
+        }
         if (!data.isOk) {
             displayError(data['errorMessage']);
             return;
@@ -225,26 +225,44 @@ export function displayReservation(reservation) {
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
-    document.getElementById('reservation-cancel').addEventListener("click",cancelAreserfaction);
-    
+    document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
+    document.getElementById('reservation-edit').addEventListener("click", editReservation);
+
 }
 
-function cancelAreserfaction(){
-callApi("DElETE", {
-    action: "cancelReservation",
-    token: getToken(),
-    idReservation:document.getElementById("dateReservation").dataset.idReservation
+/**
+ *canel reservation by deleting it from database
+ *
+ */
+function cancelReservation() {
+    callApi("DElETE", {
+        action: "cancelReservation",
+        token: getToken(),
+        idReservation: document.getElementById("dateReservation").dataset.idReservation
 
-}).then(data => {
-    if (!data) {
-        console.error('Error: data is undefined');
-        return; 
-      }
-    if (!data.isOk) {
-        displayError(data['errorMessage']);
+    }).then(data => {
+        if (!data) {
+            console.error('Error: data is undefined');
+            return;
+        }
+        if (!data.isOk) {
+            displayError(data['errorMessage']);
+
+        }
+        data;
+        displayMessage(`le reservation a été annulè`);
+        document.getElementById("reservation-details-div").innerHTML = "";
+    });
+}
+
+
+/**
+ *canel reservation by deleting it from database
+ *
+ */
+function editReservation() {
+    let token = getToken();
+    let idReservation = document.getElementById("dateReservation").dataset.idReservation;
+    document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=edit`
 
     }
-   data;
-   displayMessage(`le reservation a été annulè`);
-   document.getElementById("reservation-details-div").innerHTML="";
-});}
