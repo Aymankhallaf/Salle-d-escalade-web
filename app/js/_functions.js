@@ -220,9 +220,21 @@ export function displayReservation(reservation) {
     clone.getElementById('duration').innerText = reservation['duration'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
-
-    document.getElementById('reservation-details-table').appendChild(clone);
-
+    document.getElementById('reservation-details-tll').appendChild(clone);
+    document.getElementById("reservation-cancel").addEventListener("click",cancelAreserfaction);
+    
 }
 
+function cancelAreserfaction(){
+F.callApi("DElETE", {
+    action: "cancelReservation",
+    token: F.getToken(),
+    idReservation:document.getElementById("dateReservation").dataset.idReservation
 
+}).then(data => {
+    if (!data.isOk) {
+        displayError(data['errorMessage']);
+
+    }
+
+});}

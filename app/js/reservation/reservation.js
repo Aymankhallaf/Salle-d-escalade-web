@@ -77,7 +77,7 @@ function handleSubmit(e) {
         F.verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
         F.verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
         F.verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
-        //redirect to shown reservation page.(to do do you needs another params to pass)
+        //redirect to shown reservation page.(to do do you needs another params to pass?)
         document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
    

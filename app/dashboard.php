@@ -17,41 +17,40 @@ if (!isServerOk()) {
     </nav>
     <section class="reservation-details">
         <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
-        <table id="reservation-details-table" class="reservation-details-table">
 
-        </table>
 
     </section>
     <!-- template reservation -->
-    <template id="template-reservation">
-        <tr class="reservation-details-raw">
-            <th>Salle</th>
-            <td id="gym">Salle1</td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Date de réservation</th>
-            <td id="dateReservation">14/07/2024 8:30</td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Durée</th>
-            <td id="duration">1h</td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Total Prix</th>
-            <td id="totalPrix">50€</td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Statut</th>
-            <td id="status">modifier</td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Action modifier</th>
-            <td id="reservation-edit"><button class="reservation-edit">modifier</button></td>
-        </tr>
-        <tr class="reservation-details-raw">
-            <th>Action annuler</th>
-            <td ><button id="reservation-cancel" class="reservation-cancel">annuler</button></td>
-        </tr>
+    <table id="reservation-details-table" class="reservation-details-table">
+
+        <template id="template-reservation">
+            <tr class="reservation-details-raw">
+                <th>Salle</th>
+                <td id="gym">Salle1</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Date de réservation</th>
+                <td id="dateReservation">14/07/2024 8:30</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Durée</th>
+                <td id="duration">1h</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Total Prix</th>
+                <td id="totalPrix">50€</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Statut</th>
+                <td id="status">modifier</td>
+            </tr>
+    </table>
+    <ul class="reservation-details-raw">
+        <li id="reservation-edit"><button class="reservation-edit">modifier</button></li>
+
+        <li><button id="reservation-cancel" class="reservation-cancel">annuler</button></li>
+    </ul>
+
     </template>
 
     <template>

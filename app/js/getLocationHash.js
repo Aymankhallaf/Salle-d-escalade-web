@@ -23,21 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.getElementById("reservation-cancel").addEventListener("click", function () {
+// document.getElementById("reservation-cancel").addEventListener("click", function () {
     
-    console.log(param);
-    F.callApi("POST", {
-        action: "cancelReservation",
-        token: F.getToken(),
-        idReservation: param.idReservation
-
-    }).then(data => {
-        if (!data.isOk) {
-            displayError(data['errorMessage']);
-
-        }
-
-    });
-})
+   
+// })
 
 
