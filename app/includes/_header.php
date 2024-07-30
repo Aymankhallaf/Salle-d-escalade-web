@@ -44,7 +44,7 @@ generateToken();
                 <li><a class="header-nav__menu-link current" href="#" aria-current="page">Page
                         d’accueil</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#abonnements">Abonnements</a></li>
-                <li><a class="header-nav__menu-link" href="/reservation.html">Réservation</a></li>
+                <li><a class="header-nav__menu-link" href="/reservation.php">Réservation</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
                 <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Evènements</a></li>
