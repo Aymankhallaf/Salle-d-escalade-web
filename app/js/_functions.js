@@ -158,6 +158,13 @@ export function verifyReturnData(request, response) {
     }
 }
 
+function validateReturnDataReservation(data) {
+verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
+verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
+verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
+verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
+verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
+}
 
 /**
  * get list of gym then call displayGym().

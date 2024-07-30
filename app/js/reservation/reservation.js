@@ -62,7 +62,7 @@ function handReservationSubmit(e) {
         F.displayError(data["Vous n'avez pas choisi l'heure."]);
         return
     }
-    
+
     if (Object.keys(urlParam).length === 3) {
         manuplateReservation("PUT", "editReservation");
     } else {
@@ -90,11 +90,7 @@ function manuplateReservation(method, action) {
             return;
         }
 
-        F.verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
-        F.verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
-        F.verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
-        F.verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
-        F.verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
+        F.validateReturnDataReservation()
         //redirect to shown reservation page.(to do do you needs another params to pass?)
         document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
