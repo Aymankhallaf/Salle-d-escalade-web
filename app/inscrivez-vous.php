@@ -87,7 +87,7 @@ require_once 'includes/_header.php';
 
     <!-- error messages -->
     <template id="templateError">
-        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li> 
     </template>
 
     <template id="templateMessage">

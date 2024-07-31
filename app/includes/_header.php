@@ -39,9 +39,9 @@ generateToken();
         <nav aria-label="Menu principal" id="header-nav" class="header-nav">
             <button aria-labelledby="header-nav" type="button" id="header-nav__btn" class="header-nav__btn"></button>
             <ul id="main-menu" class="header-nav__menu">
-                <li><a class="header-nav__menu-link current" href="#" aria-current="page">Page
+                <li><a class="header-nav__menu-link current" href="/" aria-current="page">Page
                         d’accueil</a></li>
-                <li><a class="header-nav__menu-link" href="index.html#abonnements">Abonnements</a></li>
+                <li><a class="header-nav__menu-link" href="/">Abonnements</a></li>
                 <li><a class="header-nav__menu-link" href="/reservation.php">Réservation</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
                 <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>

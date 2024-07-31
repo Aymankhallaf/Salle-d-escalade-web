@@ -12,7 +12,7 @@ export function getToken() {
 /**
  * Generate asynchronous call to api.php with parameters
  * @param {string} method  POST, PUT or DELETE
- * @param {object} params An object with data to send.
+ * @param {object} param An object with data to send.
  * @returns 
  */
 export async function callApi(method, param) {

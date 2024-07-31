@@ -18,7 +18,7 @@ if (!isServerOk()) {
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
     <section class="reservation-details">
-        <h2 class="reservation-details-tll" id="reservation-details-tll"><a href="#reservation-details">Réservation détails:</a></h2>
+        <h2  id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
         <div id="reservation-details-div">
 
         </div>
@@ -51,9 +51,9 @@ if (!isServerOk()) {
             </tr>
         </table>
         <ul class="reservation-details-raw">
-            <li id="reservation-edit"><button class="reservation-edit">modifier</button></li>
+            <li id="reservation-edit"><a class="reservation-edit">modifier</a></li>
 
-            <li><button id="reservation-cancel" class="reservation-cancel">annuler</button></li>
+            <li><a id="reservation-cancel" class="reservation-cancel">annuler</a></li>
         </ul>
 
     </template>
