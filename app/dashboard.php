@@ -51,9 +51,9 @@ if (!isServerOk()) {
             </tr>
         </table>
         <ul class="reservation-details-raw">
-            <li id="reservation-edit"><button class="reservation-edit">modifier</button></li>
+            <li id="reservation-edit"><a class="reservation-edit">modifier</a></li>
 
-            <li><button id="reservation-cancel" class="reservation-cancel">annuler</button></li>
+            <li><a id="reservation-cancel" class="reservation-cancel">annuler</a></li>
         </ul>
 
     </template>
