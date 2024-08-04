@@ -12,7 +12,6 @@
     }
     &-btn {
         &__container {
-            width: 22.5rem;
             display: flex;
             justify-content: space-between;
         }
@@ -26,6 +25,16 @@
 }
 
 .signup {
+    max-width: 22.5rem;
+    margin: 0 auto;
+    padding: 1rem;
+    @include desktop-only() {
+        min-width: 39.583rem;
+        padding: 3rem 2rem;
+        margin-top: 2rem;
+        border: 1px solid $black;
+      }
+
     &-header {
         @extend %page-ttl;
         text-align: center;
@@ -51,8 +60,6 @@
         }
     }
     &-form {
-        width: 22.5rem;
-        margin: 0 auto;
         &__ttl {
             @extend %form-ttl;
             display: flex;
