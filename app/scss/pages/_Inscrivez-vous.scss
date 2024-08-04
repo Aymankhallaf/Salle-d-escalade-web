@@ -25,7 +25,7 @@
     }
 }
 
-.inscrivez {
+.signup {
     &-header {
         @extend %page-ttl;
         text-align: center;
@@ -41,13 +41,13 @@
     }
     &-ttl {
         &__info {
-            @extend %form-ttl;
+            @extend %form-main-ttl;
         }
         &__coordinate {
-            @extend %form-ttl;
+            @extend %form-main-ttl;
         }
         &__account {
-            @extend %form-ttl;
+            @extend %form-main-ttl;
         }
     }
     &-form {

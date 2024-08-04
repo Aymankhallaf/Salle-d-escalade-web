@@ -34,7 +34,7 @@ document.getElementById("finish").addEventListener("click", async function (e) {
         document.getElementById("confirm-psw").value
     )) return;
 
-    const formData = new FormData(document.getElementById("inscrivez-form"));
+    const formData = new FormData(document.getElementById("signup-form"));
     const data = Object.fromEntries(formData.entries());
     
     try {
