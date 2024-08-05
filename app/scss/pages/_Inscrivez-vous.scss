@@ -20,16 +20,19 @@
             @include steper-img;
         }
         &-a {
-            color: $black-50;
+            color: $black;
         }
     }
     &-coordinate {
         @include sub-steper;
         &::after {
-            @include progress-after($left: 5.4167rem, $width: 5.25rem, $color: $sand);
+            @include progress-after(
+                $left: 5.4167rem,
+                 $width: 5.25rem, 
+                 $color: $sand);
             //left: (((100% - 2 rem) / 3) - 4rem) /2
             // width: calc((100% - 2) / 3 - 4rem);
-
+    
             @include desktop-only() {
                 // (((100% - 4 rem) / 3) - 4rem) /2
                 left: 7.9305rem;
@@ -40,7 +43,7 @@
             @include steper-img;
         }
         &-a {
-            color: $black-50;
+            color: $black;
         }
     }
     &-account {
@@ -49,7 +52,7 @@
             @include steper-img;
         }
         &-a {
-            color: $black-50;
+            color: $black;
         }
     }
     &-btn {

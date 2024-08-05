@@ -21,7 +21,7 @@ require_once 'includes/_header.php';
     </ol>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="signup-form" class="signup-form" aria-label="formulaire de connexion">
+    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription">
         <div data-step="1" class="step-1">
             <h2 class="signup-ttl__info" id="info-personal">Les informations personnelles</h2>
             <ul class="signup-ul signup-ul__first">
