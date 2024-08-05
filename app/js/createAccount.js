@@ -63,6 +63,7 @@ function displayErrorForm(errorMessage) {
     const m
     = li.querySelector('[data-error-message]');
     m.innerText = errorMessage;
+    document.getElementById('errorsList').innerText='';
     document.getElementById('errorsList').appendChild(li);
 }
 
@@ -163,6 +164,7 @@ function verifyConfirmPassword(password, confirmPassword) {
  * @param {string} stepNumber Number of the step to show.
  */
 function showNextStep(stepNumber) {
+    document.getElementById('errorsList').innerText='';
     document.querySelectorAll("[data-step]").forEach((step) => {
         if (step.dataset.step == stepNumber || step.dataset.step == stepNumber - 1) {
             step.classList.toggle("hidden");

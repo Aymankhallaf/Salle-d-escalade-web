@@ -79,10 +79,10 @@
   height: 4rem;
   border-color: $color;
   background-color: $sand-15;
-  &:invalid {
+  &:required:invalid {
     border: $dark-red solid 2px;
   }
-  &:valid {
+  &:required:valid {
     border: $turquoise solid 2px;
   }
 }
