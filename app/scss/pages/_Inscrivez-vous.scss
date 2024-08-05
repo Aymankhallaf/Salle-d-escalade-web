@@ -1,15 +1,14 @@
 .stepper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     &-profile {
-        @include sub-steper;
-        &-img {
-            @include steper-img;
-        }
-    }
-    &-coordinate {
-        @include sub-steper;
-        &::before {
+    
+        &::after {
             content: "";
             position: absolute;
             top: 2rem;
@@ -19,20 +18,36 @@
             width: 3.5rem;
             height: 0.25rem;
             background-color: $sand;
+            @include desktop-only() {
+            //   width: calc((100% - 4rem) / 3)-4;
+            width: 7.861rem;
+            }
         }
-        // &::after {
-        //     content: "";    
-        //     position: absolute;
-        //     top: 1.875rem;
-        //     right: 4rem;
-        //     display: block;
-        //     width: calc(50vw - 9rem);
-        //     height: 0.25rem;
-        //     // background-color: $black;
-        // }
+        @include sub-steper;
         &-img {
             @include steper-img;
-            
+        }
+    }
+    &-coordinate {
+
+        @include sub-steper;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 2rem;
+            left: 4rem;
+            display: block;
+            // width: calc(100% / 3 - 4rem);
+            width: 3.5rem;
+            height: 0.25rem;
+            background-color: $sand;
+            @include desktop-only() {
+            //   width: calc((100% - 4rem) / 3)-4;
+            width: 7.861rem;
+            }
+        }
+        &-img {
+            @include steper-img;
         }
         &-a {
             color: $black-50;
@@ -63,7 +78,7 @@
     margin: 0 auto;
     padding: 1rem;
     @include desktop-only() {
-        min-width: 39.583rem;
+        max-width: 39.583rem;
         padding: 3rem 2rem;
         margin-top: 2rem;
         border: 1px solid $black;
