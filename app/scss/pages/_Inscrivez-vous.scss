@@ -9,15 +9,16 @@
     &-profile {
         @include sub-steper(start);
         &::after {
-            content: "";
-            position: absolute;
-            top: 2rem;
-            left: 4rem;
-            display: block;
-            // width: calc((100% / 3 - 4rem) + (100% / 3 - 4rem)/2);
-            width: 5.25rem;
-            height: 0.25rem;
-            background-color: $sand;
+            @include progress-after($left: 4rem, $width: 5.25rem, $color: $sand);
+            // content: "";
+            // display: block;
+            // position: absolute;
+            // height: 0.25rem;
+            // background-color: $sand;
+            // top: 2rem;
+            // left: 4rem;
+            // // width: calc((100% / 3 - 4rem) + (100% / 3 - 4rem)/2);
+            // width: 5.25rem;
             @include desktop-only() {
                 //   width: calc((((100% - 4rem) / 3) - 4rem) + (((100% - 4rem)/3)-4rem)/2)) ;
                 width: 11.7915rem;
@@ -33,7 +34,7 @@
             content: "";
             position: absolute;
             top: 2rem;
-            // (((100% - 2 rem) / 3) - 4rem) /2
+            //left: (((100% - 2 rem) / 3) - 4rem) /2
             left: 5.4167rem;
             display: block;
             // width: calc((100% - 2) / 3 - 4rem);
