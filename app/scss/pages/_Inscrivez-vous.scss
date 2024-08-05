@@ -19,6 +19,9 @@
         &-img {
             @include steper-img;
         }
+        &-a {
+            color: $black-50;
+        }
     }
     &-coordinate {
         @include sub-steper;
@@ -44,6 +47,9 @@
         @include sub-steper(end);
         &-img {
             @include steper-img;
+        }
+        &-a {
+            color: $black-50;
         }
     }
     &-btn {

@@ -7,7 +7,7 @@ require_once 'includes/_header.php';
     <ol class="stepper">
         <li class="stepper-profile" role="tab" aria-selected="true" aria-current="step">
             <img class="stepper-profile-img" id="stepper-profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
-            <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" class="stepper-profile-name">les personal informations.</a>
+            <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" class="stepper-profile-a">les personal informations.</a>
         </li>
         <li class="stepper-coordinate"  role="tab" aria-selected="false">
             <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
