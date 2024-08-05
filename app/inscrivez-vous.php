@@ -44,16 +44,16 @@ require_once 'includes/_header.php';
             <h2 class="signup-ttl__coordinate" id="coordinate">Les coordonnées</h2>
             <ul class="signup-ul signup-ul__second">
                 <li class="signup-form__tel">
-                    <label pattern="[0-9]" class="signup-form__tel-label" for="tel">Numéro de téléphone</label>
-                    <input class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
+                    <label class="signup-form__tel-label" for="tel">Numéro de téléphone</label>
+                    <input  pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
                 </li>
                 <li class="signup-form__adresse">
                     <label class="signup-form__adresse-label" for="adresse">L'adresse</label>
                     <input class="signup-form__adresse-input" type="text" name="adresse" id="adresse" />
                 </li>
                 <li class="signup-form__city">
-                    <label pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-label" for="city" maxlength="50">Ville</label>
-                    <input class="signup-form__city-input" type="text" name="city" id="city" required />
+                    <label class="signup-form__city-label" for="city" maxlength="50">Ville</label>
+                    <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-input" type="text" name="city" id="city" required />
                 </li>
             </ul>
             <div class="stepper-btn__container">
