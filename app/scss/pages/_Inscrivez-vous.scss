@@ -3,12 +3,46 @@
     justify-content: space-between;
     &-profile {
         @include sub-steper;
+        &-img {
+            @include steper-img;
+        }
     }
     &-coordinate {
         @include sub-steper;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 2rem;
+            left: 4rem;
+            display: block;
+            // width: calc(100% / 3 - 4rem);
+            width: 3.5rem;
+            height: 0.25rem;
+            background-color: $sand;
+        }
+        // &::after {
+        //     content: "";    
+        //     position: absolute;
+        //     top: 1.875rem;
+        //     right: 4rem;
+        //     display: block;
+        //     width: calc(50vw - 9rem);
+        //     height: 0.25rem;
+        //     // background-color: $black;
+        // }
+        &-img {
+            @include steper-img;
+            
+        }
+        &-a {
+            color: $black-50;
+        }
     }
     &-account {
         @include sub-steper;
+        &-img {
+            @include steper-img;
+        }
     }
     &-btn {
         &__container {
@@ -33,7 +67,7 @@
         padding: 3rem 2rem;
         margin-top: 2rem;
         border: 1px solid $black;
-      }
+    }
 
     &-header {
         @extend %page-ttl;

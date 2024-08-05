@@ -3,18 +3,18 @@ require_once 'includes/_header.php';
 ?>
 <main class="signup">
     <h1 class="signup-header" id="signup">Inscrivez vous</h1>
-    <p class="-sub-header">Veuillez suivre les étapes pour vous inscrire</p>
+    <p class="signup-sub-header">Veuillez suivre les trois étapes pour vous inscrire</p>
     <ol class="stepper">
-        <li class="stepsignupper-profile">
-            <img id="profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
+        <li class="stepper-profile">
+            <img class="stepper-profile-img" id="stepper-profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
             <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" aria-current="step" class="stepper__stepper-name--current">les personal informations.</a>
         </li>
         <li class="stepper-coordinate">
-            <img id="coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
-            <a aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
+            <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
+            <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper__stepper-adresse--next">Les coordonnées.</a>
         </li>
         <li class="stepper-account">
-            <img src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
+            <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
             <a aria-labelledby="account" for="account" href="#account" aria-current="false" class="stepper__stepper-name--current">Infomation du compte</a>
         </li>
 
