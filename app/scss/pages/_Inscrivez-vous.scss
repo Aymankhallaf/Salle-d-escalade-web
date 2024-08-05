@@ -10,17 +10,9 @@
         @include sub-steper(start);
         &::after {
             @include progress-after($left: 4rem, $width: 5.25rem, $color: $sand);
-            // content: "";
-            // display: block;
-            // position: absolute;
-            // height: 0.25rem;
-            // background-color: $sand;
-            // top: 2rem;
-            // left: 4rem;
-            // // width: calc((100% / 3 - 4rem) + (100% / 3 - 4rem)/2);
-            // width: 5.25rem;
+            // width: calc((100% / 3 - 4rem) + (100% / 3 - 4rem)/2);
             @include desktop-only() {
-                //   width: calc((((100% - 4rem) / 3) - 4rem) + (((100% - 4rem)/3)-4rem)/2)) ;
+                //  width: calc((((100% - 4rem) / 3) - 4rem) + (((100% - 4rem)/3)-4rem)/2)) ;
                 width: 11.7915rem;
             }
         }
@@ -31,16 +23,10 @@
     &-coordinate {
         @include sub-steper;
         &::after {
-            content: "";
-            position: absolute;
-            top: 2rem;
+            @include progress-after($left: 5.4167rem, $width: 5.25rem, $color: $sand);
             //left: (((100% - 2 rem) / 3) - 4rem) /2
-            left: 5.4167rem;
-            display: block;
             // width: calc((100% - 2) / 3 - 4rem);
-            width: 5.25rem;
-            height: 0.25rem;
-            background-color: $sand;
+
             @include desktop-only() {
                 // (((100% - 4 rem) / 3) - 4rem) /2
                 left: 7.9305rem;
