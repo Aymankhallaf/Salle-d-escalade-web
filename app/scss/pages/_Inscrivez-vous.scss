@@ -8,6 +8,7 @@
     margin: 0;
     &-profile {
     
+        @include sub-steper(start);
         &::after {
             content: "";
             position: absolute;
@@ -23,7 +24,6 @@
             width: 7.861rem;
             }
         }
-        @include sub-steper;
         &-img {
             @include steper-img;
         }
@@ -54,7 +54,7 @@
         }
     }
     &-account {
-        @include sub-steper;
+        @include sub-steper(end);
         &-img {
             @include steper-img;
         }

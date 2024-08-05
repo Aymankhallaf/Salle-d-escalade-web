@@ -1,8 +1,8 @@
 @mixin sub-steper($direction:center) {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    text-align: $direction;
+    align-items: $direction;
+    text-align: center;
     position: relative;
     height: 4rem;
     width: 33.33%;
