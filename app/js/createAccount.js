@@ -6,11 +6,21 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateName("fname", document.getElementById("fname").value)) return;
     if (!validateDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
+    //update ui (stepper img, progress, attributes)
+    document.getElementById("stepper-profile-img").src = "./img/name-finished-icon.svg";
+    document.getElementById("stepper-profile").classList.add("stepper-profile--progress");
+
+    document.getElementById("stepper-profile").setAttribute("aria-selected", "false");
+    document.getElementById("stepper-profile").setAttribute("aria-current", "false");
+
+    document.getElementById("stepper-coordinate").setAttribute("aria-selected", "true");
+    document.getElementById("stepper-coordinate").setAttribute("aria-current", "step");
 });
 
-// Listen to previous next button
-document.getElementById("step-btn-prev-1").addEventListener("click", function () {
+// Listen to first previous button
+document.getfirstElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
+
 });
 
 // Listen to second next button
@@ -36,7 +46,7 @@ document.getElementById("finish").addEventListener("click", async function (e) {
 
     const formData = new FormData(document.getElementById("signup-form"));
     const data = Object.fromEntries(formData.entries());
-    
+
     try {
         const response = await F.callApi("POST", {
             action: "createAccount",
@@ -61,9 +71,9 @@ document.getElementById("finish").addEventListener("click", async function (e) {
 function displayErrorForm(errorMessage) {
     const li = document.importNode(document.getElementById('templateError').content, true);
     const m
-    = li.querySelector('[data-error-message]');
+        = li.querySelector('[data-error-message]');
     m.innerText = errorMessage;
-    document.getElementById('errorsList').innerText='';
+    document.getElementById('errorsList').innerText = '';
     document.getElementById('errorsList').appendChild(li);
 }
 
@@ -164,7 +174,7 @@ function verifyConfirmPassword(password, confirmPassword) {
  * @param {string} stepNumber Number of the step to show.
  */
 function showNextStep(stepNumber) {
-    document.getElementById('errorsList').innerText='';
+    document.getElementById('errorsList').innerText = '';
     document.querySelectorAll("[data-step]").forEach((step) => {
         if (step.dataset.step == stepNumber || step.dataset.step == stepNumber - 1) {
             step.classList.toggle("hidden");

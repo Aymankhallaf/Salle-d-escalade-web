@@ -4,12 +4,12 @@ require_once 'includes/_header.php';
 <main class="signup">
     <h1 class="signup-header" id="signup">Inscrivez vous</h1>
     <p class="signup-sub-header">Veuillez suivre les trois étapes pour vous inscrire</p>
-    <ol class="stepper">
-        <li class="stepper-profile" role="tab" aria-selected="true" aria-current="step">
+    <ol class="stepper" role="tablist">
+        <li id="stepper-profile" class="stepper-profile" role="tab" aria-selected="true" aria-current="step">
             <img class="stepper-profile-img" id="stepper-profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
             <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" class="stepper-profile-a">les personal informations.</a>
         </li>
-        <li class="stepper-coordinate"  role="tab" aria-selected="false">
+        <li class="stepper-coordinate" role="tab" aria-selected="false">
             <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
             <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper-coordinate-a">Les coordonnées.</a>
         </li>
@@ -45,7 +45,7 @@ require_once 'includes/_header.php';
             <ul class="signup-ul signup-ul__second">
                 <li class="signup-form__tel">
                     <label class="signup-form__tel-label" for="tel">Numéro de téléphone</label>
-                    <input  pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
+                    <input pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
                 </li>
                 <li class="signup-form__adresse">
                     <label class="signup-form__adresse-label" for="adresse">L'adresse</label>
