@@ -9,16 +9,19 @@
     &-profile {
         @include sub-steper(start);
         &::after {
-            @include progress-after($left: 4rem, $width: 5.25rem,
-             $color: $sand);
+            @include progress-after($left: 4rem, $width: 5.25rem, $color: $sand);
             // width: calc((100% / 3 - 4rem) + (100% / 3 - 4rem)/2);
             @include desktop-only() {
                 //  width: calc((((100% - 4rem) / 3) - 4rem) + (((100% - 4rem)/3)-4rem)/2)) ;
                 width: 11.7915rem;
             }
-            &--progress {
-                @include progress-after($left: 4rem, 
-                $width: 5.25rem, $color: $turquoise);
+        }
+        &--progress {
+            &::after {
+                @include progress-after($left: 4rem, $width: 5.25rem, $color: $turquoise);
+                @include desktop-only() {
+                    width: 11.7915rem;
+                }
             }
         }
         &-img {

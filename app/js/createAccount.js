@@ -1,5 +1,8 @@
 import * as F from "./_functions.js";
 
+
+let stepperProfile  = document.getElementById("stepper-profile");
+let stepperCoordinate  = document.getElementById("stepper-coordinate");
 // Listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateName("lname", document.getElementById("lname").value)) return;
@@ -8,17 +11,17 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     showNextStep("2");
     //update ui (stepper img, progress, attributes)
     document.getElementById("stepper-profile-img").src = "./img/name-finished-icon.svg";
-    document.getElementById("stepper-profile").classList.add("stepper-profile--progress");
+    stepperProfile.classList.add("stepper-profile--progress");
 
-    document.getElementById("stepper-profile").setAttribute("aria-selected", "false");
-    document.getElementById("stepper-profile").setAttribute("aria-current", "false");
+    stepperProfile.setAttribute("aria-selected", "false");
+    stepperProfile.setAttribute("aria-current", "false");
 
-    document.getElementById("stepper-coordinate").setAttribute("aria-selected", "true");
-    document.getElementById("stepper-coordinate").setAttribute("aria-current", "step");
+    stepperCoordinate.setAttribute("aria-selected", "true");
+    stepperCoordinate.setAttribute("aria-current", "step");
 });
 
 // Listen to first previous button
-document.getfirstElementById("step-btn-prev-1").addEventListener("click", function () {
+document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
 
 });

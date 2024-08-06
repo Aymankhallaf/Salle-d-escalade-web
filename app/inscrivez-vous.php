@@ -9,13 +9,13 @@ require_once 'includes/_header.php';
             <img class="stepper-profile-img" id="stepper-profile-img" src="./img/name-current-icon.svg" alt="photo pour l'etape les informations personnelles">
             <a aria-labelledby="info-personal" for="info-personal" href="#info-personal" class="stepper-profile-a">les personal informations.</a>
         </li>
-        <li class="stepper-coordinate" role="tab" aria-selected="false">
+        <li id="stepper-coordinate" class="stepper-coordinate" role="tab" aria-selected="false">
             <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
-            <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-current="false" class="stepper-coordinate-a">Les coordonnées.</a>
+            <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-selected="false" aria-current="false" class="stepper-coordinate-a">Les coordonnées.</a>
         </li>
-        <li class="stepper-account" role="tab" aria-selected="false">
+        <li class="stepper-account" role="tab" aria-current="false" aria-selected="false">
             <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
-            <a aria-labelledby="account" for="account" href="#account" aria-current="false" class="stepper-account-a">Infomation du compte</a>
+            <a aria-labelledby="account" for="account" href="#account" class="stepper-account-a">Infomation du compte</a>
         </li>
 
     </ol>
