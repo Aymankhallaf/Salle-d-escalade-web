@@ -21,8 +21,10 @@ require_once 'includes/_header.php';
     </ol>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" method="POST" action="createAcount.php">
+    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" 
+    method="POST" action="createAcount.php" novalidate>
         <!-- step 1 -->
+
 
         <div data-step="1" class="step-1">
             <h2 class="signup-ttl__info" id="info-personal">Les informations personnelles</h2>
@@ -82,7 +84,7 @@ require_once 'includes/_header.php';
             </ul>
             <div class="stepper-btn__container">
                 <button id="step-btn-prev-2" type="button" class="stepper-btn__prev">Précédent</button>
-                <button id="finish" type="button" class="stepper-btn__next">Terminer</button>
+                <button id="finish" type="submit" class="stepper-btn__next">Terminer</button>
             </div>
         </div>
 

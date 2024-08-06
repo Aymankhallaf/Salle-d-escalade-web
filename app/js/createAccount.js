@@ -71,9 +71,8 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
     )) return;
-console.log("ok")
-    this.submit();
-
+    console.log("ok")
+    e.target.submit();
     // const formData = new FormData(document.getElementById("signup-form"));
     // const data = Object.fromEntries(formData.entries());
 
