@@ -194,3 +194,20 @@ function showNextStep(stepNumber) {
 }
 
 
+
+
+function updateStepperUI(prevStepId, nextStepId, prevImgId, progressClass) {
+    let stepperPrev = document.getElementById(prevStepId);
+    let stepperNext = document.getElementById(nextStepId);
+    let stepperPrevImg = document.getElementById(prevImgId);
+
+
+    stepperPrevImg.src = imgSrc;
+    
+    stepperPrev.classList.toggle(progressClass);
+
+    stepperPrev.setAttribute("aria-selected", "false");
+    stepperPrev.setAttribute("aria-current", "false");
+    stepperNext.setAttribute("aria-selected", "true");
+    stepperNext.setAttribute("aria-current", "step");
+}
