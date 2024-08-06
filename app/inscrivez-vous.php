@@ -13,7 +13,7 @@ require_once 'includes/_header.php';
             <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/adresse.svg" alt="photo pour l'etape les coordonnées">
             <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-selected="false" aria-current="false" class="stepper-coordinate-a">Les coordonnées.</a>
         </li>
-        <li class="stepper-account" role="tab" aria-current="false" aria-selected="false">
+        <li id="stepper-account" class="stepper-account" role="tab" aria-current="false" aria-selected="false">
             <img class="stepper-account-img" id="stepper-account-img" src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
             <a aria-labelledby="account" for="account" href="#account" class="stepper-account-a">Infomation du compte</a>
         </li>
@@ -21,7 +21,9 @@ require_once 'includes/_header.php';
     </ol>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription">
+    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" method="POST" action="createAcount.php">
+        <!-- step 1 -->
+
         <div data-step="1" class="step-1">
             <h2 class="signup-ttl__info" id="info-personal">Les informations personnelles</h2>
             <ul class="signup-ul signup-ul__first">
@@ -61,6 +63,7 @@ require_once 'includes/_header.php';
                 <button id="step-btn-2" type="button" class="stepper-btn__next">Suivant</button>
             </div>
         </div>
+        <!-- step 3 -->
         <div data-step="3" class="step-3 hidden">
             <h2 class="signup-ttl__account" id="account">Informations du compte</h2>
             <ul class="signup-ul signup-ul__third">

@@ -47,7 +47,6 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     );
     updateStepperUI("stepper-account", "stepper-account-img",
         "./img/mail--progress.svg", "", true
-
     );
 
 });
@@ -64,33 +63,35 @@ document.getElementById("step-btn-prev-2").addEventListener("click", function ()
 });
 
 
-// Listen to finish button
-document.getElementById("finish").addEventListener("click", async function (e) {
+document.getElementById("signup-form").addEventListener("submit", function (e) {
+    e.preventDefault();
     if (!validateEmail(document.getElementById("email").value)) return;
     if (!validatePw(document.getElementById("password").value)) return;
     if (!verifyConfirmPassword(
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
     )) return;
+console.log("ok")
+    this.submit();
 
-    const formData = new FormData(document.getElementById("signup-form"));
-    const data = Object.fromEntries(formData.entries());
+    // const formData = new FormData(document.getElementById("signup-form"));
+    // const data = Object.fromEntries(formData.entries());
 
-    try {
-        const response = await F.callApi("POST", {
-            action: "createAccount",
-            token: F.getToken(),
-            ...data
-        });
+    // try {
+    //     const response = await F.callApi("POST", {
+    //         action: "createAccount",
+    //         token: F.getToken(),
+    //         ...data
+    //     });
 
-        if (!response.isOk) {
-            displayErrorForm(response.errorMessage);
-            return;
-        }
-        console.log(response);
-    } catch (error) {
-        console.error("Unable to load data from server: " + error);
-    }
+    //     if (!response.isOk) {
+    //         displayErrorForm(response.errorMessage);
+    //         return;
+    //     }
+    //     console.log(response);
+    // } catch (error) {
+    //     console.error("Unable to load data from server: " + error);
+    // }
 });
 
 /**
