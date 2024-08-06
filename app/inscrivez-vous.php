@@ -14,7 +14,7 @@ require_once 'includes/_header.php';
             <a class="stepper-coordinate-a" aria-labelledby="coordinate" for="coordinate" href="#coordinate" aria-selected="false" aria-current="false" class="stepper-coordinate-a">Les coordonnées.</a>
         </li>
         <li class="stepper-account" role="tab" aria-current="false" aria-selected="false">
-            <img class="stepper-coordinate-img" id="stepper-coordinate-img" src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
+            <img class="stepper-account-img" id="stepper-account-img" src="./img/mail.svg" alt="photo pour l'etape Infomation du compte">
             <a aria-labelledby="account" for="account" href="#account" class="stepper-account-a">Infomation du compte</a>
         </li>
 
