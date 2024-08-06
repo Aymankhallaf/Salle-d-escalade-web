@@ -10,14 +10,19 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
     //update ui (stepper img, progress, attributes)
-    stepperProfileImg.src = "./img/name-finished-icon.svg";
-    stepperProfile.classList.add("stepper-profile--progress");
 
-    stepperProfile.setAttribute("aria-selected", "false");
-    stepperProfile.setAttribute("aria-current", "false");
+    updateStepperUI("stepper-profile", "stepper-coordinate",
+        "stepper-profile-img", "./img/name-finished-icon.svg",
+        "stepper-profile--progress"
+    )
+    // stepperProfileImg.src = "./img/name-finished-icon.svg";
+    // stepperProfile.classList.add("stepper-profile--progress");
 
-    stepperCoordinate.setAttribute("aria-selected", "true");
-    stepperCoordinate.setAttribute("aria-current", "step");
+    // stepperProfile.setAttribute("aria-selected", "false");
+    // stepperProfile.setAttribute("aria-current", "false");
+
+    // stepperCoordinate.setAttribute("aria-selected", "true");
+    // stepperCoordinate.setAttribute("aria-current", "step");
 });
 
 // Listen to first previous button
@@ -196,14 +201,14 @@ function showNextStep(stepNumber) {
 
 
 
-function updateStepperUI(prevStepId, nextStepId, prevImgId, progressClass) {
+function updateStepperUI(prevStepId, nextStepId, prevImgId, imgSrc, progressClass) {
     let stepperPrev = document.getElementById(prevStepId);
     let stepperNext = document.getElementById(nextStepId);
     let stepperPrevImg = document.getElementById(prevImgId);
 
 
     stepperPrevImg.src = imgSrc;
-    
+
     stepperPrev.classList.toggle(progressClass);
 
     stepperPrev.setAttribute("aria-selected", "false");
