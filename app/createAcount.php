@@ -3,19 +3,27 @@ session_start();
 
 require_once 'includes/_connection.php';
 
-// header('Content-type: application/json');
-//prenvent visteurs acess to this page
 if (!isServerOk()) {
     triggerError('referer');
 }
 
+if (!isTokenOk($_REQUEST['token'])) {
+    triggerError('token', $_SESSION['token']);
+    redirectToHeader("index.php");
+}
+stripTagsArray($_REQUEST);
+
+//create account
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+    triggerError("referer");
+    redirectToHeader("index.php");
+} else if ($inputData['action'] !== "createAccount") {
+    triggerError("referer");
+    redirectToHeader("index.php");
+}
+
 var_dump($_REQUEST);
-
-// stripTagsArray($inputData);
-
-// if (!isTokenOk($inputData['token'])) {
-//     triggerError('token', $_SESSION['token']);
-// }
 
 // //create account
 // if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {

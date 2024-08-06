@@ -73,24 +73,7 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
     )) return;
     console.log("ok")
     e.target.submit();
-    // const formData = new FormData(document.getElementById("signup-form"));
-    // const data = Object.fromEntries(formData.entries());
-
-    // try {
-    //     const response = await F.callApi("POST", {
-    //         action: "createAccount",
-    //         token: F.getToken(),
-    //         ...data
-    //     });
-
-    //     if (!response.isOk) {
-    //         displayErrorForm(response.errorMessage);
-    //         return;
-    //     }
-    //     console.log(response);
-    // } catch (error) {
-    //     console.error("Unable to load data from server: " + error);
-    // }
+   
 });
 
 /**

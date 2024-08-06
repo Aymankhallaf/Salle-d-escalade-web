@@ -21,11 +21,10 @@ require_once 'includes/_header.php';
     </ol>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" 
-    method="POST" action="createAcount.php" novalidate>
-        <!-- step 1 -->
-
-
+    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" method="POST" action="createAcount.php" novalidate>
+    <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+    <input type="hidden" name="action" value="createAccount">
+    <!-- step 1 -->
         <div data-step="1" class="step-1">
             <h2 class="signup-ttl__info" id="info-personal">Les informations personnelles</h2>
             <ul class="signup-ul signup-ul__first">
