@@ -1,8 +1,8 @@
 import * as F from "./_functions.js";
 
-
-let stepperProfile  = document.getElementById("stepper-profile");
-let stepperCoordinate  = document.getElementById("stepper-coordinate");
+let stepperProfileImg = document.getElementById("stepper-profile-img");
+let stepperProfile = document.getElementById("stepper-profile");
+let stepperCoordinate = document.getElementById("stepper-coordinate");
 // Listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateName("lname", document.getElementById("lname").value)) return;
@@ -10,7 +10,7 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
     //update ui (stepper img, progress, attributes)
-    document.getElementById("stepper-profile-img").src = "./img/name-finished-icon.svg";
+    stepperProfileImg.src = "./img/name-finished-icon.svg";
     stepperProfile.classList.add("stepper-profile--progress");
 
     stepperProfile.setAttribute("aria-selected", "false");
@@ -23,6 +23,14 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
 // Listen to first previous button
 document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
+    //update ui (stepper img, progress, attributes)
+
+    stepperProfileImg.src = "./img/name-current-icon.svg";
+    stepperProfile.classList.toggle("stepper-profile--progress");
+    stepperCoordinate.setAttribute("aria-selected", "false");
+    stepperCoordinate.setAttribute("aria-current", "false");
+    stepperProfile.setAttribute("aria-selected", "true");
+    stepperProfile.setAttribute("aria-current", "step");
 
 });
 
