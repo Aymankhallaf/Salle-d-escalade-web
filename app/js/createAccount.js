@@ -1,41 +1,31 @@
 import * as F from "./_functions.js";
 
-let stepperProfileImg = document.getElementById("stepper-profile-img");
-let stepperProfile = document.getElementById("stepper-profile");
-let stepperCoordinate = document.getElementById("stepper-coordinate");
 // Listen to first next button
 document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateName("lname", document.getElementById("lname").value)) return;
     if (!validateName("fname", document.getElementById("fname").value)) return;
     if (!validateDate(document.getElementById("birthdate").value)) return;
     showNextStep("2");
-    //update ui (stepper img, progress, attributes)
 
-    updateStepperUI("stepper-profile", "stepper-coordinate",
+    //update ui (stepper img, progress, attributes)
+    updateStepperUI("stepper-profile",
         "stepper-profile-img", "./img/name-finished-icon.svg",
+        "stepper-coordinate", "stepper-coordinate-img",
+        "./img/adresse--current.svg",
         "stepper-profile--progress"
     )
-    // stepperProfileImg.src = "./img/name-finished-icon.svg";
-    // stepperProfile.classList.add("stepper-profile--progress");
 
-    // stepperProfile.setAttribute("aria-selected", "false");
-    // stepperProfile.setAttribute("aria-current", "false");
-
-    // stepperCoordinate.setAttribute("aria-selected", "true");
-    // stepperCoordinate.setAttribute("aria-current", "step");
 });
 
 // Listen to first previous button
 document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
-    //update ui (stepper img, progress, attributes)
 
-    stepperProfileImg.src = "./img/name-current-icon.svg";
-    stepperProfile.classList.toggle("stepper-profile--progress");
-    stepperCoordinate.setAttribute("aria-selected", "false");
-    stepperCoordinate.setAttribute("aria-current", "false");
-    stepperProfile.setAttribute("aria-selected", "true");
-    stepperProfile.setAttribute("aria-current", "step");
+    updateStepperUI("stepper-coordinate", "stepper-profile",
+        "stepper-profile-img", "./img/name-current-icon.svg",
+        "stepper-profile--progress"
+    )
+
 
 });
 
@@ -44,7 +34,13 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     if (!validateTel(document.getElementById("tel").value)) return;
     if (!validateName("city", document.getElementById("city").value)) return;
     showNextStep("3");
+    updateStepperUI("stepper-coordinate", "stepper-account",
+        "stepper-coordinate-img", "./img/adresse--progress.svg",
+        "r-coordinate--progress"
+    )
+
 });
+
 
 // Listen to previous button of step 2
 document.getElementById("step-btn-prev-2").addEventListener("click", function () {
@@ -201,15 +197,20 @@ function showNextStep(stepNumber) {
 
 
 
-function updateStepperUI(prevStepId, nextStepId, prevImgId, imgSrc, progressClass) {
+function updateStepperUI(prevStepId, prevImgId, prevImgSrc,
+    nextStepId, nextImgId, nextImgSrc,
+    progressClass) {
     let stepperPrev = document.getElementById(prevStepId);
     let stepperNext = document.getElementById(nextStepId);
     let stepperPrevImg = document.getElementById(prevImgId);
+    let stepperNextImg = document.getElementById(nextImgId);
 
 
-    stepperPrevImg.src = imgSrc;
-
+    stepperPrevImg.src = prevImgSrc;
+    stepperNextImg.src = nextImgSrc
     stepperPrev.classList.toggle(progressClass);
+    stepperNext.classList.toggle(progressClass);
+
 
     stepperPrev.setAttribute("aria-selected", "false");
     stepperPrev.setAttribute("aria-current", "false");
