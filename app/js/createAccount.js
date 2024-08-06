@@ -8,12 +8,15 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     showNextStep("2");
 
     //update ui (stepper img, progress, attributes)
-    updateStepperUI("stepper-profile",
+    updatePrevStepperUI("stepper-profile",
         "stepper-profile-img", "./img/name-finished-icon.svg",
-        "stepper-coordinate", "stepper-coordinate-img",
-        "./img/adresse--current.svg",
         "stepper-profile--progress"
     )
+    updateNextStepperUI("stepper-coordinate", "stepper-coordinate-img",
+        "./img/adresse--current.svg"
+
+    )
+
 
 });
 
@@ -21,10 +24,10 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
 document.getElementById("step-btn-prev-1").addEventListener("click", function () {
     showNextStep("2");
 
-    updateStepperUI("stepper-coordinate", "stepper-profile",
-        "stepper-profile-img", "./img/name-current-icon.svg",
-        "stepper-profile--progress"
-    )
+    // updatePrevStepperUI("stepper-coordinate", "stepper-profile",
+    //     "stepper-profile-img", "./img/name-current-icon.svg",
+    //     "stepper-profile--progress"
+    // )
 
 
 });
@@ -34,10 +37,10 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     if (!validateTel(document.getElementById("tel").value)) return;
     if (!validateName("city", document.getElementById("city").value)) return;
     showNextStep("3");
-    updateStepperUI("stepper-coordinate", "stepper-account",
-        "stepper-coordinate-img", "./img/adresse--progress.svg",
-        "r-coordinate--progress"
-    )
+    // updateStepperUI("stepper-coordinate", "stepper-account",
+    //     "stepper-coordinate-img", "./img/adresse--progress.svg",
+    //     "r-coordinate--progress"
+    // )
 
 });
 
@@ -196,24 +199,52 @@ function showNextStep(stepNumber) {
 
 
 
+// 
+function updatePrevStepperUI(stepId, imgId, imgSr, progressClass = "") {
 
-function updateStepperUI(prevStepId, prevImgId, prevImgSrc,
-    nextStepId, nextImgId, nextImgSrc,
-    progressClass) {
-    let stepperPrev = document.getElementById(prevStepId);
-    let stepperNext = document.getElementById(nextStepId);
-    let stepperPrevImg = document.getElementById(prevImgId);
-    let stepperNextImg = document.getElementById(nextImgId);
+    let stepper = document.getElementById(stepId);
+    let stepperImg = document.getElementById(imgId);
 
 
-    stepperPrevImg.src = prevImgSrc;
-    stepperNextImg.src = nextImgSrc
-    stepperPrev.classList.toggle(progressClass);
-    stepperNext.classList.toggle(progressClass);
+    stepperImg.src = imgSr;
+    stepper.classList.toggle(progressClass);
 
 
-    stepperPrev.setAttribute("aria-selected", "false");
-    stepperPrev.setAttribute("aria-current", "false");
-    stepperNext.setAttribute("aria-selected", "true");
-    stepperNext.setAttribute("aria-current", "step");
+    stepper.setAttribute("aria-selected", "false");
+    stepper.setAttribute("aria-current", "false");
 }
+
+function updateNextStepperUI(stepId, imgId, imgSr, progressClass = "") {
+
+    let stepper = document.getElementById(stepId);
+    let stepperImg = document.getElementById(imgId);
+
+
+    stepperImg.src = imgSr;
+    stepper.classList.toggle(progressClass);
+
+
+    stepper.setAttribute("aria-selected", "true");
+    stepper.setAttribute("aria-current", "step");
+}
+
+// function updateStepperUI(prevStepId, prevImgId, prevImgSrc,
+//     nextStepId, nextImgId, nextImgSrc,
+//     progressClass) {
+//     let stepperPrev = document.getElementById(prevStepId);
+//     let stepperNext = document.getElementById(nextStepId);
+//     let stepperPrevImg = document.getElementById(prevImgId);
+//     let stepperNextImg = document.getElementById(nextImgId);
+
+
+//     stepperPrevImg.src = prevImgSrc;
+//     stepperNextImg.src = nextImgSrc
+//     stepperPrev.classList.toggle(progressClass);
+//     stepperNext.classList.toggle(progressClass);
+
+
+//     stepperPrev.setAttribute("aria-selected", "false");
+//     stepperPrev.setAttribute("aria-current", "false");
+//     stepperNext.setAttribute("aria-selected", "true");
+//     stepperNext.setAttribute("aria-current", "step");
+// }
