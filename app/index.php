@@ -2,6 +2,12 @@
 include 'includes/_header.php';
 ?>
 <main>
+<?php
+    echo getHtmlMessages($messages);
+    echo getHtmlErrors($errors);
+    ?>
+    <ul id="errorsList" class="error"></ul>
+    <ul id="messagesList" class="messages"></ul>
     <section class="hero-banner" aria-labelledby="hero-banner">
 
         <h1 id="hero-banner" class="hero-banner__ttl">Bienvenue chez

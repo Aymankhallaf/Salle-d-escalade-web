@@ -5,6 +5,12 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateName("nom", document.getElementById("lname").value)) return;
     if (!validateName("prénom", document.getElementById("fname").value)) return;
     if (!validateDate(document.getElementById("birthdate").value)) return;
+
+    //save input value to retive them when the page load
+    sessionStorage.setItem("lname", document.getElementById("lname").value);
+    sessionStorage.setItem("fname", document.getElementById("fname").value);
+    sessionStorage.setItem("birthdate", document.getElementById("birthdate").value);
+
     showNextStep("2");
 
     //update ui (stepper img, progress, attributes)
@@ -41,6 +47,11 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     if (!validateName("city", document.getElementById("city").value)) return;
     if (!validateZipCode(document.getElementById("zip-code").value)) return;
 
+    sessionStorage.setItem("tel", document.getElementById("tel").value);
+    sessionStorage.setItem("city", document.getElementById("city").value);
+    sessionStorage.setItem("zip-code", document.getElementById("zip-code").value);
+    
+
     showNextStep("3");
 
     updateStepperUI("stepper-coordinate", "stepper-coordinate-img",
@@ -72,7 +83,10 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
         document.getElementById("password").value,
         document.getElementById("confirm-psw").value
     )) return;
-    console.log("ok")
+
+
+    sessionStorage.setItem("email", document.getElementById("email").value);
+
     e.target.submit();
    
 });

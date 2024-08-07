@@ -757,14 +757,18 @@ function createAccount(PDO $dbCo, array $inputData): bool
         ]);
 
         // Commit the transaction
-        if ($cityQuery) {
+        if ($isQueryOk) {
             $dbCo->commit();
             addMessage('createAccount_ok');
-            return true;
+            redirectToHeader("index.php");
+
+            // return true;
         } else {
             $dbCo->rollBack();
             addError('createAccount_ko');
-            return false;
+            redirectToHeader("connectez-vous.php");
+
+            // return false;
         }
     } catch (Exception $e) {
         $dbCo->rollBack();
