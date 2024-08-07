@@ -527,17 +527,35 @@ function editReservationDetails(
 
 /**
  * is a field is empty?
- * @param mixed $field
- * @return bool
+ * @param string $field fild name
+ * @return bool true if itnt empty, flase if it is
  */
-function isFieldEmpty($field): bool {
+function isFieldEmpty($field): bool
+{
     if (!isset($field) || strlen($field) === 0) {
         addError('empty');
         return false;
     }
     return false;
-
 }
+
+
+
+/**
+ * is the field pass the maximum length?
+ * @param string $field the field
+ * @param int $max a maximum value
+ * @return bool true if dost pass the maximum, false if it is
+ */
+function isMax($field, $max): bool
+{
+    if (strlen($field) > $max) {
+        addError('max');
+        return false;
+    }
+    return false;
+}
+
 
 
 
@@ -545,12 +563,13 @@ function isFieldEmpty($field): bool {
  * is a name valide?
  * @param string $name field name.
  * @param string $value value of field.
+ * @param int $maxLength maximum length.
  * @return bool ture if it is valide or false isn't.
  */
-function isNameValide($name, $value): bool
+function isNameValide($name, $value, $maxLength): bool
 {
 
-    if (isFieldEmpty($value) || !preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
+    if (isFieldEmpty($value) || isMax($value, $maxLength)  || !preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
         addError($name);
         return false;
     }
@@ -561,12 +580,13 @@ function isNameValide($name, $value): bool
 /**
  * is date valide?
  * @param string $dateInput
+ * @param int $maxLength maximum length.
  * @return bool ture if it is valide or false isn't.
  */
-function isValideDate($dateInput): bool
+function isValideDate($dateInput, $maxLength): bool
 {
     $timestamp = strtotime($dateInput);
-    if (isFieldEmpty($dateInput) || $timestamp === false) {
+    if (isFieldEmpty($dateInput) || isMax($dateInput, $maxLength)  || $timestamp === false) {
         addError("birthDate");
         return false;
     }
@@ -576,11 +596,12 @@ function isValideDate($dateInput): bool
 /**
  * is telephone valide?
  * @param string $tel telephone number.
+ * @param int $maxLength maxLength.
  * @return bool ture if it is valide or false isn't.
  */
-function isValideTel($tel): bool
+function isValideTel($tel, $maxLength): bool
 {
-    if (isFieldEmpty($tel) || !preg_match('/[0-9]/', $tel)) {
+    if (isFieldEmpty($tel) || isMax($tel, $maxLength) || !preg_match('/[0-9]/', $tel)) {
         addError("tele");
         return false;
     }
@@ -591,6 +612,7 @@ function isValideTel($tel): bool
 /**
  * is email valide?
  * @param string $email email
+ * @param int $maxLength maxLength.
  * @return bool ture if it is valide or false isn't.
  */
 function isValideMail($email): bool
@@ -639,16 +661,18 @@ function isVerifyconfirmPassword($password, $confirmPassword): bool
  */
 function isCreateAccountDataValide($inputData): bool
 {
-    return isNameValide("nom", $inputData['lname']) &&
-    isNameValide("prénom", $inputData['lname']) &&
-    isValideDate($inputData['birthdate']) &&
-    isValideMail($inputData['email']) &&
-    isNameValide("ville", $inputData['city']) &&
-    isValidePw($inputData['password']) &&
-    isVerifyconfirmPassword(
-        $inputData['password'],
-        ($inputData['confirmPW'])
-    );
+    return isNameValide("nom", $inputData['lname'], 50) &&
+        isNameValide("prénom", $inputData['lname'], 50) &&
+        isValideDate($inputData['birthdate'], 10) &&
+        isValideMail($inputData['email']) &&
+        isValideTel($inputData['tel'], 15) &&
+        isNameValide("ville", $inputData['city'], 50) &&
+        isMax("adresse", 50) &&
+        isValidePw($inputData['password']) &&
+        isVerifyconfirmPassword(
+            $inputData['password'],
+            ($inputData['confirmPW'])
+        );
 }
 
 
