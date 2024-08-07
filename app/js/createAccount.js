@@ -269,3 +269,11 @@ function setSessionStorge(fieldName){
     
     sessionStorage.setItem(fieldName, document.getElementById(fieldName).value);
 }
+
+
+function getSessionStorge(fieldName){
+    
+    if (sessionStorage.getItem(fieldName)) {
+        document.getElementById(fieldName).value = sessionStorage.getItem(fieldName);
+    }
+}
