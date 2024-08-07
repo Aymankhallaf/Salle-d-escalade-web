@@ -91,6 +91,13 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
    
 });
 
+
+
+
+
+
+
+
 /**
  * Display error message with template under li element.
  * @param {string} errorMessage
@@ -252,3 +259,13 @@ function updateStepperUI(stepId, imgId, imgSrc,
     stepper.setAttribute("aria-current", current ? "step" : "false");
 }
 
+
+/**
+ *
+ *save field value in session storage
+ * @param {string} fieldName
+ */
+function setSessionStorge(fieldName){
+    
+    sessionStorage.setItem(fieldName, document.getElementById(fieldName).value);
+}
