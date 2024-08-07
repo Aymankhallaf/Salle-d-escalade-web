@@ -537,7 +537,7 @@ function isNameValide($name, $value): void
 {
 
     if (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
-        triggerError($name);
+        addError($name);
     }
 }
 
@@ -551,7 +551,7 @@ function isValideDate($dateInput): void
 {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
-        triggerError("birthDate");
+        addError("birthDate");
     }
 }
 
@@ -563,7 +563,7 @@ function isValideDate($dateInput): void
 function isValideTel($tel): void
 {
     if (!preg_match('/[0-9]/', $tel)) {
-        triggerError("tele");
+        addError("tele");
     }
 }
 
@@ -576,7 +576,7 @@ function isValideTel($tel): void
 function isValideMail($email): void
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        triggerError("email");
+        addError("email");
     }
 }
 
@@ -588,7 +588,7 @@ function isValideMail($email): void
 function isValidePw($pw): void
 {
     if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw)) {
-        triggerError("newpwd");
+        addError("newpwd");
     }
 }
 
@@ -601,7 +601,7 @@ function isValidePw($pw): void
 function isVerifyconfirmPassword($password, $confirmPassword): void
 {
     if ($password !== $confirmPassword) {
-        triggerError("confirmpwd");
+        addError("confirmpwd");
     }
 }
 
