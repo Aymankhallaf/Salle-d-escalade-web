@@ -7,9 +7,9 @@ document.getElementById("step-btn-1").addEventListener("click", function () {
     if (!validateDate(document.getElementById("birthdate").value)) return;
 
     //save input value to retive them when the page load
-    sessionStorage.setItem("lname", document.getElementById("lname").value);
-    sessionStorage.setItem("fname", document.getElementById("fname").value);
-    sessionStorage.setItem("birthdate", document.getElementById("birthdate").value);
+    setSessionStorge("lname");
+    setSessionStorge("fname");
+    setSessionStorge("birthdate");
 
     showNextStep("2");
 
@@ -47,10 +47,11 @@ document.getElementById("step-btn-2").addEventListener("click", function () {
     if (!validateName("city", document.getElementById("city").value)) return;
     if (!validateZipCode(document.getElementById("zip-code").value)) return;
 
-    sessionStorage.setItem("tel", document.getElementById("tel").value);
-    sessionStorage.setItem("city", document.getElementById("city").value);
-    sessionStorage.setItem("zip-code", document.getElementById("zip-code").value);
-    
+
+    setSessionStorge("tel");
+    setSessionStorge("city");
+    setSessionStorge("adresse");
+    setSessionStorge("zip-code");
 
     showNextStep("3");
 
@@ -84,8 +85,7 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
         document.getElementById("confirm-psw").value
     )) return;
 
-
-    sessionStorage.setItem("email", document.getElementById("email").value);
+    setSessionStorge("email");
 
     e.target.submit();
    
