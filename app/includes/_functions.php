@@ -94,6 +94,34 @@ function triggerError(string $error, string $flag = ''): void
     exit;
 }
 
+
+/**
+ * Add a new error message to display on next page. 
+ *
+ * @param string $errorMsg - Error message to display
+ * @return void
+ */
+function addError(string $errorMsg): void
+{
+    if (!isset($_SESSION['errorsList'])) {
+        $_SESSION['errorsList'] = [];
+    }
+    $_SESSION['errorsList'][] = $errorMsg;
+}
+
+
+/**
+ * Add a new message to display on next page. 
+ *
+ * @param string $message - Message to display
+ * @return void
+ */
+function addMessage(string $message): void
+{
+    $_SESSION['msg'] = $message;
+}
+
+
 /**
  * Get HTML to display errors available in user SESSION
  *
@@ -493,12 +521,6 @@ function editReservationDetails(
         triggerError("Database error: " . $e->getMessage());
     }
 }
-
-
-
-
-
-
 
 
 
