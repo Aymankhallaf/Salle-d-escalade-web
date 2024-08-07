@@ -550,7 +550,7 @@ function isFieldEmpty($field): bool {
 function isNameValide($name, $value): bool
 {
 
-    if (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
+    if (isFieldEmpty($value) || !preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
         addError($name);
         return false;
     }
@@ -566,7 +566,7 @@ function isNameValide($name, $value): bool
 function isValideDate($dateInput): bool
 {
     $timestamp = strtotime($dateInput);
-    if ($timestamp === false) {
+    if (isFieldEmpty($dateInput) || $timestamp === false) {
         addError("birthDate");
         return false;
     }
@@ -580,7 +580,7 @@ function isValideDate($dateInput): bool
  */
 function isValideTel($tel): bool
 {
-    if (!preg_match('/[0-9]/', $tel)) {
+    if (isFieldEmpty($tel) || !preg_match('/[0-9]/', $tel)) {
         addError("tele");
         return false;
     }
@@ -642,6 +642,7 @@ function isCreateAccountDataValide($inputData): bool
     return isNameValide("nom", $inputData['lname']) &&
     isNameValide("prénom", $inputData['lname']) &&
     isValideDate($inputData['birthdate']) &&
+    isValideMail($inputData['email']) &&
     isNameValide("ville", $inputData['city']) &&
     isValidePw($inputData['password']) &&
     isVerifyconfirmPassword(

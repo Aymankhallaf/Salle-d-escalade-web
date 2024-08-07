@@ -27,7 +27,7 @@ require_once 'includes/_connection.php';
 $inputData = [
     "action" => "createAccount",
     "token" => "91b4fe9574296bca255dd5ac33761bf2",
-    "lname" => "",
+    "lname" => "dddd",
     "fname" => "ggg",
     "birthdate" => "1990-05-09",
     "tel" => "04524",
