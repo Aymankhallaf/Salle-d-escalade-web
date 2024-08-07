@@ -20,11 +20,8 @@ require_once 'includes/_header.php';
 
     </ol>
     <?php
-
     echo getHtmlMessages($messages);
-
     echo getHtmlErrors($errors);
-
     ?>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
@@ -32,16 +29,44 @@ require_once 'includes/_header.php';
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="action" value="createAccount">
         <!-- step 1 -->
-        </li>
-        <li class="signup-form__city">
-            <label class="signup-form__city-label" for="city" maxlength="50">Ville</label>
-            <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-input" type="text" name="city" id="city" required />
-        </li>
-        </ul>
-        <div class="stepper-btn__container">
-            <button id="step-btn-prev-1" type="button" class="stepper-btn__prev">Précédent</button>
-            <button id="step-btn-2" type="button" class="stepper-btn__next">Suivant</button>
+        <div data-step="1" class="step-1">
+            <h2 class="signup-ttl__info" id="info-personal">Les informations personnelles</h2>
+            <ul class="signup-ul signup-ul__first">
+                <li class="signup-form__lname">
+                    <label class="signup-form__lname-label" for="lname">Nom</label>
+                    <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" placeholder="ex. François" class="signup-form__lname-input" type="text" name="lname" id="lname" maxlength="50" required />
+                </li>
+                <li class="signup-form__fname">
+                    <label class="signup-form__fname-label" for="fname">Prénom</label>
+                    <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" placeholder="ex. jean" class="signup-form__fname-input" type="text" name="fname" maxlength="50" id="fname" required />
+                    <label class="signup-form__birthdate-label" for="birthdate" maxlength="50">Date de naissance</label>
+                    <input class="signup-form__birthdate-input" id="birthdate" name="birthdate" type="date" required>
+
+                </li>
+            </ul>
+            <button id="step-btn-1" type="button" class="stepper-btn__next">Suivant</button>
         </div>
+        <!-- step 2 -->
+        <div data-step="2" class="step-2 hidden">
+            <h2 class="signup-ttl__coordinate" id="coordinate">Les coordonnées</h2>
+            <ul class="signup-ul signup-ul__second">
+                <li class="signup-form__tel">
+                    <label class="signup-form__tel-label" for="tel">Numéro de téléphone</label>
+                    <input pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
+                </li>
+                <li class="signup-form__adresse">
+                    <label class="signup-form__adresse-label" for="adresse">L'adresse</label>
+                    <input class="signup-form__adresse-input" type="text" name="adresse" id="adresse" />
+                </li>
+                <li class="signup-form__city">
+                    <label class="signup-form__city-label" for="city" maxlength="50">Ville</label>
+                    <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-input" type="text" name="city" id="city" required />
+                </li>
+            </ul>
+            <div class="stepper-btn__container">
+                <button id="step-btn-prev-1" type="button" class="stepper-btn__prev">Précédent</button>
+                <button id="step-btn-2" type="button" class="stepper-btn__next">Suivant</button>
+            </div>
         </div>
         <!-- step 3 -->
         <div data-step="3" class="step-3 hidden">

@@ -635,7 +635,7 @@ function createAccount(PDO $dbCo, array $inputData)
     $query->execute(['email' => $inputData['email'], 'tel' => $inputData['tel']]);
     $result = $query->rowCount();
     if ($result != 0) {
-        triggerError("userExist");
+        addError("userExist");
     }
 
     $query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
@@ -657,7 +657,7 @@ function createAccount(PDO $dbCo, array $inputData)
     ]);
 
     if (!$isQueryOk) {
-        triggerError("connection");
+        addError("connection");
     }
     echo json_encode([
         'isOk' => $isQueryOk,

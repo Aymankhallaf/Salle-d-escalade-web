@@ -19,3 +19,4 @@ $errors = [
      "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter"
 
 ];
+$messages = [];
