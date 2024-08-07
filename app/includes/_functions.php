@@ -95,6 +95,40 @@ function triggerError(string $error, string $flag = ''): void
 }
 
 /**
+ * Get HTML to display errors available in user SESSION
+ *
+ * @param array $errorsList - Available errors list
+ * @return string HTMl to display errors
+ */
+function getHtmlErrors(array $errorsList): string
+{
+    if (!empty($_SESSION['errorsList'])) {
+        $errors = $_SESSION['errorsList'];
+        unset($_SESSION['errorsList']);
+        return '<ul class="notif-error">'
+            . implode(array_map(fn ($e) => '<li>' . $errorsList[$e] . '</li>', $errors))
+            . '</ul>';
+    }
+    return '';
+}
+
+
+/**
+ * Get HTML to display messages available in user SESSION
+ *
+ * @param array $messagesList - Available Messages list
+ * @return string HTML to display messages
+ */
+function getHtmlMessages(array $messagesList): string
+{
+    if (isset($_SESSION['msg'])) {
+        $m = $_SESSION['msg'];
+        unset($_SESSION['msg']);
+        return '<p class="notif-success">' . $messagesList[$m] . '</p>';
+    }
+    return '';
+}
+/**
  * Removes tags from given array values;.
  *
  * @param array $data - input values

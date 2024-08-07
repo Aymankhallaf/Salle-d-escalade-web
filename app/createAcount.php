@@ -18,16 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     triggerError("referer");
     redirectToHeader("index.php");
-} else if ($inputData['action'] !== "createAccount") {
+} else if ($_REQUEST['action'] !== "createAccount") {
     triggerError("referer");
     redirectToHeader("index.php");
 }
 
 var_dump($_REQUEST);
-
-// //create account
-// if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {
-
-//     isCreateAccountDataValide($inputData);
-//     createAccount($dbCo, $inputData);
-// }
+isCreateAccountDataValide($inputData);
+createAccount($dbCo, $inputData);
