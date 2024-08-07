@@ -493,8 +493,7 @@ function getAReservationDetailsUser(
 function editReservationDetails(
     PDO $dbCo,
     array $inputData,
-)
- {
+) {
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
     try {
@@ -503,7 +502,7 @@ function editReservationDetails(
           `id_gym` = :idGym, `id_activity` = :idActivity
           WHERE `reservation`.`id_reservation` = :idReservation;");
         $isQueryOk = $query->execute([
-            'idReservation'=>$inputData['idReservation'],
+            'idReservation' => $inputData['idReservation'],
             'nb_particpation' => $inputData['participants'],
             'date_starting' => $formattedDateStarting,
             'idGym' => $inputData['chosenGym'],
@@ -523,101 +522,112 @@ function editReservationDetails(
 }
 
 
-
 //create account 
 
 
 /**
- * isNameValide?
+ * is a name valide?
  * @param string $name field name.
- * @param string $value value of field
- * @return void
+ * @param string $value value of field.
+ * @return bool ture if it is valide or false isn't.
  */
-function isNameValide($name, $value): void
+function isNameValide($name, $value): bool
 {
 
     if (!preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
         addError($name);
+        return false;
     }
+    return true;
 }
 
 
 /**
- * Summary of isValideDate
+ * is date valide?
  * @param string $dateInput
- *@return void
+ * @return bool ture if it is valide or false isn't.
  */
-function isValideDate($dateInput): void
+function isValideDate($dateInput): bool
 {
     $timestamp = strtotime($dateInput);
     if ($timestamp === false) {
         addError("birthDate");
+        return false;
     }
+    return true;
 }
 
 /**
- * Summary of ValideTel
- * @param string $tel
- * @return void
+ * is telephone valide?
+ * @param string $tel telephone number.
+ * @return bool ture if it is valide or false isn't.
  */
-function isValideTel($tel): void
+function isValideTel($tel): bool
 {
     if (!preg_match('/[0-9]/', $tel)) {
         addError("tele");
+        return false;
     }
+    return true;
 }
 
 
 /**
- * Summary of ValideMail
- * @param string $email
- * @return void
+ * is email valide?
+ * @param string $email email
+ * @return bool ture if it is valide or false isn't.
  */
-function isValideMail($email): void
+function isValideMail($email): bool
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         addError("email");
+        return false;
     }
+    return true;
 }
 
 /**
- * Summary of validePw
- * @param string $pw
- * @return void
+ * is password valide?
+ * @param string $pw password.
+ * @return bool ture if it is valide or false isn't.
  */
-function isValidePw($pw): void
+function isValidePw($pw): bool
 {
     if (!preg_match('/(?=.*?[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}/', $pw)) {
         addError("newpwd");
+        return false;
     }
+    return true;
 }
 
 /**
- * Summary of verifyconfirmPassword
- * @param string $password
- * @param string $confirmPassword
- * @return void
+ * is password = confirm password?
+ * @param string $password password
+ * @param string $confirmPassword confirm password
+ * @return bool ture if it is valide or false isn't.
  */
-function isVerifyconfirmPassword($password, $confirmPassword): void
+function isVerifyconfirmPassword($password, $confirmPassword): bool
 {
     if ($password !== $confirmPassword) {
         addError("confirmpwd");
+        return false;
     }
+    return true;
 }
 
 
 /**
- * Summary of isCreateAccountDataValide
- * @param array $inputData
- * @return void
+ * is the form is valid?
+ * @param array $inputData form data.
+ * @return bool ture if it is valide or false isn't.
  */
-function isCreateAccountDataValide($inputData): void
+function isCreateAccountDataValide($inputData): bool
 {
-    isNameValide("nom", $inputData['lname']);
-    isNameValide("prénom", $inputData['lname']);
-    isValideDate($inputData['birthdate']);
-    isNameValide("ville", $inputData['city']);
-    isValidePw($inputData['password']);
+    return isNameValide("nom", $inputData['lname']) &&
+    isNameValide("prénom", $inputData['lname']) &&
+    isValideDate($inputData['birthdate']) &&
+    isNameValide("ville", $inputData['city']) &&
+    isValidePw($inputData['password']) &&
     isVerifyconfirmPassword(
         $inputData['password'],
         ($inputData['confirm-psw'])
