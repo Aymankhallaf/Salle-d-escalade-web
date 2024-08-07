@@ -697,15 +697,26 @@ function isCreateAccountDataValide($inputData): bool
 }
 
 
-
+/**
+ * is account exist ? by checking the exisiting of the email and the telephone.
+ * @param PDO $dbCo
+ * @param array $inputData
+ * @return bool
+ */
 function isAccountExist(PDO $dbCo, array $inputData)
 {
     $query = $dbCo->prepare("SELECT * FROM users 
     WHERE email=:email || telephone= :tel");
-    return $query->execute([
+    $query->execute([
         'email' => $inputData['email'],
         'tel' => $inputData['tel']
     ]);
+    $result = $query->rowCount();
+    if ($result != 0) {
+        addError("userExist");
+        return false;
+    }
+    return true;
 }
 
 

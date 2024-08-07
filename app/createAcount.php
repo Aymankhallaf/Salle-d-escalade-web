@@ -30,11 +30,11 @@ $inputData = [
     "lname" => "gsdfs",
     "fname" => "ggg",
     "birthdate" => "1990-05-09",
-    "tel" => "64460",
+    "tel" => "7035-79-3162",
     "adresse" => "dsdsfsdf",
     "city" => "fbf",
     'zipCode' => "55455",
-    "email" => "dddd@gmail.com",
+    "email" => "ntoxelll6@admin.ch",
     "password" => "hpjK5V9)Cc=sMQZ",
     "confirmPW" => "hpjK5V9)Cc=sMQZ"
 ];
@@ -46,6 +46,7 @@ if (!isCreateAccountDataValide($inputData)) {
 
 var_dump($_SESSION);
 var_dump(isCreateAccountDataValide($inputData));
- 
+var_dump(isAccountExist($dbCo, $inputData));
+
 
 // createAccount($dbCo, $inputData);
