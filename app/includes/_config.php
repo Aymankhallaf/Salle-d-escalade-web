@@ -18,7 +18,8 @@ $errors = [
      "confirmpwd"=>"Les mots de passe ne correspondent pas.",
      "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter",
      'empty'=> 'Un des champs est vide',
-     'max'=> 'la valeur est trop longue'
+     'max'=> 'la valeur est trop longue',
+     'zipCode'=> 'le postal code est invalide'
 
 ];
 $messages = [];

@@ -27,23 +27,25 @@ require_once 'includes/_connection.php';
 $inputData = [
     "action" => "createAccount",
     "token" => "91b4fe9574296bca255dd5ac33761bf2",
-    "lname" => "Lyonprononcouter",
+    "lname" => "gsdfs",
     "fname" => "ggg",
     "birthdate" => "1990-05-09",
-    "tel" => "04524",
+    "tel" => "64460",
     "adresse" => "dsdsfsdf",
     "city" => "fbf",
+    'zipCode' => "55455",
     "email" => "dddd@gmail.com",
     "password" => "hpjK5V9)Cc=sMQZ",
     "confirmPW" => "hpjK5V9)Cc=sMQZ"
 ];
 
+if (!isCreateAccountDataValide($inputData)) {
+    
+    redirectToHeader('inscrivez-vous.php');
+}
+
 var_dump($_SESSION);
 var_dump(isCreateAccountDataValide($inputData));
-
-// if (!isCreateAccountDataValide($inputData)) {
-
-//     redirectToHeader('inscrivez-vous.php');
-// }
+ 
 
 // createAccount($dbCo, $inputData);

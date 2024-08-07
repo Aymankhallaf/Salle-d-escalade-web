@@ -63,8 +63,8 @@ require_once 'includes/_header.php';
                     <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-input" type="text" name="city" id="city" required />
                 </li>
                 <li class="signup-form__zip-code">
-                    <label class="signup-form__zip-code-label" for="zip-code" minlength="5" maxlength="5">Code postal</label>
-                    <input pattern="\d{5}" class="signup-form__zip-code-input" type="text" name="zip-code" id="zip-code" required />
+                    <label class="signup-form__zip-code-label" for="zipCode" minlength="5" maxlength="5">Code postal</label>
+                    <input pattern="\d{5}" class="signup-form__zip-code-input" type="text" name="zipCode" id="zip-code" required />
                 </li>
             </ul>
             <div class="stepper-btn__container">

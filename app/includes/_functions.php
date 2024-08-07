@@ -579,7 +579,7 @@ function isNameValide($name, $value, $maxLength): bool
 
 /**
  * is date valide?
- * @param string $dateInput
+ * @param string $dateInput a date
  * @param int $maxLength maximum length.
  * @return bool ture if it is valide or false isn't.
  */
@@ -607,6 +607,26 @@ function isValideTel($tel, $maxLength): bool
     }
     return true;
 }
+
+
+
+/**
+ * is zip code is valide?
+ * @param mixed $zipCode zip code / postal code.
+ * @return bool ture if it is valide or false isn't.
+ */
+function isZipCodeValide($zipCode): bool
+{
+    if (isFieldEmpty($zipCode) || !preg_match('/^\d{5}$/', $zipCode)) {
+        addError("zipCode");
+        return false;
+    }
+
+    return true;
+}
+
+
+
 
 
 /**
@@ -667,6 +687,7 @@ function isCreateAccountDataValide($inputData): bool
         isValideMail($inputData['email']) &&
         isValideTel($inputData['tel'], 15) &&
         isNameValide("ville", $inputData['city'], 50) &&
+        isZipCodeValide($inputData['zipCode']) &&
         isMax("adresse", 50) &&
         isValidePw($inputData['password']) &&
         isVerifyconfirmPassword(
@@ -675,6 +696,17 @@ function isCreateAccountDataValide($inputData): bool
         );
 }
 
+
+
+function isAccountExist(PDO $dbCo, array $inputData)
+{
+    $query = $dbCo->prepare("SELECT * FROM users 
+    WHERE email=:email || telephone= :tel");
+    return $query->execute([
+        'email' => $inputData['email'],
+        'tel' => $inputData['tel']
+    ]);
+}
 
 
 function createAccount(PDO $dbCo, array $inputData)
