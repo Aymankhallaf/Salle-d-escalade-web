@@ -19,7 +19,11 @@ $errors = [
      "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter",
      'empty'=> 'Un des champs est vide',
      'max'=> 'la valeur est trop longue',
-     'zipCode'=> 'le postal code est invalide'
+     'zipCode'=> 'le postal code est invalide',
+     "createAccount_ko"
 
 ];
-$messages = [];
+$messages = [
+    "createAccount_ok" => "Vous avez réussi à créer un compte"
+
+];

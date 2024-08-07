@@ -719,42 +719,56 @@ function isAccountExist(PDO $dbCo, array $inputData)
 }
 
 
-function createAccount(PDO $dbCo, array $inputData)
+function createAccount(PDO $dbCo, array $inputData): bool
 {
-    // try {
-    $dbCo->beginTransaction();
-    $query = $dbCo->prepare("SELECT * FROM users 
-        WHERE email=:email || telephone= :tel");
-    $query->execute(['email' => $inputData['email'], 'tel' => $inputData['tel']]);
-    $result = $query->rowCount();
-    if ($result != 0) {
-        addError("userExist");
+    try {
+        $dbCo->beginTransaction();
+
+        //  Insert the city if it doesn't exist
+        $cityQuery = $dbCo->prepare("INSERT INTO `city` (`name_city`, `zip_code`) 
+                                     VALUES (:city,:zipCode)
+                                     ON DUPLICATE KEY UPDATE `id` = LAST_INSERT_ID(`id`);");
+        $cityQuery->execute(['city' => $inputData['city'],
+         'zipCode' => $inputData['zipCode']]);
+        $cityId = $dbCo->lastInsertId();
+
+        // Insert the address with zip_code, linking it to the city
+        $addressQuery = $dbCo->prepare("INSERT INTO `adresses` (`name_adresse`, `id_city`)
+                                        VALUES (:addresse, :idCity)
+                                        ON DUPLICATE KEY UPDATE `id` = LAST_INSERT_ID(`id`);");
+        $addressQuery->execute([
+            'addresse' => $inputData['adresse'],
+
+            'idCity' => $cityId
+        ]);
+        $addressId = $dbCo->lastInsertId();
+
+        //Insert the user, linking them to the address
+        $userQuery = $dbCo->prepare("INSERT INTO `users` (`fname`, `lname`, `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
+                                     VALUES (:fname, :lname, :birthdate, :tel, :email, :password, :idAddresses);");
+        $isQueryOk = $userQuery->execute([
+            'fname' => $inputData['fname'],
+            'lname' => $inputData['lname'],
+            'birthdate' => date($inputData['birthdate']),
+            'tel' => $inputData['tel'],
+            'email' => $inputData['email'],
+            'password' => password_hash($inputData['password'], PASSWORD_DEFAULT),
+            'idAddresses' => $addressId
+        ]);
+
+        // Commit the transaction
+        if ($isQueryOk) {
+            $dbCo->commit();
+            addMessage('createAccount_ok');
+            return true;
+        } else {
+            $dbCo->rollBack();
+            addError('createAccount_ko');
+            return false;
+        }
+    } catch (Exception $e) {
+        $dbCo->rollBack();
+        addError('createAccount_ko');
+        return false;
     }
-
-    $query = $dbCo->prepare("INSERT INTO `users` ( `fname`, `lname`,
-     `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
-    VALUES (:fname, :lname, :birthdate, :tel, :email, :password , :id_adresses);");
-    $isQueryOk = $query->execute([
-        'fname' => $inputData['fname'],
-        'lname' => $inputData['lname'],
-        'birthdate' => date(
-            $inputData['birthdate']
-        ),
-        'tel' => $inputData['tel'],
-        'id_adresses' => "1",
-        // 'adresse' => $inputData['adresse'],
-        // 'city' => $inputData['city'],
-        'email' => $inputData['email'],
-        'password' =>  password_hash($inputData['password'], PASSWORD_DEFAULT)
-
-    ]);
-
-    if (!$isQueryOk) {
-        addError("connection");
-    }
-    echo json_encode([
-        'isOk' => $isQueryOk,
-
-
-    ]);
 }

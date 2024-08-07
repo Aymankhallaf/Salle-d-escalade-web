@@ -22,7 +22,7 @@ require_once 'includes/_connection.php';
 //     redirectToHeader("index.php");
 // }
 
-// var_dump($_REQUEST);
+var_dump($_REQUEST);
 
 $inputData = [
     "action" => "createAccount",
@@ -30,11 +30,11 @@ $inputData = [
     "lname" => "gsdfs",
     "fname" => "ggg",
     "birthdate" => "1990-05-09",
-    "tel" => "065695820",
+    "tel" => "0695820",
     "adresse" => "dsdsfsdf",
     "city" => "fbf",
     'zipCode' => "55455",
-    "email" => "qsdqjjjd@gmail.com",
+    "email" => "qsjjd@gmail.com",
     "password" => "hpjK5V9)Cc=sMQZ",
     "confirmPW" => "hpjK5V9)Cc=sMQZ"
 ];
@@ -54,6 +54,6 @@ if (isAccountExist($dbCo, $inputData)) {
 var_dump($_SESSION);
 var_dump(isCreateAccountDataValide($inputData));
 var_dump(isAccountExist($dbCo, $inputData));
-
+var_dump(createAccount( $dbCo, $inputData));
 
 // createAccount($dbCo, $inputData);
