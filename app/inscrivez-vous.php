@@ -52,7 +52,7 @@ require_once 'includes/_header.php';
             <ul class="signup-ul signup-ul__second">
                 <li class="signup-form__tel">
                     <label class="signup-form__tel-label" for="tel">Numéro de téléphone</label>
-                    <input pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" />
+                    <input pattern="[0-9]" class="signup-form__tel-input" type="tel" name="tel" id="tel" maxlength="15" required/>
                 </li>
                 <li class="signup-form__adresse">
                     <label class="signup-form__adresse-label" for="adresse">L'adresse</label>
@@ -61,6 +61,10 @@ require_once 'includes/_header.php';
                 <li class="signup-form__city">
                     <label class="signup-form__city-label" for="city" maxlength="50">Ville</label>
                     <input pattern="[a-zA-ZÀ-ÖØ-öø-ÿ \-]{3,50}" class="signup-form__city-input" type="text" name="city" id="city" required />
+                </li>
+                <li class="signup-form__zip-code">
+                    <label class="signup-form__city-label" for="zip-code" maxlength="50">Code postal</label>
+                    <input pattern="[0-9]" class="signup-form__zip-code-input" type="text" name="zip-code" id="zip-code" required />
                 </li>
             </ul>
             <div class="stepper-btn__container">
