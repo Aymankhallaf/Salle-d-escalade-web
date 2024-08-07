@@ -39,6 +39,7 @@ document.getElementById("step-btn-prev-1").addEventListener("click", function ()
 document.getElementById("step-btn-2").addEventListener("click", function () {
     if (!validateTel(document.getElementById("tel").value)) return;
     if (!validateName("city", document.getElementById("city").value)) return;
+    if (!validateZipCode(document.getElementById("zip-code").value)) return;
 
     showNextStep("3");
 
@@ -138,6 +139,22 @@ function validateTel(tel) {
     }
     return true;
 }
+
+/**
+ * Validate telephone and show the error if invalid.
+ * @param {string} tel Telephone number input.
+ * @returns {boolean} True if valid, false otherwise.
+ */
+function validateZipCode(zipCode) {
+    const zipPattern = /^\d{5}$/;
+
+    if (!zipPattern.test(zipCode)) {
+        displayErrorForm('Le code postal est invalide.');
+        return false;
+    }
+    return true;
+}
+
 
 /**
  * Validate email address and show the error if invalid.

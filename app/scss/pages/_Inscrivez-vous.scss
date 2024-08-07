@@ -181,6 +181,16 @@
                 @include input;
             }
         }
+        &__zip-code {
+            @extend %form-container;
+
+            &-label {
+                @extend %label;
+            }
+            &-input {
+                @include input;
+            }
+        }
         &__city {
             @extend %form-container;
 
