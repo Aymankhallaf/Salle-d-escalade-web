@@ -713,10 +713,9 @@ function isAccountExist(PDO $dbCo, array $inputData)
     ]);
     $result = $query->rowCount();
     if ($result != 0) {
-        addError("userExist");
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 

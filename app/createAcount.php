@@ -30,19 +30,26 @@ $inputData = [
     "lname" => "gsdfs",
     "fname" => "ggg",
     "birthdate" => "1990-05-09",
-    "tel" => "7035-79-3162",
+    "tel" => "065695820",
     "adresse" => "dsdsfsdf",
     "city" => "fbf",
     'zipCode' => "55455",
-    "email" => "ntoxelll6@admin.ch",
+    "email" => "qsdqjjjd@gmail.com",
     "password" => "hpjK5V9)Cc=sMQZ",
     "confirmPW" => "hpjK5V9)Cc=sMQZ"
 ];
 
 if (!isCreateAccountDataValide($inputData)) {
-    
+
     redirectToHeader('inscrivez-vous.php');
 }
+
+if (isAccountExist($dbCo, $inputData)) {
+    addError("userExist");
+    redirectToHeader("connectez-vous.php");
+
+}
+
 
 var_dump($_SESSION);
 var_dump(isCreateAccountDataValide($inputData));
