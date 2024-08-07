@@ -10,13 +10,14 @@ $errors = [
     'nom' => "Le nom est invalide.",
     'prénom' => "Le prénom est invalide.",
     'ville' => "Le ville est invalide.",
-    'birthDate' => "Le birthDate est invalide.",
+    'birthDate' => "Le date de naissance est invalide.",
     'tele' => "Le numéro de téléphone est invalide.",
     "email"=>"Le email est invalide.",
     "newpwd"=>"Le mot de passe est invalide. Il doit contenir au moins une lettre minuscule,
      une lettre majuscule et un chiffre.",
      "confirmpwd"=>"Les mots de passe ne correspondent pas.",
-     "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter"
+     "userExist"=> "l'utilisateur est déjà enregistré, veuillez vous connecter",
+     'empty'=> "Un des champs est vide"
 
 ];
 $messages = [];

@@ -174,7 +174,7 @@ function stripTagsArray(array &$data): void
  * @param string $flag a flag to differentiate the error.
  * @return void
  */
-function redirectToHeader(string $url, string $flag = ''): void
+function redirectToHeader(string $url): void
 {
     // var_dump('REDIRECT ' . $url, $flag);
     header('Location: ' . $url);
@@ -526,6 +526,22 @@ function editReservationDetails(
 
 
 /**
+ * is a field is empty?
+ * @param mixed $field
+ * @return bool
+ */
+function isFieldEmpty($field): bool {
+    if (!isset($field) || strlen($field) === 0) {
+        addError('empty');
+        return false;
+    }
+    return false;
+
+}
+
+
+
+/**
  * is a name valide?
  * @param string $name field name.
  * @param string $value value of field.
@@ -630,7 +646,7 @@ function isCreateAccountDataValide($inputData): bool
     isValidePw($inputData['password']) &&
     isVerifyconfirmPassword(
         $inputData['password'],
-        ($inputData['confirm-psw'])
+        ($inputData['confirmPW'])
     );
 }
 
