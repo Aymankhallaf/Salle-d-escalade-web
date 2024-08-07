@@ -553,7 +553,7 @@ function isMax($field, $max): bool
         addError('max');
         return false;
     }
-    return false;
+    return true;
 }
 
 
@@ -569,7 +569,7 @@ function isMax($field, $max): bool
 function isNameValide($name, $value, $maxLength): bool
 {
 
-    if (isFieldEmpty($value) || isMax($value, $maxLength)  || !preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
+    if (isFieldEmpty($value) || !isMax($value, $maxLength)  || !preg_match('/^[a-zA-ZÀ-ÖØ-öø-ÿ .-]*$/', $value)) {
         addError($name);
         return false;
     }
@@ -586,7 +586,7 @@ function isNameValide($name, $value, $maxLength): bool
 function isValideDate($dateInput, $maxLength): bool
 {
     $timestamp = strtotime($dateInput);
-    if (isFieldEmpty($dateInput) || isMax($dateInput, $maxLength)  || $timestamp === false) {
+    if (isFieldEmpty($dateInput) || !isMax($dateInput, $maxLength)  || $timestamp === false) {
         addError("birthDate");
         return false;
     }
@@ -601,7 +601,7 @@ function isValideDate($dateInput, $maxLength): bool
  */
 function isValideTel($tel, $maxLength): bool
 {
-    if (isFieldEmpty($tel) || isMax($tel, $maxLength) || !preg_match('/[0-9]/', $tel)) {
+    if (isFieldEmpty($tel) || !isMax($tel, $maxLength) || !preg_match('/[0-9]/', $tel)) {
         addError("tele");
         return false;
     }
