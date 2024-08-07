@@ -727,7 +727,7 @@ function createAccount(PDO $dbCo, array $inputData): bool
         //  Insert the city if it doesn't exist
         $cityQuery = $dbCo->prepare("INSERT INTO `city` (`name_city`, `zip_code`) 
                                      VALUES (:city,:zipCode)
-                                     ON DUPLICATE KEY UPDATE `id` = LAST_INSERT_ID(`id`);");
+                                     ON DUPLICATE KEY UPDATE `id_city` = LAST_INSERT_ID(`id_city`);");
         $cityQuery->execute(['city' => $inputData['city'],
          'zipCode' => $inputData['zipCode']]);
         $cityId = $dbCo->lastInsertId();
@@ -735,7 +735,7 @@ function createAccount(PDO $dbCo, array $inputData): bool
         // Insert the address with zip_code, linking it to the city
         $addressQuery = $dbCo->prepare("INSERT INTO `adresses` (`name_adresse`, `id_city`)
                                         VALUES (:addresse, :idCity)
-                                        ON DUPLICATE KEY UPDATE `id` = LAST_INSERT_ID(`id`);");
+                                        ON DUPLICATE KEY UPDATE `id_adresses` = LAST_INSERT_ID(`id_adresses`);");
         $addressQuery->execute([
             'addresse' => $inputData['adresse'],
 
@@ -757,7 +757,7 @@ function createAccount(PDO $dbCo, array $inputData): bool
         ]);
 
         // Commit the transaction
-        if ($isQueryOk) {
+        if ($cityQuery) {
             $dbCo->commit();
             addMessage('createAccount_ok');
             return true;
@@ -768,6 +768,7 @@ function createAccount(PDO $dbCo, array $inputData): bool
         }
     } catch (Exception $e) {
         $dbCo->rollBack();
+        error_log("Error in createAccount: " . $e->getMessage());
         addError('createAccount_ko');
         return false;
     }
