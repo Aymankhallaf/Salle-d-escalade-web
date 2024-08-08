@@ -20,7 +20,8 @@ $errors = [
      'empty'=> 'Un des champs est vide',
      'max'=> 'la valeur est trop longue',
      'zipCode'=> 'le postal code est invalide',
-     "createAccount_ko"
+     "createAccount_ko" => "création de compte échouée.",
+     'login_error'=> "Votre email ou votre mot de passe sont incorrects."
 
 ];
 $messages = [

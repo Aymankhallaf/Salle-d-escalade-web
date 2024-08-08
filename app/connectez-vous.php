@@ -13,8 +13,10 @@ echo getHtmlErrors($errors);
     <section>
 
         <h1 class="connection-ttl" id="connection">Connectez-vous à votre compte</h1>
-        <form id="connection-form" class="connection-form" aria-label="formulaire de connexion" method="post">
+        <form id="connection-form" class="connection-form" aria-label="formulaire de connexion" method="post" action="logIn.php">
             <h2 class="connection-form__ttl">Vous êtes déjà client</h2>
+            <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="hidden" name="action" value="logIn">
             <ul class="connection-form-ul">
                 <li class="connection-form__email">
                     <label class="connection-form__email-label" for="email">Votre email</label>
@@ -33,7 +35,7 @@ echo getHtmlErrors($errors);
     <section>
 
         <h2 class="signup__ttl">Vous n'êtes pas encore client</h2>
-        <a  class="signup__lnk" href="/inscrivez-vous.php"> Inscrivez vous</a>
+        <a class="signup__lnk" href="/inscrivez-vous.php"> Inscrivez vous</a>
     </section>
 
 </main>

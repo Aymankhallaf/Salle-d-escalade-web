@@ -719,7 +719,7 @@ function isAccountExist(PDO $dbCo, array $inputData)
 }
 
 
-function createAccount(PDO $dbCo, array $inputData): bool
+function createAccount(PDO $dbCo, array $inputData)
 {
     try {
         $dbCo->beginTransaction();
@@ -774,6 +774,21 @@ function createAccount(PDO $dbCo, array $inputData): bool
         $dbCo->rollBack();
         error_log("Error in createAccount: " . $e->getMessage());
         addError('createAccount_ko');
-        return false;
     }
+}
+
+function findUser(PDO $dbCo, $inputData){
+
+    $query = $dbCo->prepare("SELECT * FROM users 
+    WHERE email=:email;");
+    $query->execute([
+        'email' => $inputData['email'],
+    ]);
+    // $result = $query->rowCount();
+    // if ($result != 0) {
+    //     return true;
+    // }
+    // return false;
+
+    return $query->fetch(PDO::FETCH_ASSOC);
 }

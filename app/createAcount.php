@@ -23,6 +23,22 @@ if ($_REQUEST['action'] !== "createAccount") {
     redirectToHeader("index.php");
 }
 
+
+$inputData = $_REQUEST;
+if (!isCreateAccountDataValide($inputData)) {
+
+    redirectToHeader('inscrivez-vous.php');
+}
+
+if (isAccountExist($dbCo, $inputData)) {
+    addError("userExist");
+    redirectToHeader("connectez-vous.php");
+}
+
+createAccount($dbCo, $inputData);
+
+
+
 // var_dump($_REQUEST);
 
 // $inputData = [
@@ -39,18 +55,6 @@ if ($_REQUEST['action'] !== "createAccount") {
 //     "password" => "hpjK5V9)Cc=sMQZ",
 //     "confirmPW" => "hpjK5V9)Cc=sMQZ"
 // ];
-$inputData = $_REQUEST;
-if (!isCreateAccountDataValide($inputData)) {
-
-    redirectToHeader('inscrivez-vous.php');
-}
-
-if (isAccountExist($dbCo, $inputData)) {
-    addError("userExist");
-    redirectToHeader("connectez-vous.php");
-}
-
-createAccount($dbCo, $inputData);
 //     addError("userExist");
 //     redirectToHeader("connectez-vous.php");
 
