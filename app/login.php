@@ -35,3 +35,6 @@ var_dump(login($dbCo,$_REQUEST));
 
 var_dump($_REQUEST);
 var_dump($_SESSION);
+var_dump(isUserLoggedin());
+var_dump(isEditor());
+var_dump(isAdmin());

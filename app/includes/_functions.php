@@ -843,6 +843,10 @@ function isUserLoggedin(): bool
  */
 function isEditor(): bool
 {
+    if(isAdmin()){
+        return true;
+    }
+
     return isUserLoggedin() && ($_SESSION['authLevel'] === 1);
 }
 
