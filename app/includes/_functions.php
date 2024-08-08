@@ -493,6 +493,7 @@ function getAReservationDetailsUser(
 function editReservationDetails(
     PDO $dbCo,
     array $inputData,
+    int $idUser
 ) {
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
@@ -500,13 +501,15 @@ function editReservationDetails(
         $query = $dbCo->prepare("UPDATE `reservation` SET
          `nb_particpation` = :nb_particpation, `date_starting` = :date_starting,
           `id_gym` = :idGym, `id_activity` = :idActivity
-          WHERE `reservation`.`id_reservation` = :idReservation;");
+          WHERE `reservation`.`id_reservation` = :idReservation 
+          AND id_user =  :idUser;");
         $isQueryOk = $query->execute([
             'idReservation' => $inputData['idReservation'],
             'nb_particpation' => $inputData['participants'],
             'date_starting' => $formattedDateStarting,
             'idGym' => $inputData['chosenGym'],
             'idActivity' => $inputData['duration'],
+            "idUser"=> $idUser
         ]);
 
         if (!$isQueryOk) {

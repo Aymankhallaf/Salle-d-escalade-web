@@ -43,15 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
     isReservationValid($inputData);
-    reserve($dbCo, $inputData, 1);
+    reserve($dbCo, $inputData, intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "getAReservation") {
     //to do user authotcation
 
     getAReservationDetailsUser($dbCo, $inputData['idReservation'], intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
+    //to do user authotcation
 
     cancelReservation($dbCo, $inputData['idReservation']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservation") {
-    //to do user authotcation
-    editReservationDetails($dbCo, $inputData);
+    editReservationDetails($dbCo, $inputData, intval($_SESSION['idUser']));
 }
