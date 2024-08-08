@@ -728,8 +728,10 @@ function createAccount(PDO $dbCo, array $inputData)
         $cityQuery = $dbCo->prepare("INSERT INTO `city` (`name_city`, `zip_code`) 
                                      VALUES (:city,:zipCode)
                                      ON DUPLICATE KEY UPDATE `id_city` = LAST_INSERT_ID(`id_city`);");
-        $cityQuery->execute(['city' => $inputData['city'],
-         'zipCode' => $inputData['zipCode']]);
+        $cityQuery->execute([
+            'city' => $inputData['city'],
+            'zipCode' => $inputData['zipCode']
+        ]);
         $cityId = $dbCo->lastInsertId();
 
         // Insert the address with zip_code, linking it to the city
@@ -744,8 +746,8 @@ function createAccount(PDO $dbCo, array $inputData)
         $addressId = $dbCo->lastInsertId();
 
         //Insert the user, linking them to the address
-        $userQuery = $dbCo->prepare("INSERT INTO `users` (`fname`, `lname`, `birthdate`, `telephone`, `email`, `password`, `id_adresses`) 
-                                     VALUES (:fname, :lname, :birthdate, :tel, :email, :password, :idAddresses);");
+        $userQuery = $dbCo->prepare("INSERT INTO `users` (`fname`, `lname`, `birthdate`, `telephone`, `email`, `password`, `id_adresses`,`id_role_admin`) 
+                                     VALUES (:fname, :lname, :birthdate, :tel, :email, :password, :idAddresses, 0);");
         $isQueryOk = $userQuery->execute([
             'fname' => $inputData['fname'],
             'lname' => $inputData['lname'],
@@ -777,18 +779,32 @@ function createAccount(PDO $dbCo, array $inputData)
     }
 }
 
-function findUser(PDO $dbCo, $inputData){
+function findUser(PDO $dbCo, array $inputData)
+{
 
     $query = $dbCo->prepare("SELECT * FROM users 
     WHERE email=:email;");
     $query->execute([
         'email' => $inputData['email'],
     ]);
-    // $result = $query->rowCount();
-    // if ($result != 0) {
-    //     return true;
-    // }
-    // return false;
 
     return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+function login(PDO $dbCo, array $inputData): bool
+{
+    $user = findUser($dbCo, $inputData);
+
+    if ($user && password_verify($inputData['password'], $user['password'])) {
+
+
+       
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['idUser']  = $user['id_user'];
+        $_SESSION['authLevel'] = $user['id_role_admin'];
+
+        return true;
+    }
+
+    return false;
 }

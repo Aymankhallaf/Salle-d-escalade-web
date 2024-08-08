@@ -31,6 +31,7 @@ if (!isValideMail($_REQUEST['email']) ||
 }
 
 var_dump(findUser($dbCo,$_REQUEST));
+var_dump(login($dbCo,$_REQUEST));
 
-// var_dump($_REQUEST);
-// var_dump($_SESSION);
+var_dump($_REQUEST);
+var_dump($_SESSION);
