@@ -24,3 +24,10 @@
   color: $black;
 }
 
+%link {
+  text-decoration: underline;
+      color: $blue-petrol;
+      &:visited {
+        color: $dark-orange;
+      }
+}
