@@ -14,7 +14,7 @@ if (!isTokenOk($_REQUEST['token'])) {
 }
 stripTagsArray($_REQUEST);
 
-//verify methode and action
+//verify methode and action 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     addError("referer");
@@ -25,6 +25,7 @@ if ($_REQUEST['action'] !== "createAccount") {
     redirectToHeader("index.php");
 }
 
+//login verification
 if (!isUserLoggedin()) {
     addError("userExist");
     redirectToHeader("connectez-vous.php");
