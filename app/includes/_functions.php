@@ -859,3 +859,26 @@ function isAdmin(): bool
 {
     return isUserLoggedin() && ($_SESSION['authLevel'] === 2);
 }
+
+
+function currentUser()
+{
+    if (!isUserLoggedin()) {
+        return;
+    }
+    return $_SESSION['fname'];
+}
+
+
+function connectionHtml() {
+    if(isUserLoggedin()){
+       return  '<ul>
+    <li><a class="header-nav__menu-link" href="/dashboard.php">User panel</a></li>
+    <li><a class="header-nav__menu-link" href="/deconnection.php">déconnection</a></li>
+</ul>';
+    }
+    return '<ul>
+    <li><a class="header-nav__menu-link" href="/connectez-vous.php">Connectez-vous</a></li>
+    <li><a class="header-nav__menu-link" href="/inscrivez-vous.php">inscrivez-vous</a></li>
+</ul>';
+}
