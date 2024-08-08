@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once 'includes/_connection.php';
- 
+
 generateToken();
 
 ?>
@@ -24,7 +24,7 @@ generateToken();
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
         // Production integration for vite with run build
-        echo loadAssets(['js/script.js','js/reservation/reservation.js']);
+        echo loadAssets(['js/script.js', 'js/reservation/reservation.js']);
         // Try this way to load assets from manifest.json
         // https://github.com/andrefelipe/vite-php-setup
     }
@@ -39,6 +39,7 @@ generateToken();
         <nav aria-label="Menu principal" id="header-nav" class="header-nav">
             <button aria-labelledby="header-nav" type="button" id="header-nav__btn" class="header-nav__btn"></button>
             <ul id="main-menu" class="header-nav__menu">
+                <?= connectionHtml(); ?>
                 <li><a class="header-nav__menu-link current" href="/" aria-current="page">Page
                         d’accueil</a></li>
                 <li><a class="header-nav__menu-link" href="/">Abonnements</a></li>

@@ -805,9 +805,9 @@ function findUser(PDO $dbCo, array $inputData): array | false
  * params ($_SESSION['email'],$_SESSION['idUser'], $_SESSION['authLevel'])
  * @param PDO $dbCo db connection.
  * @param array $inputData input data ex. $_REQUEST.
- * @return bool true if user logins success, false if user doesnot.
+ * @return void
  */
-function login(PDO $dbCo, array $inputData): bool
+function login(PDO $dbCo, array $inputData): void
 {
     $user = findUser($dbCo, $inputData);
 
@@ -815,13 +815,15 @@ function login(PDO $dbCo, array $inputData): bool
 
 
         $_SESSION['email'] = $user['email'];
+        $_SESSION['fname'] = $user['fname'];
         $_SESSION['idUser']  = $user['id_user'];
         $_SESSION['authLevel'] = $user['id_role_admin'];
 
-        return true;
+        addMessage("login_ok");
+        redirectToHeader('index.php');
     }
-
-    return false;
+    addMessage("login_ko");
+    redirectToHeader('inscrivez-vous.php');
 }
 
 
@@ -843,7 +845,7 @@ function isUserLoggedin(): bool
  */
 function isEditor(): bool
 {
-    if(isAdmin()){
+    if (isAdmin()) {
         return true;
     }
 
@@ -870,15 +872,32 @@ function currentUser()
 }
 
 
-function connectionHtml() {
-    if(isUserLoggedin()){
-       return  '<ul>
-    <li><a class="header-nav__menu-link" href="/dashboard.php">User panel</a></li>
-    <li><a class="header-nav__menu-link" href="/deconnection.php">déconnection</a></li>
+function connectionHtml()
+{
+    if (isUserLoggedin()) {
+        return  '<ul>
+    <li><a class="header-nav__menu-link" href="/dashboard.php">' . currentUser() . ' panel</a></li>
+    <li><a class="header-nav__menu-link" href="/logout.php">déconnection</a></li>
 </ul>';
     }
     return '<ul>
     <li><a class="header-nav__menu-link" href="/connectez-vous.php">Connectez-vous</a></li>
     <li><a class="header-nav__menu-link" href="/inscrivez-vous.php">inscrivez-vous</a></li>
 </ul>';
+}
+
+
+function logout(): void
+{
+    if (isUserLoggedin()) {
+        unset(
+            $_SESSION['email'],
+            $_SESSION['fname'],
+            $_SESSION['idUser'],
+            $_SESSION['authLevel']
+        );
+        session_destroy();
+        addMessage("logout_ok");
+        redirectToHeader('index.php');
+    }
 }

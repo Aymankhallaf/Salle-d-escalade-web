@@ -21,10 +21,15 @@ $errors = [
      'max'=> 'la valeur est trop longue',
      'zipCode'=> 'le postal code est invalide',
      "createAccount_ko" => "création de compte échouée.",
-     'login_error'=> "Votre email ou votre mot de passe sont incorrects."
+     'login_error'=> "Votre email ou votre mot de passe sont incorrects.",
+     "login_ko" => "Votre email ou votre mot de passe sont incorrects ou
+      créez un compte si vous n'en avez pas"
+     
+  
 
 ];
 $messages = [
-    "createAccount_ok" => "Vous avez réussi à créer un compte"
-
+    "createAccount_ok" => "Vous avez réussi à créer un compte",
+    'logout_ok' => "Déconnexion réussie",
+    "login_ok" => "Connexion réussie"
 ];
