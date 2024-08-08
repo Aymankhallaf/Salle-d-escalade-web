@@ -26,7 +26,6 @@ $errors = [
       créez un compte si vous n'en avez pas",
       "need_login" => "Vous devez vous connecter pour accéder à la page"
      
-  
 
 ];
 $messages = [
