@@ -91,8 +91,18 @@ document.getElementById("signup-form").addEventListener("submit", function (e) {
    
 });
 
+//get the value of input data when it loads
+document.addEventListener("DOMContentLoaded", function () {
+    getSessionStorge("lname");
+    getSessionStorge("fname");
+    getSessionStorge("birthdate");
+    getSessionStorge("tel");
+    getSessionStorge("city");
+    getSessionStorge("adresse");
+    getSessionStorge("zip-code");
+    getSessionStorge("email");
 
-
+});
 
 
 
