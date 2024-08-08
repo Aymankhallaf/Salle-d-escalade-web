@@ -779,7 +779,15 @@ function createAccount(PDO $dbCo, array $inputData)
     }
 }
 
-function findUser(PDO $dbCo, array $inputData)
+
+/**
+ * *
+ * Finds user in db.
+ * @param PDO $dbCo db connection.
+ * @param array $inputData input data ex. $_REQUEST.
+ * @return array|false array of user if find user, false if not.
+ */
+function findUser(PDO $dbCo, array $inputData): array | false
 {
 
     $query = $dbCo->prepare("SELECT * FROM users 
@@ -791,6 +799,14 @@ function findUser(PDO $dbCo, array $inputData)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
+
+/**
+ * login by matching email and password and set session 
+ * params ($_SESSION['email'],$_SESSION['idUser'], $_SESSION['authLevel'])
+ * @param PDO $dbCo db connection.
+ * @param array $inputData input data ex. $_REQUEST.
+ * @return bool true if user logins success, false if user doesnot.
+ */
 function login(PDO $dbCo, array $inputData): bool
 {
     $user = findUser($dbCo, $inputData);
@@ -798,7 +814,6 @@ function login(PDO $dbCo, array $inputData): bool
     if ($user && password_verify($inputData['password'], $user['password'])) {
 
 
-       
         $_SESSION['email'] = $user['email'];
         $_SESSION['idUser']  = $user['id_user'];
         $_SESSION['authLevel'] = $user['id_role_admin'];
@@ -807,4 +822,36 @@ function login(PDO $dbCo, array $inputData): bool
     }
 
     return false;
+}
+
+
+
+/**
+ * is user login?
+ * @return bool true if user is login , false if user doesnt.
+ */
+function isUserLoggedin(): bool
+{
+    return isset($_SESSION['email']) &&
+        isset($_SESSION['idUser']) && isset($_SESSION['authLevel']);
+}
+
+
+/**
+ * is user login as editor?
+ * @return bool true if user is login , false if user doesnt.
+ */
+function isEditor(): bool
+{
+    return isUserLoggedin() && ($_SESSION['authLevel'] === 1);
+}
+
+
+/**
+ * is user login as admin?
+ * @return bool true if user is login , false if user doesnt.
+ */
+function isAdmin(): bool
+{
+    return isUserLoggedin() && ($_SESSION['authLevel'] === 2);
 }
