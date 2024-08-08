@@ -76,7 +76,7 @@
 
 @mixin input($color: $black) {
   padding: .5rem;
-  height: 4rem;
+  height: 3rem;
   border-color: $color;
   background-color: $sand-15;
   &:required:invalid {
