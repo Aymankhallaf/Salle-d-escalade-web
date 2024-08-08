@@ -2,6 +2,8 @@
 session_start();
 require_once 'includes/_connection.php';
 
+
+//csfr protection
 if (!isServerOk()) {
     addError('referer');
 }
@@ -12,18 +14,23 @@ if (!isTokenOk($_REQUEST['token'])) {
 }
 stripTagsArray($_REQUEST);
 
-//create account
+//verify methode and action
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     addError("referer");
     redirectToHeader("index.php");
-} 
+}
 if ($_REQUEST['action'] !== "createAccount") {
     addError("referer");
     redirectToHeader("index.php");
 }
 
+if (!isUserLoggedin()) {
+    addError("userExist");
+    redirectToHeader("connectez-vous.php");
+}
 
+//operation
 $inputData = $_REQUEST;
 if (!isCreateAccountDataValide($inputData)) {
     redirectToHeader('inscrivez-vous.php');
