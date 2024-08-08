@@ -1,4 +1,5 @@
 <?php
+require_once 'includes/_startSession.php';
 require_once 'includes/_header.php';
 ?>
 <main class="signup">

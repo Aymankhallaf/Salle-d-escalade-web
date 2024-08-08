@@ -23,7 +23,8 @@ $errors = [
      "createAccount_ko" => "création de compte échouée.",
      'login_error'=> "Votre email ou votre mot de passe sont incorrects.",
      "login_ko" => "Votre email ou votre mot de passe sont incorrects ou
-      créez un compte si vous n'en avez pas"
+      créez un compte si vous n'en avez pas",
+      "need_login" => "Vous devez vous connecter pour accéder à la page"
      
   
 

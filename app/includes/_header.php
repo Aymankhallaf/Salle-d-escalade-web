@@ -1,10 +1,3 @@
-<?php
-session_start();
-include_once 'includes/_connection.php';
-
-generateToken();
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 

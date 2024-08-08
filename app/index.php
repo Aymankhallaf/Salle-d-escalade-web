@@ -1,8 +1,9 @@
 <?php
+require_once 'includes/_startSession.php';
 include 'includes/_header.php';
 ?>
 <main>
-<?php
+    <?php
     echo getHtmlMessages($messages);
     echo getHtmlErrors($errors);
     ?>

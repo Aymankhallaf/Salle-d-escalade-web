@@ -1,9 +1,20 @@
 <?php
-include 'includes/_header.php';
+require_once 'includes/_startSession.php';
+
+//login verification
+if (!isUserLoggedin()) {
+    addError("need_login");
+    redirectToHeader("connectez-vous.php");
+}
+//csfr protection
 if (!isServerOk()) {
-    triggerError('referer');
+    addError('referer');
+    redirectToHeader("index.php");
 }
 
+include 'includes/_header.php';
+
+include 'includes/_notification.php';
 ?>
 <main class="dashboard-reservation">
 
