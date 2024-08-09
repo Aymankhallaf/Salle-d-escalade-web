@@ -33,3 +33,14 @@ $messages = [
     'logout_ok' => "Déconnexion réussie",
     "login_ok" => "Connexion réussie"
 ];
+
+$defaultKeys = [
+    'lname' => 'nom',
+    'fname' => 'prenom',
+    'birthdate' => 'date de naissance',
+    'telephone' => 'téléphone',
+    'email' => 'email',
+    'name_adresse' => 'adresse',
+    'name_city' => 'ville'
+
+];

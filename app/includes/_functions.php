@@ -722,22 +722,6 @@ function isAccountExist(PDO $dbCo, array $inputData)
 }
 
 
-function getsAccount(PDO $dbCo, int $id)
-{
-    $query = $dbCo->prepare("SELECT id_user,fname,birthdate,telephone,
-    email,name_adresse,name_city
-    FROM users JOIN adresses 
-    USING(id_adresses) JOIN city USING(id_city)
-    WHERE id_user=:userId;");
-    $query->execute([
-        'userId' => $id
-    ]);
-    $result = $query->rowCount();
-    if ($result != 0) {
-        return $query->fetchAll();
-    }
-    redirectToHeader("index.php");
-}
 
 
 
@@ -941,3 +925,45 @@ function logout(): void
         redirectToHeader('index.php');
     }
 }
+
+
+
+/**
+ * Gets account detailsn first name, last name,
+ *  birthdate, telephone, addresse.
+ * @param PDO $dbCo database connection.
+ * @param int $id user id.
+ * @return array user details.
+ */
+function getsAccountDetails(PDO $dbCo, int $id)
+{
+    $query = $dbCo->prepare("SELECT lname,fname,birthdate,telephone,
+    email,name_adresse,name_city
+    FROM users JOIN adresses 
+    USING(id_adresses) JOIN city USING(id_city)
+    WHERE id_user=:userId;");
+    $query->execute([
+        'userId' => $id
+    ]);
+    $result = $query->rowCount();
+    if ($result != 0) {
+        return $query->fetchAll();
+    }
+    redirectToHeader("index.php");
+}
+
+function accountAddHtml(array $defaultKeys, array $accountDetails){
+
+    $html = '';
+    foreach ($accountDetails as $key => $value) {
+        if (isset($defaultKeys[$key])) {
+            $html .= '<tr class="profile-details-raw">';
+            $html .= '<th>' . $defaultKeys[$key]. ':</th>';
+            $html .= '<td>' . $value . '</td>';
+            $html .= '</tr>';
+        }
+    }
+
+    return $html;
+}
+

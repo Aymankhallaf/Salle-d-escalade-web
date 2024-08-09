@@ -1,7 +1,8 @@
 <?php
 require_once 'includes/_startSession.php';
-var_dump(getsAccount($dbCo, $_SESSION['idUser']));
-
+var_dump(getsAccountDetails($dbCo, $_SESSION['idUser']));
+$accountDetails=getsAccountDetails($dbCo, $_SESSION['idUser']);
+echo accountAddHtml($defaultKeys,$accountDetails);
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
