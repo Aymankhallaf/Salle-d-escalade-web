@@ -41,6 +41,8 @@ $defaultKeys = [
     'telephone' => 'Téléphone',
     'email' => 'Email',
     'name_adresse' => 'Adresse',
-    'name_city' => 'Ville'
+    'name_city' => 'Ville',
+    'id_reservation' => 'Numéro de réservation',
+    'date_starting' => 'Session Date'
 
 ];

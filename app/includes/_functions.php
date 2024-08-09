@@ -439,10 +439,11 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
         'idUser' => $idUser
     ]);
 
-   return $query->fetchAll()? : null;
-    // if (!$isQueryOk) {
-    //     triggerError("connection");
-    // }
+    if (!$isQueryOk) {
+        addError("wrong");
+        redirectToHeader("index.php");
+    }
+    return $query->fetchAll()[0] ?: null;
     // echo json_encode([
     //     'isOk' => $isQueryOk,
     //     $data,
@@ -450,6 +451,9 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 
     // ]);
 }
+
+
+
 
 /**
  * get a details of reservation.
@@ -710,10 +714,14 @@ function isAccountExist(PDO $dbCo, array $inputData)
 {
     $query = $dbCo->prepare("SELECT * FROM users 
     WHERE email=:email || telephone= :tel;");
-    $query->execute([
+    $isQueryOk = $query->execute([
         'email' => $inputData['email'],
         'tel' => $inputData['tel']
     ]);
+    if (!$isQueryOk) {
+        addError("wrong");
+        redirectToHeader("index.php");
+    }
     $result = $query->rowCount();
     if ($result != 0) {
         return true;
@@ -805,10 +813,13 @@ function findUser(PDO $dbCo, array $inputData): array | false
 
     $query = $dbCo->prepare("SELECT * FROM users 
     WHERE email=:email;");
-    $query->execute([
+    $isQueryOk = $query->execute([
         'email' => $inputData['email'],
     ]);
-
+    if (!$isQueryOk) {
+        addError("wrong");
+        redirectToHeader("index.php");
+    }
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
@@ -935,16 +946,21 @@ function logout(): void
  * @param int $id user id.
  * @return array user details.
  */
-function getsAccountDetails(PDO $dbCo, int $id)
+function getsAccountDetails(PDO $dbCo, int $id):array
 {
     $query = $dbCo->prepare("SELECT lname,fname,birthdate,telephone,
     email,name_adresse,name_city
     FROM users JOIN adresses 
     USING(id_adresses) JOIN city USING(id_city)
     WHERE id_user=:userId;");
-    $query->execute([
+    $isQueryOk = $query->execute([
         'userId' => $id
     ]);
+    if (!$isQueryOk) {
+        addError("wrong");
+        redirectToHeader("index.php");
+    }
+
     $result = $query->rowCount();
     if ($result != 0) {
         return $query->fetchAll()[0];
@@ -959,13 +975,14 @@ function getsAccountDetails(PDO $dbCo, int $id)
  * @param array $accountDetails
  * @return string
  */
-function accountAddHtml(array $defaultKeys, array $accountDetails){
+function accountAddHtml(array $defaultKeys, array $accountDetails)
+{
 
     $html = '';
     foreach ($accountDetails as $key => $value) {
         if (isset($defaultKeys[$key])) {
             $html .= '<tr class="profile-details-raw">';
-            $html .= '<th>' . $defaultKeys[$key]. ':</th>';
+            $html .= '<th>' . $defaultKeys[$key] . ':</th>';
             $html .= '<td>' . $value . '</td>';
             $html .= '</tr>';
         }
@@ -973,4 +990,3 @@ function accountAddHtml(array $defaultKeys, array $accountDetails){
 
     return $html;
 }
-

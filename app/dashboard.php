@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/_startSession.php';
 
+var_dump($_SESSION);
+
+var_dump(getUserReservationHistory($dbCo,$_SESSION["idUser"]));
+
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
