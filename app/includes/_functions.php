@@ -947,8 +947,9 @@ function getsAccountDetails(PDO $dbCo, int $id)
     ]);
     $result = $query->rowCount();
     if ($result != 0) {
-        return $query->fetchAll();
+        return $query->fetchAll()[0];
     }
+    addError("wrong");
     redirectToHeader("index.php");
 }
 

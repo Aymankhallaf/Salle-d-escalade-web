@@ -1,8 +1,17 @@
 <?php
 require_once 'includes/_startSession.php';
-var_dump(getsAccountDetails($dbCo, $_SESSION['idUser']));
+require_once 'includes/_config.php';
+$defaultKeys = [
+    'lname' => 'nom',
+    'fname' => 'prenom',
+    'birthdate' => 'date de naissance',
+    'telephone' => 'téléphone',
+    'email' => 'email',
+    'name_adresse' => 'adresse',
+    'name_city' => 'ville'
+
+];
 $accountDetails=getsAccountDetails($dbCo, $_SESSION['idUser']);
-echo accountAddHtml($defaultKeys,$accountDetails);
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
