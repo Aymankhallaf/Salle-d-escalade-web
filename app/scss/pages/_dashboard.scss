@@ -3,13 +3,14 @@
     display: none;
 
     &:target {
-       display: visible;
+        display: visible;
     }
 
     &:first-of-type {
         display: visible;
     }
 }
+
 
 .dashboard {
     &-ttl {
@@ -25,8 +26,12 @@
 
         &__a {
             @include button;
-            &--current {
+            &:target {
                 @include button($dark-orange);
+            }
+            &.active{
+                @include button($dark-orange);
+
             }
         }
     }

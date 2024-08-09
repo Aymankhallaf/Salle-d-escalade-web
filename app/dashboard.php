@@ -17,9 +17,7 @@ require_once 'includes/_config.php';
 include 'includes/_header.php';
 include 'includes/_notification.php';
 ?>
-
 <?= include 'includes/_navDashboard.php'; ?>
-
 <main class="dashboard">
     <!-- reservation -->
     <section id="reservation" class="tab-dashboard reservation-details">

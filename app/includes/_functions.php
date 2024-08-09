@@ -424,12 +424,12 @@ function cancelReservation(PDO $dbCo, int $idReservation)
 
 
 /**
- * get user reservation history
- * @param PDO $dbCo
- * @param int $idUser
- * @return void
+ * Gets user reservation history.
+ * @param PDO $dbCo database connection
+ * @param int $idUser user id.
+ * @return array|null array of reservation or null.
  */
-function getUserReservationHistory(PDO $dbCo, int $idUser)
+function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 {
 
     $query = $dbCo->prepare("SELECT id_reservation, date_starting FROM reservation 
@@ -439,16 +439,16 @@ function getUserReservationHistory(PDO $dbCo, int $idUser)
         'idUser' => $idUser
     ]);
 
-    $data = $query->fetchAll();
-    if (!$isQueryOk) {
-        triggerError("connection");
-    }
-    echo json_encode([
-        'isOk' => $isQueryOk,
-        $data,
-        'idUSer' => $idUser
+   return $query->fetchAll()? : null;
+    // if (!$isQueryOk) {
+    //     triggerError("connection");
+    // }
+    // echo json_encode([
+    //     'isOk' => $isQueryOk,
+    //     $data,
+    //     'idUSer' => $idUser
 
-    ]);
+    // ]);
 }
 
 /**
@@ -953,6 +953,12 @@ function getsAccountDetails(PDO $dbCo, int $id)
     redirectToHeader("index.php");
 }
 
+/**
+ * Adds html tags to array of user.
+ * @param array $defaultKeys
+ * @param array $accountDetails
+ * @return string
+ */
 function accountAddHtml(array $defaultKeys, array $accountDetails){
 
     $html = '';
