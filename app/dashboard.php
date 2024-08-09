@@ -1,15 +1,16 @@
 <?php
 require_once 'includes/_startSession.php';
 
-//login verification
-if (!isUserLoggedin()) {
-    addError("need_login");
-    redirectToHeader("connectez-vous.php");
-}
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
     redirectToHeader("index.php");
+}
+
+//login verification
+if (!isUserLoggedin()) {
+    addError("need_login");
+    redirectToHeader("connectez-vous.php");
 }
 
 include 'includes/_header.php';
@@ -29,7 +30,7 @@ include 'includes/_notification.php';
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
     <section class="reservation-details">
-        <h2  id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
+        <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
         <div id="reservation-details-div">
 
         </div>
