@@ -23,7 +23,7 @@ function loadAssets(array $entries): string
         if (isset($assets[$entry]['css']) && is_array($assets[$entry]['css'])) {
             $html .= implode(
                 array_map(
-                    fn ($file) => '<link rel="stylesheet" href="' . $file . '">',
+                    fn($file) => '<link rel="stylesheet" href="' . $file . '">',
                     $assets[$entry]['css']
                 )
             );
@@ -134,7 +134,7 @@ function getHtmlErrors(array $errorsList): string
         $errors = $_SESSION['errorsList'];
         unset($_SESSION['errorsList']);
         return '<ul class="notif-error">'
-            . implode(array_map(fn ($e) => '<li>' . $errorsList[$e] . '</li>', $errors))
+            . implode(array_map(fn($e) => '<li>' . $errorsList[$e] . '</li>', $errors))
             . '</ul>';
     }
     return '';
@@ -509,7 +509,7 @@ function editReservationDetails(
             'date_starting' => $formattedDateStarting,
             'idGym' => $inputData['chosenGym'],
             'idActivity' => $inputData['duration'],
-            "idUser"=> $idUser
+            "idUser" => $idUser
         ]);
 
         if (!$isQueryOk) {
@@ -709,7 +709,7 @@ function isCreateAccountDataValide($inputData): bool
 function isAccountExist(PDO $dbCo, array $inputData)
 {
     $query = $dbCo->prepare("SELECT * FROM users 
-    WHERE email=:email || telephone= :tel");
+    WHERE email=:email || telephone= :tel;");
     $query->execute([
         'email' => $inputData['email'],
         'tel' => $inputData['tel']
@@ -720,6 +720,25 @@ function isAccountExist(PDO $dbCo, array $inputData)
     }
     return false;
 }
+
+
+function getsAccount(PDO $dbCo, int $id)
+{
+    $query = $dbCo->prepare("SELECT id_user,fname,birthdate,telephone,
+    email,name_adresse,name_city
+    FROM users JOIN adresses 
+    USING(id_adresses) JOIN city USING(id_city)
+    WHERE id_user=:userId;");
+    $query->execute([
+        'userId' => $id
+    ]);
+    $result = $query->rowCount();
+    if ($result != 0) {
+        return $query->fetchAll();
+    }
+    redirectToHeader("index.php");
+}
+
 
 
 
@@ -873,13 +892,13 @@ function isAdmin(): bool
 }
 
 /**
- * Gets first name of the login user.
- * @return string first name.
+ * Gets first name of the login user or empty string if he doesnt login.
+ * @return null|string first name or empty string.
  */
-function currentUser():?string
+function currentUser(): null|string
 {
     if (!isUserLoggedin()) {
-        return;
+        return null;
     }
     return $_SESSION['fname'];
 }
