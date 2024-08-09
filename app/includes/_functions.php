@@ -443,7 +443,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
         addError("wrong");
         redirectToHeader("index.php");
     }
-    return $query->fetchAll()[0] ?: null;
+    return $query->fetchAll()? :null;
     // echo json_encode([
     //     'isOk' => $isQueryOk,
     //     $data,
@@ -451,7 +451,6 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 
     // ]);
 }
-
 
 
 
@@ -491,6 +490,28 @@ function getAReservationDetailsUser(
 }
 
 
+/**
+ * Adds html tags to array of user.
+ * @param array $defaultKeys
+ * @param array $accountDetails
+ * @return string
+ */
+function addHtmlReservation(array $defaultKeys, array $reservationHistory)
+{
+
+    $html = '';
+    foreach ($reservationHistory as $key => $value) {
+        if (isset($defaultKeys[$key])) {
+            $html .= '<tr class="profile-details-raw">';
+            $html .= '<th>' . $defaultKeys[$key] . ':</th>';
+            $html .= '<td>' . $value . '</td>';
+            $html .= '<td><a href="" ></a>voir</td>';
+            $html .= '</tr>';
+        }
+    }
+
+    return $html;
+}
 
 
 
