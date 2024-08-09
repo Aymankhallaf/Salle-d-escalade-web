@@ -722,6 +722,8 @@ function isAccountExist(PDO $dbCo, array $inputData)
 }
 
 
+
+
 function createAccount(PDO $dbCo, array $inputData)
 {
     try {
