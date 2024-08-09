@@ -34,13 +34,13 @@ $messages = [
     "login_ok" => "Connexion réussie"
 ];
 
-// $defaultKeys = [
-//     'lname' => 'nom',
-//     'fname' => 'prenom',
-//     'birthdate' => 'date de naissance',
-//     'telephone' => 'téléphone',
-//     'email' => 'email',
-//     'name_adresse' => 'adresse',
-//     'name_city' => 'ville'
+$defaultKeys = [
+    'lname' => 'Nom',
+    'fname' => 'Prénom',
+    'birthdate' => 'Date de naissance',
+    'telephone' => 'Téléphone',
+    'email' => 'Email',
+    'name_adresse' => 'Adresse',
+    'name_city' => 'Ville'
 
-// ];
+];

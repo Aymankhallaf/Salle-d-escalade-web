@@ -1,17 +1,6 @@
 <?php
 require_once 'includes/_startSession.php';
-require_once 'includes/_config.php';
-$defaultKeys = [
-    'lname' => 'nom',
-    'fname' => 'prenom',
-    'birthdate' => 'date de naissance',
-    'telephone' => 'téléphone',
-    'email' => 'email',
-    'name_adresse' => 'adresse',
-    'name_city' => 'ville'
 
-];
-$accountDetails=getsAccountDetails($dbCo, $_SESSION['idUser']);
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
@@ -23,12 +12,16 @@ if (!isUserLoggedin()) {
     addError("need_login");
     redirectToHeader("connectez-vous.php");
 }
+require_once 'includes/_config.php';
 
 include 'includes/_header.php';
 include 'includes/_notification.php';
 ?>
-<?= include 'includes/_navDashboard.php';  ?>
+
+<?= include 'includes/_navDashboard.php'; ?>
+
 <main class="dashboard-reservation">
+    <!-- reservation -->
     <section class="reservation-details">
         <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
         <div id="reservation-details-div">
@@ -37,19 +30,20 @@ include 'includes/_notification.php';
 
 
     </section>
-
+    <!-- profile -->
     <section class="profile-details">
-
         <?= include 'includes/_profile.php'; ?>
     </section>
 
 </main>
+
+
 <script type="module" src="./js/reservationDetails.js"></script>
+
 <?php
-
 include 'includes/_footer.php';
-
 ?>
+
 <!-- template reservation -->
 
 <template id="template-reservation">
