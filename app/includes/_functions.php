@@ -723,7 +723,12 @@ function isAccountExist(PDO $dbCo, array $inputData)
 
 
 
-
+/**
+ * Creates new account (by saving in database).
+ * @param PDO $dbCo database connection.
+ * @param array $inputData data from creation account form. 
+ * @return void
+ */
 function createAccount(PDO $dbCo, array $inputData)
 {
     try {
@@ -867,8 +872,11 @@ function isAdmin(): bool
     return isUserLoggedin() && ($_SESSION['authLevel'] === 2);
 }
 
-
-function currentUser()
+/**
+ * Gets first name of the login user.
+ * @return string first name.
+ */
+function currentUser():?string
 {
     if (!isUserLoggedin()) {
         return;
@@ -876,7 +884,12 @@ function currentUser()
     return $_SESSION['fname'];
 }
 
-
+/**
+ * Inserts html tages (li + a )connectez-vous, inscrivez-vous
+ *  if the user not login if the user logs in  html tages (li + a )
+ * déconnection, user firstname + "panel"
+ * @return string html tags
+ */
 function connectionHtml()
 {
     if (isUserLoggedin()) {
@@ -891,7 +904,10 @@ function connectionHtml()
 </ul>';
 }
 
-
+/**
+ * Logsthe user out. by destoy session
+ * @return void
+ */
 function logout(): void
 {
     if (isUserLoggedin()) {
