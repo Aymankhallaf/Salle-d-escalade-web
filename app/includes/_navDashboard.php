@@ -1,4 +1,4 @@
-<h1 class="dashboard-ttl" id="reservation">Réservation</h1>
+<h1 class="dashboard-ttl" id="reservation">Tableau de bord</h1>
     <nav>
         <ul class="dashboard-menu">
             <li><a class="dashboard-menu__a" href="#profile">Profil</a></li>

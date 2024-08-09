@@ -20,19 +20,19 @@ include 'includes/_notification.php';
 
 <?= include 'includes/_navDashboard.php'; ?>
 
-<main class="dashboard-reservation">
+<main class="dashboard">
     <!-- reservation -->
-    <section class="reservation-details">
+    <section id="reservation" class="tab-dashboard reservation-details">
         <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
         <div id="reservation-details-div">
-
         </div>
-
-
     </section>
     <!-- profile -->
-    <section class="profile-details">
+    <section id="profile" class="tab-dashboard profile-details">
         <?= include 'includes/_profile.php'; ?>
+    </section>
+    <!-- subscription -->
+    <section id="subscription" class="tab-dashboard subscription-details">
     </section>
 
 </main>

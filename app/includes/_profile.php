@@ -1,5 +1,4 @@
 <?php
-
 $accountDetails = getsAccountDetails($dbCo, $_SESSION['idUser']);
 ?>
 

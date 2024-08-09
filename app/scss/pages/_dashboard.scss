@@ -1,4 +1,16 @@
 // to do
+.tab-dashboard {
+    display: none;
+
+    &:target {
+       display: visible;
+    }
+
+    &:first-of-type {
+        display: visible;
+    }
+}
+
 .dashboard {
     &-ttl {
         @extend %page-ttl;
@@ -38,7 +50,7 @@
     }
 }
 
-.reservation{
+.reservation {
     &-edit {
         font-size: 1rem;
         color: $turquoise;
