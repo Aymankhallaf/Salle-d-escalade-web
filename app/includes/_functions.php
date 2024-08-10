@@ -1034,13 +1034,21 @@ function getCategories(PDO $dbCo)
 
 
 
-function getArticlsByCategory(PDO $dbCo, int $idCategory)
+function getArticlsByCategory(PDO $dbCo, int $idCategory, int $limitNumber)
 {
+    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
 
-    $query = $dbCo->prepare("SELECT * FROM `post`
+        addError("referer");
+        redirectToHeader("index.php");
+    }
+    $sqlStatement = "SELECT * FROM `post`
     WHERE id_category = :idCategory
-    ORDER BY `post`.`date_post` DESC");
-    $isQueryOk = $query->execute(["idCategory" => $idCategory]);
+    ORDER BY `post`.`date_post` DESC LIMIT ".intval(htmlspecialchars($limitNumber));
+    $query = $dbCo->prepare($sqlStatement);
+    $isQueryOk = $query->execute([
+        "idCategory" => intval(htmlspecialchars($idCategory))
+     
+    ]);
 
     if (!$isQueryOk) {
         addError("connection");

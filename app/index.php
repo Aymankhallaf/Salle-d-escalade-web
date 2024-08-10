@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
-var_dump($categories =  getCategories($dbCo));
+var_dump(getArticlsByCategory($dbCo, 1, 3));
 ?>
 <main>
     <?php
@@ -94,7 +94,7 @@ var_dump($categories =  getCategories($dbCo));
 
     <!-- events -->
     <?php include 'includes/_events.php'; ?>
-       
+
     <!-- contact us -->
     <a class="sub-heading-container btn contact-us__btn">
         Nos contacter
