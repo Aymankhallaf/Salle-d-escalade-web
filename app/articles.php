@@ -3,14 +3,14 @@ require_once 'includes/_startSession.php';
 include 'includes/_header.php';
 ?>
 <section class="section artcl">
-    <h2 class="sub-heading sub-heading__ttl--red">
+    <h1 class="sub-heading sub-heading__ttl--red">
     les derniers articles
-    </h2>
+    </h1>
     <ol class="artcl-holder">
 
         <?php
         $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $countPages = countPages($dbCo, 2, 10);
+        $countPages = countPages($dbCo, 1, 10);
         $articles =  getArticlsByCategory($dbCo, 1, 10, 1);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
@@ -38,16 +38,15 @@ include 'includes/_header.php';
 
 <nav>
     <ul class="pages-number">
-        <li><a class="pages-number-a" href="">1</a></li>
+        <!-- <li><a class="pages-number-a" href="">1</a></li>
         <li><a class="pages-number-a" href="">2</a></li>
         <li><a class="pages-number-a" href="">3</a></li>
-        <li><a class="pages-number-a" href="">4</a></li>
+        <li><a class="pages-number-a" href="">4</a></li> -->
 
         <?php
-        // for ($i=1; $i <  $pageNumber; $i++) { 
-        //     echo  '<li><a>class="<?= ($i == $pageNumber) ? 'active' : ''; 
-
-
+        for ($i=1; $i <  $countPages; $i++) { 
+            $active = ($i == $pageNumber) ? '--active' : '';
+            echo  '<li><a href="" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; }
         ?>
     </ul>
 </nav>

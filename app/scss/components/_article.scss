@@ -62,10 +62,18 @@
 }
 .pages-number  {
 display: flex;
-gap: 3rem;
+flex-wrap: wrap;
+gap: 2rem;
 &-a{
   @include button($blue-petrol);
   border: white;
+  &:target {
+    @include button($dark-orange);
+
+  }
+  &--active{
+    @include button($dark-orange);
+  }
 }
 
 }
