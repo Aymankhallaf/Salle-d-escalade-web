@@ -1,6 +1,4 @@
 <?php
-// require_once 'includes/_startSession.php';
-
 $categories =  getCategories($dbCo);
 ?>
 

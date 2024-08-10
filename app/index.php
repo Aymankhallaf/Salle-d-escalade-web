@@ -93,7 +93,9 @@ var_dump($categories =  getCategories($dbCo));
     </section>
 
     <!-- events -->
-    <?=include 'includes/_events.php';?>
+    <?php include 'includes/_events.php'; ?>
+       
+    <!-- contact us -->
     <a class="sub-heading-container btn contact-us__btn">
         Nos contacter
     </a>
