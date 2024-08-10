@@ -11,7 +11,7 @@ include 'includes/_header.php';
         <?php
         $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $countPages = countPages($dbCo, 1, 10);
-        $articles =  getArticlsByCategory($dbCo, 1, 10, 1);
+        $articles =  getArticlsByCategory($dbCo, 1, 10,  $pageNumber);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
         }
@@ -46,7 +46,7 @@ include 'includes/_header.php';
         <?php
         for ($i=1; $i <  $countPages; $i++) { 
             $active = ($i == $pageNumber) ? '--active' : '';
-            echo  '<li><a href="" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; }
+            echo  '<li><a href="?page='.$i.'" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; }
         ?>
     </ul>
 </nav>
