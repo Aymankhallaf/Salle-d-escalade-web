@@ -4,7 +4,7 @@ include 'includes/_header.php';
 ?>
 <section class="section artcl">
     <h2 class="sub-heading sub-heading__ttl--red">
-        Les articles
+    les derniers articles
     </h2>
     <ol class="artcl-holder">
 
@@ -38,10 +38,10 @@ include 'includes/_header.php';
 
 <nav>
     <ul class="pages-number">
-        <li><a href="">1</a></li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
+        <li><a class="pages-number-a" href="">1</a></li>
+        <li><a class="pages-number-a" href="">2</a></li>
+        <li><a class="pages-number-a" href="">3</a></li>
+        <li><a class="pages-number-a" href="">4</a></li>
 
         <?php
         // for ($i=1; $i <  $pageNumber; $i++) { 

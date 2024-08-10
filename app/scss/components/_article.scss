@@ -60,4 +60,13 @@
     }
   }
 }
+.pages-number  {
+display: flex;
+gap: 3rem;
+&-a{
+  @include button($blue-petrol);
+  border: white;
+}
+
+}
 
