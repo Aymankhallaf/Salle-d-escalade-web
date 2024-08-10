@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
+var_dump(countPages($dbCo,1,10));
 ?>
 <main>
     <?php

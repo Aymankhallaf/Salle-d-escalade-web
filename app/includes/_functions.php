@@ -1071,8 +1071,8 @@ function addHtlmArticleTtl($article){
 function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage)
 {
     $query = $dbCo->prepare("SELECT COUNT(*) FROM `post` WHERE id_category = :idCategory");
-    $query->execute(['idCategory' => $idCategory]);
+    $query->execute(['idCategory' => intval(htmlspecialchars($idCategory))]);
     $totalArticles = $query->fetchColumn();
 
-    return ceil($totalArticles / $articlesPerPage);
+    return ceil($totalArticles / intval(htmlspecialchars($articlesPerPage)));
 }
