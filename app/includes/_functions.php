@@ -443,7 +443,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
         addError("wrong");
         redirectToHeader("index.php");
     }
-    return $query->fetchAll()? :null;
+    return $query->fetchAll() ?: null;
     // echo json_encode([
     //     'isOk' => $isQueryOk,
     //     $data,
@@ -968,7 +968,7 @@ function logout(): void
  * @param int $id user id.
  * @return array user details.
  */
-function getsAccountDetails(PDO $dbCo, int $id):?array
+function getsAccountDetails(PDO $dbCo, int $id): ?array
 {
     $query = $dbCo->prepare("SELECT lname,fname,birthdate,telephone,
     email,name_adresse,name_city
@@ -1015,9 +1015,10 @@ function accountAddHtml(array $defaultKeys, array $accountDetails)
 
 
 
-function getCategories(PDO $dbCo){
+function getCategories(PDO $dbCo)
+{
 
-    $query = $dbCo->prepare("SELECT name , description  FROM category;");
+    $query = $dbCo->prepare("SELECT id_category,name , description  FROM category;");
     $isQueryOk = $query->execute();
 
     if (!$isQueryOk) {
@@ -1025,6 +1026,4 @@ function getCategories(PDO $dbCo){
         redirectToHeader("index.php");
     }
     return  $query->fetchAll();
-
 }
-
