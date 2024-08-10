@@ -454,6 +454,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 
 
 
+
 /**
  * get a details of reservation.
  * @param PDO $dbCo database connection.
@@ -967,7 +968,7 @@ function logout(): void
  * @param int $id user id.
  * @return array user details.
  */
-function getsAccountDetails(PDO $dbCo, int $id):array
+function getsAccountDetails(PDO $dbCo, int $id):?array
 {
     $query = $dbCo->prepare("SELECT lname,fname,birthdate,telephone,
     email,name_adresse,name_city
@@ -1011,3 +1012,19 @@ function accountAddHtml(array $defaultKeys, array $accountDetails)
 
     return $html;
 }
+
+
+
+function getCategories(PDO $dbCo){
+
+    $query = $dbCo->prepare("SELECT name , description  FROM category;");
+    $isQueryOk = $query->execute();
+
+    if (!$isQueryOk) {
+        addError("wrong");
+        redirectToHeader("index.php");
+    }
+    return  $query->fetchAll();
+
+}
+

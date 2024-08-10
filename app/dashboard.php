@@ -1,9 +1,9 @@
 <?php
 require_once 'includes/_startSession.php';
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
-var_dump(getUserReservationHistory($dbCo,$_SESSION["idUser"]));
+// var_dump(getUserReservationHistory($dbCo,$_SESSION["idUser"]));
 
 //csfr protection
 if (!isServerOk()) {
@@ -21,13 +21,14 @@ require_once 'includes/_config.php';
 include 'includes/_header.php';
 include 'includes/_notification.php';
 ?>
-<?= include 'includes/_navDashboard.php'; ?>
 <main class="dashboard">
+    <?= include 'includes/_navDashboard.php'; ?>
     <!-- reservation -->
     <section id="reservation" class="tab-dashboard reservation-details">
-        <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
-        <div id="reservation-details-div">
-        </div>
+
+    <?= include 'includes/_reservationhistory.php'; ?>
+
+    
     </section>
     <!-- profile -->
     <section id="profile" class="tab-dashboard profile-details">
