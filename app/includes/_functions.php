@@ -440,7 +440,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
     ]);
 
     if (!$isQueryOk) {
-        addError("wrong");
+        addError("connection");
         redirectToHeader("index.php");
     }
     return $query->fetchAll() ?: null;
@@ -741,7 +741,7 @@ function isAccountExist(PDO $dbCo, array $inputData)
         'tel' => $inputData['tel']
     ]);
     if (!$isQueryOk) {
-        addError("wrong");
+        addError("connection");
         redirectToHeader("index.php");
     }
     $result = $query->rowCount();
@@ -839,7 +839,7 @@ function findUser(PDO $dbCo, array $inputData): array | false
         'email' => $inputData['email'],
     ]);
     if (!$isQueryOk) {
-        addError("wrong");
+        addError("connection");
         redirectToHeader("index.php");
     }
     return $query->fetch(PDO::FETCH_ASSOC);
@@ -979,7 +979,7 @@ function getsAccountDetails(PDO $dbCo, int $id): ?array
         'userId' => $id
     ]);
     if (!$isQueryOk) {
-        addError("wrong");
+        addError("connection");
         redirectToHeader("index.php");
     }
 
@@ -987,7 +987,7 @@ function getsAccountDetails(PDO $dbCo, int $id): ?array
     if ($result != 0) {
         return $query->fetchAll()[0];
     }
-    addError("wrong");
+    addError("connection");
     redirectToHeader("index.php");
 }
 
@@ -1014,7 +1014,11 @@ function accountAddHtml(array $defaultKeys, array $accountDetails)
 }
 
 
-
+/**
+ * Gets categories list.
+ * @param PDO $dbCo database connection.
+ * @return array categories list.
+ */
 function getCategories(PDO $dbCo)
 {
 
@@ -1022,7 +1026,24 @@ function getCategories(PDO $dbCo)
     $isQueryOk = $query->execute();
 
     if (!$isQueryOk) {
-        addError("wrong");
+        addError("connection");
+        redirectToHeader("index.php");
+    }
+    return  $query->fetchAll();
+}
+
+
+
+function getArticlsByCategory(PDO $dbCo, int $idCategory)
+{
+
+    $query = $dbCo->prepare("SELECT * FROM `post`
+    WHERE id_category = :idCategory
+    ORDER BY `post`.`date_post` DESC");
+    $isQueryOk = $query->execute(["idCategory" => $idCategory]);
+
+    if (!$isQueryOk) {
+        addError("connection");
         redirectToHeader("index.php");
     }
     return  $query->fetchAll();
