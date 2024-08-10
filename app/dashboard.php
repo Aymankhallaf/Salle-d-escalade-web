@@ -22,17 +22,17 @@ include 'includes/_header.php';
 include 'includes/_notification.php';
 ?>
 <main class="dashboard">
-    <?= include 'includes/_navDashboard.php'; ?>
+    <?php include 'includes/_navDashboard.php'; ?>
     <!-- reservation -->
     <section id="reservation" class="tab-dashboard reservation-details">
 
-    <?= include 'includes/_reservationhistory.php'; ?>
+        <?php include 'includes/_reservationhistory.php'; ?>
 
-    
+
     </section>
     <!-- profile -->
     <section id="profile" class="tab-dashboard profile-details">
-        <?= include 'includes/_profile.php'; ?>
+        <?php include 'includes/_profile.php'; ?>
     </section>
     <!-- subscription -->
     <section id="subscription" class="tab-dashboard subscription-details">
