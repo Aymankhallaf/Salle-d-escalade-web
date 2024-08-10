@@ -9,7 +9,9 @@ include 'includes/_header.php';
     <ol class="artcl-holder">
 
         <?php
-        $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
+        $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $countPages = countPages($dbCo, 2, 10);
+        $articles =  getArticlsByCategory($dbCo, 1, 10, 1);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
         }
@@ -31,6 +33,15 @@ include 'includes/_header.php';
             <a target="_blank" href="#" class=" link artcl-item__link">Lire Plus</a>
         </li> -->
     </ol>
-    <a target="_blank" href="#read-more" class="btn artcl__btn">Plus d’articles</a>
 
 </section>
+
+<nav>
+    <ul class="pages">
+    <?php
+    foreach ($pageNumber as $article) {
+            echo addHtlmArticleTtl($article);
+        }
+        ?>
+    </ul>
+</nav>
