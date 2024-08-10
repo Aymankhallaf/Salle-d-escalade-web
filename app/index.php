@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
+var_dump($categories =  getCategories($dbCo));
 ?>
 <main>
     <?php
