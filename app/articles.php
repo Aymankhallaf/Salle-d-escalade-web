@@ -4,14 +4,14 @@ include 'includes/_header.php';
 ?>
 <section class="section artcl">
     <h1 class="sub-heading sub-heading__ttl--red">
-    les derniers articles
+        les derniers articles
     </h1>
     <ol class="artcl-holder">
 
         <?php
-        $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $countPages = countPages($dbCo, 1, 10);
-        $articles =  getArticlsByCategory($dbCo, 1, 10,  $pageNumber);
+        $articles =  getArticlsByCategory($dbCo, 1, 10,$currentPageNumber);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
         }
@@ -44,9 +44,7 @@ include 'includes/_header.php';
         <li><a class="pages-number-a" href="">4</a></li> -->
 
         <?php
-        for ($i=1; $i <  $countPages; $i++) { 
-            $active = ($i == $pageNumber) ? '--active' : '';
-            echo  '<li><a href="?page='.$i.'" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; }
+        echoPagesNumbers($countPages,$currentPageNumber);
         ?>
     </ul>
 </nav>

@@ -1081,3 +1081,16 @@ function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage)
 
     return ceil($totalArticles / intval(htmlspecialchars($articlesPerPage)));
 }
+
+
+/**
+ * echo pages number
+ * @param int $countPages total number of pages
+ * @param int $currentPageNumber current page number
+ * @return void
+ */
+function echoPagesNumbers(int $countPages,int $currentPageNumber){
+    for ($i=1; $i <  $countPages; $i++) { 
+        $active = ($i == $currentPageNumber) ? '--active' : '';
+        echo  '<li><a href="?page='.$i.'" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; 
+    }}
