@@ -2,9 +2,6 @@
     <h2 class="sub-heading sub-heading__ttl--red">
         les derniers articles
     </h2>
-
-    
-
     <!-- <ol class="artcl-holder">
         <li class="artcl-item">
             <img class="artcl-item__img" src="img/robe.webp" alt="un cordage">
