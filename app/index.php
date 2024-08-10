@@ -106,13 +106,13 @@ var_dump(countPages($dbCo,1,10));
             les derniers articles
         </h2>
         <?php
-        $articles =  getArticlsByCategory($dbCo, 1, 3);
+        $articles =  getArticlsByCategory($dbCo, 1, 3,1);
         foreach ($articles as $article) {
            echo addHtlmArticleTtl($article);
         }
         ?>
 
-        <a target="_blank" href="#read-more" class="btn artcl__btn">Plus d’articles</a>
+            <a target="_blank" href="articles.php" class="btn artcl__btn">Plus d’articles</a>
 
     </section>
 

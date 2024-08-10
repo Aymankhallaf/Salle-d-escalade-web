@@ -1034,20 +1034,25 @@ function getCategories(PDO $dbCo)
 
 
 
-function getArticlsByCategory(PDO $dbCo, int $idCategory, int $limitNumber)
+function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber)
 {
+
     if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
 
         addError("referer");
         redirectToHeader("index.php");
     }
+
+    $offset = ($pageNumber - 1) * $articlesPerPage;
+
     $sqlStatement = "SELECT * FROM `post`
-    WHERE id_category = :idCategory
-    ORDER BY `post`.`date_post` DESC LIMIT ".intval(htmlspecialchars($limitNumber));
+                 WHERE id_category = :idCategory
+                 ORDER BY `post`.`date_post` DESC 
+                 LIMIT " . intval(htmlspecialchars($articlesPerPage))
+        . " OFFSET " . intval(htmlspecialchars($offset));
     $query = $dbCo->prepare($sqlStatement);
     $isQueryOk = $query->execute([
-        "idCategory" => intval(htmlspecialchars($idCategory))
-     
+        "idCategory" => intval(htmlspecialchars($idCategory)),
     ]);
 
     if (!$isQueryOk) {
@@ -1058,13 +1063,13 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $limitNumber)
 }
 
 
-function addHtlmArticleTtl($article){
+function addHtlmArticleTtl($article)
+{
     return '<li class="artcl-item">
-    <img class="artcl-item__img" src='.$article["href_img"].' alt="'.$article["title"].'">
-    <h3 class="artcl-item__ttle">'.$article["title"].'</h3>
+    <img class="artcl-item__img" src=' . $article["href_img"] . ' alt="' . $article["title"] . '">
+    <h3 class="artcl-item__ttle">' . $article["title"] . '</h3>
     <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
 </li>';
-
 }
 
 
