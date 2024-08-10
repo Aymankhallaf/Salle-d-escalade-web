@@ -92,7 +92,9 @@ var_dump($categories =  getCategories($dbCo));
         </ul>
     </section>
 
-    <section aria-labelledby="events">
+    <!-- events -->
+    <?=include 'includes/_events.php';?>
+    <!-- <section aria-labelledby="events">
         <h2 id="events" class="sub-heading sub-heading__ttl--red">Evènements</h2>
         <ul class="card-holder">
             <li class="card card-events">
@@ -121,7 +123,7 @@ var_dump($categories =  getCategories($dbCo));
                 <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
             </li>
         </ul>
-    </section>
+    </section> -->
 
     <a class="sub-heading-container btn contact-us__btn">
         Nos contacter
