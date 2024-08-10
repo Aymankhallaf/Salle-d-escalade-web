@@ -94,37 +94,6 @@ var_dump($categories =  getCategories($dbCo));
 
     <!-- events -->
     <?=include 'includes/_events.php';?>
-    <!-- <section aria-labelledby="events">
-        <h2 id="events" class="sub-heading sub-heading__ttl--red">Evènements</h2>
-        <ul class="card-holder">
-            <li class="card card-events">
-                <img class="card__img" src="img/birthday-25.webp" alt="fille célébrant son anniversaire">
-                <h3 class="card__ttl card__ttl--h3">Anniversaires</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
-
-            <li class="card card-events">
-                <img class="card__img" src="img/competatiopn-s.webp" alt="Un homme participe à une compétition.">
-                <h3 class="card__ttl card__ttl--h3">Compétition</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
-            <li class="card card-events">
-                <img class="card__img" src="img/events-s.webp" alt="Un groupe participe à un événement.">
-                <h3 class="card__ttl card__ttl--h3">Nos évènements</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
-        </ul>
-    </section> -->
-
     <a class="sub-heading-container btn contact-us__btn">
         Nos contacter
     </a>
