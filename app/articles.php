@@ -37,11 +37,17 @@ include 'includes/_header.php';
 </section>
 
 <nav>
-    <ul class="pages">
-    <?php
-    foreach ($pageNumber as $article) {
-            echo addHtlmArticleTtl($article);
-        }
+    <ul class="pages-number">
+        <li><a href="">1</a></li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+
+        <?php
+        // for ($i=1; $i <  $pageNumber; $i++) { 
+        //     echo  '<li><a>class="<?= ($i == $pageNumber) ? 'active' : ''; 
+
+
         ?>
     </ul>
 </nav>
