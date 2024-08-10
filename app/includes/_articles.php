@@ -2,7 +2,10 @@
     <h2 class="sub-heading sub-heading__ttl--red">
         les derniers articles
     </h2>
-    <ol class="artcl-holder">
+
+    
+
+    <!-- <ol class="artcl-holder">
         <li class="artcl-item">
             <img class="artcl-item__img" src="img/robe.webp" alt="un cordage">
             <h3 class="artcl-item__ttle">Masterclass : apprendre l’escalade avec des superstars de la discipline
@@ -19,7 +22,7 @@
             <h3 class="artcl-item__ttle">Suivez Seb Bouin sur les parois du Pic Saint Loup !</h3>
             <a target="_blank" href="#" class=" link artcl-item__link">Lire Plus</a>
         </li>
-    </ol>
+    </ol> -->
     <a target="_blank" href="#read-more" class="btn artcl__btn">Plus d’articles</a>
 
 </section>

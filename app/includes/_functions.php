@@ -1056,3 +1056,13 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $limitNumber)
     }
     return  $query->fetchAll();
 }
+
+
+function addHtlmArticleTtl($article){
+    return '<li class="artcl-item">
+    <img class="artcl-item__img" src='.$article["href_img"].' alt="'.$article["title"].'">
+    <h3 class="artcl-item__ttle">'.$article["title"].'</h3>
+    <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
+</li>';
+
+}

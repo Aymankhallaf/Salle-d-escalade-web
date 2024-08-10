@@ -6,7 +6,7 @@ $resrvationHistory = getUserReservationHistory($dbCo, $_SESSION['idUser']);
 <div id="reservation-details-div">
     <table id="reservation-details-table" class="reservation-details-table">
         <?php
-        foreach($resrvationHistory as $resrvation){
+        foreach ($resrvationHistory as $resrvation) {
 
             echo addHtmlReservation($defaultKeys, $resrvation);
         }
