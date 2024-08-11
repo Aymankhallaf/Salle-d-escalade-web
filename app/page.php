@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
+stripTagsArray($_GET);
 
 $article = getArticleById($dbCo, $_GET['id'])[0];
 ?>
