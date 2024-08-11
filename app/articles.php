@@ -13,7 +13,6 @@ include 'includes/_header.php';
         $countPages = countPages($dbCo, 1, 10);
         $articles =  getArticlsByCategory($dbCo, 1, 10,$currentPageNumber);
         foreach ($articles as $article) {
-            echo $article["id_post"];
             echo addHtlmArticleTtl($article);
         }
         ?>

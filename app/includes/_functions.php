@@ -1080,7 +1080,7 @@ function addHtlmArticleTtl(array $article): string
     return '<li class="artcl-item">
     <img class="artcl-item__img" src="' . $article["href_img"] . '" alt="' . htmlspecialchars($article["title"]) . '">
     <h3 class="artcl-item__ttle">' . htmlspecialchars($article["title"]) . '</h3>
-    <a target="_blank" href="id=' . getFirstNWords($article["title"], 3).'&'.$article["id_post"]. '" class="link artcl-item__link">Lire Plus</a>
+    <a target="_blank" href="page.php?article=' . getFirstNWords($article["title"], 3).'&id='.$article["id_post"]. '" class="link artcl-item__link">Lire Plus</a>
 </li>';
 
 }
