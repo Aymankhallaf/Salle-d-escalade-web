@@ -995,9 +995,9 @@ function getsAccountDetails(PDO $dbCo, int $id): ?array
  * Adds html tags to array of user.
  * @param array $defaultKeys
  * @param array $accountDetails
- * @return string
+ * @return string html tag
  */
-function accountAddHtml(array $defaultKeys, array $accountDetails)
+function accountAddHtml(array $defaultKeys, array $accountDetails):string
 {
 
     $html = '';
@@ -1019,7 +1019,7 @@ function accountAddHtml(array $defaultKeys, array $accountDetails)
  * @param PDO $dbCo database connection.
  * @return array categories list.
  */
-function getCategories(PDO $dbCo)
+function getCategories(PDO $dbCo):array
 {
 
     $query = $dbCo->prepare("SELECT id_category,name , description  FROM category;");
@@ -1033,8 +1033,15 @@ function getCategories(PDO $dbCo)
 }
 
 
-
-function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber)
+/**
+ * Gets articles by categories.
+ * @param PDO $dbCo database connection
+ * @param int $idCategory  id category.
+ * @param int $articlesPerPage  number article per page.
+ * @param int $pageNumber page number(represent offset in sql statement)
+ * @return array
+ */
+function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber):array
 {
 
     if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
@@ -1063,7 +1070,12 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
 }
 
 
-function addHtlmArticleTtl($article)
+/**
+ * add html tag to article title
+ * @param array $article article array has title, href_img,..
+ * @return string sting "html"
+ */
+function addHtlmArticleTtl(array $article):string
 {
     return '<li class="artcl-item">
     <img class="artcl-item__img" src=' . $article["href_img"] . ' alt="' . $article["title"] . '">
@@ -1072,8 +1084,15 @@ function addHtlmArticleTtl($article)
 </li>';
 }
 
-
-function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage)
+/**
+ * Counts number of pages for category 
+ * by defining number article per page.
+ * @param PDO $dbCo database connection.
+ * @param int $idCategory id category.
+ * @param int $articlesPerPage number article per page.
+ * @return int pages number
+ */
+function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage):int
 {
     $query = $dbCo->prepare("SELECT COUNT(*) FROM `post` WHERE id_category = :idCategory");
     $query->execute(['idCategory' => intval(htmlspecialchars($idCategory))]);

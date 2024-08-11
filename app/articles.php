@@ -38,12 +38,7 @@ include 'includes/_header.php';
 
 <nav>
     <ul class="pages-number">
-        <!-- <li><a class="pages-number-a" href="">1</a></li>
-        <li><a class="pages-number-a" href="">2</a></li>
-        <li><a class="pages-number-a" href="">3</a></li>
-        <li><a class="pages-number-a" href="">4</a></li> -->
-
-        <?php
+          <?php
         echoPagesNumbers($countPages,$currentPageNumber);
         ?>
     </ul>
