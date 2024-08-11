@@ -10,14 +10,14 @@ $categories =  getCategories($dbCo);
             <h3 class="card__ttl card__ttl--h3"><?= $categories["1"]["name"] ?></h3>
             <p class="card__txt"><?= $categories["1"]["description"] ?>
             </p>
-            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["1"]['name']); ?>" class="btn card__btn">En savoir plus</a>
+            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["1"]['name']); ?>&id=<?= $categories["1"]['id_category']?>" class="btn card__btn">En savoir plus</a>
         </li>
         <li class="card card-events">
             <img class="card__img" src="img/competatiopn-s.webp" alt="Un homme participe à une compétition.">
             <h3 class="card__ttl card__ttl--h3"><?= $categories["2"]["name"] ?></h3>
             <p class="card__txt"><?= $categories["2"]["description"] ?>
             </p>
-            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["2"]['name']);?>" class="btn card__btn">En savoir plus</a>
+            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["2"]['name']); ?>&id=<?= $categories["2"]['id_category']?>" class="btn card__btn">En savoir plus</a>
         </li>
 
         <li class="card card-events">
@@ -25,7 +25,7 @@ $categories =  getCategories($dbCo);
             <h3 class="card__ttl card__ttl--h3"><?= $categories["3"]["name"] ?></h3>
             <p class="card__txt"><?= $categories["3"]["description"] ?>
             </p>
-            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["3"]['name']);?>" class="btn card__btn">En savoir plus</a>
+            <a target="_blank" href="category.php?name=<?= preg_replace('/\s+/', '-', $categories["3"]['name']); ?>&id=<?= $categories["3"]['id_category']?>" class="btn card__btn">En savoir plus</a>
         </li>
     </ul>
 </section>
