@@ -1072,16 +1072,17 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
 
 /**
  * add html tag to article title
- * @param array $article article array has title, href_img,..
+ * @param array $article article array has title, href_img, id_post
  * @return string sting "html"
  */
 function addHtlmArticleTtl(array $article): string
 {
     return '<li class="artcl-item">
-    <img class="artcl-item__img" src=' . $article["href_img"] . ' alt="' . $article["title"] . '">
-    <h3 class="artcl-item__ttle">' . $article["title"] . '</h3>
-    <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
+    <img class="artcl-item__img" src="' . $article["href_img"] . '" alt="' . htmlspecialchars($article["title"]) . '">
+    <h3 class="artcl-item__ttle">' . htmlspecialchars($article["title"]) . '</h3>
+    <a target="_blank" href="id=' . getFirstNWords($article["title"], 3).'&'.$article["id_post"]. '" class="link artcl-item__link">Lire Plus</a>
 </li>';
+
 }
 
 /**
