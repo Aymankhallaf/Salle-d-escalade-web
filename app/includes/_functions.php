@@ -1071,6 +1071,7 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
 
 
 /**
+ * 
  * add html tag to article title
  * @param array $article article array has title, href_img, id_post
  * @return string sting "html"
@@ -1080,9 +1081,8 @@ function addHtlmArticleTtl(array $article): string
     return '<li class="artcl-item">
     <img class="artcl-item__img" src="' . $article["href_img"] . '" alt="' . htmlspecialchars($article["title"]) . '">
     <h3 class="artcl-item__ttle">' . htmlspecialchars($article["title"]) . '</h3>
-    <a target="_blank" href="page.php?article=' . getFirstNWords($article["title"], 3).'&id='.$article["id_post"]. '" class="link artcl-item__link">Lire Plus</a>
+    <a target="_blank" href="page.php?article=' . getFirstNWords($article["title"], 3).'&id='. $article["id_post"].'" class="link artcl-item__link">Lire Plus</a>
 </li>';
-
 }
 
 /**
@@ -1095,7 +1095,7 @@ function addHtlmArticleTtl(array $article): string
  */
 function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage): int
 {
-    $query = $dbCo->prepare("SELECT COUNT(*) FROM `post` WHERE id_category = :idCategory");
+    $query = $dbCo->prepare("SELECT COUNT(id_post) FROM `post` WHERE id_category = :idCategory");
     $query->execute(['idCategory' => intval(htmlspecialchars($idCategory))]);
     $totalArticles = $query->fetchColumn();
 
@@ -1122,9 +1122,10 @@ function echoPagesNumbers(int $countPages, int $currentPageNumber)
 /**
  * Gets the first number of words and seprated them by-
  * @param string $sentence a sentense
+ * @param int $wordsNumber words number.
  * @return string a string of first number of words seperated by -
  */
-function getFirstNWords($sentence, $wordsNumber):string
+function getFirstNWords(string $sentence, int $wordsNumber): string
 {
     $words = explode(' ', $sentence);
     if (count($words) < $wordsNumber) {
@@ -1134,4 +1135,24 @@ function getFirstNWords($sentence, $wordsNumber):string
     $result = implode('-', $firstThree);
 
     return $result;
+}
+
+
+function getArticleById(PDO $dbCo, int $idPost)
+{
+    $query = $dbCo->prepare("SELECT COUNT(id_post) FROM `post`;");
+    $query->execute();
+    $postNumbers = $query->fetchColumn();
+    if ($idPost > $postNumbers) {
+        addError("referer");
+        redirectToHeader("index.php");
+    }
+    $query = $dbCo->prepare("SELECT * FROM `post`
+     WHERE id_post=:idPost;");
+    $isQueryOk = $query->execute(["idPost" => intval(htmlspecialchars($idPost))]);
+    if (!$isQueryOk) {
+        addError("connection");
+        redirectToHeader("index.php");
+    }
+    return $query->fetchAll();
 }

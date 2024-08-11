@@ -1,6 +1,8 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
+
+var_dump(getArticleById($dbCo,1));
 ?>
 <section class="section artcl">
     <h1 class="sub-heading sub-heading__ttl--red">

@@ -1,9 +1,6 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
-var_dump(countPages($dbCo, 1, 10));
-var_dump(getFirstNWords("hello word", 3));
-var_dump(getFirstNWords("hello word   test test", 3));
 
 ?>
 <main>
