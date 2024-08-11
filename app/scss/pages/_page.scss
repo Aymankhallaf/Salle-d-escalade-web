@@ -1,0 +1,24 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include desktop-only() {
+        margin: 0 auto;
+       width: 53.33rem;
+    }
+    &-img {
+        width: 100%;
+        aspect-ratio: 1.667;
+        object-fit: contain;
+    }
+    &-header {
+        font-size: 1.6875rem;
+    }
+    &-date {
+        text-align: right;
+        color: $black-50;
+    }
+    &-paragraph {
+        line-height: 2rem;
+    }
+}
