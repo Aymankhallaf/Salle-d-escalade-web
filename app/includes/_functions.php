@@ -997,7 +997,7 @@ function getsAccountDetails(PDO $dbCo, int $id): ?array
  * @param array $accountDetails
  * @return string html tag
  */
-function accountAddHtml(array $defaultKeys, array $accountDetails):string
+function accountAddHtml(array $defaultKeys, array $accountDetails): string
 {
 
     $html = '';
@@ -1019,7 +1019,7 @@ function accountAddHtml(array $defaultKeys, array $accountDetails):string
  * @param PDO $dbCo database connection.
  * @return array categories list.
  */
-function getCategories(PDO $dbCo):array
+function getCategories(PDO $dbCo): array
 {
 
     $query = $dbCo->prepare("SELECT id_category,name , description  FROM category;");
@@ -1039,9 +1039,9 @@ function getCategories(PDO $dbCo):array
  * @param int $idCategory  id category.
  * @param int $articlesPerPage  number article per page.
  * @param int $pageNumber page number(represent offset in sql statement)
- * @return array
+ * @return array article lists
  */
-function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber):array
+function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber): array
 {
 
     if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
@@ -1075,7 +1075,7 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
  * @param array $article article array has title, href_img,..
  * @return string sting "html"
  */
-function addHtlmArticleTtl(array $article):string
+function addHtlmArticleTtl(array $article): string
 {
     return '<li class="artcl-item">
     <img class="artcl-item__img" src=' . $article["href_img"] . ' alt="' . $article["title"] . '">
@@ -1092,7 +1092,7 @@ function addHtlmArticleTtl(array $article):string
  * @param int $articlesPerPage number article per page.
  * @return int pages number
  */
-function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage):int
+function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage): int
 {
     $query = $dbCo->prepare("SELECT COUNT(*) FROM `post` WHERE id_category = :idCategory");
     $query->execute(['idCategory' => intval(htmlspecialchars($idCategory))]);
@@ -1108,8 +1108,29 @@ function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage):int
  * @param int $currentPageNumber current page number
  * @return void
  */
-function echoPagesNumbers(int $countPages,int $currentPageNumber){
-    for ($i=1; $i <  $countPages; $i++) { 
+function echoPagesNumbers(int $countPages, int $currentPageNumber)
+{
+    for ($i = 1; $i <  $countPages; $i++) {
         $active = ($i == $currentPageNumber) ? '--active' : '';
-        echo  '<li><a href="?page='.$i.'" class="pages-number-a'.$active.'" href="">'.$i.'</a></li>'; 
-    }}
+        echo  '<li><a href="?page=' . $i . '" class="pages-number-a' . $active . '" href="">' . $i . '</a></li>';
+    }
+}
+
+
+
+/**
+ * Gets the first number of words and seprated them by-
+ * @param string $sentence a sentense
+ * @return string a string of first number of words seperated by -
+ */
+function getFirstNWords($sentence, $wordsNumber):string
+{
+    $words = explode(' ', $sentence);
+    if (count($words) < $wordsNumber) {
+        $wordsNumber = count($words);
+    }
+    $firstThree = array_slice($words, 0, $wordsNumber);
+    $result = implode('-', $firstThree);
+
+    return $result;
+}

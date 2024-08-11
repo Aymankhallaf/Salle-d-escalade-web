@@ -63,16 +63,19 @@
 .pages-number  {
 display: flex;
 flex-wrap: wrap;
-gap: 2rem;
+gap: 1.5rem;
 &-a{
   @include button($blue-petrol);
-  border: white;
+
+  font-size: 0.875rem;
+
   &:target {
     @include button($dark-orange);
-
   }
   &--active{
     @include button($dark-orange);
+    font-size: 0.875rem;
+
   }
 }
 

@@ -1,7 +1,10 @@
 <?php
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
-var_dump(countPages($dbCo,1,10));
+var_dump(countPages($dbCo, 1, 10));
+var_dump(getFirstNWords("hello word", 3));
+var_dump(getFirstNWords("hello word   test test", 3));
+
 ?>
 <main>
     <?php
@@ -106,13 +109,12 @@ var_dump(countPages($dbCo,1,10));
             les derniers articles
         </h2>
         <?php
-        $articles =  getArticlsByCategory($dbCo, 1, 3,1);
+        $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
         foreach ($articles as $article) {
-           echo addHtlmArticleTtl($article);
+            echo addHtlmArticleTtl($article);
         }
         ?>
-
-            <a target="_blank" href="articles.php" class="btn artcl__btn">Plus d’articles</a>
+        <a target="_blank" href="articles.php" class="btn artcl__btn">Plus d’articles</a>
 
     </section>
 
