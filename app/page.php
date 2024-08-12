@@ -2,22 +2,35 @@
 require_once 'includes/_startSession.php';
 stripTagsArray($_GET);
 if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
-    
+
     addError("referer");
     redirectToHeader("index.php");
-}    
+}
 $article = getArticleById($dbCo, intval($_GET['id']))[0];
 include 'includes/_header.php';
 ?>
 
 <main class="page">
-    <source media="(min-width: 960px)" srcset="<?= $article['href_img'] ?>">
-    <img class="page-img" src="<?= $article['href_img'] ?>" alt="<?= $article['title'] ?>">
-    <h1 class="page-header"><?= $article['title'] ?></h1>
-    <p class="page-date">Publish date: <time datetime="<?= $article['date_post'] ?>"><?= $article['date_post'] ?></time>.</p>
-    <p class="page-paragraph"><?= $article['paragraph'] ?></p>
-</main>
+    <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
+    <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
+    <h1 class="page-header"><?= $article['title']; ?></h1>
+    <p class="page-date">Publish date: <time datetime="<?= $article['date_post']; ?>"><?= $article['date_post'] ?></time>.</p>
+    <p class="page-paragraph"><?= $article['paragraph'];?></p>
 
+    
+    <form id="delete-form" class="signup-form" method="POST" action="actions.php">
+        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token']; ?>">
+        <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
+        <input type="hidden" name="action" value="deleteArticle">
+        <button id="delete" type="submit" class="stepper-btn__next">delete</button>
+    </form>
+    <form id="edit-form" class="signup-form" method="POST" action="actions.php">
+        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="action" value="editArticle">
+        <button id="edit" type="submit" class="stepper-btn__next">edit</button>
+    </form>
+</main>
 
 
 <!-- <main class="page">

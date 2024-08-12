@@ -1,0 +1,6 @@
+    <form id="delete-form" class="signup-form" method="POST" action="actions.php">
+        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token']; ?>">
+        <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
+        <input type="hidden" name="action" value="deleteArticle">
+        <button id="delete" type="submit" class="stepper-btn__next">delete</button>
+    </form>
