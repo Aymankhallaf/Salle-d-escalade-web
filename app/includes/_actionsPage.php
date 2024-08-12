@@ -23,7 +23,12 @@
     </form>
 <?php endif; ?>
 
-<?php if (isEditor()) : ?>
+<?php if (isEditor()||isAdmin()) : ?>
     <!-- Admins and Editors can see the edit form -->
-   
+    <form id="edit-form" class="signup-form" method="POST" action="actions.php">
+        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+        <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
+        <input type="hidden" name="action" value="editArticle">
+        <button id="edit" type="submit" class="stepper-btn__next">edit</button>
+    </form>
 <?php endif; ?>

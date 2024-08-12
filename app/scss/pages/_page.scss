@@ -52,3 +52,20 @@
         }
     }
 }
+
+.articl-edit-form {
+    max-width: 22.5rem;
+    padding: 1rem;
+    font-size: 1.125rem;
+    background-color: $sand;
+    &-btn {
+        display: flex;
+        justify-content: space-between;
+        &__cancel {
+            @include button;
+        }
+        &__delete {
+            @include button($dark-orange);
+        }
+    }
+}
