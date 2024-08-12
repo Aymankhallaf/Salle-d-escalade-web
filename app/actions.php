@@ -9,7 +9,6 @@ require_once 'includes/_connection.php';
 if (!isServerOk()) {
     addError('referer');
     redirectToHeader("index.php");
-
 }
 
 if (!isTokenOk($_REQUEST['token'])) {
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //verify action create account
     if ($_REQUEST['action'] === "createAccount") {
-  
+
         //login verification
         if (isUserLoggedin()) {
             addError("userExist");
@@ -43,5 +42,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         createAccount($dbCo, $inputData);
+    }
+
+    //verify action delete articles
+    if ($_REQUEST['action'] === "deleteArticle") {
+
+        //login verification
+        if (!isUserLoggedin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+
+        //admin verification
+        if (!isAdmin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+
+        //operation
+        deleteArticle($dbCo, intval($_REQUEST["idPost"]));
     }
 }

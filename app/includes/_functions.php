@@ -1214,4 +1214,6 @@ function deleteArticle(PDO $dbCo, int $idPost)
         addError("connection");
         redirectToHeader("index.php");
     }
+    addMessage("delete_ok");
+    redirectToHeader("index.php");
 }

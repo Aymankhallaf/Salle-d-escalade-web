@@ -25,13 +25,14 @@ $errors = [
     "login_ko" => "Votre email ou votre mot de passe sont incorrects ou
       créez un compte si vous n'en avez pas",
     "need_login" => "Vous devez vous connecter pour accéder à la page",
-    "wrong" => "something wrong happened"
+    "right_ko" => "Vous n'avez pas le droit de faire cette action"
 
 ];
 $messages = [
     "createAccount_ok" => "Vous avez réussi à créer un compte",
     'logout_ok' => "Déconnexion réussie",
-    "login_ok" => "Connexion réussie"
+    "login_ok" => "Connexion réussie",
+    "delete_ok" => "l'élément a été supprimé avec succès"
 ];
 
 $defaultKeys = [

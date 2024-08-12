@@ -18,7 +18,7 @@ include 'includes/_header.php';
     <p class="page-paragraph"><?= $article['paragraph']; ?></p>
 
     <div class="articl-actions">
-        <button id="articl-actions-delete" type="submit" class="articl-actions-delete-btn">Superimer</button>
+        <button id="articl-actions-delete" type="submit" class="articl-actions-delete-btn">Supprimer</button>
         <button id="articl-actions-edit" type="submit" class="articl-actions-edit-btn">Editer</button>
     </div>
 
@@ -29,7 +29,7 @@ include 'includes/_header.php';
         <input type="hidden" name="action" value="deleteArticle">
         <div class="articl-delete-form-btn">
             <button id="articl-delete-form-btn__cancel" type="button" class="articl-delete-form-btn__cancel">Annuler</button>
-            <button id="articl-delete-form-btn__delete" type="submit" class="articl-delete-form-btn__delete">supprimer</button>
+            <button id="articl-delete-form-btn__delete" type="submit" class="articl-delete-form-btn__delete">Supprimer</button>
         </div>
 
     </form>
