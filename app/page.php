@@ -15,21 +15,30 @@ include 'includes/_header.php';
     <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
     <h1 class="page-header"><?= $article['title']; ?></h1>
     <p class="page-date">Publish date: <time datetime="<?= $article['date_post']; ?>"><?= $article['date_post'] ?></time>.</p>
-    <p class="page-paragraph"><?= $article['paragraph'];?></p>
+    <p class="page-paragraph"><?= $article['paragraph']; ?></p>
 
-    
-    <form id="delete-form" class="signup-form" method="POST" action="actions.php">
+    <div class="articl-actions">
+        <button id="articl-actions-delete" type="submit" class="articl-actions-delete-btn">Superimer</button>
+        <button id="articl-actions-edit" type="submit" class="articl-actions-edit-btn">Editer</button>
+    </div>
+
+    <form id="articl-delete-form" class="articl-delete-form hidden" method="POST" action="actions.php">
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token']; ?>">
+        <label for="idPost">Vous voulez supprimer cette article !!</label>
         <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
         <input type="hidden" name="action" value="deleteArticle">
-        <button id="delete" type="submit" class="stepper-btn__next">delete</button>
+        <div class="articl-delete-form-btn">
+            <button id="articl-delete-form-btn__cancel" type="button" class="articl-delete-form-btn__cancel">Annuler</button>
+            <button id="articl-delete-form-btn__delete" type="submit" class="articl-delete-form-btn__delete">supprimer</button>
+        </div>
+
     </form>
-    <form id="edit-form" class="signup-form" method="POST" action="actions.php">
+    <!-- <form id="edit-form" class="signup-form" method="POST" action="actions.php">
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="action" value="editArticle">
         <button id="edit" type="submit" class="stepper-btn__next">edit</button>
-    </form>
+    </form> -->
 </main>
 
 

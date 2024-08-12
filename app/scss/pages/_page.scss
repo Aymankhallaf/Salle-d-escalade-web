@@ -4,7 +4,7 @@
     gap: 2rem;
     @include desktop-only() {
         margin: 0 auto;
-       width: 53.33rem;
+        width: 53.33rem;
     }
     &-img {
         width: 100%;
@@ -20,5 +20,35 @@
     }
     &-paragraph {
         line-height: 2rem;
+    }
+}
+
+.articl-actions {
+    display: flex;
+    justify-content: space-between;
+    &-delete-btn {
+        font-size: 1rem;
+        color: $dark-red;
+    }
+    &-edit-btn {
+        font-size: 1rem;
+        color: $turquoise;
+    }
+}
+
+.articl-delete-form {
+    max-width: 22.5rem;
+    padding: 1rem;
+    font-size: 1.125rem;
+    background-color: $sand;
+    &-btn {
+        display: flex;
+        justify-content: space-between;
+        &__cancel {
+            @include button;
+        }
+        &__delete {
+            @include button($dark-orange);
+        }
     }
 }

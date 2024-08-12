@@ -69,6 +69,38 @@ export async function callUrlApi(url, method, param) {
 
 }
 
+/**
+ *show hidden element when we click on button
+ *
+ *
+ * @param {string} idButton id hidden buttton.
+ * @param {string} hiddenElement id hidden element.
+ *  * @return {void}
+ */
+ export function showElement(idButton,hiddenElement) {
+
+    document.getElementById(idButton).addEventListener("click",
+        () => document.getElementById(hiddenElement).classList.toggle("hidden")
+    )
+
+}
+
+
+/**
+ *hide shown element when we click on button
+ *
+ *
+ * @param {string} idButton id shown buttton.
+ * @param {string} shownElement id shown element.
+ *  * @return {void}
+ */
+ export function hideElement(idButton,shownElement) {
+
+    document.getElementById(idButton).addEventListener("click",
+        () => document.getElementById(shownElement).classList.toggle("hidden")
+    )
+
+}
 
 
 
@@ -160,11 +192,11 @@ export function verifyReturnData(request, response) {
 }
 
 export function validateReturnDataReservation(data) {
-verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
-verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
-verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
-verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
-verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
+    verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
+    verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
+    verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
+    verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
+    verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
 }
 
 /**
@@ -287,4 +319,5 @@ function editReservation() {
     let idReservation = document.getElementById("dateReservation").dataset.idReservation;
     document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
 
-    }
+}
+
