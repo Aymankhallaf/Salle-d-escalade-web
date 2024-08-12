@@ -1,11 +1,15 @@
 <?php
 session_start();
 require_once 'includes/_connection.php';
+// $inputdata =["email"=>"visggter@creative.com", "tel"=>"06695"];
 
+// var_dump(isAccountExist($dbCo,$inputdata));
 
 //csfr protection
 if (!isServerOk()) {
     addError('referer');
+    redirectToHeader("index.php");
+
 }
 
 if (!isTokenOk($_REQUEST['token'])) {
@@ -20,12 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //verify action create account
     if ($_REQUEST['action'] === "createAccount") {
-        addError("referer");
-        redirectToHeader("index.php");
-
-
+  
         //login verification
-        if (!isUserLoggedin()) {
+        if (isUserLoggedin()) {
             addError("userExist");
             redirectToHeader("connectez-vous.php");
         }

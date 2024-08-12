@@ -26,7 +26,7 @@ require_once 'includes/_header.php';
     ?>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>
-    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" method="POST" action="createAcount.php" novalidate>
+    <form id="signup-form" class="signup-form" aria-label="formulaire d'inscription" method="POST" action="actions.php" novalidate>
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="action" value="createAccount">
         <!-- step 1 -->
