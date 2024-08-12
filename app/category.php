@@ -1,7 +1,12 @@
 <?php
 require_once 'includes/_startSession.php';
 stripTagsArray($_GET);
-verifyIdCategory($dbCo,$_GET["id"]);
+if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
+
+    addError("referer");
+    redirectToHeader("index.php");
+}
+verifyIdCategory($dbCo, $_GET["id"]);
 
 include 'includes/_header.php';
 

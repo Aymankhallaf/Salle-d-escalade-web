@@ -2,6 +2,7 @@
 require_once 'includes/_startSession.php';
 include 'includes/_header.php';
 stripTagsArray($_GET);
+$_GET["id"]
 
 ?>
 <section class="section artcl">

@@ -1154,11 +1154,6 @@ function getArticleById(PDO $dbCo, int $idPost)
 
 function verifyIdCategory(PDO $dbCo,int $idCategory){
 
-    if (!isset($idCategory) || !is_numeric($idCategory)) {
-    
-        addError("referer");
-        redirectToHeader("index.php");
-    }
     if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
     
         addError("referer");
