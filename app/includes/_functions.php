@@ -1034,6 +1034,29 @@ function getCategories(PDO $dbCo): array
 
 
 /**
+ * Gets categories list.
+ * @param PDO $dbCo database connection.
+ * @return string
+ */
+function getCategoryById(PDO $dbCo, int $idCategory):string
+{
+
+    $query = $dbCo->prepare("SELECT name FROM category WHERE id_category=:idCategory;");
+    $isQueryOk = $query->execute(["idCategory" => $idCategory]);
+
+    if (!$isQueryOk) {
+        addError("connection");
+        redirectToHeader("index.php");
+    }
+    return  $query->fetchColumn();
+}
+
+
+
+
+
+
+/**
  * Gets articles by categories.
  * @param PDO $dbCo database connection
  * @param int $idCategory  id category.
@@ -1043,7 +1066,7 @@ function getCategories(PDO $dbCo): array
  */
 function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber): array
 {
- 
+
     $offset = ($pageNumber - 1) * $articlesPerPage;
 
     $sqlStatement = "SELECT * FROM `post`
@@ -1076,7 +1099,7 @@ function addHtlmArticleTtl(array $article): string
     return '<li class="artcl-item">
     <img class="artcl-item__img" src="' . $article["href_img"] . '" alt="' . htmlspecialchars($article["title"]) . '">
     <h3 class="artcl-item__ttle">' . htmlspecialchars($article["title"]) . '</h3>
-    <a target="_blank" href="page.php?article=' . getFirstNWords($article["title"], 3).'&id='. $article["id_post"].'" class="link artcl-item__link">Lire Plus</a>
+    <a target="_blank" href="page.php?article=' . getFirstNWords($article["title"], 3) . '&id=' . $article["id_post"] . '" class="link artcl-item__link">Lire Plus</a>
 </li>';
 }
 
@@ -1153,16 +1176,14 @@ function getArticleById(PDO $dbCo, int $idPost)
 }
 
 
-function verifyIdCategory(PDO $dbCo,int $idCategory){
+function verifyIdCategory(PDO $dbCo, int $idCategory)
+{
 
     if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
-    
+
         addError("referer");
         redirectToHeader("index.php");
     }
 }
 
-function verifyNameCategory(PDO $dbCo,int $idCategory){
-
-   
-}
+function verifyNameCategory(PDO $dbCo, int $idCategory) {}

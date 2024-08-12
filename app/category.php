@@ -1,21 +1,19 @@
 <?php
 require_once 'includes/_startSession.php';
+//veriy data 
 stripTagsArray($_GET);
 if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
 
     addError("referer");
     redirectToHeader("index.php");
 }
-var_dump(getCategories($dbCo));
 verifyIdCategory($dbCo, $_GET["id"]);
-
+//header
 include 'includes/_header.php';
 
 ?>
 <section class="section artcl">
-    <h1 class="sub-heading sub-heading__ttl--red">
-        <?= $_GET["name"] ?>
-    </h1>
+    <h1 class="sub-heading sub-heading__ttl--red"><?=getCategoryById($dbCo, $_GET["id"]);?></h1>
     <ol class="artcl-holder">
 
         <?php

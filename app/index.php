@@ -111,7 +111,7 @@ include 'includes/_header.php';
             echo addHtlmArticleTtl($article);
         }
         ?>
-        <a target="_blank" href="articles.php" class="btn artcl__btn">Plus d’articles</a>
+        <a target="_blank" href="category.php?id=<?= $categories["0"]['id_category']?>" class="btn artcl__btn">Plus d’articles</a>
 
     </section>
 
