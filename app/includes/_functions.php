@@ -1127,11 +1127,11 @@ function countPages(PDO $dbCo, int $idCategory, int $articlesPerPage): int
  * @param int $currentPageNumber current page number
  * @return void
  */
-function echoPagesNumbers(int $countPages, int $currentPageNumber)
+function echoPagesNumbers(int $countPages, int $currentPageNumber, $idCategory)
 {
     for ($i = 1; $i <  $countPages; $i++) {
         $active = ($i == $currentPageNumber) ? '--active' : '';
-        echo  '<li><a href="?page=' . $i . '" class="pages-number-a' . $active . '" href="">' . $i . '</a></li>';
+        echo '<li><a href="?id=' . $idCategory . '&page=' . $i . '" class="pages-number-a' . $active . '">' . $i . '</a></li>';
     }
 }
 

@@ -7,19 +7,31 @@ if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
     addError("referer");
     redirectToHeader("index.php");
 }
-verifyIdCategory($dbCo, $_GET["id"]);
+
+$idCategory = intval($_GET["id"]);
+if (isset($_GET["page"])) {
+    if (!is_numeric($_GET["page"])) {
+
+        addError("referer");
+        redirectToHeader("index.php");
+    }
+    
+    $idPage = intval($_GET["page"]);
+}
+verifyIdCategory($dbCo, $idCategory);
+
 //header
 include 'includes/_header.php';
 
 ?>
 <section class="section artcl">
-    <h1 class="sub-heading sub-heading__ttl--red"><?=getCategoryById($dbCo, $_GET["id"]);?></h1>
+    <h1 class="sub-heading sub-heading__ttl--red"><?= getCategoryById($dbCo, $idCategory); ?></h1>
     <ol class="artcl-holder">
 
         <?php
-        $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $countPages = countPages($dbCo, $_GET['id'], 10);
-        $articles =  getArticlsByCategory($dbCo, $_GET["id"], 10, $currentPageNumber);
+        $currentPageNumber = isset($idPage) ? (int)$idCategory : 1;
+        $countPages = countPages($dbCo, $idCategory, 10);
+        $articles =  getArticlsByCategory($dbCo, $idCategory, 10, $currentPageNumber);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
         }
@@ -30,7 +42,7 @@ include 'includes/_header.php';
 <nav>
     <ul class="pages-number">
         <?php
-        echoPagesNumbers($countPages, $currentPageNumber);
+        echoPagesNumbers($countPages,  $currentPageNumber, $idCategory);
         ?>
     </ul>
 </nav>
