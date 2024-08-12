@@ -2,6 +2,7 @@
     <?php if (isAdmin()) : ?>
         <!-- Admins  can delete and edit -->
         <button id="articl-actions-delete" type="submit" class="articl-actions-delete-btn">Supprimer</button>
+        <button id="articl-actions-edit" type="submit" class="articl-actions-edit-btn">Editer</button>
     <?php elseif (isEditor()) : ?>
         <!-- Editors can only edit -->
         <button id="articl-actions-edit" type="submit" class="articl-actions-edit-btn">Editer</button>
@@ -24,10 +25,5 @@
 
 <?php if (isEditor()) : ?>
     <!-- Admins and Editors can see the edit form -->
-    <form id="edit-form" class="signup-form" method="POST" action="actions.php">
-        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
-        <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
-        <input type="hidden" name="action" value="editArticle">
-        <button id="edit" type="submit" class="stepper-btn__next">edit</button>
-    </form>
+   
 <?php endif; ?>
