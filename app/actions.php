@@ -14,11 +14,11 @@ if (!isTokenOk($_REQUEST['token'])) {
 }
 stripTagsArray($_REQUEST);
 
-//verify methode and action 
+//verify methode 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-
+    //verify action create account
     if ($_REQUEST['action'] === "createAccount") {
         addError("referer");
         redirectToHeader("index.php");
