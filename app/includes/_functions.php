@@ -1043,13 +1043,7 @@ function getCategories(PDO $dbCo): array
  */
 function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, int $pageNumber): array
 {
-
-    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
-
-        addError("referer");
-        redirectToHeader("index.php");
-    }
-
+ 
     $offset = ($pageNumber - 1) * $articlesPerPage;
 
     $sqlStatement = "SELECT * FROM `post`
@@ -1156,3 +1150,19 @@ function getArticleById(PDO $dbCo, int $idPost)
     }
     return $query->fetchAll();
 }
+
+
+function verifyIdCategory(PDO $dbCo,int $idCategory){
+
+    if (!isset($idCategory) || !is_numeric($idCategory)) {
+    
+        addError("referer");
+        redirectToHeader("index.php");
+    }
+    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
+    
+        addError("referer");
+        redirectToHeader("index.php");
+    }
+}
+
