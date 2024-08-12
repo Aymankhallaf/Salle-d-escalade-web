@@ -6,6 +6,7 @@ if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
     addError("referer");
     redirectToHeader("index.php");
 }
+var_dump(getCategories($dbCo));
 verifyIdCategory($dbCo, $_GET["id"]);
 
 include 'includes/_header.php';

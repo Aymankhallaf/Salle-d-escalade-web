@@ -1,8 +1,8 @@
 <?php
 require_once 'includes/_startSession.php';
-include 'includes/_header.php';
 stripTagsArray($_GET);
-$_GET["id"]
+
+include 'includes/_header.php';
 
 ?>
 <section class="section artcl">
@@ -14,7 +14,7 @@ $_GET["id"]
         <?php
         $currentPageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $countPages = countPages($dbCo, 1, 10);
-        $articles =  getArticlsByCategory($dbCo, 1, 10,$currentPageNumber);
+        $articles =  getArticlsByCategory($dbCo, 1, 10, $currentPageNumber);
         foreach ($articles as $article) {
             echo addHtlmArticleTtl($article);
         }
@@ -41,8 +41,8 @@ $_GET["id"]
 
 <nav>
     <ul class="pages-number">
-          <?php
-        echoPagesNumbers($countPages,$currentPageNumber);
+        <?php
+        echoPagesNumbers($countPages, $currentPageNumber);
         ?>
     </ul>
 </nav>

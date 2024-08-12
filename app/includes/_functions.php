@@ -1072,6 +1072,7 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
  */
 function addHtlmArticleTtl(array $article): string
 {
+
     return '<li class="artcl-item">
     <img class="artcl-item__img" src="' . $article["href_img"] . '" alt="' . htmlspecialchars($article["title"]) . '">
     <h3 class="artcl-item__ttle">' . htmlspecialchars($article["title"]) . '</h3>
@@ -1161,3 +1162,7 @@ function verifyIdCategory(PDO $dbCo,int $idCategory){
     }
 }
 
+function verifyNameCategory(PDO $dbCo,int $idCategory){
+
+   
+}
