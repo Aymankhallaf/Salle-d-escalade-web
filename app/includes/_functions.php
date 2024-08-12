@@ -728,28 +728,28 @@ function isCreateAccountDataValide($inputData): bool
 
 /**
  * is account exist ? by checking the exisiting of the email and the telephone.
- * @param PDO $dbCo
- * @param array $inputData
- * @return bool
+ * @param PDO $dbCo database connection.
+ * @param array $inputData array of form
+ * @return bool true if exist, false if not.
  */
-function isAccountExist(PDO $dbCo, array $inputData)
+function isAccountExist(PDO $dbCo, array $inputData): bool
 {
     $query = $dbCo->prepare("SELECT * FROM users 
-    WHERE email=:email || telephone= :tel;");
+    WHERE email = :email OR telephone = :tel");
+
     $isQueryOk = $query->execute([
         'email' => $inputData['email'],
         'tel' => $inputData['tel']
     ]);
+
     if (!$isQueryOk) {
         addError("connection");
         redirectToHeader("index.php");
     }
-    $result = $query->rowCount();
-    if ($result != 0) {
-        return true;
-    }
-    return false;
+
+    return $query->rowCount() > 0;
 }
+
 
 
 
@@ -1038,7 +1038,7 @@ function getCategories(PDO $dbCo): array
  * @param PDO $dbCo database connection.
  * @return string
  */
-function getCategoryById(PDO $dbCo, int $idCategory):string
+function getCategoryById(PDO $dbCo, int $idCategory): string
 {
 
     $query = $dbCo->prepare("SELECT name FROM category WHERE id_category=:idCategory;");
@@ -1084,6 +1084,17 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
         redirectToHeader("index.php");
     }
     return  $query->fetchAll();
+}
+
+
+function verifyIdCategory(PDO $dbCo, int $idCategory)
+{
+
+    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
+
+        addError("referer");
+        redirectToHeader("index.php");
+    }
 }
 
 
@@ -1156,13 +1167,25 @@ function getFirstNWords(string $sentence, int $wordsNumber): string
 }
 
 
-function getArticleById(PDO $dbCo, int $idPost)
+function isArticleExist(PDO $dbCo, int $idPost)
 {
+    if ($idPost < 0) {
+        return false;
+    }
     $query = $dbCo->prepare("SELECT COUNT(id_post) FROM `post`;");
     $query->execute();
     $postNumbers = $query->fetchColumn();
     if ($idPost > $postNumbers) {
-        addError("referer");
+        return false;
+    }
+    return true;
+}
+
+
+function getArticleById(PDO $dbCo, int $idPost)
+{
+    if (!isArticleExist($dbCo,  $idPost)) {
+        addError("connection");
         redirectToHeader("index.php");
     }
     $query = $dbCo->prepare("SELECT * FROM `post`
@@ -1176,14 +1199,19 @@ function getArticleById(PDO $dbCo, int $idPost)
 }
 
 
-function verifyIdCategory(PDO $dbCo, int $idCategory)
+
+function deleteArticle(PDO $dbCo, int $idPost)
 {
 
-    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
-
-        addError("referer");
+    if (!isArticleExist($dbCo,  $idPost)) {
+        addError("refer");
+        redirectToHeader("index.php");
+    }
+    $query = $dbCo->prepare("DELETE FROM `post`
+     WHERE id_post=:idPost;");
+    $isQueryOk = $query->execute(["idPost" => intval(htmlspecialchars($idPost))]);
+    if (!$isQueryOk) {
+        addError("connection");
         redirectToHeader("index.php");
     }
 }
-
-function verifyNameCategory(PDO $dbCo, int $idCategory) {}

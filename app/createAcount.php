@@ -15,31 +15,32 @@ if (!isTokenOk($_REQUEST['token'])) {
 stripTagsArray($_REQUEST);
 
 //verify methode and action 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    addError("referer");
-    redirectToHeader("index.php");
-}
-if ($_REQUEST['action'] !== "createAccount") {
-    addError("referer");
-    redirectToHeader("index.php");
-}
 
-//login verification
-if (!isUserLoggedin()) {
-    addError("userExist");
-    redirectToHeader("connectez-vous.php");
-}
 
-//operation
-$inputData = $_REQUEST;
-if (!isCreateAccountDataValide($inputData)) {
-    redirectToHeader('inscrivez-vous.php');
-}
+    if ($_REQUEST['action'] === "createAccount") {
+        addError("referer");
+        redirectToHeader("index.php");
 
-if (isAccountExist($dbCo, $inputData)) {
-    addError("userExist");
-    redirectToHeader("connectez-vous.php");
-}
 
-createAccount($dbCo, $inputData);
+        //login verification
+        if (!isUserLoggedin()) {
+            addError("userExist");
+            redirectToHeader("connectez-vous.php");
+        }
+
+        //operation
+        $inputData = $_REQUEST;
+        if (!isCreateAccountDataValide($inputData)) {
+            redirectToHeader('inscrivez-vous.php');
+        }
+
+        if (isAccountExist($dbCo, $inputData)) {
+            addError("userExist");
+            redirectToHeader("connectez-vous.php");
+        }
+
+        createAccount($dbCo, $inputData);
+    }
+}
