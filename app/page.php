@@ -1,9 +1,13 @@
 <?php
 require_once 'includes/_startSession.php';
-include 'includes/_header.php';
 stripTagsArray($_GET);
-
-$article = getArticleById($dbCo, $_GET['id'])[0];
+if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
+    
+    addError("referer");
+    redirectToHeader("index.php");
+}    
+$article = getArticleById($dbCo, intval($_GET['id']))[0];
+include 'includes/_header.php';
 ?>
 
 <main class="page">
