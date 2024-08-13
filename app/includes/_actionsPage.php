@@ -27,7 +27,7 @@
     $categories = getCategories($dbCo);
 ?>
     <!-- Admins and Editors can see the edit form -->
-    <form id="articl-edit-form" class="articl-edit-form" method="POST" action="actions.php">
+    <form id="articl-edit-form" class="articl-edit-form hidden" method="POST" action="actions.php">
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
         <input type="hidden" name="action" value="editArticle">
@@ -54,8 +54,8 @@
             </li>
         </ul>
         <ul class="articl-edit-form__btn">
-            <button id="articl-edit-form-btn__update" type="submit" class="articl-edit-form__btn__update">Mise à jour</button>
             <button id="articl-edit-form-btn__cancel" type="button" class="articl-edit-form__btn__cancel">Annuler</button>
+            <button id="articl-edit-form-btn__update" type="submit" class="articl-edit-form__btn__update">Mise à jour</button>
         </ul>
     </form>
 <?php endif; ?>
