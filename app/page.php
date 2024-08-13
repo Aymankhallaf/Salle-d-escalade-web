@@ -22,40 +22,6 @@ include 'includes/_header.php';
     <h1 class="page-header"><?= $article['title']; ?></h1>
     <p class="page-date">Publish date: <time datetime="<?= $article['date_post']; ?>"><?= $article['date_post'] ?></time>.</p>
     <p class="page-paragraph"><?= $article['paragraph']; ?></p>
-
-    <!-- Edit article Form -->
-    <form id="articl-edit-form" class="articl-edit-form" method="POST" action="actions.php">
-        <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
-        <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
-        <input type="hidden" name="action" value="editArticle">
-        <ul class="articl-edit-form-ul">
-            <li class="articl-edit-form__title">
-                <label class="articl-edit-form__title-label" for="titre-edit">Titre:</label>
-                <input class="articl-edit-form__title-input" type="text" name="titre-edit" id="titre-edit" value="<?= $article['title']; ?>" maxlength="100" required />
-            </li>
-            <li class="articl-edit-form__img">
-                <label class="articl-edit-form__img-label" for="img-edit">Image URL:</label>
-                <input class="articl-edit-form__img-input" type="text" name="img-edit" id="img-edit" value="<?= $article['href_img']; ?>" maxlength="255" required />
-            </li>
-            <li class="articl-edit-form__category">
-                <label class="articl-edit-form__category-label" id="" for="">Catégorie:</label>
-                <select class="articl-edit-form__category-input" name="" id="">
-                    <option class="" value="Evènements" required>Evènements</option>
-                    <option class="" value="Compétition" required>Compétition</option>
-                    <option class="" value="Nos évènements" required>Nos évènements</option>
-                    <option class="" value="Articles" required>Articles</option>
-                </select>
-            </li>
-            <li class="articl-edit-form__txt">
-                <label class="articl-edit-form__txt-label" for="">Paragraphe:</label>
-                <textarea id="articl-edit-txt" class="articl-edit-form__txt-input js-autoresizing" id="" name="" rows="4" cols="50"><?= $article['paragraph']; ?></textarea>
-            </li>
-        </ul>
-        <ul class="articl-edit-form__btn">
-            <button id="edit" type="button" class="articl-edit-form__btn__update">Mise à jour</button>
-            <button id="edit" type="submit" class="articl-edit-form__btn__cancel">Annuer</button>
-        </ul>
-    </form>
     <?php
     if (isUserLoggedin() && isEditor()) {
         include 'includes/_actionsPage.php';

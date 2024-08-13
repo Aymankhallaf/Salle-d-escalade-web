@@ -1052,6 +1052,13 @@ function getCategoryById(PDO $dbCo, int $idCategory): string
 }
 
 
+function addOptionHtmlCategory(array $category, int $currentCategory)
+{
+    if ($category["id_category"] === $currentCategory) {
+        return '<option class="selected" value="' . $category["name"] . '" required>' . $category["name"] . '</option>';
+    }
+    return '<option class="" value="' . $category["name"] . '" required>' . $category["name"] . '</option>';
+}
 
 
 
