@@ -90,6 +90,7 @@
         &-input {
             @include input;
             @include simple-arrow;
+            border: $turquoise solid 2px;
         }
     }
     &__txt {
@@ -98,8 +99,9 @@
             @extend %label;
         }
         &-input {
-            @include input;
-            height: auto;
+            overflow: hidden;
+            border: $turquoise solid 2px;
+
         }
     }
     &__btn {

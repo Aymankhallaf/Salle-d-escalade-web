@@ -40,12 +40,15 @@ include 'includes/_header.php';
             <li class="articl-edit-form__category">
                 <label class="articl-edit-form__category-label" id="" for="">Catégorie:</label>
                 <select class="articl-edit-form__category-input" name="" id="">
-                    <option class="" value="" required>Veuillez choisir une option</option>
+                    <option class="" value="Evènements" required>Evènements</option>
+                    <option class="" value="Compétition" required>Compétition</option>
+                    <option class="" value="Nos évènements" required>Nos évènements</option>
+                    <option class="" value="Articles" required>Articles</option>
                 </select>
             </li>
             <li class="articl-edit-form__txt">
                 <label class="articl-edit-form__txt-label" for="">Paragraphe:</label>
-                <textarea class="articl-edit-form__txt-input" id="" name="" rows="4" cols="50"><?= $article['paragraph']; ?></textarea>
+                <textarea id="articl-edit-txt" class="articl-edit-form__txt-input js-autoresizing" id="" name="" rows="4" cols="50"><?= $article['paragraph']; ?></textarea>
             </li>
         </ul>
         <ul class="articl-edit-form__btn">

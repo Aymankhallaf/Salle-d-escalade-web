@@ -77,7 +77,7 @@ export async function callUrlApi(url, method, param) {
  * @param {string} hiddenElement id hidden element.
  *  * @return {void}
  */
- export function showElement(idButton,hiddenElement) {
+export function showElement(idButton, hiddenElement) {
 
     document.getElementById(idButton).addEventListener("click",
         () => document.getElementById(hiddenElement).classList.toggle("hidden")
@@ -87,14 +87,14 @@ export async function callUrlApi(url, method, param) {
 
 
 /**
- *hide shown element when we click on button
  *
+ * Hides shown element when we click on button
  *
  * @param {string} idButton id shown buttton.
  * @param {string} shownElement id shown element.
  *  * @return {void}
  */
- export function hideElement(idButton,shownElement) {
+export function hideElement(idButton, shownElement) {
 
     document.getElementById(idButton).addEventListener("click",
         () => document.getElementById(shownElement).classList.toggle("hidden")
@@ -102,6 +102,14 @@ export async function callUrlApi(url, method, param) {
 
 }
 
+
+
+export function autoSizingTextArea(elementSelector) {
+    document.querySelector(elementSelector).addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    }, false);
+}
 
 
 //error
