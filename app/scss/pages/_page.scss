@@ -54,17 +54,61 @@
 }
 
 .articl-edit-form {
-    max-width: 22.5rem;
-    padding: 1rem;
-    font-size: 1.125rem;
-    background-color: $sand;
-    &-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &__title {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
+    }
+    &__img {
+        @extend %form-container;
+
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
+    }
+
+    &__category {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+            @include simple-arrow;
+        }
+    }
+    &__txt {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+            height: auto;
+        }
+    }
+    &__btn {
         display: flex;
         justify-content: space-between;
         &__cancel {
             @include button;
         }
-        &__delete {
+        &__update {
             @include button($dark-orange);
         }
     }
