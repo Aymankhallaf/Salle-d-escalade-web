@@ -31,8 +31,8 @@ include 'includes/_notification.php';
 
     </section>
     <!-- profile -->
-    <section id="profile" class="tab-dashboard profile-details">
-        <?php include 'includes/_profile.php'; ?>
+    <section id="profil" class="tab-dashboard profile-details">
+        <?php include 'includes/_profil.php'; ?>
     </section>
     <!-- subscription -->
     <section id="subscription" class="tab-dashboard subscription-details">

@@ -9,6 +9,9 @@
     &:first-of-type {
         display: visible;
     }
+    &.active {
+        display: block;
+    }
 }
 
 

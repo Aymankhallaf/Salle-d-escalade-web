@@ -30,6 +30,7 @@ include 'includes/_header.php';
     ?>
 
 </main>
+<script type="module" src="./js/page.js"></script>
 
 
 <!-- <main class="page">
