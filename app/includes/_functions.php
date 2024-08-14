@@ -743,7 +743,7 @@ function isAccountExist(PDO $dbCo, array $inputData): bool
     ]);
 
     if (!$isQueryOk) {
-        addError("connection");
+        addError("userExist");
         redirectToHeader("index.php");
     }
 
@@ -839,7 +839,7 @@ function findUser(PDO $dbCo, array $inputData): array | false
         'email' => $inputData['email'],
     ]);
     if (!$isQueryOk) {
-        addError("connection");
+        addError("find_user_ko");
         redirectToHeader("index.php");
     }
     return $query->fetch(PDO::FETCH_ASSOC);
@@ -1188,11 +1188,9 @@ function isArticleExist(PDO $dbCo, int $idPost): bool
     }
     $query = $dbCo->prepare("SELECT COUNT(id_post) FROM `post`;");
     $query->execute();
-    $postNumbers = $query->fetchColumn();
-    if ($idPost > $postNumbers) {
-        return false;
-    }
-    return true;
+    $postCount = $query->fetchColumn();
+
+    return $postCount > 0;
 }
 
 
@@ -1205,14 +1203,14 @@ function isArticleExist(PDO $dbCo, int $idPost): bool
 function getArticleById(PDO $dbCo, int $idPost): array
 {
     if (!isArticleExist($dbCo,  $idPost)) {
-        addError("connection");
+        addError("article_not_found");
         redirectToHeader("index.php");
     }
     $query = $dbCo->prepare("SELECT * FROM `post`
      WHERE id_post=:idPost;");
     $isQueryOk = $query->execute(["idPost" => intval(htmlspecialchars($idPost))]);
     if (!$isQueryOk) {
-        addError("connection");
+        addError("article_not_found");
         redirectToHeader("index.php");
     }
     return $query->fetchAll();

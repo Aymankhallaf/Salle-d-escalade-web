@@ -30,8 +30,10 @@ $errors = [
     "invalid_title" => "Titre invalide",
     "invalid_urlImg"=>"URL Image invalide",
     "invalid_paragraph"=>"Paragraph invalide",
-    "insertArticle_ko" =>"Erreur de création d'un article"
-
+    "insertArticle_ko" =>"Erreur de création d'un article",
+    "invalid_id" => "id invalide",
+    "article_not_found" => "l'article n'ai pas été trouvé",
+"find_user_ko"=> "Error de utilisateur"
 ];
 $messages = [
     "createAccount_ok" => "Vous avez réussi à créer un compte",

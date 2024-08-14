@@ -2,21 +2,26 @@
 require_once 'includes/_startSession.php';
 
 //verify $_GET and get articles
-stripTagsArray($_GET);
-if (!isset($_GET["id"]) || !is_numeric($_GET["id"])) {
+// $_GET["id"]=237;
+stripTagsArray($_REQUEST);
+if (!isset($_REQUEST["id"]) || !is_numeric($_REQUEST["id"])) {
 
-    addError("referer");
+    addError("invalid_id");
     redirectToHeader("index.php");
 }
-$article = getArticleById($dbCo, intval($_GET['id']))[0];
+$article = getArticleById($dbCo, intval($_REQUEST['id']))[0];
+if (!$article) {
+    addError("article_not_found");
+    redirectToHeader("index.php");
+}
 
 //header
 include 'includes/_header.php';
 ?>
 
 <main class="page">
-<?php include 'includes/_notification.php';
-?>
+    <?php include 'includes/_notification.php';
+    ?>
     <!-- The article -->
     <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
     <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
