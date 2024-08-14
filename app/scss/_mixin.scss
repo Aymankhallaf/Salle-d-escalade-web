@@ -26,8 +26,21 @@
 
 %link {
   text-decoration: underline;
-      color: $blue-petrol;
-      &:visited {
-        color: $dark-orange;
-      }
+  color: $blue-petrol;
+  &:visited {
+    color: $dark-orange;
+  }
+}
+
+/* admin dashboard*/
+@mixin result-container($color: $blue-petrol) {
+  width: 45%;
+  background: $color;
+  border: 2px;
+  border-radius: 10px;
+}
+@mixin result-txt($color: $black) {
+  text-align: center;
+  padding: 1rem;
+  color: $color;
 }
