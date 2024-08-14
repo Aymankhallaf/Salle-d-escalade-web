@@ -1,8 +1,6 @@
 <?php
 require_once 'includes/_startSession.php';
 
-// var_dump($_SESSION);
-
 // var_dump(getUserReservationHistory($dbCo,$_SESSION["idUser"]));
 
 //csfr protection
@@ -36,9 +34,11 @@ include 'includes/_notification.php';
     </section>
     <!-- subscription -->
     <section id="subscription" class="tab-dashboard subscription-details hidden ">
+
     </section>
     <!-- articles -->
     <section id="articles" class="tab-dashboard articles-details">
+        <?php include 'includes/_createArticle.php'; ?>
     </section>
 
 </main>

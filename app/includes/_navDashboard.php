@@ -4,6 +4,6 @@
             <li><a class="dashboard-menu__a" href="#profil">Profile</a></li>
             <li><a class="dashboard-menu__a" href="#reservation">Réservation</a></li>
             <li><a class="dashboard-menu__a" href="#subscription">Abonnement</a></li>
-            <li><a class="dashboard-menu__a" href="#Articles">Articles</a></li>
+            <li><a class="dashboard-menu__a" href="#articles">Articles</a></li>
         </ul>
     </nav>
