@@ -506,7 +506,7 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
             $html .= '<tr class="profile-details-raw">';
             $html .= '<th>' . $defaultKeys[$key] . ':</th>';
             $html .= '<td>' . $value . '</td>';
-            $html .= '<td><a href="" ></a>voir</td>';
+            // $html .= '<td><a href="" ></a>voir</td>';
             $html .= '</tr>';
         }
     }
