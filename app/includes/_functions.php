@@ -641,10 +641,10 @@ function isValideTel($tel, $maxLength): bool
 
 /**
  * is zip code is valide?
- * @param mixed $zipCode zip code / postal code.
+ * @param int $zipCode zip code / postal code.
  * @return bool ture if it is valide or false isn't.
  */
-function isZipCodeValide($zipCode): bool
+function isZipCodeValide(int $zipCode): bool
 {
     if (isFieldEmpty($zipCode) || !preg_match('/^\d{5}$/', $zipCode)) {
         addError("zipCode");
@@ -1181,7 +1181,7 @@ function getFirstNWords(string $sentence, int $wordsNumber): string
  * @param int $idPost id post
  * @return bool true if yes, false if no
  */
-function isArticleExist(PDO $dbCo, int $idPost):bool
+function isArticleExist(PDO $dbCo, int $idPost): bool
 {
     if ($idPost < 0) {
         return false;
@@ -1202,7 +1202,7 @@ function isArticleExist(PDO $dbCo, int $idPost):bool
  * @param int $idPost id post.
  * @return array array of article.
  */
-function getArticleById(PDO $dbCo, int $idPost):array
+function getArticleById(PDO $dbCo, int $idPost): array
 {
     if (!isArticleExist($dbCo,  $idPost)) {
         addError("connection");
@@ -1225,7 +1225,7 @@ function getArticleById(PDO $dbCo, int $idPost):array
  * @param int $idPost id post.
  * @return void
  */
-function deleteArticle(PDO $dbCo, int $idPost):void
+function deleteArticle(PDO $dbCo, int $idPost): void
 {
 
     if (!isArticleExist($dbCo,  $idPost)) {
@@ -1250,7 +1250,7 @@ function deleteArticle(PDO $dbCo, int $idPost):void
  * @param array $inputData article array
  * @return void
  */
-function updateArticle(PDO $dbCo, array $inputData):void
+function updateArticle(PDO $dbCo, array $inputData): void
 {
     $query = $dbCo->prepare("UPDATE post SET 
         title = :title, 
@@ -1270,8 +1270,8 @@ function updateArticle(PDO $dbCo, array $inputData):void
         "idUser" => intval($inputData["idUser"]),
         "datePost" => date("Y-m-d H:i:s")
     ]);
-    
-    
+
+
     if ($isQueryOk) {
         addMessage("updateArticle_ok");
     } else {
@@ -1283,4 +1283,33 @@ function updateArticle(PDO $dbCo, array $inputData):void
 
 
 
+/**
+ * Create a new article
+ * @param PDO $dbCo database connection
+ * @param array $inputData article data
+ * @return void
+ */
+function createArticle(PDO $dbCo, array $inputData): void
+{
+    $query = $dbCo->prepare("INSERT INTO post 
+        (title, href_img, paragraph, id_category, id_user, date_post) 
+        VALUES 
+        (:title, :imgUrl, :paragraph, :idCategory, :idUser, :datePost)");
 
+    $isQueryOk = $query->execute([
+        "title" => $inputData["title"],
+        "imgUrl" => $inputData["imgUrl"],
+        "paragraph" => $inputData["paragraph"],
+        "idCategory" => $inputData["idCategory"],
+        "idUser" => intval($inputData["idUser"]),
+        "datePost" => date("Y-m-d H:i:s")
+    ]);
+
+    if (!$isQueryOk) {
+        addError("insertArticle_ko");
+        redirectToHeader('dashboard.php#articles.php');
+    }
+    addMessage("insertArticle_ok");
+    $lastInsertId = $dbCo->lastInsertId();
+    redirectToHeader('page.php?article=' . getFirstNWords($inputData["title"], 3) . '&id=' . $lastInsertId);
+}

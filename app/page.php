@@ -15,7 +15,8 @@ include 'includes/_header.php';
 ?>
 
 <main class="page">
-
+<?php include 'includes/_notification.php';
+?>
     <!-- The article -->
     <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
     <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">

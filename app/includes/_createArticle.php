@@ -13,7 +13,7 @@
             </li>
             <li class="articl-create-form__img">
                 <label class="articl-create-form__img-label" for="imgUrl">Image URL:</label>
-                <input class="articl-create-form__img-input" type="text" name="imgUrl" id="img-create"  maxlength="255" required />
+                <input class="articl-create-form__img-input" type="text" name="imgUrl" id="img-create" maxlength="255" required />
             </li>
             <li class="articl-create-form__category">
                 <label class="articl-create-form__category-label" for="category">Catégorie:</label>

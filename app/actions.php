@@ -20,7 +20,6 @@ stripTagsArray($_REQUEST);
 //verify methode 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
     //verify action create account
     if ($_REQUEST['action'] === "createAccount") {
 
@@ -44,8 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createAccount($dbCo, $inputData);
     }
 
+
     //verify action delete articles
-    if ($_REQUEST['action'] === "deleteArticle") {
+    elseif ($_REQUEST['action'] === "deleteArticle") {
 
         //login verification
         if (!isUserLoggedin()) {
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         deleteArticle($dbCo, intval($_REQUEST["idPost"]));
     }
     //verify action edit articles
-    if ($_REQUEST['action'] === "editArticle") {
+    elseif ($_REQUEST['action'] === "editArticle") {
 
         //login verification
         if (!isUserLoggedin()) {
@@ -81,19 +81,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("refer");
             redirectToHeader("index.php");
         }
-        if (isFieldEmpty($inputData["title"]) && isMax($inputData["title"], 100)) {
+        if (isFieldEmpty($_REQUEST["title"]) && isMax($_REQUEST["title"], 100)) {
             addError("invalid_title");
         }
-        if (isFieldEmpty($inputData["imgUrl"]) && isMax($inputData["imgUrl"], 255)) {
+        if (isFieldEmpty($_REQUEST["imgUrl"]) && isMax($_REQUEST["imgUrl"], 255)) {
             addError("invalid_urlImg");
         }
-        if (isFieldEmpty($inputData["paragraph"])) {
+        if (isFieldEmpty($_REQUEST["paragraph"])) {
             addError("invalid_paragraph");
-
         }
         //verify category 
         verifyIdCategory($dbCo, $inputData["idCategory"]);
         //operation
         updateArticle($dbCo, $_REQUEST);
+    }
+
+    //verify action create articles
+    elseif ($_REQUEST['action'] === "createArticle") {
+
+        //login verification
+        if (!isUserLoggedin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+
+        //admin and editor verification
+        if (!isAdmin() || !isEditor()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+        if (isFieldEmpty($_REQUEST["title"]) && isMax($inputData["title"], 100)) {
+            addError("invalid_title");
+        }
+        if (isFieldEmpty($_REQUEST["imgUrl"]) && isMax($inputData["imgUrl"], 255)) {
+            addError("invalid_urlImg");
+        }
+        if (isFieldEmpty($_REQUEST["paragraph"])) {
+            addError("invalid_paragraph");
+        }
+        //verify category 
+        verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
+        //operation
+        createArticle($dbCo, $_REQUEST);
     }
 }
