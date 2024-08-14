@@ -25,14 +25,19 @@ $errors = [
     "login_ko" => "Votre email ou votre mot de passe sont incorrects ou
       créez un compte si vous n'en avez pas",
     "need_login" => "Vous devez vous connecter pour accéder à la page",
-    "right_ko" => "Vous n'avez pas le droit de faire cette action"
+    "right_ko" => "Vous n'avez pas le droit de faire cette action",
+    "updateArticle_Ko" => "Error mettre à jour l'article",
+    "invalid_title" => "Titre invalide",
+    "invalid_urlImg"=>"URL Image invalide",
+    "invalid_paragraph"=>"Paragraph invalide"
 
 ];
 $messages = [
     "createAccount_ok" => "Vous avez réussi à créer un compte",
     'logout_ok' => "Déconnexion réussie",
     "login_ok" => "Connexion réussie",
-    "delete_ok" => "l'élément a été supprimé avec succès"
+    "delete_ok" => "l'élément a été supprimé avec succès",
+    "updateArticle_ok" =>"Vous avez réussi à mettre à jour l'article"
 ];
 
 $defaultKeys = [
@@ -44,6 +49,6 @@ $defaultKeys = [
     'name_adresse' => 'Adresse',
     'name_city' => 'Ville',
     'id_reservation' => 'Numéro de réservation',
-    'date_starting' => 'Session Date'
+    'date_starting' => 'Session Date',
 
 ];

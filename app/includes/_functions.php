@@ -535,7 +535,7 @@ function editReservationDetails(
             'date_starting' => $formattedDateStarting,
             'idGym' => $inputData['chosenGym'],
             'idActivity' => $inputData['duration'],
-            "idUser" => $idUser
+            "idUser" => $idUser,
         ]);
 
         if (!$isQueryOk) {
@@ -574,7 +574,7 @@ function isFieldEmpty($field): bool
  * is the field pass the maximum length?
  * @param string $field the field
  * @param int $max a maximum value
- * @return bool true if dost pass the maximum, false if it is
+ * @return bool true if doesnt pass the maximum, false if it is
  */
 function isMax($field, $max): bool
 {
@@ -885,6 +885,8 @@ function isUserLoggedin(): bool
 }
 
 
+
+
 /**
  * is user login as editor?
  * @return bool true if user is login , false if user doesnt.
@@ -1055,9 +1057,9 @@ function getCategoryById(PDO $dbCo, int $idCategory): string
 function addOptionHtmlCategory(array $category, int $currentCategory)
 {
     if ($category["id_category"] === $currentCategory) {
-        return '<option  value="' . $category["name"] . '" required selected>' . $category["name"] . '</option>';
+        return '<option  value="' . $category["id_category"] . '" required selected>' . $category["name"] . '</option>';
     }
-    return '<option class="" value="' . $category["name"] . '" required>' . $category["name"] . '</option>';
+    return '<option class="" value="' . $category["id_category"] . '" required>' . $category["name"] . '</option>';
 }
 
 
@@ -1173,8 +1175,13 @@ function getFirstNWords(string $sentence, int $wordsNumber): string
     return $result;
 }
 
-
-function isArticleExist(PDO $dbCo, int $idPost)
+/**
+ * is Article Exist?
+ * @param PDO $dbCo data base connection.
+ * @param int $idPost id post
+ * @return bool true if yes, false if no
+ */
+function isArticleExist(PDO $dbCo, int $idPost):bool
 {
     if ($idPost < 0) {
         return false;
@@ -1189,7 +1196,13 @@ function isArticleExist(PDO $dbCo, int $idPost)
 }
 
 
-function getArticleById(PDO $dbCo, int $idPost)
+/**
+ * Gets article by id.
+ * @param PDO $dbCo database connection.
+ * @param int $idPost id post.
+ * @return array array of article.
+ */
+function getArticleById(PDO $dbCo, int $idPost):array
 {
     if (!isArticleExist($dbCo,  $idPost)) {
         addError("connection");
@@ -1206,8 +1219,13 @@ function getArticleById(PDO $dbCo, int $idPost)
 }
 
 
-
-function deleteArticle(PDO $dbCo, int $idPost)
+/**
+ * Deletes article.
+ * @param PDO $dbCo database connection.
+ * @param int $idPost id post.
+ * @return void
+ */
+function deleteArticle(PDO $dbCo, int $idPost):void
 {
 
     if (!isArticleExist($dbCo,  $idPost)) {
@@ -1224,3 +1242,45 @@ function deleteArticle(PDO $dbCo, int $idPost)
     addMessage("delete_ok");
     redirectToHeader("index.php");
 }
+
+
+/**
+ * update aricle
+ * @param PDO $dbCo database connection
+ * @param array $inputData article array
+ * @return void
+ */
+function updateArticle(PDO $dbCo, array $inputData):void
+{
+    $query = $dbCo->prepare("UPDATE post SET 
+        title = :title, 
+        href_img = :imgUrl,
+        paragraph = :paragraph,
+        id_category = :idCategory, 
+        id_user = :idUser,
+        date_post = :datePost
+        WHERE post.id_post = :idPost");
+
+    $isQueryOk = $query->execute([
+        "idPost" => intval($inputData["idPost"]),
+        "title" => $inputData["title"],
+        "imgUrl" => $inputData["imgUrl"],
+        "paragraph" => $inputData["paragraph"],
+        "idCategory" => $inputData["idCategory"],
+        "idUser" => intval($inputData["idUser"]),
+        "datePost" => date("Y-m-d H:i:s")
+    ]);
+    
+    
+    if ($isQueryOk) {
+        addMessage("updateArticle_ok");
+    } else {
+        addError("updateArticle_ko");
+    }
+
+    redirectToHeader('page.php?article=' . getFirstNWords($inputData["title"], 3) . '&id=' . $inputData["idPost"]);
+}
+
+
+
+

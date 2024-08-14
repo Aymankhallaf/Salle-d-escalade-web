@@ -28,28 +28,29 @@
 ?>
     <!-- Admins and Editors can see the edit form -->
     <form id="articl-edit-form" class="articl-edit-form hidden" method="POST" action="actions.php">
+        <input type="hidden" name="action" value="editArticle">
         <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
         <input type="hidden" name="idPost" value="<?= $article['id_post']; ?>">
-        <input type="hidden" name="action" value="editArticle">
+        <input type="hidden" name="idUser" value="<?= $_SESSION['idUser']; ?>">
         <ul class="articl-edit-form-ul">
             <li class="articl-edit-form__title">
-                <label class="articl-edit-form__title-label" for="titre-edit">Titre:</label>
-                <input class="articl-edit-form__title-input" type="text" name="titre-edit" id="titre-edit" value="<?= $article['title']; ?>" maxlength="100" required />
+                <label class="articl-edit-form__title-label" for="title">Titre:</label>
+                <input class="articl-edit-form__title-input" type="text" name="title" id="title-edit" value="<?= $article['title']; ?>" maxlength="100" required />
             </li>
             <li class="articl-edit-form__img">
-                <label class="articl-edit-form__img-label" for="img-edit">Image URL:</label>
-                <input class="articl-edit-form__img-input" type="text" name="img-edit" id="img-edit" value="<?= $article['href_img']; ?>" maxlength="255" required />
+                <label class="articl-edit-form__img-label" for="imgUrl">Image URL:</label>
+                <input class="articl-edit-form__img-input" type="text" name="imgUrl" id="img-edit" value="<?= $article['href_img']; ?>" maxlength="255" required />
             </li>
             <li class="articl-edit-form__category">
-                <label class="articl-edit-form__category-label" for="category-edit">Catégorie:</label>
-                <select class="articl-edit-form__category-input" name="category-edit" id="category-edit" required>
+                <label class="articl-edit-form__category-label" for="category">Catégorie:</label>
+                <select class="articl-edit-form__category-input" name="idCategory" id="category-edit" required>
                     <?php foreach ($categories as $category) : ?>
                         <?php echo addOptionHtmlCategory($category, $article['id_category']); ?>
                     <?php endforeach; ?>
                 </select>
             </li>
             <li class="articl-edit-form__txt">
-                <label class="articl-edit-form__txt-label" for="articl-edit-txt">Paragraphe:</label>
+                <label class="articl-edit-form__txt-label" for="paragraph">Paragraphe:</label>
                 <textarea id="articl-edit-txt" class="articl-edit-form__txt-input js-autoresizing" name="paragraph" rows="4" cols="50" required><?= $article['paragraph']; ?></textarea>
             </li>
         </ul>

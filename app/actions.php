@@ -62,4 +62,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //operation
         deleteArticle($dbCo, intval($_REQUEST["idPost"]));
     }
+    //verify action edit articles
+    if ($_REQUEST['action'] === "editArticle") {
+
+        //login verification
+        if (!isUserLoggedin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+
+        //admin and editor verification
+        if (!isAdmin() || !isEditor()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+        //verify article
+        if (!isArticleExist($dbCo,  $_REQUEST["idPost"])) {
+            addError("refer");
+            redirectToHeader("index.php");
+        }
+        if (isFieldEmpty($inputData["title"]) && isMax($inputData["title"], 100)) {
+            addError("invalid_title");
+        }
+        if (isFieldEmpty($inputData["imgUrl"]) && isMax($inputData["imgUrl"], 255)) {
+            addError("invalid_urlImg");
+        }
+        if (isFieldEmpty($inputData["paragraph"])) {
+            addError("invalid_paragraph");
+
+        }
+        //verify category 
+        verifyIdCategory($dbCo, $inputData["idCategory"]);
+        //operation
+        updateArticle($dbCo, $_REQUEST);
+    }
 }
