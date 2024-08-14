@@ -1,19 +1,12 @@
 // to do
 .tab-dashboard {
-    display: none;
-
-    &:target {
-        display: visible;
-    }
-
-    &:first-of-type {
-        display: visible;
+    &.hidden {
+        display: none;
     }
     &.active {
-        display: block;
+        @include centering;
     }
 }
-
 
 .dashboard {
     &-ttl {
@@ -32,16 +25,15 @@
             &:target {
                 @include button($dark-orange);
             }
-            &.active{
+            &.active {
                 @include button($dark-orange);
-
             }
         }
     }
 }
 
 .reservation-details {
-    @include centering;
+    // @include centering;
     margin-bottom: 2rem;
     &-tll {
         text-align: left;
@@ -70,7 +62,7 @@
 }
 
 .profile-details {
-    @include centering;
+    // @include centering;
     margin-bottom: 2rem;
     &-tll {
         text-align: left;

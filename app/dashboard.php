@@ -23,19 +23,22 @@ include 'includes/_notification.php';
 ?>
 <main class="dashboard">
     <?php include 'includes/_navDashboard.php'; ?>
+    <!-- profile -->
+    <section id="profil" class="tab-dashboard.active profile-details ">
+        <?php include 'includes/_profil.php'; ?>
+    </section>
     <!-- reservation -->
-    <section id="reservation" class="tab-dashboard reservation-details">
+    <section id="reservation" class="tab-dashboard.hidden reservation-details">
 
         <?php include 'includes/_reservationhistory.php'; ?>
 
 
     </section>
-    <!-- profile -->
-    <section id="profil" class="tab-dashboard profile-details">
-        <?php include 'includes/_profil.php'; ?>
-    </section>
     <!-- subscription -->
-    <section id="subscription" class="tab-dashboard subscription-details">
+    <section id="subscription" class="tab-dashboard subscription-details hidden ">
+    </section>
+    <!-- articles -->
+    <section id="articles" class="tab-dashboard articles-details">
     </section>
 
 </main>
