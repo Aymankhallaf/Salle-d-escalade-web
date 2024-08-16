@@ -2,7 +2,7 @@
 $categories =  getCategories($dbCo);
 ?>
 
-<section aria-labelledby="events">
+<section class="section" aria-labelledby="events">
     <h2 id="events" class="sub-heading sub-heading__ttl--red">Evènements</h2>
     <ul class="card-holder">
         <li class="card card-events">
