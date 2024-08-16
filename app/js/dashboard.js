@@ -1,4 +1,4 @@
-//liten to change in url.
+//listen to change in url.
 window.addEventListener('load', () => {
     const currentHash = window.location.hash.substring(1);
     if (currentHash) {

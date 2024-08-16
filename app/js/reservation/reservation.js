@@ -119,7 +119,7 @@ function editReservation(method, action) {
 
         F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
-        document.location.href = `/pannier.php?idReservation=${urlParam["idReservation"]}&token=${F.getToken()}`
+        document.location.href = `/panier.php?idReservation=${urlParam["idReservation"]}&token=${F.getToken()}`
 
     })
 }

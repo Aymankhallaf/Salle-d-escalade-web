@@ -524,10 +524,10 @@ function getAReservationDetailsUser(
 
 
 /**
- * Adds html tags to array of user.
- * @param array $defaultKeys
- * @param array $accountDetails
- * @return string
+ * Adds html tags to array of reservation.
+ * @param array $defaultKeys keys of reservation array, like "id_reservation"
+ * @param array $reservationHistory a reservationhistory.
+ * @return string html tag
  */
 function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
@@ -541,14 +541,20 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="?id-reservation='.$reservationHistory["id_reservation"].'" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation='.$reservationHistory["id_reservation"].'&&token='.$_SESSION["token"].'" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;
 }
 
 
-
+/**
+ * Edit reservation.
+ * @param PDO $dbCo database connection
+ * @param array $inputData reservation data
+ * @param int $idUser user id.
+ * @return void
+ */
 function editReservationDetails(
     PDO $dbCo,
     array $inputData,

@@ -288,7 +288,7 @@ export function displayReservation(reservation) {
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
     document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
-    document.getElementById('reservation-edit').addEventListener("click", editReservation);
+    document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
 
 }
 
@@ -319,13 +319,13 @@ function cancelReservation() {
 
 
 /**
- *canel reservation by deleting it from database
+ *Edits reservation.
  *
  */
-function editReservation() {
+function editReservationUrl() {
     let token = getToken();
     let idReservation = document.getElementById("dateReservation").dataset.idReservation;
-    document.location.href = `/panier.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+    document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
 
 }
 
