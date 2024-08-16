@@ -1,72 +1,48 @@
+window.addEventListener('load', () => {
+    const currentHash = window.location.hash.substring(1);
+    if (currentHash) {
+        activateTab(currentHash);
+    }
+});
     const menuLinks = document.querySelectorAll('.dashboard-menu__a');
-    const tabs = document.querySelectorAll('.tab-dashboard');
+    const tabs = document.querySelectorAll('.js-tab-dashboard');
 
    
-
+console.log(menuLinks);
     
-//     menuLinks.forEach(link => {
-//         link.addEventListener('click', function (event) {
-//             event.preventDefault(); 
-//             const targetTabId = this.getAttribute('href').substring(1);
-//             activateTab(targetTabId);
-//         });
-//     });
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetTabId = this.getAttribute('href').substring(1);
+            activateTab(targetTabId);
 
-//     if (tabs.length > 0) {
-//         activateTab(tabs[0].id);document.addEventListener('DOMContentLoaded', function () {
-//             const menuLinks = document.querySelectorAll('.dashboard-menu__a');
-//             const tabs = document.querySelectorAll('.tab-dashboard');
-        
-//             // Define the activateTab function before it's used
-//             function activateTab(tabId) {
-//                 tabs.forEach(tab => {
-//                     if (tab.id === tabId) {
-//                         tab.classList.add('active');
-//                     } else {
-//                         tab.classList.remove('active');
-//                     }
-//                 });
-        
-//                 menuLinks.forEach(link => {
-//                     if (link.getAttribute('href').substring(1) === tabId) {
-//                         link.classList.add('active');
-//                     } else {
-//                         link.classList.remove('active');
-//                     }
-//                 });
-//             }
-        
-//             // Add event listeners to menu links
-//             menuLinks.forEach(link => {
-//                 link.addEventListener('click', function (event) {
-//                     event.preventDefault(); 
-//                     const targetTabId = this.getAttribute('href').substring(1);
-//                     activateTab(targetTabId);
-//                 });
-//             });
-        
-//             // Activate the first tab on page load
-//             if (tabs.length > 0) {
-//                 activateTab(tabs[0].id);
-//             }
-//         });
-        
-//     }
-// });
+                     
 
-//  function activateTab(tabId) {
-//         tabs.forEach(tab => {            if (tab.id === tabId) {
-//                 tab.classList.add('active');
-//             } else {
-//                 tab.classList.remove('active');
-//             }
-//         });
+        });
+    });
 
-//         menuLinks.forEach(link => {
-//             if (link.getAttribute('href').substring(1) === tabId) {
-//                 link.classList.add('active');
-//             } else {
-//                 link.classList.remove('active');
-//             }
-//         });
-//     }
+    function activateTab(tabId) {
+                tabs.forEach(tab => {
+                    if (tab.id !== tabId) {
+                        tab.classList.add('hidden');
+                        tab.classList.remove('tab-dashboard--active');
+                    } 
+                    else {
+                        console.log("yes");
+                        tab.classList.remove('hidden');
+                        tab.classList.add('tab-dashboard--active');
+                    }
+                    
+                });
+                const currentUrl = window.location.hash.substring(1);
+             
+                menuLinks.forEach(link => {
+                    
+               if (link.getAttribute('href').substring(1) === tabId)
+                 {
+                   link.classList.add('active-btn-tab');
+                 } else {
+                   link.classList.remove('active-btn-tab');
+                        }
+                        });           
+            }

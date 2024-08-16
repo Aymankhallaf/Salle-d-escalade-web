@@ -22,22 +22,22 @@ include 'includes/_notification.php';
 <main class="dashboard">
     <?php include 'includes/_navDashboard.php'; ?>
     <!-- profile -->
-    <section id="profil" class="tab-dashboard.active profile-details ">
+    <section id="profil" class="profile-details js-tab-dashboard tab-dashboard--active">
         <?php include 'includes/_profil.php'; ?>
     </section>
     <!-- reservation -->
-    <section id="reservation" class="tab-dashboard.hidden reservation-details">
+    <section id="reservation" class="reservation-details js-tab-dashboard hidden ">
 
         <?php include 'includes/_reservationhistory.php'; ?>
 
 
     </section>
     <!-- subscription -->
-    <section id="subscription" class="tab-dashboard subscription-details hidden ">
+    <section id="subscription" class="subscription-details js-tab-dashboard hidden ">
 
     </section>
     <!-- articles -->
-    <section id="articles" class="tab-dashboard articles-details">
+    <section id="articles" class="articles-details js-tab-dashboard hidden">
         <?php include 'includes/_createArticle.php'; ?>
     </section>
 
@@ -45,6 +45,7 @@ include 'includes/_notification.php';
 
 
 <script type="module" src="./js/reservationDetails.js"></script>
+<script type="module" src="./js/dashboard.js"></script>
 
 <?php
 include 'includes/_footer.php';

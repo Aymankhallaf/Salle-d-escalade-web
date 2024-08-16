@@ -1,13 +1,3 @@
-// to do
-.tab-dashboard {
-    &.hidden {
-        display: none;
-    }
-    &.active {
-        @include centering;
-    }
-}
-
 .dashboard {
     &-ttl {
         @extend %page-ttl;
@@ -33,8 +23,6 @@
 }
 
 .reservation-details {
-    // @include centering;
-    margin-bottom: 2rem;
     &-tll {
         text-align: left;
         font-size: 1.25rem;
@@ -62,8 +50,6 @@
 }
 
 .profile-details {
-    // @include centering;
-    margin-bottom: 2rem;
     &-tll {
         text-align: left;
         font-size: 1.25rem;
@@ -80,7 +66,6 @@
 }
 
 .articl-create-form {
-
     &-ul {
         display: flex;
         flex-direction: column;
@@ -125,7 +110,6 @@
         &-input {
             overflow: hidden;
             border: $turquoise solid 2px;
-
         }
     }
     &__btn {
@@ -140,3 +124,10 @@
     }
 }
 
+.tab-dashboard--active {
+    @include centering;
+    margin-bottom: 2rem;
+}
+.active-btn-tab {
+    background: $dark-red;
+}

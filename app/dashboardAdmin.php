@@ -13,11 +13,11 @@ var_dump($_SESSION);
     <nav>
         <ul class="dashboard-menu">
             <li><a class="dashboard-menu__a" href="#profil">Aperçu</a></li>
-            <li><a class="dashboard-menu__a" href="#reservation">Réservation</a></li>
-            <li><a class="dashboard-menu__a" href="#subscription">Abonnement</a></li>
-            <li><a class="dashboard-menu__a" href="#articles">Articles</a></li>
-            <li><a class="dashboard-menu__a" href="#articles">categories</a></li>
-            <li><a class="dashboard-menu__a" href="#users">Utilisers</a></li>
+            <li><a class="dashboard-menu__a hidden" href="#reservation">Réservation</a></li>
+            <li><a class="dashboard-menu__a hidden" href="#subscription">Abonnement</a></li>
+            <li><a class="dashboard-menu__a hidden" href="#articles">Articles</a></li>
+            <li><a class="dashboard-menu__a hidden" href="#articles">categories</a></li>
+            <li><a class="dashboard-menu__a hidden" href="#users">Utilisers</a></li>
         </ul>
     </nav>
     <h2 class="overview-ttl">Aperçu</h2>
