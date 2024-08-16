@@ -19,6 +19,7 @@ $errors = [
     "confirmpwd" => "Les mots de passe ne correspondent pas.",
     "userExist" => "l'utilisateur est déjà enregistré, veuillez vous connecter",
     'empty' => 'Un des champs est vide',
+    'numeric' => "n'est pas une valeur numérique",
     'max' => 'la valeur est trop longue',
     'zipCode' => 'le postal code est invalide',
     "createAccount_ko" => "création de compte échouée.",
@@ -29,19 +30,19 @@ $errors = [
     "right_ko" => "Vous n'avez pas le droit de faire cette action",
     "updateArticle_Ko" => "Error mettre à jour l'article",
     "invalid_title" => "Titre invalide",
-    "invalid_urlImg"=>"URL Image invalide",
-    "invalid_paragraph"=>"Paragraph invalide",
-    "insertArticle_ko" =>"Erreur de création d'un article",
+    "invalid_urlImg" => "URL Image invalide",
+    "invalid_paragraph" => "Paragraph invalide",
+    "insertArticle_ko" => "Erreur de création d'un article",
     "invalid_id" => "id invalide",
     "article_not_found" => "l'article n'ai pas été trouvé",
-"find_user_ko"=> "Error de utilisateur"
+    "find_user_ko" => "Error de utilisateur"
 ];
 $messages = [
     "createAccount_ok" => "Vous avez réussi à créer un compte",
     'logout_ok' => "Déconnexion réussie",
     "login_ok" => "Connexion réussie",
     "delete_ok" => "l'élément a été supprimé avec succès",
-    "updateArticle_ok" =>"Vous avez réussi à mettre à jour l'article",
+    "updateArticle_ok" => "Vous avez réussi à mettre à jour l'article",
     "insertArticle_ok" => "Votre article a été publié."
 ];
 

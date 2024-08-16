@@ -577,16 +577,32 @@ function editReservationDetails(
 /**
  * is a field is empty?
  * @param string $field fild name
- * @return bool true if itnt empty, flase if it is
+ * @return bool true if it isnt empty, flase if it is
  */
 function isFieldEmpty($field): bool
 {
-    if (!isset($field) || strlen($field) === 0) {
+    if (!isset($field) || strlen($field) === 0 || empty($field)) {
         addError('empty');
+        return true;
+    }
+    return true;
+}
+
+
+/**
+ * is this field numeric?
+ * @param string $value a value
+ * @return bool true if it is numeric, false if it isnot.
+ */
+function isFieldnumber($field):bool{
+    if (!is_numeric($field)) {
+        addError('numeric');
         return false;
     }
-    return false;
+    return true;
 }
+
+
 
 
 
