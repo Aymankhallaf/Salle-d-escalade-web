@@ -102,16 +102,18 @@ include 'includes/_header.php';
 
     <!-- last 3 articles from category articles -->
     <section class="section artcl">
-        <h2 class="sub-heading sub-heading__ttl--red">
-            les derniers articles
-        </h2>
-        <?php
-        $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
-        foreach ($articles as $article) {
-            echo addHtlmArticleTtl($article);
-        }
-        ?>
-        <a target="_blank" href="category.php?id=<?= $categories["0"]['id_category']?>" class="btn artcl__btn">Plus d’articles</a>
+        <ol class="artcl-holder">
+            <h2 class="sub-heading sub-heading__ttl--red">
+                les derniers articles
+            </h2>
+            <?php
+            $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
+            foreach ($articles as $article) {
+                echo addHtlmArticleTtl($article);
+            }
+            ?>
+        </ol>
+        <a target="_blank" href="category.php?id=<?= $categories["0"]['id_category'] ?>" class="btn artcl__btn">Plus d’articles</a>
 
     </section>
 
