@@ -344,21 +344,33 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate): void
 
 
 
-/** to do complete
+/**
  * check reservation valid.
  * @param array $inputData
  * @return void
  */
-function isReservationValid(array $inputData)
+function isReservationValid(array $inputData, $idUser)
 {
 
     if ($inputData['chosenGym'] !== '1' && $inputData['chosenGym'] !== '2') {
         triggerError('chosenGym');
     }
-    if (!isValidDate($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
+    if (!isValidDate($inputData['chosenDate']) || isFieldEmpty($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
     }
-    //To do verify other params
+    if(isFieldEmpty($idUser) || !isFieldNumber($idUser) || !is_int($idUser) ){
+        triggerError('find_user_ko');
+    }
+    if(isFieldEmpty( $inputData['participants']) || !isFieldNumber( $inputData['participants'])){
+        triggerError('participants');
+    }
+
+    //id activity = $inputData['duration']
+    if(isFieldEmpty( $inputData['duration']) || !isFieldNumber( $inputData['participants'])){
+        triggerError('chosenActivity');
+    }
+
+
 
 }
 
@@ -399,12 +411,12 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
        id_user, id_gym , id_activity, date_reservation,total_price) 
        VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP, :totalPrice);");
     $isQueryOk = $query->execute([
-        'nb_particpation' => $inputData['participants'],
+        'nb_particpation' => intval($inputData['participants']),
         'date_starting' => $formattedDateStarting,
-        'idGym' => $inputData['chosenGym'],
-        'idActivity' => $inputData['duration'],
-        'idUser' => $idUser,
-        "totalPrice" => $inputData['participants'] * $price
+        'idGym' => intval($inputData['chosenGym']),
+        'idActivity' => intval($inputData['duration']),
+        'idUser' => intval($idUser),
+        "totalPrice" => intval($inputData['participants']) * $price
     ]);
 
     if (!$isQueryOk) {
@@ -575,9 +587,9 @@ function editReservationDetails(
 
 
 /**
- * is a field is empty?
- * @param string $field fild name
- * @return bool true if it isnt empty, flase if it is
+ * is a field is empty or equal 0?
+ * @param string $field fild name.
+ * @return bool true if it isnt empty, flase if it is.
  */
 function isFieldEmpty($field): bool
 {
@@ -585,7 +597,7 @@ function isFieldEmpty($field): bool
         addError('empty');
         return true;
     }
-    return true;
+    return false;
 }
 
 
@@ -594,7 +606,7 @@ function isFieldEmpty($field): bool
  * @param string $value a value
  * @return bool true if it is numeric, false if it isnot.
  */
-function isFieldnumber($field):bool{
+function isFieldNumber($field):bool{
     if (!is_numeric($field)) {
         addError('numeric');
         return false;
@@ -656,6 +668,15 @@ function isValideDate($dateInput, $maxLength): bool
         return false;
     }
     return true;
+}
+
+/**
+ * verify time formate to be in this formate ex "10:00"
+ * @param string $time
+ * @return bool
+ */
+function verifyTimeFormat($time) {
+    return preg_match('/^\d{2}:\d{2}$/', $time);
 }
 
 /**

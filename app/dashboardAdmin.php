@@ -2,6 +2,8 @@
 require_once 'includes/_startSession.php';
 require_once 'includes/_header.php';
 
+var_dump($_SESSION);
+
 ?>
 <main class="dashboard-admin">
     <?php
