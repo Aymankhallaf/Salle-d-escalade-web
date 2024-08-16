@@ -44,7 +44,7 @@ include 'includes/_notification.php';
 </main>
 
 
-<script type="module" src="./js/reservationDetails.js"></script>
+<!-- <script type="module" src="./js/reservationDetails.js"></script> -->
 <script type="module" src="./js/dashboard.js"></script>
 
 <?php

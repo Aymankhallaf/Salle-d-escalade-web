@@ -1,3 +1,4 @@
+//liten to change in url.
 window.addEventListener('load', () => {
     const currentHash = window.location.hash.substring(1);
     if (currentHash) {
@@ -8,11 +9,9 @@ window.addEventListener('load', () => {
     const tabs = document.querySelectorAll('.js-tab-dashboard');
 
    
-console.log(menuLinks);
     
     menuLinks.forEach(link => {
         link.addEventListener('click', function (event) {
-            event.preventDefault();
             const targetTabId = this.getAttribute('href').substring(1);
             activateTab(targetTabId);
 
@@ -21,6 +20,12 @@ console.log(menuLinks);
         });
     });
 
+    /**
+     * Actives current section(tab) by adding clsaa('tab-dashboard--active')
+     * and disactives the others by adding(hidden) and change the color of the btn tab     
+     * @param {string} tabId id section, href of a link html
+     * @return {void}
+     */
     function activateTab(tabId) {
                 tabs.forEach(tab => {
                     if (tab.id !== tabId) {
@@ -34,7 +39,6 @@ console.log(menuLinks);
                     }
                     
                 });
-                const currentUrl = window.location.hash.substring(1);
              
                 menuLinks.forEach(link => {
                     

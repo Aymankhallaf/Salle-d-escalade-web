@@ -95,7 +95,7 @@ function manuplateReservation(method, action, idReservation = null) {
 
         F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
-        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
+        document.location.href = `/panier.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
     })
 }
