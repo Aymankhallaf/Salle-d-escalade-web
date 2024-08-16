@@ -533,15 +533,16 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
 
     $html = '';
+    $html .= '<tr class="profile-details-raw">';
     foreach ($reservationHistory as $key => $value) {
+
         if (isset($defaultKeys[$key])) {
-            $html .= '<tr class="profile-details-raw">';
-            $html .= '<th>' . $defaultKeys[$key] . ':</th>';
+            // $html .= '<td>' . $defaultKeys[$key] . '<td>';
             $html .= '<td>' . $value . '</td>';
-            // $html .= '<td><a href="" ></a>voir</td>';
-            $html .= '</tr>';
         }
     }
+    $html .= '<td><a href="?id-reservation='.$reservationHistory["id_reservation"].'" >Voir</a></td>';
+    $html .= '</tr>';
 
     return $html;
 }
