@@ -364,7 +364,25 @@ function isReservationValid(array $inputData)
 
 
 /**
- * reserve function by (inserting reservation request)
+ * Gets a price of activity.
+ * @param PDO $dbCo database connection.
+ * @param int $idActivity id_activity.
+ * @return int price.
+ */
+function getActivityPrice(PDO $dbCo, int $idActivity): int
+{
+    $query = $dbCo->prepare("SELECT price FROM `activity` WHERE id_activity = :idActivity;");
+    $isQueryOk = $query->execute(["idActivity" => intval($idActivity)]);
+    $price = $query->fetchColumn();
+    if (!$isQueryOk ||  $price === null) {
+        triggerError("chosenActivity");
+    }
+    return $price;
+}
+
+
+/**
+ * Reserve function by (inserting reservation request)
  * @param PDO $dbCo database connection.
  * @param array $inputData  array of this data [nb_particpation , date_starting,
  *     , "id_gym" , "id_activity", "date_reservation"]
@@ -373,18 +391,20 @@ function isReservationValid(array $inputData)
  */
 function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
+    $price = getActivityPrice($dbCo, $inputData['duration']);
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting,
-       id_user, id_gym , id_activity, date_reservation) 
-       VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP);");
+       id_user, id_gym , id_activity, date_reservation,total_price) 
+       VALUES (:nb_particpation, :date_starting ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP, :totalPrice);");
     $isQueryOk = $query->execute([
         'nb_particpation' => $inputData['participants'],
         'date_starting' => $formattedDateStarting,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
-        'idUser' => $idUser
+        'idUser' => $idUser,
+        "totalPrice" => $inputData['participants'] * $price
     ]);
 
     if (!$isQueryOk) {

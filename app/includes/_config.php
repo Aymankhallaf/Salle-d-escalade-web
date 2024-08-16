@@ -7,6 +7,7 @@ $errors = [
     'idGym' => "erreur lors du choix de la salle d'escalade",
     'connection' => "erreur de connexion à la base de données",
     'chosenDate' => 'erreur lors du choix le date',
+    'chosenActivity' => "erreur lors du choix l'activity",
     'nom' => "Le nom est invalide.",
     'prénom' => "Le prénom est invalide.",
     'ville' => "Le ville est invalide.",

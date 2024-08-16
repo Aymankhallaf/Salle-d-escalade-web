@@ -1,22 +1,35 @@
 <?php
 require_once 'includes/_startSession.php';
 require_once 'includes/_header.php';
+
 ?>
 <main class="dashboard-admin">
-    <h1>Tableau de bord d'administration</h1>
-    <nav> </nav>
+    <?php
+    include 'includes/_notification.php';
+    ?>
+    <h1 class="dashboard-admin__ttl">Tableau de bord d'administration</h1>
+    <nav>
+        <ul class="dashboard-menu">
+            <li><a class="dashboard-menu__a" href="#profil">Aperçu</a></li>
+            <li><a class="dashboard-menu__a" href="#reservation">Réservation</a></li>
+            <li><a class="dashboard-menu__a" href="#subscription">Abonnement</a></li>
+            <li><a class="dashboard-menu__a" href="#articles">Articles</a></li>
+            <li><a class="dashboard-menu__a" href="#articles">categories</a></li>
+            <li><a class="dashboard-menu__a" href="#users">Utilisers</a></li>
+        </ul>
+    </nav>
     <h2 class="overview-ttl">Aperçu</h2>
     <section class="static">
         <h3 class="static__ttl">Remarques</h3>
         <form class="static-form" action="">
             <ul class="static-form-ul">
                 <li class="static-form__start">
-                    <label class="static-form__start-label" for="start-period">Date de début:</label>
-                    <input class="static-form__start-input" type="date" id="start-period" name="start-period" value="2018-07-22" />
+                    <label class="static-form__start-label" for="start-date">Date de début:</label>
+                    <input class="static-form__start-input" type="date" id="start-date" name="start-date" value="2018-07-22" />
                 </li>
                 <li class="static-form__end">
                     <label class="static-form__end-label" for="end-period">Date de fin:</label>
-                    <input class="static-form__end-input" type="date" id="end-period" name="end-period" value="2018-07-22" min="2018-01-01" />
+                    <input class="static-form__end-input" type="date" id="start-date" name="end-period" value="2018-07-22" />
                 </li>
             </ul>
         </form>
@@ -27,7 +40,7 @@ require_once 'includes/_header.php';
             </li>
             <li class="static-result-Participants">
                 <h4 class="static-result-Participants__ttl">Participants actuels</h4>
-                <p  class="static-result-Participants__number">15</p>
+                <p class="static-result-Participants__number">15</p>
             </li>
             <li class="static-result-unpaid">
                 <h4 class="static-result-unpaid__ttl">Montant impayé </h4>

@@ -1,28 +1,25 @@
 .dashboard-admin {
-
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-content: center;
-gap: 2rem;
-margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 1rem;
+    &__ttl {
+        font-size: 1.5;
+        text-align: center;
+    }
 }
-
 
 .overview-ttl {
-    @extend %page-ttl;
     text-align: center;
-    margin-bottom: 2rem;
 }
-
-
 
 .static {
     // @include centering(column);
     &__ttl {
         @extend %form-main-ttl;
-
-
     }
 }
 
@@ -30,29 +27,51 @@ margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    margin-bottom: 2rem;
     &-ul {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        @include desktop-only() {
+            flex-direction: row;
+        }
     }
 
     &__start {
-        @extend %form-container;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        @include desktop-only() {
+            width: calc(25% - 1.5rem);
+        }
 
         &-label {
+            white-space: nowrap;
             @extend %label;
         }
         &-input {
+            width: 100%;
             @include input;
         }
     }
     &__end {
-        @extend %form-container;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        @include desktop-only() {
+            width: calc(25% - 1.5rem);
+        }
 
         &-label {
+            white-space: nowrap;
             @extend %label;
         }
         &-input {
+            width: 100%;
             @include input;
         }
     }

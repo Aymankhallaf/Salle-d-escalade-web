@@ -86,9 +86,9 @@
             @extend %label;
         }
         &-input {
+            border: $turquoise solid 2px;
             @include input;
             @include simple-arrow;
-            border: $turquoise solid 2px;
         }
     }
     &__txt {
