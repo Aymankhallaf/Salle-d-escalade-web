@@ -102,10 +102,10 @@ include 'includes/_header.php';
 
     <!-- last 3 articles from category articles -->
     <section class="section artcl">
+        <h2 class="sub-heading sub-heading__ttl--red">
+            les derniers articles
+        </h2>
         <ol class="artcl-holder">
-            <h2 class="sub-heading sub-heading__ttl--red">
-                les derniers articles
-            </h2>
             <?php
             $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
             foreach ($articles as $article) {
