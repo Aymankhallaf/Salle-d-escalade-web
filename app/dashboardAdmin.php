@@ -27,12 +27,13 @@ var_dump($_SESSION);
             <ul class="static-form-ul">
                 <li class="static-form__start">
                     <label class="static-form__start-label" for="start-date">Date de début:</label>
-                    <input class="static-form__start-input" type="date" id="start-date" name="start-date" value="2018-07-22" />
+                    <input class="static-form__start-input" type="date" id="start-date" name="start-date"  />
                 </li>
                 <li class="static-form__end">
                     <label class="static-form__end-label" for="end-period">Date de fin:</label>
-                    <input class="static-form__end-input" type="date" id="start-date" name="end-period" value="2018-07-22" />
+                    <input class="static-form__end-input" type="date" id="end-date" name="end-period" />
                 </li>
+
             </ul>
         </form>
         <ul class="static-result">
@@ -53,7 +54,7 @@ var_dump($_SESSION);
                 <p class="static-result-comming-Participants__number">€ 100</p>
             </li>
         </ul>
-
+        <script type="module" src="./js/dashboardAdmin.js"></script>
 
     </section>
 

@@ -358,20 +358,17 @@ function isReservationValid(array $inputData, $idUser)
     if (!isValidDate($inputData['chosenDate']) || isFieldEmpty($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
     }
-    if(isFieldEmpty($idUser) || !isFieldNumber($idUser) || !is_int($idUser) ){
+    if (isFieldEmpty($idUser) || !isFieldNumber($idUser) || !is_int($idUser)) {
         triggerError('find_user_ko');
     }
-    if(isFieldEmpty( $inputData['participants']) || !isFieldNumber( $inputData['participants'])){
+    if (isFieldEmpty($inputData['participants']) || !isFieldNumber($inputData['participants'])) {
         triggerError('participants');
     }
 
     //id activity = $inputData['duration']
-    if(isFieldEmpty( $inputData['duration']) || !isFieldNumber( $inputData['participants'])){
+    if (isFieldEmpty($inputData['duration']) || !isFieldNumber($inputData['participants'])) {
         triggerError('chosenActivity');
     }
-
-
-
 }
 
 
@@ -541,7 +538,7 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="panier.php#reservation-details?idReservation='.$reservationHistory["id_reservation"].'&&token='.$_SESSION["token"].'" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] . '&&token=' . $_SESSION["token"] . '" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;
@@ -613,7 +610,8 @@ function isFieldEmpty($field): bool
  * @param string $value a value
  * @return bool true if it is numeric, false if it isnot.
  */
-function isFieldNumber($field):bool{
+function isFieldNumber($field): bool
+{
     if (!is_numeric($field)) {
         addError('numeric');
         return false;
@@ -682,7 +680,8 @@ function isValideDate($dateInput, $maxLength): bool
  * @param string $time
  * @return bool
  */
-function verifyTimeFormat($time) {
+function verifyTimeFormat($time)
+{
     return preg_match('/^\d{2}:\d{2}$/', $time);
 }
 
@@ -1374,4 +1373,36 @@ function createArticle(PDO $dbCo, array $inputData): void
     addMessage("insertArticle_ok");
     $lastInsertId = $dbCo->lastInsertId();
     redirectToHeader('page.php?article=' . getFirstNWords($inputData["title"], 3) . '&id=' . $lastInsertId);
+}
+
+//reservation dashboard admin
+
+function getTPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
+{
+    $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
+    particpation FROM reservation
+     WHERE status = "paid" AND 
+     date_starting BETWEEN :dateStart AND :dateEnd;');
+    $isQueryOk = $query->execute([
+        "dateStart" => $dateStart,
+        "dateEnd" => $dateEnd
+    ]);
+    if (!$isQueryOk) { 
+
+    }
+}
+
+function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
+{
+    $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
+    particpation FROM reservation
+     WHERE status = "unpaid" AND 
+     date_starting BETWEEN :dateStart AND :dateEnd;');
+    $isQueryOk = $query->execute([
+        "dateStart" => $dateStart,
+        "dateEnd" => $dateEnd
+    ]);
+    if (!$isQueryOk) { 
+        
+    }
 }
