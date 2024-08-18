@@ -23,18 +23,23 @@ var_dump($_SESSION);
     <h2 class="overview-ttl">Aperçu</h2>
     <section class="static">
         <h3 class="static__ttl">Remarques</h3>
-        <form class="static-form" action="">
+        <form class="static-form" method="POST" action="actions.php">
+            <input type="hidden" name="action" value="getStatics">
+            <input type="hidden" id="token" name="token" value="<?= $_SESSION['token'] ?>">
+            <input type="hidden" name="idUser" value="<?= $_SESSION['idUser']; ?>">
             <ul class="static-form-ul">
                 <li class="static-form__start">
                     <label class="static-form__start-label" for="start-date">Date de début:</label>
-                    <input class="static-form__start-input" type="date" id="start-date" name="start-date"  />
+                    <input class="static-form__start-input" type="date" id="start-date" name="start-date" />
                 </li>
                 <li class="static-form__end">
                     <label class="static-form__end-label" for="end-period">Date de fin:</label>
                     <input class="static-form__end-input" type="date" id="end-date" name="end-period" />
                 </li>
+                <button id="" type="submit" class="static-form__btn">Obtenir</button>
 
             </ul>
+
         </form>
         <ul class="static-result">
             <li class="static-result-paid">

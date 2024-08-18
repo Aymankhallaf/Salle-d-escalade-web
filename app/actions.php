@@ -1,9 +1,7 @@
 <?php
 session_start();
 require_once 'includes/_connection.php';
-// $inputdata =["email"=>"visggter@creative.com", "tel"=>"06695"];
 
-// var_dump(isAccountExist($dbCo,$inputdata));
 
 //csfr protection
 if (!isServerOk()) {
@@ -123,5 +121,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
         //operation
         createArticle($dbCo, $_REQUEST);
+    }
+
+    //show statics 
+    elseif ($_REQUEST['action'] === "getStatics") {
+        //login verification
+        if (!isUserLoggedin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+
+        //admin and editor verification
+        if (!isAdmin()) {
+            addError("right_ko");
+            redirectToHeader("index.php");
+        }
+        if(
+        ! isValidDateDeafult($_REQUEST["start-date"]) ||
+        ! isValidDateDeafult($_REQUEST["end-period"])) {
+            addError("chosenDate");
+            redirectToHeader("index.php");
+        }
     }
 }

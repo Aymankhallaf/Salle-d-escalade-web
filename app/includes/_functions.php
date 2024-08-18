@@ -303,6 +303,17 @@ function isValidDate(string $date): bool
     return checkdate(intval($month), intval($day), intval($year));
 }
 
+/**
+ * 
+ * is a valide date default ?
+ * @param string $date a date in string formate
+ * @return bool true if the date in this formate '2024-08-18'
+ */
+function isValidDateDeafult(string $date): bool
+{
+    list($year,$month,$day) =  explode('-', $date);
+    return checkdate(intval($month), intval($day), intval($year));
+}
 
 /**
  * is this day today or in the future?
