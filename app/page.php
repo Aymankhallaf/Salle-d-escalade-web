@@ -1,8 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 
-//verify $_GET and get articles
-// $_GET["id"]=237;
+
 stripTagsArray($_REQUEST);
 if (!isset($_REQUEST["id"]) || !is_numeric($_REQUEST["id"])) {
 
@@ -23,18 +22,19 @@ include 'includes/_header.php';
     <?php include 'includes/_notification.php';
     ?>
     <!-- The article -->
-    <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
-    <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
-    <h1 class="page-header"><?= $article['title']; ?></h1>
-    <p class="page-date">Publish date: <time datetime="<?= $article['date_post']; ?>"><?= $article['date_post'] ?></time>.</p>
-    <p class="page-paragraph"><?= $article['paragraph']; ?></p>
-    <?php
-    if (isUserLoggedin() && isEditor()) {
-        include 'includes/_actionsPage.php';
-    }
+    <article>
+        <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
+        <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
+        <h1 class="page-header"><?= $article['title']; ?></h1>
+        <p class="page-date">Publish date: <time datetime="<?= $article['date_post']; ?>"><?= $article['date_post'] ?></time>.</p>
+        <p class="page-paragraph"><?= $article['paragraph']; ?></p>
+        <?php
+        if (isUserLoggedin() && isEditor()) {
+            include 'includes/_actionsPage.php';
+        }
 
-    ?>
-
+        ?>
+    </article>
 </main>
 <script type="module" src="./js/page.js"></script>
 

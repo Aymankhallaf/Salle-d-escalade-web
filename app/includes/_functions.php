@@ -1388,7 +1388,14 @@ function createArticle(PDO $dbCo, array $inputData): void
 
 //reservation dashboard admin
 
-function getTPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
+/**
+ * Gets total paid and total paricpations ib certain period. 
+ * @param PDO $dbCo database connection
+ * @param string $dateStart starting date.
+ * @param string $dateEnd end date
+ * @return void
+ */
+function getPaidStatics(PDO $dbCo, string $dateStart, string $dateEnd)
 {
     $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
     particpation FROM reservation
@@ -1399,11 +1406,15 @@ function getTPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
         "dateEnd" => $dateEnd
     ]);
     if (!$isQueryOk) { 
-
+        addError("chosenDate");
+        redirectToHeader('index.php');
     }
+
+    $_SESSION["paidStatics"] = $query->fetchAll();
+    redirectToHeader("dashboardAdmin.php");
 }
 
-function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
+function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo,string $dateStart, string $dateEnd)
 {
     $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
     particpation FROM reservation
@@ -1414,6 +1425,7 @@ function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo, $dateStart, $dateEnd)
         "dateEnd" => $dateEnd
     ]);
     if (!$isQueryOk) { 
-        
+        addError("chosenDate");
     }
+    return $query->fetchAll();
 }

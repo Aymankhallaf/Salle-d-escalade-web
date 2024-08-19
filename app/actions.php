@@ -123,7 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createArticle($dbCo, $_REQUEST);
     }
 
-    //show statics 
     elseif ($_REQUEST['action'] === "getStatics") {
         //login verification
         if (!isUserLoggedin()) {
@@ -142,5 +141,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("chosenDate");
             redirectToHeader("index.php");
         }
+        // $dateStarting = DateTime::createFromFormat('Y-m-d H:i:s', $_REQUEST["start-date"]);
+        // $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
+        $startdate = new DateTime($_REQUEST["start-date"]);
+        var_dump($startdate);
     }
 }
