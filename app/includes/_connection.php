@@ -14,6 +14,6 @@ try {
     );
     $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (Exception $e) {
-    die('Unable to connect to the database. ' . $e->getMessage());
+    die('Impossible de se connecter à la base de données. ' . $e->getMessage());
 }
 
