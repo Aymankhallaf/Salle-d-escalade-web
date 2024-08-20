@@ -1,7 +1,6 @@
 // halls = { "first": { "mai 2024": { "1": { "10:00": 10 } } } }
 import * as Calendar from "./_calendar.js";
 // import * as Hours from "./_hours.js";
-// import * as NParticipants from "./_nbParticpant.js";
 import * as F from "../_functions.js";
 
 

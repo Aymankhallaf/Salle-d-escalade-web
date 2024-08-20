@@ -32,19 +32,17 @@ include 'includes/_header.php';
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
                 <select class="duration__select js-select" name="duration" id="duration">
                     <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="30">30 minutes <span class="" data-price="8">/ 8
+                    <option class="duration__option" value="4">1 mois <span class="" data-price="45">/ 45
                             €</span>
                     </option>
-                    <option class="duration__option" value="60">60 minutes <span class="" data-price="12">/ 12
+                    <option class="duration__option" value="5">1 année <span class="" data-price="250">/ 250
                             €</span>
-                    </option>
-                    <option class="duration__option" value="120">1 jour <span class="" data-price="15">/ 15 €</span>
                     </option>
                 </select>
             </li>
             <!-- calender -->
             <li class="warp-input calender-container">
-                <p for="calender" class="calender__label" id="calender__label">Choisissez la date: </p>
+                <p for="calender" class="calender__label" id="calender__label">Choisissez la date de début: </p>
                 <div id="calender" class="calender__display">
                     <header class="calender__header">
                         <button type="button" id="calender__left" class="calender__left"><img src="./img/arrow-left.svg" alt="icône de bouton précédent"></button>
