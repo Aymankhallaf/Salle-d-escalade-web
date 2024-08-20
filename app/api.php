@@ -11,6 +11,7 @@ if (!isServerOk()) {
     triggerError('referer');
 }
 
+$inputData = json_decode(file_get_contents('php://input'), true);
 if (!isTokenOk($inputData['token'])) {
     triggerError('token', $_SESSION['token']);
 }
@@ -20,7 +21,6 @@ if (!isUserLoggedin()) {
     redirectToHeader("connectez-vous.php");
 }
 
-$inputData = json_decode(file_get_contents('php://input'), true);
 if (!is_array($inputData)) {
     $inputData = $_REQUEST;
 }
