@@ -17,22 +17,21 @@ include 'includes/_header.php';
 
 
 ?>
-<main class="dashboard">
+<main class="cart">
     <?php
     include 'includes/_notification.php';
     ?>
-    <h1 class="dashboard-ttl" id="reservation">Panier</h1>
-    </main>
+    <h1 class="dashboard-ttl" id="reservation">Réservation détails</h1>
+
     <!-- reservation -->
-    <section id="reservation" class="tab-dashboard reservation-details">
-        <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
+    <section id="reservation-details" class="reservation-details">
         <div id="reservation-details-div">
         </div>
     </section>
 
     <script type="module" src="./js/reservationDetails.js"></script>
 
-        <!-- template reservation -->
+    <!-- template reservation -->
 
     <template id="template-reservation">
         <table id="reservation-details-table" class="reservation-details-table">
@@ -95,8 +94,8 @@ include 'includes/_header.php';
         <li data-message="" class="messages__itm">Ici vient le message</li>
     </template>
 
-<script type="module" src="./js/reservation/reservation.js"></script>
-
+    <script type="module" src="./js/reservation/reservation.js"></script>
+</main>
 <?php
 include 'includes/_footer.php';
 ?>

@@ -1378,28 +1378,6 @@ select:hover {
   stroke: #ca6702;
 }
 
-.reservation-details-tll {
-  text-align: left;
-  font-size: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-.reservation-details-table {
-  width: 22.5rem;
-}
-.reservation-details-raw {
-  height: 3rem;
-  text-align: left;
-}
-
-.reservation-edit {
-  font-size: 1rem;
-  color: #0a9396;
-}
-.reservation-cancel {
-  font-size: 1rem;
-  color: #9b2226;
-}
-
 .profile-details-tll {
   text-align: left;
   font-size: 1.25rem;
@@ -1870,4 +1848,33 @@ select:hover {
   text-align: center;
   padding: 1rem;
   color: #001219;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservation-details-tll {
+  text-align: left;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.reservation-details-table {
+  width: 22.5rem;
+}
+.reservation-details-raw {
+  height: 3rem;
+  text-align: left;
+}
+
+.reservation-edit {
+  font-size: 1rem;
+  color: #0a9396;
+}
+.reservation-cancel {
+  font-size: 1rem;
+  color: #9b2226;
 }/*# sourceMappingURL=style.css.map */

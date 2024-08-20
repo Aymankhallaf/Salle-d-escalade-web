@@ -1,0 +1,30 @@
+.cart {
+    @include centering;
+}
+.reservation-details {
+
+    &-tll {
+        text-align: left;
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &-table {
+        width: 22.5rem;
+    }
+    &-raw {
+        height: 3rem;
+        text-align: left;
+    }
+}
+
+.reservation {
+    &-edit {
+        font-size: 1rem;
+        color: $turquoise;
+    }
+    &-cancel {
+        font-size: 1rem;
+        color: $dark-red;
+    }
+}

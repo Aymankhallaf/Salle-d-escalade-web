@@ -33,7 +33,7 @@ window.addEventListener('load', () => {
                         tab.classList.remove('tab-dashboard--active');
                     } 
                     else {
-                        console.log("yes");
+                       
                         tab.classList.remove('hidden');
                         tab.classList.add('tab-dashboard--active');
                     }
