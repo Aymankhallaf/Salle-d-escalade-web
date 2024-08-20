@@ -284,44 +284,6 @@ export function GetSetGymDetails(idGym) {
 
 
 
-
-
-// /**
-// * get and set gym details the vacation dates and update the calender.
-// * the default maximum capcity of the gym
-// * @param {string} idGym gym id
-// * @returns 
-// */
-// export function GetSetGymDetailsSubscribtion(idGym) {
-//   F.callApi("POST", {
-//     action: "fetchHoliday",
-//     idGym: idGym,
-//     token: F.getToken()
-
-//   }).then(data => {
-//     if (!data.isOk) {
-//       F.displayError(data['errorMessage']);
-//       return;
-//     }
-//     let holidaysFR = []
-//     data["vacationDates"].forEach(day => {
-//       holidaysFR.push(formateDay(new Date(day)));
-//     });
-//     F.verifyReturnData(data["idGym"] !== idGym);
-//     document.getElementById("month-days").innerText = "";
-//     updateHolidays(holidaysFR);
-//     updateCalendar();
-//     localStorage.setItem("capacity", JSON.stringify(data["capacity"]));
-
-
-
-//   })
-// }
-
-
-
-
-
 function getOpenHoures(idGym, chosenDate) {
   if (!isDateValid) {
     F.displayMessage("la date n'est pas valide");
