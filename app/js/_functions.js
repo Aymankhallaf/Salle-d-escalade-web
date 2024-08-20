@@ -215,6 +215,25 @@ export function verifyReturnData(request, response) {
     }
 }
 
+
+/**
+ *
+ *is this day in the future?
+ * @param {string} dateSting date in string formate.
+ * @return {boolen} true if it today and a day in future, false if yesterday.
+ */
+function isFutureDate(dateSting) {
+    const date = new Date(dateSting);
+    const now = new Date();
+
+    if (date < now) {
+        return false;
+    } 
+        return true;
+    
+}
+
+
 /**
  *
  * verify returned data from server
@@ -346,8 +365,9 @@ function cancelReservation() {
  *
  */
 function editReservationUrl() {
+
     let token = getToken();
-    let idReservation = document.getElementById("dateReservation").dataset.idReservation;
+    let idReservation = document.getElementById("editReservationUrl").dataset.idReservation;
    let duration = document.getElementById("duration").dataset.duration;
    if (parseInt(duration) > 0 && parseInt(duration) < 4 ) {
        document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`

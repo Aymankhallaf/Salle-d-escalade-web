@@ -318,7 +318,7 @@ function isValidDateDeafult(string $date): bool
 /**
  * is this day today or in the future?
  * @param string $date a date of this formate "27-05-2024"
- * @return bool true if it today and day in future, false if yesterday.
+ * @return bool true if it today and a day in future, false if yesterday.
  */
 function isFutureDate($date): bool
 {
@@ -376,7 +376,6 @@ function isReservationValid(array $inputData, $idUser)
         triggerError('participants');
     }
 
-    //id activity = $inputData['duration']
     if (isFieldEmpty($inputData['duration']) || !isFieldNumber($inputData['participants'])) {
         triggerError('chosenActivity');
     }
@@ -478,7 +477,31 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 {
 
     $query = $dbCo->prepare("SELECT id_reservation, date_starting FROM reservation 
-    WHERE id_user=:idUser AND  id_activity < 5 ORDER BY `date_starting` ASC;");
+    WHERE id_user=:idUser AND  id_activity < 4 ORDER BY `date_starting` ASC;");
+    $isQueryOk = $query->execute([
+
+        'idUser' => $idUser
+    ]);
+
+    if (!$isQueryOk) {
+        addError("connection");
+        redirectToHeader("index.php");
+    }
+    return $query->fetchAll() ?: null;
+
+}
+
+/**
+ * Gets user subscription history.
+ * @param PDO $dbCo database connection
+ * @param int $idUser user id.
+ * @return array|null array of reservation or null.
+ */
+function getUserSubscriptionHistory(PDO $dbCo, int $idUser): array|null
+{
+
+    $query = $dbCo->prepare("SELECT id_reservation, date_starting FROM reservation 
+    WHERE id_user=:idUser AND  id_activity > 3 ORDER BY `date_starting` ASC;");
     $isQueryOk = $query->execute([
 
         'idUser' => $idUser
@@ -496,7 +519,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 
 
 /**
- * لأُلإس a details of reservation.
+ * Gets details of reservation.
  * @param PDO $dbCo database connection.
  * @param int $idUser user id.
  * @param int $idReservation user id.
@@ -549,7 +572,7 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] . '&&token=' . $_SESSION["token"] . '" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] .'&dateStarting=' . $reservationHistory["date_starting"] . '&token=' . $_SESSION["token"] . '" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;
@@ -568,8 +591,10 @@ function editReservationDetails(
     array $inputData,
     int $idUser
 ) {
+    
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
+
     try {
         $query = $dbCo->prepare("UPDATE `reservation` SET
          `nb_particpation` = :nb_particpation, `date_starting` = :date_starting,

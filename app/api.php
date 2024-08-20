@@ -32,21 +32,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
 
     getGyms($dbCo);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
-
-    if (intval($inputData['idGym']) > 2 || intval($inputData['idGym']) < 0) {
+  
+    if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
         triggerError('idGym', '1');
     }
     getGymDetails($dbCo, intval($inputData['idGym']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
-
+    
     if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
-        triggerError('idGym', '2');
+        triggerError('idGym', '1');
     }
     if (!isValidDate($inputData['chosenDate']) || isFieldEmpty($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
     }
-
-   
     getOpenHours($dbCo,  intval($inputData['idGym']), $inputData['chosenDate']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
