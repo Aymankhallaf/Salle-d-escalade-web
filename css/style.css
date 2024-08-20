@@ -1870,6 +1870,11 @@ select:hover {
   text-align: left;
 }
 
+.reservation-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .reservation-edit {
   font-size: 1rem;
   color: #0a9396;

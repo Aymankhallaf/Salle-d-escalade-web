@@ -40,7 +40,7 @@ function listenToDuration() {
 
     document.getElementById("duration").addEventListener("change", (e) => {
 
-        verifyDuration(e.target.value);
+        F.verifyDuration(e.target.value);
         localStorage.setItem("duration", JSON.stringify(e.target.value));
         //to do verify avaliable time
 

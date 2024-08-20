@@ -55,7 +55,7 @@ include 'includes/_header.php';
                 <td id="status">modifier</td>
             </tr>
         </table>
-        <ul class="reservation-details-raw">
+        <ul class="reservation-actions">
             <li id="reservation-edit"><a class="reservation-edit">modifier</a></li>
 
             <li><a id="reservation-cancel" class="reservation-cancel">annuler</a></li>

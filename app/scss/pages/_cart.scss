@@ -2,7 +2,6 @@
     @include centering;
 }
 .reservation-details {
-
     &-tll {
         text-align: left;
         font-size: 1.25rem;
@@ -19,6 +18,11 @@
 }
 
 .reservation {
+    &-actions {
+        display: flex;
+        flex-direction: row;
+        justify-content:space-between;
+    }
     &-edit {
         font-size: 1rem;
         color: $turquoise;

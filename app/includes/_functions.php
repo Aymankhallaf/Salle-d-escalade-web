@@ -478,7 +478,7 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
 {
 
     $query = $dbCo->prepare("SELECT id_reservation, date_starting FROM reservation 
-    WHERE id_user=:idUser  ORDER BY `date_starting` ASC;");
+    WHERE id_user=:idUser AND  id_activity < 5 ORDER BY `date_starting` ASC;");
     $isQueryOk = $query->execute([
 
         'idUser' => $idUser
@@ -489,19 +489,14 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
         redirectToHeader("index.php");
     }
     return $query->fetchAll() ?: null;
-    // echo json_encode([
-    //     'isOk' => $isQueryOk,
-    //     $data,
-    //     'idUSer' => $idUser
 
-    // ]);
 }
 
 
 
 
 /**
- * get a details of reservation.
+ * لأُلإس a details of reservation.
  * @param PDO $dbCo database connection.
  * @param int $idUser user id.
  * @param int $idReservation user id.
