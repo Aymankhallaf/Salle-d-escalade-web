@@ -306,7 +306,7 @@ export function displayReservation(reservation) {
     clone.getElementById('dateReservation').innerText = reservation['date_starting'];
     clone.getElementById('dateReservation').dataset.idReservation = reservation['id_reservation'];
     clone.getElementById('duration').innerText = reservation['duration'];
-    // clone.getElementById('duration').dataset.duration = reservation['duration'];
+   clone.getElementById('duration').dataset.duration = reservation['id_activity'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
@@ -348,8 +348,14 @@ function cancelReservation() {
 function editReservationUrl() {
     let token = getToken();
     let idReservation = document.getElementById("dateReservation").dataset.idReservation;
-    let duration = document.getElementById("duration").dataset.idReservation;
-    document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+   let duration = document.getElementById("duration").dataset.duration;
+   if (parseInt(duration) > 0 && parseInt(duration) < 4 ) {
+       document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+   }
+   else if (parseInt(duration) > 3 && parseInt(duration) < 6 ) {
+    document.location.href = `/abonnements.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+}
+
 
 }
 
