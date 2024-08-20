@@ -4,9 +4,9 @@ import * as Calendar from "./_calendar.js";
 import * as F from "../_functions.js";
 
 
-// //get url parameters 
-// let urlParam = F.getQueryParams();
-// localStorage.setItem("param", JSON.stringify(urlParam));
+//get url parameters 
+let urlParam = F.getQueryParams();
+localStorage.setItem("param", JSON.stringify(urlParam));
 
 
 F.getGym();
@@ -20,18 +20,7 @@ document.getElementById("hall").addEventListener("change", (e) => {
 
 
 
-document.getElementById("duration").addEventListener("change", (e) => {
-
-    //to do -write function to verify id !!!
-    localStorage.setItem("duration", JSON.stringify(e.target.value));
-    //to do verify avaliable time
-
-}
-);
-
-
-
-document.getElementById("reservation-form").addEventListener("submit",
+document.getElementById("abonnement-form").addEventListener("submit",
 
     handReservationSubmit)
 

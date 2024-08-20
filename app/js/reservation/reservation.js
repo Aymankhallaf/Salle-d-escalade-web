@@ -100,6 +100,8 @@ function manuplateReservation(method, action, idReservation = null) {
     })
 }
 
+
+
 function editReservation(method, action) {
     let apiParam = {
         action: action,
