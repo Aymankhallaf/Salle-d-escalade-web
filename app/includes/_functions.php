@@ -443,7 +443,12 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     ]);
 }
 
-
+/**
+ * Delete a reservation from database.
+ * @param PDO $dbCo database connection.
+ * @param int $idReservation id reservation.
+ * @return void
+ */
 function cancelReservation(PDO $dbCo, int $idReservation)
 {
     try {
@@ -1429,3 +1434,30 @@ function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo,string $dateStart, stri
     }
     return $query->fetchAll();
 }
+
+// to see how many player play at cetain time for 30 min. (10:30 - 11:00)
+// 1-callculate the number of particpiants at the chosen time (10:30) 30 min session + 1h session
+// 2-calculate the number of particpiants at the session 1 h before this time(10:00)
+
+function nbParticpationsthirtyMin(PDO $dbCo,string $dateStart, string $dateEnd)
+{
+    $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
+    particpation FROM reservation
+     WHERE status = "unpaid" AND 
+     date_starting BETWEEN :dateStart AND :dateEnd;');
+    $isQueryOk = $query->execute([
+        "dateStart" => $dateStart,
+        "dateEnd" => $dateEnd
+    ]);
+    if (!$isQueryOk) { 
+        addError("chosenDate");
+    }
+    return $query->fetchAll();
+}
+
+
+
+// to see how many player play at cetain time for 1h. (10:30 - 11:30)
+// 1-callculate the number of particpiants at the chosen time (10:30) 30 min session + 1h session
+// 2-calculate the number of particpiants at the session 1 h before this time(10:00 - 11:00)
+// 2-calculate the number of particpiants at the session 30 min after this time(11:00 - 11:30)  

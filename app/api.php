@@ -5,9 +5,14 @@ require_once 'includes/_connection.php';
 
 
 header('Content-type: application/json');
-//prenvent visteurs acess to this page
+
+//prenvent visteurs acess to this page && csfr 
 if (!isServerOk()) {
     triggerError('referer');
+}
+
+if (!isTokenOk($inputData['token'])) {
+    triggerError('token', $_SESSION['token']);
 }
 
 if (!isUserLoggedin()) {
@@ -21,9 +26,6 @@ if (!is_array($inputData)) {
 }
 stripTagsArray($inputData);
 
-if (!isTokenOk($inputData['token'])) {
-    triggerError('token', $_SESSION['token']);
-}
 
 //reservation
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {

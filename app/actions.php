@@ -13,6 +13,8 @@ if (!isTokenOk($_REQUEST['token'])) {
     addError('token');
     redirectToHeader("index.php");
 }
+
+//HTML striping
 stripTagsArray($_REQUEST);
 
 //verify methode 

@@ -199,6 +199,12 @@ export function verifyReturnData(request, response) {
     }
 }
 
+/**
+ *
+ * verify returned data from server
+ * @export
+ * @param {object} data of reservation
+ */
 export function validateReturnDataReservation(data) {
     verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
     verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
