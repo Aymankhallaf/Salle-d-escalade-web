@@ -3,14 +3,28 @@ import * as Calendar from "./_calendar.js";
 // import * as Hours from "./_hours.js";
 import * as F from "../_functions.js";
 
-
 //get url parameters 
 let urlParam = F.getQueryParams();
 localStorage.setItem("param", JSON.stringify(urlParam));
 
 
 F.getGym();
-listenTohall();
+
+document.getElementById("hall").addEventListener("change", (e) => {
+    F.verifyIdGym(e.target.value);
+    //get vacation dates
+    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+    Calendar.GetSetGymDetails(e.target.value);
+}
+);
+
+document.getElementById("duration").addEventListener("change", (e) => {
+
+    F.verifyDuration(e.target.value);
+    localStorage.setItem("duration", JSON.stringify(e.target.value));
+    //to do verify avaliable time
+
+});
 
 
 
@@ -37,10 +51,6 @@ function handReservationSubmit(e) {
         return
     }
     if (!reservationElem.hasOwnProperty("duration")) {
-        F.displayError(data["Vous n'avez pas choisi l'heure."]);
-        return
-    }
-    if (!reservationElem.hasOwnProperty("chosenHour")) {
         F.displayError(data["Vous n'avez pas choisi l'heure."]);
         return
     }

@@ -17,10 +17,10 @@ listenToDuration();
 
 /**
  *listen to input hall and applicate 
-  Calendar.GetSetGymDetails(e.target.value);
+  Calendar.GetSetGymDetails(e.target.value) and set the value in local storge
  *
  */
-function listenTohall(){
+function listenTohall() {
 
     document.getElementById("hall").addEventListener("change", (e) => {
         F.verifyIdGym(e.target.value);
@@ -30,17 +30,20 @@ function listenTohall(){
     }
     );
 
-}    
+}
 
-function listenToDuration(){
+/**
+ *listen to duration input and set the value in local storge
+ *
+ */
+function listenToDuration() {
 
     document.getElementById("duration").addEventListener("change", (e) => {
-    
-    
-        //to do -write function to verify id !!!
+
+        verifyDuration(e.target.value);
         localStorage.setItem("duration", JSON.stringify(e.target.value));
         //to do verify avaliable time
-    
+
     }
     );
 }

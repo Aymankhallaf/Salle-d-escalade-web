@@ -305,7 +305,7 @@ function getOpenHoures(idGym, chosenDate, duration) {
     let hours = data["openClosehoures"][0];
     let openHour = hours["open_hour"].slice(0, 2);
     let closeHour = hours["close_hour"].slice(0, 2);
-    if (duration > 0 && duration < 4) {
+    if (parseInt(duration) > 0 && parseInt(duration) < 4) {
       document.getElementById("hours__container").innerHTML = "";
       H.displayHour(openHour, closeHour);
     }

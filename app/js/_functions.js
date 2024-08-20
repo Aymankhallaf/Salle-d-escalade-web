@@ -105,7 +105,7 @@ export function hideElement(idButton, shownElement) {
 
 
 export function autoSizingTextArea(elementSelector) {
-    document.querySelector(elementSelector).addEventListener('input', function() {
+    document.querySelector(elementSelector).addEventListener('input', function () {
         this.style.height = 'auto';
         this.style.height = this.scrollHeight + 'px';
     }, false);
@@ -170,14 +170,30 @@ export function displayGym(gym) {
 
 
 /**
- * to be review
- * verify the id gym.
+ * 
+ * verify the id gym value.
  * return void(stop script) if the id gym not "1" or "2"
+ * @param {string} idGym id gym.
  * @returns {void}
  */
 export function verifyIdGym(idGym) {
     if (idGym !== "1" && idGym !== "2") {
         displayError("erreur lors du choix de la salle d'escalade");
+        return;
+    }
+}
+
+/**
+ * 
+ * verify the duration value.
+ * duration
+ * @param {string} duration duration value.
+ * return void(stop script) if the id gym not "1" or "2"
+ * @returns {void}
+ */
+export function verifyDuration(duration) {
+    if (parseInt(duration) > 0 && parseInt(duration) < 6) {
+        displayError("erreur lors du choix de la duration");
         return;
     }
 }
