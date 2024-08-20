@@ -12,7 +12,14 @@ localStorage.setItem("param", JSON.stringify(urlParam));
 
 F.getGym();
 listenTohall();
+listenToDuration();
 
+
+/**
+ *listen to input hall and applicate 
+  Calendar.GetSetGymDetails(e.target.value);
+ *
+ */
 function listenTohall(){
 
     document.getElementById("hall").addEventListener("change", (e) => {
@@ -25,16 +32,19 @@ function listenTohall(){
 
 }    
 
+function listenToDuration(){
 
-document.getElementById("duration").addEventListener("change", (e) => {
-
-
-    //to do -write function to verify id !!!
-    localStorage.setItem("duration", JSON.stringify(e.target.value));
-    //to do verify avaliable time
-
+    document.getElementById("duration").addEventListener("change", (e) => {
+    
+    
+        //to do -write function to verify id !!!
+        localStorage.setItem("duration", JSON.stringify(e.target.value));
+        //to do verify avaliable time
+    
+    }
+    );
 }
-);
+
 
 
 
