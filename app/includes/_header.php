@@ -17,7 +17,9 @@
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
         // Production integration for vite with run build
-        echo loadAssets(['js/script.js', 'js/reservation/reservation.js']);
+        echo loadAssets(['js/script.js']);
+
+        // echo loadAssets(['js/script.js', 'js/reservation/reservation.js']);
         // Try this way to load assets from manifest.json
         // https://github.com/andrefelipe/vite-php-setup
     }
@@ -35,7 +37,7 @@
                 <?= connectionHtml(); ?>
                 <li><a class="header-nav__menu-link current" href="/" aria-current="page">Page
                         d’accueil</a></li>
-                <li><a class="header-nav__menu-link" href="/">Abonnements</a></li>
+                <li><a class="header-nav__menu-link" href="/abonnements.php">Abonnements</a></li>
                 <li><a class="header-nav__menu-link" href="/reservation.php">Réservation</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
                 <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>
