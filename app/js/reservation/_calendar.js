@@ -223,7 +223,7 @@ function handleCalendarCellClick(e) {
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
-    getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort);
+    getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort,JSON.parse(localStorage.getItem("duration")));
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
@@ -284,7 +284,7 @@ export function GetSetGymDetails(idGym) {
 
 
 
-function getOpenHoures(idGym, chosenDate) {
+function getOpenHoures(idGym, chosenDate, duration) {
   if (!isDateValid) {
     F.displayMessage("la date n'est pas valide");
     return
@@ -305,7 +305,7 @@ function getOpenHoures(idGym, chosenDate) {
     let hours = data["openClosehoures"][0];
     let openHour = hours["open_hour"].slice(0, 2);
     let closeHour = hours["close_hour"].slice(0, 2);
-    if (idGym > 0 && idGym < 4) {
+    if (duration > 0 && duration < 4) {
       document.getElementById("hours__container").innerHTML = "";
       H.displayHour(openHour, closeHour);
     }

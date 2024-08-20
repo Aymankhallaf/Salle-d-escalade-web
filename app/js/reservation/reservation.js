@@ -11,17 +11,23 @@ localStorage.setItem("param", JSON.stringify(urlParam));
 
 
 F.getGym();
-document.getElementById("hall").addEventListener("change", (e) => {
-    F.verifyIdGym(e.target.value);
-    //get vacation dates
-    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
-    Calendar.GetSetGymDetails(e.target.value);
-}
-);
+listenTohall();
 
+function listenTohall(){
+
+    document.getElementById("hall").addEventListener("change", (e) => {
+        F.verifyIdGym(e.target.value);
+        //get vacation dates
+        localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+        Calendar.GetSetGymDetails(e.target.value);
+    }
+    );
+
+}    
 
 
 document.getElementById("duration").addEventListener("change", (e) => {
+
 
     //to do -write function to verify id !!!
     localStorage.setItem("duration", JSON.stringify(e.target.value));
