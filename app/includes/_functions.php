@@ -512,7 +512,7 @@ function getAReservationDetailsUser(
     int $idReservation,
     int $idUser
 ) {
-    $query = $dbCo->prepare("SELECT id_reservation,nb_particpation,
+    $query = $dbCo->prepare("SELECT id_reservation, id_activity, nb_particpation,
      date_starting, duration, name_gym,status,(nb_particpation*price) 
      AS totalPrice FROM reservation JOIN gym USING(id_gym) 
      JOIN activity USING (id_activity) WHERE id_user=:idUser
