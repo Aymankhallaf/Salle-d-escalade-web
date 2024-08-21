@@ -66,7 +66,7 @@ include 'includes/_header.php';
                 <td class="cell__result" id="status">paid</td>
             </tr>
         </table>
-        <ul class="reservation-actions">
+        <ul id="reservation-actions" class="reservation-actions">
             <li id="reservation-edit"><a class="reservation-edit">modifier</a></li>
 
             <li><a id="reservation-cancel" class="reservation-cancel">annuler</a></li>

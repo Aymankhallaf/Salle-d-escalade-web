@@ -335,13 +335,14 @@ export function displayReservation(reservation) {
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
-    if (isFutureDate(reservation['date_starting'])) {
+    if (!isFutureDate(reservation['date_starting'])) {
 
-        document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
-        document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
+        document.getElementById('reservation-actions').innerText = "";
+        return;
     }
-    document.getElementById('reservation-cancel').addEventListener("click",  displayError("tu pourrais pas edit"));
-    document.getElementById('reservation-edit').addEventListener("click", displayError("tu pourrais pas edit"));
+    document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
+    document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
+
 }
 
 /**
