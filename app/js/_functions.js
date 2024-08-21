@@ -367,7 +367,7 @@ function cancelReservation() {
 function editReservationUrl() {
 
     let token = getToken();
-    let idReservation = document.getElementById("editReservationUrl").dataset.idReservation;
+    let idReservation = document.getElementById("editReservation").dataset.idReservation;
    let duration = document.getElementById("duration").dataset.duration;
    if (parseInt(duration) > 0 && parseInt(duration) < 4 ) {
        document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
