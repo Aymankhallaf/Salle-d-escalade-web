@@ -60,10 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     if (!isFieldNumber($inputData['idReservation'])) {
         triggerError("invalid_id");
     }
+
     cancelReservation($dbCo, intval($inputData['idReservation']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservation") {
     if (!isFieldNumber($_SESSION['idUser'])) {
         triggerError("invalid_id");
     }
+    if (!isFieldNumber($inputData['idReservation'])) {
+        triggerError("invalid_id");
+    }
+    isReservationValid($inputData, $_SESSION['idUser']);
     editReservationDetails($dbCo, $inputData, intval($_SESSION['idUser']));
 }

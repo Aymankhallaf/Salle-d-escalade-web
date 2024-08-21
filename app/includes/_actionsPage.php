@@ -1,4 +1,4 @@
-<div class="articl-actions">
+<ul class="articl-actions">
     <?php if (isAdmin()) : ?>
         <!-- Admins  can delete and edit -->
         <button id="articl-actions-delete" type="submit" class="articl-actions-delete-btn">Supprimer</button>
@@ -7,7 +7,7 @@
         <!-- Editors can only edit -->
         <button id="articl-actions-edit" type="submit" class="articl-actions-edit-btn">Editer</button>
     <?php endif; ?>
-</div>
+</ul>
 
 <?php if (isAdmin()) : ?>
     <!-- Admins can see the delete form -->

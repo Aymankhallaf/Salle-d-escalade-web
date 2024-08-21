@@ -1123,7 +1123,7 @@ function accountAddHtml(array $defaultKeys, array $accountDetails): string
 function getCategories(PDO $dbCo): array
 {
 
-    $query = $dbCo->prepare("SELECT id_category,name , description  FROM category;");
+    $query = $dbCo->prepare("SELECT id_category , name , description  FROM category;");
     $isQueryOk = $query->execute();
 
     if (!$isQueryOk) {
@@ -1132,6 +1132,27 @@ function getCategories(PDO $dbCo): array
     }
     return  $query->fetchAll();
 }
+
+/**
+ * Counts categories list.
+ * @param PDO $dbCo database connection.
+ * @return int categories number.
+ */
+function countCategories(PDO $dbCo): int
+{
+
+    $query = $dbCo->prepare("SELECT COUNT(id_category) FROM category;");
+    $isQueryOk = $query->execute();
+
+    if (!$isQueryOk) {
+        addError("connection");
+        redirectToHeader("index.php");
+    }
+    return  $query->fetchColumn();
+}
+
+
+
 
 
 /**
@@ -1198,7 +1219,7 @@ function getArticlsByCategory(PDO $dbCo, int $idCategory, int $articlesPerPage, 
 function verifyIdCategory(PDO $dbCo, int $idCategory)
 {
 
-    if ($idCategory < 0 || $idCategory > count(getCategories($dbCo))) {
+    if ($idCategory < 0 || $idCategory > countCategories($dbCo)) {
 
         addError("referer");
         redirectToHeader("index.php");
