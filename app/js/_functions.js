@@ -327,16 +327,21 @@ export function displayReservation(reservation) {
 
     clone.getElementById('dateReservation').innerText = reservation['date_starting'];
     clone.getElementById('dateReservation').dataset.dateStarting = reservation['date_starting'];
+
     clone.getElementById('nbParticipation').innerText = reservation['nb_particpation'];
     clone.getElementById('duration').innerText = reservation['duration'];
     clone.getElementById('duration').dataset.duration = reservation['id_activity'];
-    clone.getElementById('durationUnit').innerText= reservation['unit_name_fr'];
+    clone.getElementById('durationUnit').innerText = reservation['unit_name_fr'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
-    document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
-    document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
+    if (isFutureDate(reservation['date_starting'])) {
 
+        document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
+        document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
+    }
+    document.getElementById('reservation-cancel').addEventListener("click",  displayError("tu pourrais pas edit"));
+    document.getElementById('reservation-edit').addEventListener("click", displayError("tu pourrais pas edit"));
 }
 
 /**
@@ -373,7 +378,6 @@ function editReservationUrl() {
 
     let token = getToken();
     let idReservation = document.getElementById("dateReservation").dataset.idReservation;
-    console.log(document.getElementById("dateReservation").innerText);
     let duration = document.getElementById("duration").dataset.duration;
     if (parseInt(duration) > 0 && parseInt(duration) < 4) {
         document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
