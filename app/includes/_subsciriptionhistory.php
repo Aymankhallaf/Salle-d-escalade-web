@@ -11,11 +11,13 @@ $resrvationHistory = getUserSubscriptionHistory($dbCo, $_SESSION['idUser']);
             <th>Action</th>
         </tr>
         <?php
-        if (!$resrvationHistory === null) {
+        if (!empty($resrvationHistory)) {
+
             foreach ($resrvationHistory as $resrvation) {
                 echo addHtmlReservation($defaultKeys, $resrvation);
             }
         }
+
         ?>
     </table>
 </div>

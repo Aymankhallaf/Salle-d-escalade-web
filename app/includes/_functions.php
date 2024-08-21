@@ -562,7 +562,9 @@ function getAReservationDetailsUser(
  */
 function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
-$dateStarting=rawurlencode($reservationHistory["date_starting"]);
+    $date = new DateTime($reservationHistory["date_starting"]);
+$dateStarting = $date->format('Y-m-d-H-i-s');
+rawurlencode($reservationHistory["date_starting"]);
     $html = '';
     $html .= '<tr class="profile-details-raw">';
     foreach ($reservationHistory as $key => $value) {
@@ -572,7 +574,7 @@ $dateStarting=rawurlencode($reservationHistory["date_starting"]);
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] . '&token=' . $_SESSION["token"] . '" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] .'&token='.$dateStarting .'&token=' . $_SESSION["token"] . '" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;

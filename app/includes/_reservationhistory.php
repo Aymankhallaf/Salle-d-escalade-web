@@ -1,5 +1,6 @@
 <?php
 $resrvationHistory = getUserReservationHistory($dbCo, $_SESSION['idUser']);
+
 ?>
 
 <h2 id="reservation-details-tll"><a class="reservation-details-tll" href="#reservation-details">Réservation détails:</a></h2>
@@ -11,12 +12,13 @@ $resrvationHistory = getUserReservationHistory($dbCo, $_SESSION['idUser']);
             <th>Action</th>
         </tr>
         <?php
-        if (!$resrvationHistory === null) {
+        if (!empty($resrvationHistory)) {
 
             foreach ($resrvationHistory as $resrvation) {
                 echo addHtmlReservation($defaultKeys, $resrvation);
             }
         }
+
         ?>
     </table>
 </div>
