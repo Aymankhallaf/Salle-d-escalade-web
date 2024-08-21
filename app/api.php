@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
 
     getGyms($dbCo);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
-  
+
     if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
         triggerError('idGym', '1');
     }
     getGymDetails($dbCo, intval($inputData['idGym']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
-    
+
     if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
         triggerError('idGym', '1');
     }
@@ -48,14 +48,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     getOpenHours($dbCo,  intval($inputData['idGym']), $inputData['chosenDate']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
+
     isReservationValid($inputData, $_SESSION['idUser']);
     reserve($dbCo, $inputData, intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "getAReservation") {
-
-    getAReservationDetailsUser($dbCo, $inputData['idReservation'], intval($_SESSION['idUser']));
+    if (!isFieldNumber($inputData['idReservation']) || !isFieldNumber($_SESSION['idUser'])) {
+        triggerError("invalid_id");
+    }
+    getAReservationDetailsUser($dbCo, intval($inputData['idReservation']), intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
-
-    cancelReservation($dbCo, $inputData['idReservation']);
+    if (!isFieldNumber($inputData['idReservation'])) {
+        triggerError("invalid_id");
+    }
+    cancelReservation($dbCo, intval($inputData['idReservation']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservation") {
+    if (!isFieldNumber($_SESSION['idUser'])) {
+        triggerError("invalid_id");
+    }
     editReservationDetails($dbCo, $inputData, intval($_SESSION['idUser']));
 }

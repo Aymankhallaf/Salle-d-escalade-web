@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/_startSession.php';
 require_once 'includes/_header.php';
+var_dump($_SESSION);
 ?>
 <main class="signup">
     <h1 class="signup-header" id="signup">Inscrivez vous</h1>
@@ -21,8 +22,8 @@ require_once 'includes/_header.php';
 
     </ol>
     <?php
-    echo getHtmlMessages($messages);
     echo getHtmlErrors($errors);
+    echo getHtmlMessages($messages);
     ?>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>

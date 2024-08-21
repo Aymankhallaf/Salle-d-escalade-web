@@ -34,7 +34,7 @@ include 'includes/_notification.php';
     </section>
     <!-- subscription -->
     <section id="subscription" class="subscription-details js-tab-dashboard hidden ">
-    <?php include 'includes/_subsciriptionhistory.php'; ?>
+        <?php include 'includes/_subsciriptionhistory.php'; ?>
 
     </section>
     <!-- articles -->

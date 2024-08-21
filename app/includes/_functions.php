@@ -562,7 +562,7 @@ function getAReservationDetailsUser(
  */
 function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
-
+$dateStarting=rawurlencode($reservationHistory["date_starting"]);
     $html = '';
     $html .= '<tr class="profile-details-raw">';
     foreach ($reservationHistory as $key => $value) {
@@ -572,7 +572,7 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] .'&dateStarting=' . $reservationHistory["date_starting"] . '&token=' . $_SESSION["token"] . '" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] . '&token=' . $_SESSION["token"] . '" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;
@@ -967,7 +967,7 @@ function login(PDO $dbCo, array $inputData): void
         addMessage("login_ok");
         redirectToHeader('index.php');
     }
-    addMessage("login_ko");
+    addError("login_ko");
     redirectToHeader('inscrivez-vous.php');
 }
 
