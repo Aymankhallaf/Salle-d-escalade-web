@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("invalid_paragraph");
         }
         //verify category 
-        verifyIdCategory($dbCo, $inputData["idCategory"]);
+        verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
         //operation
         updateArticle($dbCo, $_REQUEST);
     }
@@ -110,10 +110,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("right_ko");
             redirectToHeader("index.php");
         }
-        if (isFieldEmpty($_REQUEST["title"]) && isMax($inputData["title"], 100)) {
+        if (isFieldEmpty($_REQUEST["title"]) && isMax($_REQUEST["title"], 100)) {
             addError("invalid_title");
         }
-        if (isFieldEmpty($_REQUEST["imgUrl"]) && isMax($inputData["imgUrl"], 255)) {
+        if (isFieldEmpty($_REQUEST["imgUrl"]) && isMax($$_REQUEST["imgUrl"], 255)) {
             addError("invalid_urlImg");
         }
         if (isFieldEmpty($_REQUEST["paragraph"])) {

@@ -18,11 +18,11 @@ if (!$article) {
 include 'includes/_header.php';
 ?>
 
-<main class="page">
+<main>
     <?php include 'includes/_notification.php';
     ?>
     <!-- The article -->
-    <article>
+    <article class="page">
         <source media="(min-width: 960px)" srcset="<?= $article['href_img']; ?>">
         <img class="page-img" src="<?= $article['href_img']; ?>" alt="<?= $article['title']; ?>">
         <h1 class="page-header"><?= $article['title']; ?></h1>
