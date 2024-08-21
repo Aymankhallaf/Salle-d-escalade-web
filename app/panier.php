@@ -41,14 +41,21 @@ include 'includes/_header.php';
             </tr>
             <tr class="reservation-details-raw">
                 <th>Date de réservation</th>
-                <td id="dateReservation">14/07/2024 8:30</td>
+                <td id="dateReservation">2024-08-31 16:30:00</td>
+            </tr>
+            <tr class="reservation-details-raw">
+                <th>Nombre de participations</th>
+                <td id="nbParticipation">1</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Durée</th>
-                <td id="duration">1h</td>
+                <td id="duration">1</td>
+                <td id="durationUnit">h</td>
             </tr>
             <tr class="reservation-details-raw">
-                <td id="totalPrix">50€</td>
+                <th>Prix</th>
+                <td id="totalPrix">50</td>
+                <td id="totalPrix">€</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Statut</th>

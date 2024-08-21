@@ -311,7 +311,7 @@ function isValidDate(string $date): bool
  */
 function isValidDateDeafult(string $date): bool
 {
-    list($year,$month,$day) =  explode('-', $date);
+    list($year, $month, $day) =  explode('-', $date);
     return checkdate(intval($month), intval($day), intval($year));
 }
 
@@ -488,7 +488,6 @@ function getUserReservationHistory(PDO $dbCo, int $idUser): array|null
         redirectToHeader("index.php");
     }
     return $query->fetchAll() ?: null;
-
 }
 
 /**
@@ -512,7 +511,6 @@ function getUserSubscriptionHistory(PDO $dbCo, int $idUser): array|null
         redirectToHeader("index.php");
     }
     return $query->fetchAll() ?: null;
-
 }
 
 
@@ -531,9 +529,9 @@ function getAReservationDetailsUser(
     int $idUser
 ) {
     $query = $dbCo->prepare("SELECT id_reservation, id_activity, nb_particpation,
-     date_starting, duration, name_gym,status,(nb_particpation*price) 
+     date_starting, duration, unit_name_fr, name_gym,status,(nb_particpation*price) 
      AS totalPrice FROM reservation JOIN gym USING(id_gym) 
-     JOIN activity USING (id_activity) WHERE id_user=:idUser
+     JOIN activity USING (id_activity) JOIN duration_unit USING(id_duration_unit)WHERE id_user=:idUser
       AND id_reservation = :idReservation;");
     $isQueryOk = $query->execute([
 
@@ -563,8 +561,8 @@ function getAReservationDetailsUser(
 function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
     $date = new DateTime($reservationHistory["date_starting"]);
-$dateStarting = $date->format('Y-m-d-H-i-s');
-rawurlencode($reservationHistory["date_starting"]);
+    $dateStarting = $date->format('Y-m-d-H-i-s');
+    rawurlencode($reservationHistory["date_starting"]);
     $html = '';
     $html .= '<tr class="profile-details-raw">';
     foreach ($reservationHistory as $key => $value) {
@@ -574,7 +572,7 @@ rawurlencode($reservationHistory["date_starting"]);
             $html .= '<td>' . $value . '</td>';
         }
     }
-    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] .'&token='.$dateStarting .'&token=' . $_SESSION["token"] . '" >Voir</a></td>';
+    $html .= '<td><a href="panier.php#reservation-details?idReservation=' . $reservationHistory["id_reservation"] . '&token=' . $dateStarting . '&token=' . $_SESSION["token"] . '" >Voir</a></td>';
     $html .= '</tr>';
 
     return $html;
@@ -593,7 +591,7 @@ function editReservationDetails(
     array $inputData,
     int $idUser
 ) {
-    
+
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
 
@@ -1432,7 +1430,7 @@ function getPaidStatics(PDO $dbCo, string $dateStart, string $dateEnd)
         "dateStart" => $dateStart,
         "dateEnd" => $dateEnd
     ]);
-    if (!$isQueryOk) { 
+    if (!$isQueryOk) {
         addError("chosenDate");
         redirectToHeader('index.php');
     }
@@ -1441,7 +1439,7 @@ function getPaidStatics(PDO $dbCo, string $dateStart, string $dateEnd)
     redirectToHeader("dashboardAdmin.php");
 }
 
-function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo,string $dateStart, string $dateEnd)
+function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo, string $dateStart, string $dateEnd)
 {
     $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
     particpation FROM reservation
@@ -1451,7 +1449,7 @@ function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo,string $dateStart, stri
         "dateStart" => $dateStart,
         "dateEnd" => $dateEnd
     ]);
-    if (!$isQueryOk) { 
+    if (!$isQueryOk) {
         addError("chosenDate");
     }
     return $query->fetchAll();
@@ -1461,7 +1459,7 @@ function getTunPaidPAndParticpantsBetweenDates(PDO $dbCo,string $dateStart, stri
 // 1-callculate the number of particpiants at the chosen time (10:30) 30 min session + 1h session
 // 2-calculate the number of particpiants at the session 1 h before this time(10:00)
 
-function nbParticpationsthirtyMin(PDO $dbCo,string $dateStart, string $dateEnd)
+function nbParticpationsthirtyMin(PDO $dbCo, string $dateStart, string $dateEnd)
 {
     $query = $dbCo->prepare('SELECT SUM(total_price) AS t_Price, SUM( nb_particpation) AS 
     particpation FROM reservation
@@ -1471,7 +1469,7 @@ function nbParticpationsthirtyMin(PDO $dbCo,string $dateStart, string $dateEnd)
         "dateStart" => $dateStart,
         "dateEnd" => $dateEnd
     ]);
-    if (!$isQueryOk) { 
+    if (!$isQueryOk) {
         addError("chosenDate");
     }
     return $query->fetchAll();
