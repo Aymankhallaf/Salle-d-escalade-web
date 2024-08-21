@@ -322,8 +322,11 @@ export function getQueryParams() {
 export function displayReservation(reservation) {
     const clone = document.importNode(document.getElementById('template-reservation').content, true);
     clone.getElementById('gym').innerText = reservation['name_gym'];
+    clone.getElementById('idReservation').innerText = reservation['id_reservation'];
+    clone.getElementById('idReservation').dataset.idReservation = reservation['id_reservation'];
+
     clone.getElementById('dateReservation').innerText = reservation['date_starting'];
-    clone.getElementById('dateReservation').dataset.idReservation = reservation['id_reservation'];
+    clone.getElementById('dateReservation').dataset.dateStarting = reservation['date_starting'];
     clone.getElementById('nbParticipation').innerText = reservation['nb_particpation'];
     clone.getElementById('duration').innerText = reservation['duration'];
     clone.getElementById('duration').dataset.duration = reservation['id_activity'];
@@ -369,7 +372,8 @@ function cancelReservation() {
 function editReservationUrl() {
 
     let token = getToken();
-    let idReservation = document.getElementById("editReservation").dataset.idReservation;
+    let idReservation = document.getElementById("dateReservation").dataset.idReservation;
+    console.log(document.getElementById("dateReservation").innerText);
     let duration = document.getElementById("duration").dataset.duration;
     if (parseInt(duration) > 0 && parseInt(duration) < 4) {
         document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`

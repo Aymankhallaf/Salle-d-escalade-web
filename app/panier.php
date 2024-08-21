@@ -36,30 +36,34 @@ include 'includes/_header.php';
     <template id="template-reservation">
         <table id="reservation-details-table" class="reservation-details-table">
             <tr class="reservation-details-raw">
+                <th>Id reservation</th>
+                <td class="cell__result" id="idReservation"></td>
+            <tr class="reservation-details-raw">
+
                 <th>Salle</th>
-                <td id="gym">Salle1</td>
+                <td class="cell__result" id="gym">Salle1</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Date de réservation</th>
-                <td id="dateReservation">2024-08-31 16:30:00</td>
+                <td class="cell__result" id="dateReservation">2024-08-31 16:30:00</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Nombre de participations</th>
-                <td id="nbParticipation">1</td>
+                <td class="cell__result" id="nbParticipation">1</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Durée</th>
-                <td id="duration">1</td>
+                <td class="cell__result" id="duration">1</td>
                 <td id="durationUnit">h</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Prix</th>
-                <td id="totalPrix">50</td>
+                <td class="cell__result" id="totalPrix">50</td>
                 <td id="totalPrix">€</td>
             </tr>
             <tr class="reservation-details-raw">
                 <th>Statut</th>
-                <td id="status">modifier</td>
+                <td class="cell__result" id="status">paid</td>
             </tr>
         </table>
         <ul class="reservation-actions">
