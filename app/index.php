@@ -83,12 +83,9 @@ include 'includes/_header.php';
 
     <section class="section salle">
         <ul class="galary" aria-label="">
-            <li class="galary__item galary__item-1"><a target="_blank" class="galary__lnk" href="#first-salle">La
-                    première salle</a>
+            <li class="galary__item galary__item-1"><a target="_blank" class="galary__lnk" href="page.php?article=Escalade-aventure&id=244">Escalade aventure 1</a>
             </li>
-            <li class="galary__item galary__item-2"><a target="_blank" class="galary__lnk" href="#second-salle">la
-                    deuxième
-                    salle</a></li>
+            <li class="galary__item galary__item-2"><a target="_blank" class="galary__lnk" href="page.php?article=escalade-aventure-2&id=246">Escalade aventure 2</a></li>
         </ul>
     </section>
 

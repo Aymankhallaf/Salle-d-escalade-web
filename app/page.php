@@ -8,11 +8,13 @@ if (!isset($_REQUEST["id"]) || !is_numeric($_REQUEST["id"])) {
     addError("invalid_id");
     redirectToHeader("index.php");
 }
-$article = getArticleById($dbCo, intval($_REQUEST['id']))[0];
-if (!$article) {
-    addError("article_not_found");
+
+if (!isArticleExist($dbCo,  $_REQUEST["id"])) {
+    addError("referer");
     redirectToHeader("index.php");
 }
+
+$article = getArticleById($dbCo, intval($_REQUEST['id']));
 
 //header
 include 'includes/_header.php';

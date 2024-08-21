@@ -562,7 +562,6 @@ function addHtmlReservation(array $defaultKeys, array $reservationHistory)
 {
     $date = new DateTime($reservationHistory["date_starting"]);
     $dateStarting = $date->format('Y-m-d-H-i-s');
-    rawurlencode($reservationHistory["date_starting"]);
     $html = '';
     $html .= '<tr class="profile-details-raw">';
     foreach ($reservationHistory as $key => $value) {
@@ -1295,7 +1294,7 @@ function getFirstNWords(string $sentence, int $wordsNumber): string
     return $result;
 }
 
-/**
+/** 
  * is Article Exist?
  * @param PDO $dbCo data base connection.
  * @param int $idPost id post
@@ -1306,11 +1305,15 @@ function isArticleExist(PDO $dbCo, int $idPost): bool
     if ($idPost < 0) {
         return false;
     }
-    $query = $dbCo->prepare("SELECT COUNT(id_post) FROM `post`;");
-    $query->execute();
-    $postCount = $query->fetchColumn();
+    $query = $dbCo->prepare("SELECT id_post FROM `post`
+    WHERE id_post=:idPost;");
+    $isQueryOk = $query->execute(["idPost" => $idPost]);
+    if (!$isQueryOk) {
+        addError("article_not_found");
+        redirectToHeader("index.php");
+    }
+    return $query->rowCount() > 0;
 
-    return $postCount > 0;
 }
 
 
@@ -1322,18 +1325,15 @@ function isArticleExist(PDO $dbCo, int $idPost): bool
  */
 function getArticleById(PDO $dbCo, int $idPost): array
 {
-    if (!isArticleExist($dbCo,  $idPost)) {
-        addError("article_not_found");
-        redirectToHeader("index.php");
-    }
+
     $query = $dbCo->prepare("SELECT * FROM `post`
      WHERE id_post=:idPost;");
-    $isQueryOk = $query->execute(["idPost" => intval(htmlspecialchars($idPost))]);
+    $isQueryOk = $query->execute(["idPost" => $idPost]);
     if (!$isQueryOk) {
         addError("article_not_found");
         redirectToHeader("index.php");
     }
-    return $query->fetchAll();
+    return $query->fetchAll()[0];
 }
 
 
@@ -1346,13 +1346,10 @@ function getArticleById(PDO $dbCo, int $idPost): array
 function deleteArticle(PDO $dbCo, int $idPost): void
 {
 
-    if (!isArticleExist($dbCo,  $idPost)) {
-        addError("refer");
-        redirectToHeader("index.php");
-    }
+
     $query = $dbCo->prepare("DELETE FROM `post`
      WHERE id_post=:idPost;");
-    $isQueryOk = $query->execute(["idPost" => intval(htmlspecialchars($idPost))]);
+    $isQueryOk = $query->execute(["idPost" => $idPost]);
     if (!$isQueryOk) {
         addError("connection");
         redirectToHeader("index.php");
