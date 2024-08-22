@@ -412,7 +412,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
-    switch ($inputData['duration']) {
+    switch (intval($inputData['duration'])) {
         case 1:
             //use colne bcs it is date calss
             $dateEnding = clone $dateStarting;
@@ -438,7 +438,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     $formattedDateEnding = $dateEnding->format('Y-m-d H:i:s');
     $price = getActivityPrice($dbCo, $inputData['duration']);
     $query = $dbCo->prepare("INSERT INTO reservation
-      (nb_particpation , date_starting, date_ending
+      (nb_particpation , date_starting, date_ending,
        id_user, id_gym , id_activity, date_reservation,total_price) 
        VALUES (:nb_particpation, :date_starting ,:dateEnding ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP, :totalPrice);");
     $isQueryOk = $query->execute([
