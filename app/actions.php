@@ -58,7 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("right_ko");
             redirectToHeader("index.php");
         }
-
+        if (!isArticleExist($dbCo,  $_REQUEST["idPost"])) {
+            addError("referer");
+            redirectToHeader("index.php");
+        }
         //operation
         deleteArticle($dbCo, intval($_REQUEST["idPost"]));
     }
@@ -123,9 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
         //operation
         createArticle($dbCo, $_REQUEST);
-    }
-
-    elseif ($_REQUEST['action'] === "getStatics") {
+    } elseif ($_REQUEST['action'] === "getStatics") {
         //login verification
         if (!isUserLoggedin()) {
             addError("right_ko");
@@ -137,9 +138,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("right_ko");
             redirectToHeader("index.php");
         }
-        if(
-        ! isValidDateDeafult($_REQUEST["start-date"]) ||
-        ! isValidDateDeafult($_REQUEST["end-period"])) {
+        if (
+            ! isValidDateDeafult($_REQUEST["start-date"]) ||
+            ! isValidDateDeafult($_REQUEST["end-period"])
+        ) {
             addError("chosenDate");
             redirectToHeader("index.php");
         }
