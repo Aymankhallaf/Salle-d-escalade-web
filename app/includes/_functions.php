@@ -632,10 +632,13 @@ function editReservationDetails(
 
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
+    $formattedDateEnding = calculateDateEndReservation(intval($inputData['duration']), $dateStarting);
 
     try {
         $query = $dbCo->prepare("UPDATE `reservation` SET
-         `nb_particpation` = :nb_particpation, `date_starting` = :date_starting,
+         `nb_particpation` = :nb_particpation,
+          `date_starting` = :date_starting,
+         `date_ending` = :dateEnding,
           `id_gym` = :idGym, `id_activity` = :idActivity
           WHERE `reservation`.`id_reservation` = :idReservation 
           AND id_user =  :idUser;");
@@ -643,6 +646,7 @@ function editReservationDetails(
             'idReservation' => $inputData['idReservation'],
             'nb_particpation' => $inputData['participants'],
             'date_starting' => $formattedDateStarting,
+            'dateEnding' => $formattedDateEnding,
             'idGym' => $inputData['chosenGym'],
             'idActivity' => $inputData['duration'],
             "idUser" => $idUser,
