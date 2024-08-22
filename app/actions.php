@@ -2,6 +2,8 @@
 session_start();
 require_once 'includes/_connection.php';
 
+//anti brutal force attack
+sleep(1);
 
 //csfr protection
 if (!isServerOk()) {
@@ -58,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("right_ko");
             redirectToHeader("index.php");
         }
-        if (!isArticleExist($dbCo,  $_REQUEST["idPost"])) {
+        if (!isArticleExist($dbCo,  intval($_REQUEST["idPost"]))) {
             addError("referer");
             redirectToHeader("index.php");
         }
@@ -80,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             redirectToHeader("index.php");
         }
         //verify article
-        if (!isArticleExist($dbCo,  $_REQUEST["idPost"])) {
+        if (!isArticleExist($dbCo,  intval($_REQUEST["idPost"]))) {
             addError("refer");
             redirectToHeader("index.php");
         }
@@ -94,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("invalid_paragraph");
         }
         //verify category 
-        verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
+        verifyIdCategory($dbCo, intval($_REQUEST["idCategory"]));
         //operation
         updateArticle($dbCo, $_REQUEST);
     }
@@ -123,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             addError("invalid_paragraph");
         }
         //verify category 
-        verifyIdCategory($dbCo, $_REQUEST["idCategory"]);
+        verifyIdCategory($dbCo, intval($_REQUEST["idCategory"]));
         //operation
         createArticle($dbCo, $_REQUEST);
     } elseif ($_REQUEST['action'] === "getStatics") {

@@ -3,6 +3,9 @@ session_start();
 
 require_once 'includes/_connection.php';
 
+//anti brute force
+sleep(1);
+
 
 header('Content-type: application/json');
 
