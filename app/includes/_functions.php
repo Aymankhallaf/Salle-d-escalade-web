@@ -643,13 +643,13 @@ function editReservationDetails(
           WHERE `reservation`.`id_reservation` = :idReservation 
           AND id_user =  :idUser;");
         $isQueryOk = $query->execute([
-            'idReservation' => $inputData['idReservation'],
-            'nb_particpation' => $inputData['participants'],
+            'idReservation' => intval($inputData['idReservation']),
+            'nb_particpation' => intval($inputData['participants']),
             'date_starting' => $formattedDateStarting,
             'dateEnding' => $formattedDateEnding,
-            'idGym' => $inputData['chosenGym'],
-            'idActivity' => $inputData['duration'],
-            "idUser" => $idUser,
+            'idGym' => intval($inputData['chosenGym']),
+            'idActivity' => intval($inputData['duration']),
+            "idUser" => intval($idUser),
         ]);
 
         if (!$isQueryOk) {
@@ -914,7 +914,7 @@ function createAccount(PDO $dbCo, array $inputData)
                                      ON DUPLICATE KEY UPDATE `id_city` = LAST_INSERT_ID(`id_city`);");
         $cityQuery->execute([
             'city' => $inputData['city'],
-            'zipCode' => $inputData['zipCode']
+            'zipCode' => intval($inputData['zipCode'])
         ]);
         $cityId = $dbCo->lastInsertId();
 
