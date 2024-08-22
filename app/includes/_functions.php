@@ -400,6 +400,34 @@ function getActivityPrice(PDO $dbCo, int $idActivity): int
 }
 
 
+function calculateDateEndReservation(int $durationId, DateTime  $dateStarting)
+{
+
+    $dateEnding = clone $dateStarting;
+    //use colne bcs it is date class
+    switch ($durationId) {
+        case 1:
+            $dateEnding->modify("+30 minute");
+            break;
+        case 2:
+            $dateEnding->modify("+1 hours");
+            break;
+        case 3:
+            $dateEnding->modify("+1 day");
+            break;
+        case 4:
+            $dateEnding->modify("+1 month");
+            break;
+        case 5:
+            $dateEnding->modify("+1 year");
+            break;
+    }
+    return $dateEnding->format('Y-m-d H:i:s');
+}
+
+
+
+
 /**
  * Reserve function by (inserting reservation request)
  * @param PDO $dbCo database connection.
@@ -412,30 +440,31 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
 {
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
-    switch (intval($inputData['duration'])) {
-        case 1:
-            //use colne bcs it is date calss
-            $dateEnding = clone $dateStarting;
-            $dateEnding->modify("+30 minute");
-            break;
-        case 2:
-            $dateEnding = clone $dateStarting;
-            $dateEnding->modify("+1 hours");
-            break;
-        case 3:
-            $dateEnding = clone $dateStarting;
-            $dateEnding->modify("+1 day");
-            break;
-        case 4:
-            $dateEnding = clone $dateStarting;
-            $dateEnding->modify("+1 month");
-            break;
-        case 5:
-            $dateEnding = clone $dateStarting;
-            $dateEnding->modify("+1 year");
-            break;
-    }
-    $formattedDateEnding = $dateEnding->format('Y-m-d H:i:s');
+    $formattedDateEnding = calculateDateEndReservation(intval($inputData['duration']), $dateStarting);
+    // switch (intval($inputData['duration'])) {
+    //     case 1:
+    //         //use colne bcs it is date clss
+    //         $dateEnding = clone $dateStarting;
+    //         $dateEnding->modify("+30 minute");
+    //         break;
+    //     case 2:
+    //         $dateEnding = clone $dateStarting;
+    //         $dateEnding->modify("+1 hours");
+    //         break;
+    //     case 3:
+    //         $dateEnding = clone $dateStarting;
+    //         $dateEnding->modify("+1 day");
+    //         break;
+    //     case 4:
+    //         $dateEnding = clone $dateStarting;
+    //         $dateEnding->modify("+1 month");
+    //         break;
+    //     case 5:
+    //         $dateEnding = clone $dateStarting;
+    //         $dateEnding->modify("+1 year");
+    //         break;
+    // }
+    // $formattedDateEnding = $dateEnding->format('Y-m-d H:i:s');
     $price = getActivityPrice($dbCo, $inputData['duration']);
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting, date_ending,
@@ -444,7 +473,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     $isQueryOk = $query->execute([
         'nb_particpation' => intval($inputData['participants']),
         'date_starting' => $formattedDateStarting,
-        'dateEnding' => $formattedDateEnding ,
+        'dateEnding' => $formattedDateEnding,
         'idGym' => intval($inputData['chosenGym']),
         'idActivity' => intval($inputData['duration']),
         'idUser' => intval($idUser),
@@ -459,7 +488,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
         'idReservation' => $dbCo->lastInsertId(),
         'nbParticpation' => $inputData['participants'],
         'dateStarting' => $formattedDateStarting,
-        'date_ending' => $dateEnding,
+        'date_ending' => $formattedDateEnding,
         'idGym' => $inputData['chosenGym'],
         'idActivity' => $inputData['duration'],
         'idUser' => $idUser,
