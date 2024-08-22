@@ -413,36 +413,38 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
     switch ($inputData['duration']) {
-        case 1: 
+        case 1:
             //use colne bcs it is date calss
             $dateEnding = clone $dateStarting;
             $dateEnding->modify("+30 minute");
             break;
-        case 2: 
+        case 2:
             $dateEnding = clone $dateStarting;
             $dateEnding->modify("+1 hours");
             break;
-        case 3: 
+        case 3:
             $dateEnding = clone $dateStarting;
             $dateEnding->modify("+1 day");
             break;
-        case 4: 
+        case 4:
             $dateEnding = clone $dateStarting;
             $dateEnding->modify("+1 month");
             break;
         case 5:
             $dateEnding = clone $dateStarting;
             $dateEnding->modify("+1 year");
-            break; }
+            break;
+    }
+    $formattedDateEnding = $dateEnding->format('Y-m-d H:i:s');
     $price = getActivityPrice($dbCo, $inputData['duration']);
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting, date_ending
        id_user, id_gym , id_activity, date_reservation,total_price) 
-       VALUES (:nb_particpation, :date_starting , DATE_ADD(:date_starting, INTERVAL 30 MINUTE) ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP, :totalPrice);");
+       VALUES (:nb_particpation, :date_starting ,:dateEnding ,:idUser,:idGym, :idActivity,CURRENT_TIMESTAMP, :totalPrice);");
     $isQueryOk = $query->execute([
         'nb_particpation' => intval($inputData['participants']),
         'date_starting' => $formattedDateStarting,
-        'dateEnding' => $dateEnding,
+        'dateEnding' => $formattedDateEnding ,
         'idGym' => intval($inputData['chosenGym']),
         'idActivity' => intval($inputData['duration']),
         'idUser' => intval($idUser),
@@ -1337,7 +1339,6 @@ function isArticleExist(PDO $dbCo, int $idPost): bool
         redirectToHeader("index.php");
     }
     return $query->rowCount() > 0;
-
 }
 
 
