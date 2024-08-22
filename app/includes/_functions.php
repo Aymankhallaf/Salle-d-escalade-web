@@ -1542,6 +1542,14 @@ function nbParticpationsthirtyMin(PDO $dbCo, string $dateStart, string $dateEnd)
 // 2-calculate the number of particpiants at the session 1 h before this time(10:00 - 11:00)
 // 2-calculate the number of particpiants at the session 30 min after this time(11:00 - 11:30)  
 
+// SELECT SUM(nb_particpation) AS total_participation
+// FROM reservation
+// JOIN activity USING (id_activity) JOIN duration_unit USING (id_duration_unit)
+// WHERE 
+//     (date_starting < '2024-08-30 15:30:00' AND date_ending > '2024-08-30 15:00:00')
+//     AND (unit_name = 'i' OR unit_name = 'h');
+
+
 // UPDATE reservation
 // SET date_ending = DATE_ADD(date_starting, INTERVAL 1 YEAR)
 // WHERE id_activity = 5;
