@@ -1,10 +1,3 @@
-<?php
-session_start();
-include_once 'includes/_connection.php';
- 
-generateToken();
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,7 +17,9 @@ generateToken();
     <?php
     } else if ($_ENV['ENV_TYPE'] === 'prod') {
         // Production integration for vite with run build
-        echo loadAssets(['js/script.js','js/reservation/reservation.js']);
+        echo loadAssets(['js/script.js']);
+
+        // echo loadAssets(['js/script.js', 'js/reservation/reservation.js']);
         // Try this way to load assets from manifest.json
         // https://github.com/andrefelipe/vite-php-setup
     }
@@ -39,9 +34,10 @@ generateToken();
         <nav aria-label="Menu principal" id="header-nav" class="header-nav">
             <button aria-labelledby="header-nav" type="button" id="header-nav__btn" class="header-nav__btn"></button>
             <ul id="main-menu" class="header-nav__menu">
-                <li><a class="header-nav__menu-link current" href="#" aria-current="page">Page
+                <?= connectionHtml(); ?>
+                <li><a class="header-nav__menu-link current" href="/" aria-current="page">Page
                         d’accueil</a></li>
-                <li><a class="header-nav__menu-link" href="index.html#abonnements">Abonnements</a></li>
+                <li><a class="header-nav__menu-link" href="/abonnements.php">Abonnements</a></li>
                 <li><a class="header-nav__menu-link" href="/reservation.php">Réservation</a></li>
                 <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
                 <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>

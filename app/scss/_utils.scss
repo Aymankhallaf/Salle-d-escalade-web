@@ -31,13 +31,14 @@
   background-color: $light-gray;
 }
 
-.error {
+.error, .notif-error {
   color: $dark-red !important;
   margin: 2rem 0;
 }
 .hidden {
   display: none;
 }
+
 
 
 @include desktop-only() {

@@ -24,3 +24,26 @@
   color: $black;
 }
 
+%link {
+  text-decoration: underline;
+  color: $blue-petrol;
+  &:visited {
+    color: $dark-orange;
+  }
+}
+
+/* admin dashboard*/
+@mixin result-container($color: $blue-petrol) {
+  width: calc(50% - 1rem);
+  background: $color;
+  border: 2px;
+  border-radius: 10px;
+  @include desktop-only() {
+    width: calc(25% - 1.5rem);
+  }
+}
+@mixin result-txt($color: $black) {
+  text-align: center;
+  padding: 1rem;
+  color: $color;
+}

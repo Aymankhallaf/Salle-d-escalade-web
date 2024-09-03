@@ -1,0 +1,116 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    @include desktop-only() {
+        margin: 0 auto;
+        width: 53.33rem;
+    }
+    &-img {
+        width: 100%;
+        aspect-ratio: 1.667;
+        object-fit: contain;
+    }
+    &-header {
+        font-size: 1.6875rem;
+    }
+    &-date {
+        text-align: right;
+        color: $black-50;
+    }
+    &-paragraph {
+        line-height: 2rem;
+    }
+}
+
+.articl-actions {
+    display: flex;
+    justify-content: space-between;
+    &-delete-btn {
+        font-size: 1rem;
+        color: $dark-red;
+    }
+    &-edit-btn {
+        font-size: 1rem;
+        color: $turquoise;
+    }
+}
+
+.articl-delete-form {
+    max-width: 22.5rem;
+    padding: 1rem;
+    font-size: 1.125rem;
+    background-color: $sand;
+    &-btn {
+        display: flex;
+        justify-content: space-between;
+        
+        &__cancel {
+            @include button;
+        }
+        &__delete {
+            @include button($dark-orange);
+        }
+    }
+}
+
+.articl-edit-form {
+
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    &__title {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
+    }
+    &__img {
+        @extend %form-container;
+
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
+    }
+
+    &__category {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            border: $turquoise solid 2px;
+            @include input;
+            @include simple-arrow;
+        }
+    }
+    &__txt {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            overflow: hidden;
+            border: $turquoise solid 2px;
+
+        }
+    }
+    &__btn {
+        display: flex;
+        justify-content: space-between;
+        &__cancel {
+            @include button;
+        }
+        &__update {
+            @include button($dark-orange);
+        }
+    }
+}
