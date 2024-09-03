@@ -111,10 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         //admin and editor verification
-        if (!isAdmin() || !isEditor()) {
-            addError("right_ko");
-            redirectToHeader("index.php");
-        }
+        if (isAdmin() || isEditor()) {
+            // addError("right_ko");
+            // redirectToHeader("index.php");
+      
         if (isFieldEmpty($_REQUEST["title"]) && isMax($_REQUEST["title"], 100)) {
             addError("invalid_title");
         }
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //verify category 
         verifyIdCategory($dbCo, intval($_REQUEST["idCategory"]));
         //operation
-        createArticle($dbCo, $_REQUEST);
+        createArticle($dbCo, $_REQUEST);  }
     } elseif ($_REQUEST['action'] === "getStatics") {
         //login verification
         if (!isUserLoggedin()) {
