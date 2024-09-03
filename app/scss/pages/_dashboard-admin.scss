@@ -1,0 +1,131 @@
+.dashboard-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 1rem;
+    &__ttl {
+        font-size: 1.5;
+        text-align: center;
+    }
+}
+
+.overview-ttl {
+    text-align: center;
+}
+
+.static {
+    // @include centering(column);
+    &__ttl {
+        @extend %form-main-ttl;
+    }
+}
+
+.static-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+    margin-bottom: 2rem;
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        @include desktop-only() {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__start {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        @include desktop-only() {
+            width: calc(25% - 1.5rem);
+        }
+
+        &-label {
+            white-space: nowrap;
+            @extend %label;
+        }
+        &-input {
+            width: 100%;
+            @include input;
+        }
+    }
+    &__end {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        @include desktop-only() {
+            width: calc(25% - 1.5rem);
+        }
+
+        &-label {
+            white-space: nowrap;
+            @extend %label;
+        }
+        &-input {
+            width: 100%;
+            @include input;
+        }
+    }
+    &__btn {
+        @include button($dark-red);
+        // margin-top: 0rem;
+    }
+}
+
+.static-result {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &-paid {
+        @include result-container($blue-petrol);
+        &__ttl {
+            @include result-txt($white);
+        }
+        &__amount {
+            @include result-txt($white);
+        }
+    }
+
+    &-Participants {
+        @include result-container($turquoise);
+        &__ttl {
+            @include result-txt($white);
+        }
+        &__number {
+            @include result-txt($white);
+        }
+    }
+
+    &-unpaid {
+        @include result-container($light-orange);
+        &__ttl {
+            @include result-txt;
+        }
+        &__amount {
+            @include result-txt;
+        }
+    }
+
+    &-comming-Participants {
+        @include result-container($dark-orange);
+        &__ttl {
+            @include result-txt;
+        }
+        &__number {
+            @include result-txt;
+        }
+    }
+}

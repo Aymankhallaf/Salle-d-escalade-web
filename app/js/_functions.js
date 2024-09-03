@@ -12,7 +12,7 @@ export function getToken() {
 /**
  * Generate asynchronous call to api.php with parameters
  * @param {string} method  POST, PUT or DELETE
- * @param {object} params An object with data to send.
+ * @param {object} param An object with data to send.
  * @returns 
  */
 export async function callApi(method, param) {
@@ -69,7 +69,47 @@ export async function callUrlApi(url, method, param) {
 
 }
 
+/**
+ *show hidden element when we click on button
+ *
+ *
+ * @param {string} idButton id hidden buttton.
+ * @param {string} hiddenElement id hidden element.
+ *  * @return {void}
+ */
+export function showElement(idButton, hiddenElement) {
 
+    document.getElementById(idButton).addEventListener("click",
+        () => document.getElementById(hiddenElement).classList.toggle("hidden")
+    )
+
+}
+
+
+/**
+ *
+ * Hides shown element when we click on button
+ *
+ * @param {string} idButton id shown buttton.
+ * @param {string} shownElement id shown element.
+ *  * @return {void}
+ */
+export function hideElement(idButton, shownElement) {
+
+    document.getElementById(idButton).addEventListener("click",
+        () => document.getElementById(shownElement).classList.toggle("hidden")
+    )
+
+}
+
+
+
+export function autoSizingTextArea(elementSelector) {
+    document.querySelector(elementSelector).addEventListener('input', function () {
+        this.style.height = 'auto';
+        this.style.height = this.scrollHeight + 'px';
+    }, false);
+}
 
 
 //error
@@ -130,14 +170,30 @@ export function displayGym(gym) {
 
 
 /**
- * to be review
- * verify the id gym.
+ * 
+ * verify the id gym value.
  * return void(stop script) if the id gym not "1" or "2"
+ * @param {string} idGym id gym.
  * @returns {void}
  */
 export function verifyIdGym(idGym) {
     if (idGym !== "1" && idGym !== "2") {
         displayError("erreur lors du choix de la salle d'escalade");
+        return;
+    }
+}
+
+/**
+ * 
+ * verify the duration value.
+ * duration
+ * @param {string} duration duration value.
+ * return void(stop script) if the id gym not "1" or "2"
+ * @returns {void}
+ */
+export function verifyDuration(duration) {
+    if (parseInt(duration) > 0 && parseInt(duration) < 6) {
+        displayError("erreur lors du choix de la duration");
         return;
     }
 }
@@ -159,12 +215,37 @@ export function verifyReturnData(request, response) {
     }
 }
 
+
+/**
+ *
+ *is this day in the future?
+ * @param {string} dateSting date in string formate.
+ * @return {boolen} true if it today and a day in future, false if yesterday.
+ */
+function isFutureDate(dateSting) {
+    const date = new Date(dateSting);
+    const now = new Date();
+
+    if (date < now) {
+        return false;
+    }
+    return true;
+
+}
+
+
+/**
+ *
+ * verify returned data from server
+ * @export
+ * @param {object} data of reservation
+ */
 export function validateReturnDataReservation(data) {
-verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
-verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
-verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
-verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
-verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
+    verifyReturnData(data["idGym"], JSON.parse(localStorage.getItem("chosenGym")));
+    verifyReturnData(data["chosenDate"], JSON.parse(localStorage.getItem("chosenDate")));
+    verifyReturnData(data["nbParticpation"], JSON.parse(localStorage.getItem("nbParticpation")));
+    verifyReturnData(data["idActivity"], JSON.parse(localStorage.getItem("nbParticpation")));
+    verifyReturnData(data["token"], JSON.parse(localStorage.getItem("token")));
 }
 
 /**
@@ -241,14 +322,26 @@ export function getQueryParams() {
 export function displayReservation(reservation) {
     const clone = document.importNode(document.getElementById('template-reservation').content, true);
     clone.getElementById('gym').innerText = reservation['name_gym'];
+    clone.getElementById('idReservation').innerText = reservation['id_reservation'];
+    clone.getElementById('idReservation').dataset.idReservation = reservation['id_reservation'];
+
     clone.getElementById('dateReservation').innerText = reservation['date_starting'];
-    clone.getElementById('dateReservation').dataset.idReservation = reservation['id_reservation'];
+    clone.getElementById('dateReservation').dataset.dateStarting = reservation['date_starting'];
+
+    clone.getElementById('nbParticipation').innerText = reservation['nb_particpation'];
     clone.getElementById('duration').innerText = reservation['duration'];
+    clone.getElementById('duration').dataset.duration = reservation['id_activity'];
+    clone.getElementById('durationUnit').innerText = reservation['unit_name_fr'];
     clone.getElementById('totalPrix').innerText = reservation['totalPrice'];
     clone.getElementById('status').innerText = reservation['status'];
     document.getElementById('reservation-details-div').appendChild(clone);
+    if (!isFutureDate(reservation['date_starting'])) {
+
+        document.getElementById('reservation-actions').innerText = "";
+        return;
+    }
     document.getElementById('reservation-cancel').addEventListener("click", cancelReservation);
-    document.getElementById('reservation-edit').addEventListener("click", editReservation);
+    document.getElementById('reservation-edit').addEventListener("click", editReservationUrl);
 
 }
 
@@ -279,12 +372,21 @@ function cancelReservation() {
 
 
 /**
- *canel reservation by deleting it from database
+ *Edits reservation.
  *
  */
-function editReservation() {
-    let token = getToken();
-    let idReservation = document.getElementById("dateReservation").dataset.idReservation;
-    document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+function editReservationUrl() {
 
+    let token = getToken();
+    let idReservation = document.getElementById("idReservation").dataset.idReservation;
+    let duration = document.getElementById("duration").dataset.duration;
+    if (parseInt(duration) > 0 && parseInt(duration) < 4) {
+        document.location.href = `/reservation.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
     }
+    else if (parseInt(duration) > 3 && parseInt(duration) < 6) {
+        document.location.href = `/abonnements.php?idReservation=${idReservation}&token=${token}&action=editReservtaion`
+    }
+
+
+}
+

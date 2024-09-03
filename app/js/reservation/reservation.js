@@ -11,24 +11,43 @@ localStorage.setItem("param", JSON.stringify(urlParam));
 
 
 F.getGym();
-document.getElementById("hall").addEventListener("change", (e) => {
-    F.verifyIdGym(e.target.value);
-    //get vacation dates
-    localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
-    Calendar.GetSetGymDetails(e.target.value);
+listenTohall();
+listenToDuration();
+
+
+/**
+ *listen to input hall and applicate 
+  Calendar.GetSetGymDetails(e.target.value) and set the value in local storge
+ *
+ */
+function listenTohall() {
+
+    document.getElementById("hall").addEventListener("change", (e) => {
+        F.verifyIdGym(e.target.value);
+        //get vacation dates
+        localStorage.setItem("chosenGym", JSON.stringify(e.target.value));
+        Calendar.GetSetGymDetails(e.target.value);
+    }
+    );
+
 }
-);
 
+/**
+ *listen to duration input and set the value in local storge
+ *
+ */
+function listenToDuration() {
 
+    document.getElementById("duration").addEventListener("change", (e) => {
 
-document.getElementById("duration").addEventListener("change", (e) => {
+        F.verifyDuration(e.target.value);
+        localStorage.setItem("duration", JSON.stringify(e.target.value));
+        //to do verify avaliable time
 
-    //to do -write function to verify id !!!
-    localStorage.setItem("duration", JSON.stringify(e.target.value));
-    //to do verify avaliable time
-
+    }
+    );
 }
-);
+
 
 
 
@@ -95,10 +114,12 @@ function manuplateReservation(method, action, idReservation = null) {
 
         F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
-        document.location.href = `/dashboard.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
+        document.location.href = `/panier.php#reservation-details?idReservation=${data["idReservation"]}&token=${data["token"]}`
 
     })
 }
+
+
 
 function editReservation(method, action) {
     let apiParam = {
@@ -119,7 +140,7 @@ function editReservation(method, action) {
 
         F.validateReturnDataReservation(data);
         //redirect to shown reservation page.(to do do you needs another params to pass?)
-        document.location.href = `/dashboard.php#reservation-details?idReservation=${urlParam["idReservation"]}&token=${F.getToken()}`
+        document.location.href = `/panier.php?idReservation=${urlParam["idReservation"]}&token=${F.getToken()}`
 
     })
 }

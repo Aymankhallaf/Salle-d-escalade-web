@@ -1,8 +1,16 @@
 <?php
-require_once 'includes/_header.php';
+require_once 'includes/_startSession.php';
+
 if (!isServerOk()) {
     triggerError('referer');
 }
+
+if (!isUserLoggedin()) {
+    addError("need_login");
+    redirectToHeader("connectez-vous.php");
+}
+include 'includes/_header.php';
+
 ?>
 
 <main>
@@ -87,29 +95,29 @@ if (!isServerOk()) {
     </form>
 
 
-<!-- gym template -->
-<template id="hallTemplate">
-    <option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
-</template>
+    <!-- gym template -->
+    <template id="hallTemplate">
+        <option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
+    </template>
 
-<!-- days template -->
-<template id="day-template">
-    <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
-</template>
+    <!-- days template -->
+    <template id="day-template">
+        <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
+    </template>
 
-<!-- hours template -->
-<template id="hours-template">
-    <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
-</template>
+    <!-- hours template -->
+    <template id="hours-template">
+        <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
+    </template>
 
 
-<template id="templateError">
-    <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
-</template>
+    <template id="templateError">
+        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+    </template>
 
-<template id="templateMessage">
-    <li data-message="" class="messages__itm">Ici vient le message</li>
-</template>
+    <template id="templateMessage">
+        <li data-message="" class="messages__itm">Ici vient le message</li>
+    </template>
 </main>
 
 <script type="module" src="./js/reservation/reservation.js"></script>

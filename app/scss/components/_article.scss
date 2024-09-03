@@ -60,4 +60,20 @@
     }
   }
 }
+.pages-number {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  &-a {
+    font-size: 0.875rem;
+    @include button($blue-petrol);
 
+    &:target {
+      @include button($dark-orange);
+    }
+    &--active {
+      font-size: 0.875rem;
+      @include button($dark-orange);
+    }
+  }
+}

@@ -1,4 +1,3 @@
-// to do
 .dashboard {
     &-ttl {
         @extend %page-ttl;
@@ -13,16 +12,19 @@
 
         &__a {
             @include button;
-            &--current {
+            &:target {
+                @include button($dark-orange);
+            }
+            &.active {
                 @include button($dark-orange);
             }
         }
     }
 }
 
-.reservation-details {
-    @include centering;
-    margin-bottom: 2rem;
+
+
+.profile-details {
     &-tll {
         text-align: left;
         font-size: 1.25rem;
@@ -38,13 +40,69 @@
     }
 }
 
-.reservation{
-    &-edit {
-        font-size: 1rem;
-        color: $turquoise;
+.articl-create-form {
+    &-ul {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
-    &-cancel {
-        font-size: 1rem;
-        color: $dark-red;
+    &__title {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
     }
+    &__img {
+        @extend %form-container;
+
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            @include input;
+        }
+    }
+
+    &__category {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            border: $turquoise solid 2px;
+            @include input;
+            @include simple-arrow;
+        }
+    }
+    &__txt {
+        @extend %form-container;
+        &-label {
+            @extend %label;
+        }
+        &-input {
+            overflow: hidden;
+            border: $turquoise solid 2px;
+        }
+    }
+    &__btn {
+        display: flex;
+        justify-content: space-between;
+        &__cancel {
+            @include button;
+        }
+        &__publish {
+            @include button($dark-orange);
+        }
+    }
+}
+
+.tab-dashboard--active {
+    @include centering;
+    margin-bottom: 2rem;
+}
+.active-btn-tab {
+    background: $dark-red;
 }

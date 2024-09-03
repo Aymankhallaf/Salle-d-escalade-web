@@ -24,7 +24,7 @@ let month = currentDate.getMonth();
 let chosenDate = null;
 
 /**
- * update the holidays 
+ * Updates the holidays 
  * @param {array} array of hoildays ex ["jeudi 9 mai 2024", "Lundi 20 mai 2024"]
  */
 function updateHolidays(newHolidays) {
@@ -32,7 +32,7 @@ function updateHolidays(newHolidays) {
 }
 
 /**
- * check if the date valide or not(true = valide).
+ * Checks if the date valide or not(true = valide).
  * @param {string} dateStr string date
  * @returns {boolen} (true = valide) - (false =unvalide).
  */
@@ -41,7 +41,7 @@ function isDateValid(dateStr) {
 }
 
 /**
- * get the index of the first day the current month and the number of days in this month.
+ * Gets the index of the first day the current month and the number of days in this month.
  * @returns{array} array, the first day index [ex. sunday-satrday 0-6] and the number of days in the month
  */
 function getFirstAndLastDay() {
@@ -65,7 +65,7 @@ function displayCalendarHeader() {
 }
 
 /**
- * convert string date to date in french formate.
+ * Converts string date to date in french formate.
  * @param {string} date in string
  * @returns {string} a string in french format "jeudi 9 mai 2024"
  */
@@ -79,7 +79,7 @@ function formateDay(date) {
 }
 
 /**
- * convert string date to this string format dd-mm-yyyy.
+ * Converts string date to this string format dd-mm-yyyy.
  * @param {string} date in string
  * @returns {string} a date in french format "jeudi 9 mai 2024"
  */
@@ -91,9 +91,10 @@ function formateDate(date) {
 
 
 /**
- * creates a day cell with its attributes and disactive it according to isDayDisactive function.
+ * Creates a day cell with its attributes and disactive them according to
+  isDayDisactive function.
  * @param {number} day a number of day.
- * @param {*} currentDate a variable of day change   
+ * @param {date} currentDate a variable of day change   
  */
 function createDayCell(day, currentDate) {
   let dataSet = formateDay(currentDate);
@@ -191,7 +192,8 @@ next.addEventListener("click", () => {
 
 
 /**
- * listen to the click of active days celles and applicate handleCalendarCellClick() function.
+ * Listens to the click of active days celles and applicate 
+  handleCalendarCellClick() function.
  */
 function updateEventListeners() {
   const dayElements = daysContainer.querySelectorAll(".js-calender__month--day");
@@ -221,7 +223,7 @@ function handleCalendarCellClick(e) {
     selected.innerHTML = `Vous avez choisi: ${chosenDate}`;
     selected.classList.remove("error");
     selected.dataset.selectedDay = chosenDate;
-    getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort);
+    getOpenHoures(JSON.parse(localStorage.getItem("chosenGym")), chosenDateShort,JSON.parse(localStorage.getItem("duration")));
 
   } else {
     selected.innerHTML = `Vous n'avez pas choisi`;
@@ -281,7 +283,8 @@ export function GetSetGymDetails(idGym) {
 }
 
 
-function getOpenHoures(idGym, chosenDate) {
+
+function getOpenHoures(idGym, chosenDate, duration) {
   if (!isDateValid) {
     F.displayMessage("la date n'est pas valide");
     return
@@ -302,8 +305,10 @@ function getOpenHoures(idGym, chosenDate) {
     let hours = data["openClosehoures"][0];
     let openHour = hours["open_hour"].slice(0, 2);
     let closeHour = hours["close_hour"].slice(0, 2);
-    document.getElementById("hours__container").innerHTML = "";
-    H.displayHour(openHour, closeHour);
+    if (parseInt(duration) > 0 && parseInt(duration) < 4) {
+      document.getElementById("hours__container").innerHTML = "";
+      H.displayHour(openHour, closeHour);
+    }
 
 
   })

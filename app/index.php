@@ -1,7 +1,15 @@
 <?php
+require_once 'includes/_startSession.php';
 include 'includes/_header.php';
+
 ?>
 <main>
+    <?php
+    echo getHtmlMessages($messages);
+    echo getHtmlErrors($errors);
+    ?>
+    <ul id="errorsList" class="error"></ul>
+    <ul id="messagesList" class="messages"></ul>
     <section class="hero-banner" aria-labelledby="hero-banner">
 
         <h1 id="hero-banner" class="hero-banner__ttl">Bienvenue chez
@@ -75,75 +83,36 @@ include 'includes/_header.php';
 
     <section class="section salle">
         <ul class="galary" aria-label="">
-            <li class="galary__item galary__item-1"><a target="_blank" class="galary__lnk" href="#first-salle">La
-                    première salle</a>
+            <li class="galary__item galary__item-1"><a target="_blank" class="galary__lnk" href="page.php?article=Escalade-aventure&id=244">Escalade aventure 1</a>
             </li>
-            <li class="galary__item galary__item-2"><a target="_blank" class="galary__lnk" href="#second-salle">la
-                    deuxième
-                    salle</a></li>
+            <li class="galary__item galary__item-2"><a target="_blank" class="galary__lnk" href="page.php?article=escalade-aventure-2&id=246">Escalade aventure 2</a></li>
         </ul>
     </section>
 
-    <section aria-labelledby="events">
-        <h2 id="events" class="sub-heading sub-heading__ttl--red">Evènements</h2>
-        <ul class="card-holder">
-            <li class="card card-events">
-                <img class="card__img" src="img/birthday-25.webp" alt="fille célébrant son anniversaire">
-                <h3 class="card__ttl card__ttl--h3">Anniversaires</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
+    <!-- events -->
+    <?php include 'includes/_events.php'; ?>
 
-            <li class="card card-events">
-                <img class="card__img" src="img/competatiopn-s.webp" alt="Un homme participe à une compétition.">
-                <h3 class="card__ttl card__ttl--h3">Compétition</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
-            <li class="card card-events">
-                <img class="card__img" src="img/events-s.webp" alt="Un groupe participe à un événement.">
-                <h3 class="card__ttl card__ttl--h3">Nos évènements</h3>
-                <p class="card__txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                </p>
-                <a target="_blank" href="#" class="btn card__btn">En savoir plus</a>
-            </li>
-        </ul>
-    </section>
-
+    <!-- contact us -->
     <a class="sub-heading-container btn contact-us__btn">
         Nos contacter
     </a>
+
+    <!-- last 3 articles from category articles -->
     <section class="section artcl">
         <h2 class="sub-heading sub-heading__ttl--red">
             les derniers articles
         </h2>
         <ol class="artcl-holder">
-            <li class="artcl-item">
-                <img class="artcl-item__img" src="img/robe.webp" alt="un cordage">
-                <h3 class="artcl-item__ttle">Masterclass : apprendre l’escalade avec des superstars de la discipline
-                    !</h3>
-                <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
-            </li>
-            <li class="artcl-item">
-                <img class="artcl-item__img" src="img/seb-bouin.webp" alt="Seb Bouin grimpe">
-                <h3 class="artcl-item__ttle">Seb Bouin grimpe + que Jumbo Love sur la mythique Clark Mountain !</h3>
-                <a target="_blank" href="#" class="link artcl-item__link">Lire Plus</a>
-            </li>
-            <li class="artcl-item">
-                <img class="artcl-item__img" src="img/pic-saint-loup.webp" alt="Seb Bouin grimpe Saint Loup">
-                <h3 class="artcl-item__ttle">Suivez Seb Bouin sur les parois du Pic Saint Loup !</h3>
-                <a target="_blank" href="#" class=" link artcl-item__link">Lire Plus</a>
-            </li>
+            <?php
+            $articles =  getArticlsByCategory($dbCo, 1, 3, 1);
+            foreach ($articles as $article) {
+                echo addHtlmArticleTtl($article);
+            }
+            ?>
         </ol>
-        <a target="_blank" href="#read-more" class="btn artcl__btn">Plus d’articles</a>
+        <a target="_blank" href="category.php?id=<?= $categories["0"]['id_category'] ?>" class="btn artcl__btn">Plus d’articles</a>
 
     </section>
-
 
 </main>
 

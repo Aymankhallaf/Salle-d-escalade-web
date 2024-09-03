@@ -8,10 +8,23 @@
   padding: 0.5rem;
   @include desktop-only() {
     width: 40%;
-    aspect-ratio: 6.67;
     font-size: 1rem;
   }
 }
+
+%form-main-ttl {
+  display: block;
+  margin: 2.375rem 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background-color: $light-orange-50;
+  padding: 0.5rem;
+  @include desktop-only() {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
 
 /*form input*/
 %form-input {
@@ -41,11 +54,14 @@
 @mixin simple-arrow(
   $img:
     url('data:image/svg+xml,<svg width="24" height="13" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.5L12 11.5L22 1.5" stroke="%23001219" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>')
-) {
-  background-image: $img;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-x: calc(100% - 0.5rem);
+) 
+{
+  & {
+    background-image: $img;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: calc(100% - 0.5rem);
+  }
 }
 
 /*this used in connection page*/
@@ -63,13 +79,13 @@
 
 @mixin input($color: $black) {
   padding: .5rem;
-  height: 4rem;
+  height: 3rem;
   border-color: $color;
   background-color: $sand-15;
-  &:invalid {
+  &:required:invalid {
     border: $dark-red solid 2px;
   }
-  &:valid {
+  &:required:valid {
     border: $turquoise solid 2px;
   }
 }

@@ -8,3 +8,5 @@ export function dropDownMainMenu() {
         document.getElementById("main-menu").classList.toggle("header-nav__menu--side");
     });
 }
+
+

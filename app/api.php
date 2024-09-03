@@ -3,57 +3,75 @@ session_start();
 
 require_once 'includes/_connection.php';
 
+//anti brute force
+sleep(1);
+
+
 header('Content-type: application/json');
-//prenvent visteurs acess to this page
+
+//prenvent visteurs acess to this page && csfr 
 if (!isServerOk()) {
     triggerError('referer');
 }
+
 $inputData = json_decode(file_get_contents('php://input'), true);
-if (!is_array($inputData)) {
-    $inputData = $_REQUEST;
-}
-stripTagsArray($inputData);
 if (!isTokenOk($inputData['token'])) {
     triggerError('token', $_SESSION['token']);
 }
 
-//create account
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "createaccount") {
-
-    isCreateAccountDataValide($inputData);
-    createAccount($dbCo, $inputData);
+if (!isUserLoggedin()) {
+    addError("need_login");
+    redirectToHeader("connectez-vous.php");
 }
+
+if (!is_array($inputData)) {
+    $inputData = $_REQUEST;
+}
+stripTagsArray($inputData);
 
 
 //reservation
-else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
+
     getGyms($dbCo);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
-    if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
+
+    if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
         triggerError('idGym', '1');
     }
     getGymDetails($dbCo, intval($inputData['idGym']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
-    if ($inputData['idGym'] !== '1' && $inputData['idGym'] !== '2') {
-        triggerError('idGym', "2");
+
+    if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
+        triggerError('idGym', '1');
     }
-    if (!isValidDate($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
+    if (!isValidDate($inputData['chosenDate']) || isFieldEmpty($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
     }
-    getOpenHours($dbCo,  $inputData['idGym'], $inputData['chosenDate']);
+    getOpenHours($dbCo,  intval($inputData['idGym']), $inputData['chosenDate']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
-    isReservationValid($inputData);
-    reserve($dbCo, $inputData, 1);
+
+    isReservationValid($inputData, $_SESSION['idUser']);
+    reserve($dbCo, $inputData, intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "getAReservation") {
-    //to do user authotcation
-
-    getAReservationDetailsUser($dbCo, $inputData['idReservation'], 1);
+    if (!isFieldNumber($inputData['idReservation']) || !isFieldNumber($_SESSION['idUser'])) {
+        triggerError("invalid_id");
+    }
+    getAReservationDetailsUser($dbCo, intval($inputData['idReservation']), intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && $inputData['action'] === "cancelReservation") {
-    //to do user authotcation
+    if (!isFieldNumber($inputData['idReservation'])) {
+        triggerError("invalid_id");
+    }
 
-    cancelReservation($dbCo, $inputData['idReservation']);
+    cancelReservation($dbCo, intval($inputData['idReservation']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservation") {
-    //to do user authotcation
-    editReservationDetails($dbCo, $inputData);
+    if (!isFieldNumber($_SESSION['idUser'])) {
+        triggerError("invalid_id");
+    }
+    if (!isFieldNumber($inputData['idReservation'])) {
+        triggerError("invalid_id");
+    }
+    isReservationValid($inputData, $_SESSION['idUser']);
+    editReservationDetails($dbCo, $inputData, intval($_SESSION['idUser']));
 }
