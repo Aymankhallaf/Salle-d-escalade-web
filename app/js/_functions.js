@@ -353,7 +353,7 @@ function cancelReservation() {
     callApi("DElETE", {
         action: "cancelReservation",
         token: getToken(),
-        idReservation: document.getElementById("dateReservation").dataset.idReservation
+        idReservation: document.getElementById("idReservation").dataset.idReservation
 
     }).then(data => {
         if (!data) {
