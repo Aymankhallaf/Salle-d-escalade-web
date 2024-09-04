@@ -1,130 +1,119 @@
 <?php
 require_once 'includes/_startSession.php';
 
+//csfr protection
 if (!isServerOk()) {
-    triggerError('referer');
+    addError('referer');
+    redirectToHeader("index.php");
 }
 
+//login verification
 if (!isUserLoggedin()) {
     addError("need_login");
     redirectToHeader("connectez-vous.php");
 }
+require_once 'includes/_config.php';
+
 include 'includes/_header.php';
-
+include 'includes/_notification.php';
 ?>
+<main class="dashboard">
+    <?php include 'includes/_navDashboard.php'; ?>
+    <!-- profile -->
+    <section id="profil" class="profile-details js-tab-dashboard tab-dashboard--active">
+        <?php include 'includes/_profil.php'; ?>
+    </section>
+    <!-- reservation -->
+    <section id="reservation" class="reservation-details js-tab-dashboard hidden ">
 
-<main>
-    <h1 class="reservation-ttl" id="reservation">Réservation</h1>
-    <ul id="errorsList" class="error"></ul>
-    <ul id="messagesList" class="messages"></ul>
-    <form id="reservation-form" class="reservation-form" aria-label="veuillez remplir le formulaire de réservation" method="get">
-        <ul aria-labelledby="reservation-form">
-            <!-- hall -->
-            <li class="warp-input hall">
-                <label class="hall__ttl" id="hall_ttl" for="hall">Choisissez la salle: </label>
-                <select class="hall__select js-select" name="hall" id="hall">
-                    <option class="hall__option" value="" required>Veuillez choisir une option</option>
-                </select>
-            </li>
-            <!-- participant -->
-            <li class="warp-input participant">
-                <label class="participant__ttl" for="participants">Numéro de participants:</label>
-                <div class="participant__container">
-                    <button id="decrease-participant" aria-label="bouton moins" class="participant__btn participant__btn--minus" type="button"></button>
-                    <input class="participant__input" type="text" id="participants" name="participants" min="1" max="2" value="0">
-                    <button id="increase-participant" aria-label="bouton plus" class="participant__btn participant__btn--plus" type="button"></button>
-                    <p id="participant__display" class="participant__display"></p>
-                </div>
-            </li>
-
-            <!-- calender -->
-            <li class="warp-input calender-container">
-                <p for="calender" class="calender__label" id="calender__label">Choisissez la date: </p>
-                <div id="calender" class="calender__display">
-                    <header class="calender__header">
-                        <button type="button" id="calender__left" class="calender__left"><img src="./img/arrow-left.svg" alt="icône de bouton précédent"></button>
-                        <time data-month="" id="calender__ttl" class="calender__ttl"></time>
-                        <button type="button" id="calender__right" class="calender__right"><img src="./img/arrow-right.svg" alt="icône de bouton suivant"></button>
-                    </header>
-                    <ol class="calender__week">
-                        <li class="calender__week--day">Lu</li>
-                        <li class="calender__week--day">Ma</li>
-                        <li class="calender__week--day">Me</li>
-                        <li class="calender__week--day">Je</li>
-                        <li class="calender__week--day">Ve</li>
-                        <li class="calender__week--day">Sa</li>
-                        <li class="calender__week--day">Di</li>
-                    </ol>
-                    <ol id="month-days" class="calender__month">
-                        <!--days will be filled here-->
-                    </ol>
-
-                    <p class="calender__selected-txt"></p>
-                </div>
-            </li>
-            <!-- end calender -->
-            <!-- duration -->
-            <li class="warp-input duration">
-                <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
-                <select class="duration__select js-select" name="duration" id="duration">
-                    <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="2">60 minutes <span class="" data-price="12">/ 12
-                            €</span>
-                    </option>
-                    <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
-                    </option>
-                </select>
-            </li>
-            <!-- start hour -->
-            <li class="warp-input hours">
-                <p for="hours__display" class="hours__ttl" id="hours">Choisissez l'heures:</p>
-                <div id="hours__display" class="hours__display">
-                    <ol id="hours__container" class="hours__container">
-                    </ol>
-                </div>
-
-            </li>
-
-        </ul>
-        <div class="reservation-form__btn-container">
-            <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
-        </div>
-    </form>
+        <?php include 'includes/_reservationhistory.php'; ?>
 
 
-    <!-- gym template -->
-    <template id="hallTemplate">
-        <option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
-    </template>
+    </section>
+    <!-- subscription -->
+    <section id="subscription" class="subscription-details js-tab-dashboard hidden ">
+        <?php include 'includes/_subsciriptionhistory.php'; ?>
 
-    <!-- days template -->
-    <template id="day-template">
-        <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
-    </template>
+    </section>
+    <!-- articles -->
+    <section id="articles" class="articles-details js-tab-dashboard hidden">
+        <?php include 'includes/_createArticle.php'; ?>
+    </section>
 
-    <!-- hours template -->
-    <template id="hours-template">
-        <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
-    </template>
-
-
-    <template id="templateError">
-        <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
-    </template>
-
-    <template id="templateMessage">
-        <li data-message="" class="messages__itm">Ici vient le message</li>
-    </template>
 </main>
 
-<script type="module" src="./js/reservation/reservation.js"></script>
 
+<script type="module" src="./js/reservationDetails.js"></script>
+<script type="module" src="./js/dashboard.js"></script>
+
+
+
+<!-- template reservation -->
+
+<template id="template-reservation">
+    <table id="reservation-details-table" class="reservation-details-table">
+        <tr class="reservation-details-raw">
+            <th>Salle</th>
+            <td id="gym">Salle1</td>
+        </tr>
+        <tr class="reservation-details-raw">
+            <th>Date de réservation</th>
+            <td id="dateReservation">14/07/2024 8:30</td>
+        </tr>
+        <tr class="reservation-details-raw">
+            <th>Durée</th>
+            <td id="duration">1h</td>
+        </tr>
+        <tr class="reservation-details-raw">
+            <td id="totalPrix">50€</td>
+        </tr>
+        <tr class="reservation-details-raw">
+            <th>Statut</th>
+            <td id="status">modifier</td>
+        </tr>
+    </table>
+    <ul class="reservation-details-raw">
+        <li id="reservation-edit"><a class="reservation-edit">modifier</a></li>
+
+        <li><a id="reservation-cancel" class="reservation-cancel">annuler</a></li>
+    </ul>
+
+</template>
+
+<template id="templateError">
+    <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+</template>
+
+<template id="templateMessage">
+    <li data-message="" class="messages__itm">Ici vient le message</li>
+</template>
+<!-- gym template -->
+<template id="hallTemplate">
+    <option class="hall__option js-hall-option" value="" required>Veuillez choisir une option</option>
+</template>
+
+<!-- days template -->
+<template id="day-template">
+    <li><a><time datetime="" data-date="" class="calender__month--day js-calender__month--day"></time></a></li>
+</template>
+
+<!-- hours template -->
+<template id="hours-template">
+    <li><a><time class="hours__container--element js-hours__element" datetime="" data-hour="" data-minutes=""></time></a></li>
+</template>
+
+
+<template id="templateError">
+    <li data-error-message="" class="errors__itm">Ici vient le message d'erreur</li>
+</template>
+
+<template id="templateMessage">
+    <li data-message="" class="messages__itm">Ici vient le message</li>
+</template>
 <?php
 include 'includes/_footer.php';
 ?>
+
 </body>
 
 </html>
