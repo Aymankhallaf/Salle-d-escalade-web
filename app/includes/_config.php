@@ -27,6 +27,8 @@ $errors = [
     'login_error' => "Votre email ou votre mot de passe sont incorrects.",
     "login_ko" => "Votre email ou votre mot de passe sont incorrects ou
       créez un compte si vous n'en avez pas",
+	      "login_ok" => "Vous avez déja connecté",
+
     "need_login" => "Veuillez vous connecter pour accéder à cette page",
     "right_ko" => "Vous n'avez pas le droit de faire cette action",
     "updateArticle_Ko" => "Error mettre à jour l'article",

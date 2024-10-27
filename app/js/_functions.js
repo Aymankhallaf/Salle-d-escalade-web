@@ -236,7 +236,7 @@ function isFutureDate(dateSting) {
 
 /**
  *
- * verify returned data from server
+ * Verify returned reservation data from server
  * @export
  * @param {object} data of reservation
  */

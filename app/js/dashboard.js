@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
     });
 
     /**
-     * Actives current section(tab) by adding clsaa('tab-dashboard--active')
+     * Actives current section(tab) by adding class('tab-dashboard--active')
      * and disactives the others by adding(hidden) and change the color of the btn tab     
      * @param {string} tabId id section, href of a link html
      * @return {void}

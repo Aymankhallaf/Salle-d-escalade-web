@@ -448,7 +448,7 @@ function reserve(PDO $dbCo, array $inputData, int $idUser)
     $dateStarting = DateTime::createFromFormat('d-m-Y H:i', $inputData['chosenDate'] . ' ' . $inputData['chosenHour']);
     $formattedDateStarting = $dateStarting->format('Y-m-d H:i:s');
     $formattedDateEnding = calculateDateEndReservation(intval($inputData['duration']), $dateStarting);
-    
+
     $price = getActivityPrice($dbCo, $inputData['duration']);
     $query = $dbCo->prepare("INSERT INTO reservation
       (nb_particpation , date_starting, date_ending,
@@ -798,12 +798,10 @@ function isZipCodeValide(int $zipCode): bool
 
 
 
-
 /**
- * is email valide?
+ * Checks if the mail is valid.
  * @param string $email email
- * @param int $maxLength maxLength.
- * @return bool ture if it is valide or false isn't.
+ * @return bool ture if it is valid or false if it isn't.
  */
 function isValideMail($email): bool
 {
@@ -845,9 +843,9 @@ function isVerifyconfirmPassword($password, $confirmPassword): bool
 
 
 /**
- * is the form is valid?
+ * Checks if the creation account form is valid.
  * @param array $inputData form data.
- * @return bool ture if it is valide or false isn't.
+ * @return bool true if it is valid or false if it isn't..
  */
 function isCreateAccountDataValide($inputData): bool
 {
@@ -876,7 +874,7 @@ function isCreateAccountDataValide($inputData): bool
 function isAccountExist(PDO $dbCo, array $inputData): bool
 {
     $query = $dbCo->prepare("SELECT * FROM users 
-    WHERE email = :email OR telephone = :tel");
+    WHERE email = :email OR telephone = :tel;");
 
     $isQueryOk = $query->execute([
         'email' => $inputData['email'],
@@ -930,7 +928,7 @@ function createAccount(PDO $dbCo, array $inputData)
         $addressId = $dbCo->lastInsertId();
 
         //Insert the user, linking them to the address
-        $userQuery = $dbCo->prepare("INSERT INTO `users` (`fname`, `lname`, `birthdate`, `telephone`, `email`, `password`, `id_adresses`,`id_role_admin`) 
+        $userQuery = $dbCo->prepare(query: "INSERT INTO `users` (`fname`, `lname`, `birthdate`, `telephone`, `email`, `password`, `id_adresses`,`id_role_admin`) 
                                      VALUES (:fname, :lname, :birthdate, :tel, :email, :password, :idAddresses, 0);");
         $isQueryOk = $userQuery->execute([
             'fname' => $inputData['fname'],
@@ -943,19 +941,15 @@ function createAccount(PDO $dbCo, array $inputData)
         ]);
 
         // Commit the transaction
-        if ($isQueryOk) {
-            $dbCo->commit();
-            addMessage('createAccount_ok');
-            redirectToHeader("index.php");
+        if (!$isQueryOk) {
 
-            // return true;
-        } else {
             $dbCo->rollBack();
             addError('createAccount_ko');
             redirectToHeader("connectez-vous.php");
-
-            // return false;
         }
+        $dbCo->commit();
+        addMessage('createAccount_ok');
+        redirectToHeader("index.php");
     } catch (Exception $e) {
         $dbCo->rollBack();
         error_log("Error in createAccount: " . $e->getMessage());
@@ -1214,6 +1208,7 @@ function getCategoryById(PDO $dbCo, int $idCategory): string
     }
     return  $query->fetchColumn();
 }
+
 
 
 function addOptionHtmlCategory(array $category, int $currentCategory)
