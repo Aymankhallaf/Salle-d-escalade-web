@@ -3,7 +3,7 @@ session_start();
 require_once 'includes/_connection.php';
 
 //anti brutal force attack
-sleep(1);
+sleep(seconds: 1);
 
 //csfr protection
 if (!isServerOk()) {

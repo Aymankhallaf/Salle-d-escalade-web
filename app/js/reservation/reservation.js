@@ -43,6 +43,8 @@ function listenToDuration() {
         F.verifyDuration(e.target.value);
         localStorage.setItem("duration", JSON.stringify(e.target.value));
         //to do verify avaliable time
+        let reservationElem = { ...localStorage };
+        console.log(reservationElem);
 
     }
     );

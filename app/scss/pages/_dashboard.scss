@@ -14,9 +14,11 @@
             @include button;
             &:target {
                 @include button($dark-orange);
+
             }
             &.active {
                 @include button($dark-orange);
+
             }
         }
     }

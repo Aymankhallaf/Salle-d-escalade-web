@@ -33,26 +33,30 @@ stripTagsArray($inputData);
 //reservation
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym') {
 
+    //fetch gym names
     getGyms($dbCo);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHoliday' && isset($inputData['idGym'])) {
 
     if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
         triggerError('idGym', '1');
     }
+    //fetch gym details
     getGymDetails($dbCo, intval($inputData['idGym']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchHours' && isset($inputData['idGym'])) {
 
     if (intval($inputData['idGym']) > 5 || intval($inputData['idGym']) < 0) {
-        triggerError('idGym', '1');
+        triggerError('idGym', '2');
     }
     if (!isValidDate($inputData['chosenDate']) || isFieldEmpty($inputData['chosenDate']) || !isFutureDate($inputData['chosenDate'])) {
         triggerError('chosenDate');
     }
+    //get open details
     getOpenHours($dbCo,  intval($inputData['idGym']), $inputData['chosenDate']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "reserve") {
 
 
     isReservationValid($inputData, $_SESSION['idUser']);
+    //reserves
     reserve($dbCo, $inputData, intval($_SESSION['idUser']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === "getAReservation") {
     if (!isFieldNumber($inputData['idReservation']) || !isFieldNumber($_SESSION['idUser'])) {
@@ -63,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     if (!isFieldNumber($inputData['idReservation'])) {
         triggerError("invalid_id");
     }
-
+   //cancel reservation
     cancelReservation($dbCo, intval($inputData['idReservation']));
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT' && $inputData['action'] === "editReservation") {
     if (!isFieldNumber($_SESSION['idUser'])) {
@@ -72,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $inputData['action'] === 'fetchGym'
     if (!isFieldNumber($inputData['idReservation'])) {
         triggerError("invalid_id");
     }
+
     isReservationValid($inputData, $_SESSION['idUser']);
+   
+    //edit reservation
     editReservationDetails($dbCo, $inputData, intval($_SESSION['idUser']));
 }

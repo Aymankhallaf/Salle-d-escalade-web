@@ -363,6 +363,7 @@ function getOpenHours(PDO $dbCo, int $idGym, string $chosenDate): void
 function isReservationValid(array $inputData, $idUser)
 {
 
+    //we could improve this by check if the id gym is exist or not
     if ($inputData['chosenGym'] !== '1' && $inputData['chosenGym'] !== '2') {
         triggerError('chosenGym');
     }
@@ -896,7 +897,7 @@ function isAccountExist(PDO $dbCo, array $inputData): bool
 
 
 /**
- * Creates new account (by saving in database).
+ * Creates new account (by saving it in database).
  * @param PDO $dbCo database connection.
  * @param array $inputData data from creation account form. 
  * @return void
@@ -952,8 +953,8 @@ function createAccount(PDO $dbCo, array $inputData)
         redirectToHeader("index.php");
     } catch (Exception $e) {
         $dbCo->rollBack();
-        error_log("Error in createAccount: " . $e->getMessage());
         addError('createAccount_ko');
+        redirectToHeader("index.php");
     }
 }
 
@@ -1537,6 +1538,8 @@ function nbParticpationsthirtyMin(PDO $dbCo, string $dateStart, string $dateEnd)
 // 2-calculate the number of particpiants at the session 1 h before this time(10:00 - 11:00)
 // 2-calculate the number of particpiants at the session 30 min after this time(11:00 - 11:30)  
 
+
+// 1-callculate the number of particpiants at the chosen time (10:30) 30 min session + 1h session
 // SELECT SUM(nb_particpation) AS total_participation
 // FROM reservation
 // JOIN activity USING (id_activity) JOIN duration_unit USING (id_duration_unit)
