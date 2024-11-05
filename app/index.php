@@ -44,7 +44,7 @@ include 'includes/_header.php';
 
     <!-- check why there are "subheading-icon sub-heading__img "  -->
 
-    <section class="open-houres section" aria-labelledby="prix">
+    <section class="open-houres section" aria-labelledby="reservation">
         <div class="sub-heading-container">
             <img class="sub-heading__img" src="img/priceticket.svg" alt="le prix icon">
             <h2 id="price" class="sub-heading sub-heading__ttl--black">les Tarifs</h2>
@@ -65,7 +65,7 @@ include 'includes/_header.php';
             </li>
 
         </ul>
-        <a target="_blank" href="/reservation.php" class="btn reserve__btn">Réservez</a>
+        <a id="reservation" title="Aller à la page de réservation" target="_blank" href="/reservation.php" class="btn reserve__btn">Réservez</a>
 
     </section>
 
