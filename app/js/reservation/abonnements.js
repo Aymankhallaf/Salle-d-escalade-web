@@ -42,10 +42,7 @@ function handReservationSubmit(e) {
         F.displayError(data["Vous n'avez pas choisi la salle."]);
         return
     }
-    if (!reservationElem.hasOwnProperty("participants")) {
-        F.displayError(data["Vous n'avez pas choisi le numéro de participants."]);
-        return
-    }
+    
     if (!reservationElem.hasOwnProperty("chosenDate")) {
         F.displayError(data["Vous n'avez pas choisi le date."]);
         return
@@ -74,7 +71,8 @@ function manuplateReservation(method, action, idReservation = null) {
         token: F.getToken(),
         duration: JSON.parse(localStorage.getItem("duration")),
         chosenDate: JSON.parse(localStorage.getItem("chosenDate")),
-        participants: JSON.parse(localStorage.getItem("participants")),
+        //default one abonnement for account
+        participants: JSON.parse(1),
         chosenHour: JSON.parse(localStorage.getItem("chosenHour")),
         chosenGym: JSON.parse(localStorage.getItem("chosenGym"))
     }
