@@ -2,9 +2,6 @@
 session_start();
 require_once 'includes/_connection.php';
 
-//anti brutal force attack
-sleep(seconds: 1);
-
 //csfr protection
 if (!isServerOk()) {
     addError('referer');

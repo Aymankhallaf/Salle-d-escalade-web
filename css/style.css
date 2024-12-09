@@ -1870,6 +1870,10 @@ select:hover {
   text-align: left;
 }
 
+.cell__result {
+  width: 40%;
+}
+
 .reservation-actions {
   display: flex;
   flex-direction: row;

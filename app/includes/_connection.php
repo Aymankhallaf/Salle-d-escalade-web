@@ -3,7 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 include 'includes/_functions.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
 try {
@@ -14,6 +14,7 @@ try {
     );
     $dbCo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (Exception $e) {
+    //anti brute force
+    sleep(1);
     die('Impossible de se connecter à la base de données. ' . $e->getMessage());
 }
-

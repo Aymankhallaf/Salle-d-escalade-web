@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salle d'escalade</title>
+    <meta name="description" content="La salle vous propose de multiples activités comme de l'escalade avec corde, du bloc et un parcours aventure indoor. Vous souhaitez fêtez un anniversaire, Compétitions">
+    <meta name="keywords" content="salle d'escalade, abonnements-vous, reservation séance d'escalade">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <?php
@@ -39,9 +41,8 @@
                         d’accueil</a></li>
                 <li><a class="header-nav__menu-link" href="/abonnements.php">Abonnements</a></li>
                 <li><a class="header-nav__menu-link" href="/reservation.php">Réservation</a></li>
-                <li><a class="header-nav__menu-link" href="index.html#propres-a-nos">Propres à Nos </a></li>
-                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Nous Conacter</a></li>
-                <li><a class="header-nav__menu-link" href="index.html#nous-conactert">Evènements</a></li>
+                <li><a class="header-nav__menu-link" href="page.php?article=Propres-à-Nos&id=254">Propres à Nos </a></li>
+                <li><a class="header-nav__menu-link" href="http://localhost:8080/category.php?id=4">Evènements</a></li>
 
             </ul>
         </nav>

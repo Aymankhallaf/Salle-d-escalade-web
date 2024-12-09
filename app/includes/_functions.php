@@ -91,6 +91,8 @@ function triggerError(string $error, string $flag = ''): void
         'errorMessage' => $errors[$error],
         'flag' => $flag
     ]);
+    //anti brute force
+    sleep(1);
     exit;
 }
 
@@ -103,10 +105,13 @@ function triggerError(string $error, string $flag = ''): void
  */
 function addError(string $errorMsg): void
 {
+
     if (!isset($_SESSION['errorsList'])) {
         $_SESSION['errorsList'] = [];
     }
     $_SESSION['errorsList'][] = $errorMsg;
+    //anti brute force
+    sleep(1);
 }
 
 
@@ -221,7 +226,8 @@ function getGymDetails(PDO $dbCo, int $idGym): void
         triggerError("connection", "capacity");
     }
     $capacity = $queryCapacity->fetchColumn();
-    $queryHolidays = $dbCo->prepare("SELECT date_start_vacation FROM vacation WHERE id_gym = :idGym;");
+    $queryHolidays = $dbCo->prepare("SELECT date_start_vacation
+     FROM vacation WHERE id_gym = :idGym;");
     $isQueryOk2 = $queryHolidays->execute(['idGym' => $idGym]);
     if (!$isQueryOk2) {
         triggerError("connection", "vacation date");

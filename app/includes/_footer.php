@@ -2,10 +2,10 @@
     <nav aria-labelledby="#footer-nav">
         <h4 id="#footer-nav" class="footer-nav__ttle">Plus de links</h4>
         <ol class="footer-nav__menu">
-            <li class="footer-nav__item"><a class="footer-nav__link" href="#">Les tarifs</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Mention légales</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Les Horaires</a></li>
-            <li><a target="_blank" class="footer-nav__link" href="#">Propre de nos</a></li>
+            <li class="footer-nav__item"><a class="footer-nav__link" href="#price">Les tarifs</a></li>
+            <li><a target="_blank" class="footer-nav__link" href="page.php?article=Mention-légales&id=255">Mention légales</a></li>
+            <li><a target="_blank" class="footer-nav__link" href="#open-heures">Les Horaires</a></li>
+            <li><a target="_blank" class="footer-nav__link" href="http://localhost:8080/page.php?article=Propres-%C3%A0-Nos&id=254">Propre de nos</a></li>
         </ol>
 
     </nav>

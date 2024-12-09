@@ -93,7 +93,7 @@ include 'includes/_header.php';
     <?php include 'includes/_events.php'; ?>
 
     <!-- contact us -->
-    <a class="sub-heading-container btn contact-us__btn">
+    <a href="tel:0123456789" class="sub-heading-container btn contact-us__btn">
         Nos contacter
     </a>
 
