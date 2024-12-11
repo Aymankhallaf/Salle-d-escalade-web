@@ -1001,7 +1001,6 @@ function login(PDO $dbCo, array $inputData): void
 
     if ($user && password_verify($inputData['password'], $user['password'])) {
 
-
         $_SESSION['email'] = $user['email'];
         $_SESSION['fname'] = $user['fname'];
         $_SESSION['idUser']  = $user['id_user'];

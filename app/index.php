@@ -7,6 +7,9 @@ include 'includes/_header.php';
     <?php
     echo getHtmlMessages($messages);
     echo getHtmlErrors($errors);
+    // var_dump(
+    //     value: password_hash("mb8!7FS5szd_99Y", PASSWORD_DEFAULT)
+    // );
     ?>
     <ul id="errorsList" class="error"></ul>
     <ul id="messagesList" class="messages"></ul>

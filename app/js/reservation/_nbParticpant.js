@@ -10,6 +10,7 @@ const maxDefaultCapacity = JSON.parse(localStorage.getItem("capacity"));
  * @returns {number} The number of participants.
  */
 function handleInputField(value, maxDefaultCapacity) {
+    value === null ? 0 : value;
     if (!verifyCapacity(value, maxDefaultCapacity)) {
         F.displayError(`La valeur doit être inférieure à ${maxDefaultCapacity}`);
         return participantsInput.value; // Return the current value to prevent changes

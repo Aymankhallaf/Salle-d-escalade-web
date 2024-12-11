@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     addError("referer");
     redirectToHeader("index.php");
 }
+
 if ($_REQUEST['action'] !== "logIn") {
     addError("referer");
     redirectToHeader("index.php");
@@ -39,4 +40,6 @@ if (
     addError("login_error");
     redirectToHeader("connectez-vous.php");
 }
+
+
 login($dbCo, $_REQUEST);
