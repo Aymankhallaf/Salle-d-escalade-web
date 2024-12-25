@@ -68,13 +68,13 @@ include 'includes/_header.php';
                 <label class="duration__ttl" id="duration-label" for="duration">Choisissez le duration: </label>
                 <select class="duration__select js-select" name="duration" id="duration">
                     <option class="duration__option" value="" required>Veuillez choisir une option</option>
-                    <option class="duration__option" value="1">30 minutes / 8
-                            €
+                    <option class="duration__option" value="1">30 minutes <span class="" data-price="8">/ 8
+                            €</span>
                     </option>
-                    <option class="duration__option" value="2">60 minutes / 12
-                            €
+                    <option class="duration__option" value="2">60 minutes <span class="" data-price="12">/ 12
+                            €</span>
                     </option>
-                    <option class="duration__option" value="3">1 jour / 15 €
+                    <option class="duration__option" value="3">1 jour <span class="" data-price="15">/ 15 €</span>
                     </option>
                 </select>
             </li>
@@ -85,7 +85,9 @@ include 'includes/_header.php';
                     <ol id="hours__container" class="hours__container">
                     </ol>
                 </div>
+
             </li>
+
         </ul>
         <div class="reservation-form__btn-container">
             <button id="reservationFormBtn" type="submit" class="btn--blue-petrol reservation-form__btn">Confirmer</button>
