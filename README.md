@@ -1,44 +1,99 @@
-About The Project
+# Salle d'escalade Web Application
 
-Welcome to salle d'escalade v.1 test crud asyncrone
-website salle d'escalade to reserve a seance.
+Welcome to the Salle d'escalade web application. This platform allows users to reserve climbing sessions seamlessly.
 
-first after fork the project you need to install a local host you could use docker
-## BUILD AND RUN
+## Table of Contents
 
-To build images and run all containers and volumes
-```sh
-docker-compose up -d
-```
-## install the database
-there are an example of database in folder sql-example.
-you could import it.
-and connect to it by change parameters in .env file.
-## dont forget to run vite
-if you aren't in app folder
-write 
-```sh
-cd app
-```
-then 
-```sh
-npm run dev.
-```
-## Read
-from home page go to reservation page.
-it will fetch the data in asyn to get the reservation details
-![Capture d’écran 2024-07-31 004054](https://github.com/user-attachments/assets/090b60a0-3519-448c-b27d-8e1a5df31732)
+- [About the Project](#about-the-project)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## write
-it would write the reservation data in database and show it.
-After choosing a reservation details and press confirm
-![Capture d’écran 2024-07-31 005400](https://github.com/user-attachments/assets/8ad5c47a-dd46-4423-ac0e-ecf79ec47521)
+## About the Project
 
-## Update
-Pressing modifier, will premet to edit the reservation (update the reservation in  database) 
+This project is a web-based application designed for climbing enthusiasts to book sessions at our climbing facility. It offers an intuitive interface for users to view available slots and make reservations accordingly.
 
-## Delete
-Pressing annuler, will premet to delete the reservation (delete the reservation in  database) 
+## Features
 
+- **User Registration and Authentication**: Secure sign-up and login functionalities.
+- **Session Booking**: Browse and reserve available climbing sessions.
+- **Responsive Design**: Optimized for various devices, ensuring a seamless user experience.
 
+## Screenshots
+
+*Note: Include relevant screenshots here to showcase the application's interface and functionalities.*
+
+## Getting Started
+
+Follow these instructions to set up the project locally.
+
+### Prerequisites
+
+- Docker installed on your machine.
+- Node.js and npm installed.
+
+### Installation
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Aymankhallaf/Salle-d-escalade-web.git
+   ```
+
+2. **Navigate to the project directory**:
+
+   ```bash
+   cd Salle-d-escalade-web
+   ```
+
+3. **Build and run the Docker containers**:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+4. **Set up the database**:
+
+   - Import the example database located in the `sql-example` folder.
+   - Update the database connection parameters in the `.env` file as needed.
+
+5. **Navigate to the app directory**:
+
+   ```bash
+   cd app
+   ```
+
+6. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+7. **Run the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+Once the setup is complete, access the application through your web browser at `http://localhost:8000`.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your proposed changes.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any inquiries or support, please contact [Ayman Khallaf](mailto:your-email@example.com).
 
