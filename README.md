@@ -25,10 +25,9 @@ This project is a web-based application designed for climbing enthusiasts to boo
 - **Session Booking**: Browse and reserve available climbing sessions.
 - **Responsive Design**: Optimized for various devices, ensuring a seamless user experience.
 
-## Screenshots
+## Live view
 
-*Note: Include relevant screenshots here to showcase the application's interface and functionalities.*
-
+(https://escalade.developpeurweb.net/)
 ## Getting Started
 
 Follow these instructions to set up the project locally.
