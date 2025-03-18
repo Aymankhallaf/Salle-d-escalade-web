@@ -95,5 +95,5 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any inquiries or support, please contact [Ayman Khallaf](mailto:your-email@example.com).
+For any inquiries or support, please contact [Ayman Khallaf](mailto:engAymanKHALAF.com).
 
